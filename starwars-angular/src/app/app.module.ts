@@ -1,16 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxSmartModalModule, NgxSmartModalService } from 'ngx-smart-modal';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app/app.component';
+import { CategoryFilterComponent } from './components/category-filter/category-filter.component';
+import { CartComponent } from './components/cart/cart.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CategoryFilterComponent,
+    CartComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgxSmartModalModule.forRoot()
   ],
-  providers: [],
+  providers: [ NgxSmartModalService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
