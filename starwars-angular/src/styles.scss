@@ -346,4 +346,42 @@
     }
 }
 
+
+.background-container {
+    min-height: 100%;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    top: 100;
+    z-index: 2;
+    background-size: cover;
+    display: flex;
+    align-items: top;
+    background-image: url("./assets/images/starwars-shady-bg.jpg");
+}
+
+/* Common scrolling style here */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 4px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: gray;
+}
+
 @import "./assets/custom-styles/ngx-smart-modal-custom.scss";
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

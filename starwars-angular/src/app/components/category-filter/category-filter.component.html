@@ -1,7 +1,8 @@
 <ngx-smart-modal #categoryFilter [identifier]="'categoryFilter'"
     customClass="nsm-centered"
     [closable]="false" [dismissable]="true"
-    target="categoryFilter-modal-anchor" 
+    target="categoryFilter-modal-anchor"
+    (onDismiss)="resetForm()"
 >
     <div class="categoryFilter-XS-container">
         <h1>Category Filter XS</h1>

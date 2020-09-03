@@ -1,0 +1,105 @@
+.background-XL-container {
+  color: white;
+  background: transparent;
+  width: 90%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.categoryFilter-modal-anchor {
+  position: absolute;
+  left: 0px;
+}
+
+.cart-modal-anchor {
+  position: absolute;
+  right: 0px;
+}
+
+.menubar-XL-label {
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.menu-XL-scrollview {
+  display: grid;
+  padding-right: 3px;
+  direction: ltr;
+  grid-template-rows: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.menu-XL-scrollview .button-XL-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-column-gap: 0.8rem;
+  grid-row-gap: 0.8rem;
+  height: 639px;
+  width: auto;
+}
+
+.category-XL-column {
+  width: 100%;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+.menu-XL-card {
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 5px;
+  border-style: none;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(grey, rgba(153, 153, 153, 0.3));
+  background-size: auto 400%;
+  background-position: 100% 100%;
+  transition: background-position 0.1s;
+}
+
+.card-XL-title {
+  font-size: medium;
+  font-weight: bolder;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.card-XL-details {
+  font-size: small;
+  font-weight: bolder;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.card-XL-price {
+  font-size: small;
+  font-weight: bolder;
+  margin-top: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.filter-XL-icon {
+  font-size: medium;
+  font-weight: bolder;
+  margin-left: 2px;
+}
+
+.cart-XL-icon {
+  font-size: medium;
+  font-weight: bolder;
+  margin-right: 2px;
+  }
+
+.copywrite-lable {
+  font-size: small;
+  font-weight: bolder;
+}

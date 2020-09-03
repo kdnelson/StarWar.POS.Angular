@@ -1,1 +1,266 @@
-<p>home works!</p>
+<div class="background-container">
+    <category-filter-modal></category-filter-modal>
+    <div class="categoryFilter-modal-anchor"></div>
+    <menu-item-detail-modal></menu-item-detail-modal>
+    <div class="menuItemDetail-modal-anchor"></div>
+    <cart-modal></cart-modal>
+    <div class="cart-modal-anchor"></div>
+  
+    <div class="background-XS-container">
+      <div class="d-flex justify-content-between">
+        <div class="p-2">
+          <div class="row">
+            <div class="col-12">
+              <div role="button" (click)="openCategoryFilterModal()">
+                <img src="../../../assets/images/home-filter.png" style="margin-top:7px;width:25px;height:30px;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="row">
+            <div class="col-12">
+              <div role="button" (click)="openCartModal()">
+                <img src="../../../assets/images/home-cart.png" style="width:35px;height:40px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-inline-flex">
+        <div class="p-2">
+          <div class="category-XS-column">
+            Categories
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="menu-XS-scrollview">
+            <div class="button-XS-grid">
+              <div *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="menu-XS-card">
+                      <div class="row">
+                        <div class="card-XS-title">
+                          #{{ item }} Some Very Cool Title
+                        </div>              
+                      </div>
+                      <div class="row">
+                        <div class="card-XS-details">
+                          Some very cool details to read and admire.  
+                          Hopefully encouraging you to buy our product.
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="card-XS-price">
+                          1,234.90 credits
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="p-2"><div class="copywrite-lable">SilverSkippy (c) 2020</div></div>
+      </div>
+    </div>
+  
+    <div class="background-S-container">
+      <div class="d-flex justify-content-center">
+        <div class="p-2"><div class="media-not-supported-lable">Media size not supported.</div></div>
+      </div>
+    </div>
+  
+    <div class="background-M-container">
+      <div class="d-flex justify-content-between">
+        <div class="p-2">
+          <div class="row">
+            <div class="col-12">
+              <div role="button" (click)="openCategoryFilterModal()">
+                <img src="../../../assets/images/home-filter.png" style="margin-top:7px;width:25px;height:30px;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="row">
+            <div class="col-12">
+              <div role="button" (click)="openCartModal()">
+                <img src="../../../assets/images/home-cart.png" style="width:35px;height:40px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-inline-flex">
+        <div class="p-2">
+          <div class="category-M-column">
+            Categories
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="menu-M-scrollview">
+            <div class="button-M-grid">
+              <div *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="menu-M-card">
+                      <div class="row">
+                        <div class="card-M-title">
+                          #{{ item }} Some Very Cool Title
+                        </div>              
+                      </div>
+                      <div class="row">
+                        <div class="card-M-details">
+                          Some very cool details to read and admire.  
+                          Hopefully encouraging you to buy our product.
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="card-M-price">
+                          1,234.90 credits
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="p-2"><div class="copywrite-lable">SilverSkippy (c) 2020</div></div>
+      </div>
+    </div>
+    
+    <div class="background-L-container">
+      <div class="d-flex justify-content-between">
+        <div class="p-2">
+          <div class="row">
+            <div class="col-12">
+              <div role="button" (click)="openCategoryFilterModal()">
+                <img src="../../../assets/images/home-filter.png" style="margin-top:7px;width:25px;height:30px;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="row">
+            <div class="col-12">
+              <div role="button" (click)="openCartModal()">
+                <img src="../../../assets/images/home-cart.png" style="width:35px;height:40px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-inline-flex">
+        <div class="p-2">
+          <div class="category-L-column">
+            Categories
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="menu-L-scrollview">
+            <div class="button-L-grid">
+              <div *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="menu-L-card">
+                      <div class="row">
+                        <div class="card-L-title">
+                          #{{ item }} Some Very Cool Title
+                        </div>              
+                      </div>
+                      <div class="row">
+                        <div class="card-L-details">
+                          Some very cool details to read and admire.  
+                          Hopefully encouraging you to buy our product.
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="card-L-price">
+                          1,234.90 credits
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="p-2"><div class="copywrite-lable">SilverSkippy (c) 2020</div></div>
+      </div>
+    </div>
+    
+    <div class="background-XL-container">
+      <div class="d-flex justify-content-between">
+        <div class="p-2">
+          <div class="row">
+            <div class="col-12">
+              <div role="button" (click)="openCategoryFilterModal()">
+                <img src="../../../assets/images/home-filter.png" style="margin-top:7px;width:25px;height:30px;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="row">
+            <div class="col-12">
+              <div role="button" (click)="openCartModal()">
+                <img src="../../../assets/images/home-cart.png" style="width:35px;height:40px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-inline-flex">
+        <div class="p-2">
+          <div class="category-XL-column">
+            Categories
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="menu-XL-scrollview">
+            <div class="button-XL-grid">
+              <div *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="menu-XL-card">
+                      <div class="row">
+                        <div class="card-XL-title">
+                          #{{ item }} Some Very Cool Title
+                        </div>              
+                      </div>
+                      <div class="row">
+                        <div class="card-XL-details">
+                          Some very cool details to read and admire.  
+                          Hopefully encouraging you to buy our product.
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="card-XL-price">
+                          1,234.90 credits
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="p-2"><div class="copywrite-lable">SilverSkippy (c) 2020</div></div>
+      </div>
+    </div>
+  </div>

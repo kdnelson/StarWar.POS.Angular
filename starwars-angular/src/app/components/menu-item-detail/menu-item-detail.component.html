@@ -1,6 +1,7 @@
 <ngx-smart-modal #menuItemDetail [identifier]="'menuItemDetail'"
     customClass="nsm-centered"
-    [closable]="false" [dismissable]="true" 
+    [closable]="false" [dismissable]="true"
+    (onDismiss)="resetForm()"
 >
     <div class="menuItemDetail-XS-container">
         <h1>MenuItemDetail XS</h1>

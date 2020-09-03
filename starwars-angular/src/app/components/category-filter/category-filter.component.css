@@ -1,6 +1,8 @@
 .categoryFilter-modal-anchor {
     position: absolute;
     left: 0px;
+    margin-right: 300px;
+    margin-left: 300px;
 }
 
 .categoryFilter-XS-container {

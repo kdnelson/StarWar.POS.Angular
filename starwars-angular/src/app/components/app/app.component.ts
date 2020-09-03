@@ -7,10 +7,6 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
 
-  constructor(
-    public ngxSmartModalService: NgxSmartModalService
-    ) {
-  }
+  constructor() { }
 }

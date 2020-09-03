@@ -1,0 +1,13 @@
+.background-S-container {
+  color: white;
+  background: transparent;
+  width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.media-not-supported-lable {
+  padding-top: 60px;
+  font-size: large;
+  font-weight: bolder;
+}
