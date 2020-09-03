@@ -1,6 +1,18 @@
 <ngx-smart-modal #categoryFilter [identifier]="'categoryFilter'"
-    customClass="nsm-dialog-animation-ltr nsm-centered" 
+    customClass="nsm-centered"
+    [closable]="false" [dismissable]="true"
+    target="categoryFilter-modal-anchor" 
 >
-    <h1>Category Filter</h1>
-    <button (click)="categoryFilter.close()">Close</button>
+    <div class="categoryFilter-XS-container">
+        <h1>Category Filter XS</h1>
+    </div>
+    <div class="categoryFilter-M-container">
+        <h1>Category Filter M</h1>
+    </div>
+    <div class="categoryFilter-L-container">
+        <h1>Category Filter L</h1>
+    </div>
+    <div class="categoryFilter-XL-container">
+        <h1>Category Filter XL</h1>
+    </div>
 </ngx-smart-modal>

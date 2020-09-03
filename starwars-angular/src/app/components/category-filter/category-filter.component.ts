@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'category-filter-model',
+  selector: 'category-filter-modal',
   templateUrl: './category-filter.component.html',
   styleUrls: ['./category-filter.component.css']
 })

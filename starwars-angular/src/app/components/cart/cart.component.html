@@ -1,6 +1,18 @@
 <ngx-smart-modal #cart [identifier]="'cart'"
-    customClass="nsm-dialog-animation-rtl nsm-centered" 
+    customClass="nsm-centered"
+    [closable]="false" [dismissable]="true"
+    target="cart-modal-anchor" 
 >
-    <h1>Cart</h1>
-    <button (click)="cart.close()">Close</button>
+    <div class="cart-XS-container">
+       <h1>Cart XS</h1>
+    </div>
+    <div class="cart-M-container">
+       <h1>Cart M</h1>
+    </div>
+    <div class="cart-L-container">
+       <h1>Cart L</h1>
+    </div>
+    <div class="cart-XL-container">
+       <h1>Cart XL</h1>
+    </div>
 </ngx-smart-modal>

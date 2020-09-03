@@ -1,0 +1,32 @@
+.categoryFilter-modal-anchor {
+    position: absolute;
+    left: 0px;
+}
+
+.categoryFilter-XS-container {
+    width: 150px;
+    height: 300px;
+    color: white;
+    background-color: black;
+}
+
+.categoryFilter-M-container {
+    width: 200px;
+    height: 400px;
+    color: white;
+    background-color: black;
+}
+
+.categoryFilter-L-container {
+    width: 200px;
+    height: 400px;
+    color: white;
+    background-color: black;
+}
+
+.categoryFilter-XL-container {
+    width: 250px;
+    height: 500px;
+    color: white;
+    background-color: black;
+}
