@@ -1,15 +1,12 @@
 .categoryFilter-modal-anchor {
-    position: absolute;
     left: 0px;
-    margin-right: 300px;
-    margin-left: 300px;
 }
 
 .categoryFilter-XS-container {
-    width: 150px;
-    height: 300px;
-    color: white;
+    width: 195px;
+    height: 375px;
     background-color: black;
+    overflow: hidden;
 }
 
 .categoryFilter-M-container {
@@ -32,3 +29,65 @@
     color: white;
     background-color: black;
 }
+
+.categoryFilter-scrollview {
+    width: 180px;
+    height: 285px;
+    margin-top: 14px;
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-bottom: 14px;
+    direction: rtl;
+    position: absolute;
+    border-color: transparent;
+    overflow-y: overlay;
+}
+
+.categoryFilter-card-selected {
+    position: relative;
+    width: 170px;
+    height: 50px;
+    padding-top: 15px;
+    margin-left: 10px;
+    margin-right: 7px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: x-large;
+    color: white;
+    background: rgba(240, 216, 7, 0.6);
+}
+
+.categoryFilter-card-not-selected {
+    position: relative;
+    width: 170px;
+    height: 50px;
+    padding-top: 15px;
+    margin-left: 10px;
+    margin-right: 7px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: x-large;
+    color: white;
+    background-image: linear-gradient(grey, rgba(153, 153, 153, 0.3));
+    background-size: auto 400%;
+    background-position: 100% 100%;
+    transition: background-position 0.1s;
+}
+
+.categoryFilter-filter {
+    margin-top: 420px;
+    height: 50px;
+    width: 165px;
+    color: white;
+    font-size: xx-large;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 310px;
+    margin-bottom: 7px;
+    margin-left: 14px;
+    margin-right: 7px;
+    padding-top: 15px;
+    background-color:rgba(49, 199, 102, 0.75);
+  }

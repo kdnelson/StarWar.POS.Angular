@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CategoryFilterComponent } from '../category-filter/category-filter.component';
+import { MenuItemDetailComponent } from '../menu-item-detail/menu-item-detail.component';
 import { CartComponent } from '../cart/cart.component';
-
 
 @Component({
   selector: 'app-home',
@@ -13,13 +13,14 @@ import { CartComponent } from '../cart/cart.component';
     './home.component-l.css',  // Tablet landscape
     './home.component-xl.css', // Desktop landscape
   ],
-  providers: [CategoryFilterComponent, CartComponent],
+  providers: [CategoryFilterComponent, MenuItemDetailComponent, CartComponent],
 })
 export class HomeComponent {
   title = 'Home';
 
   public constructor(
     public categoryFilterComponent: CategoryFilterComponent,
+    public menuItemDetailComponent: MenuItemDetailComponent,
     public cartComponent: CartComponent,
   ) {}
 
@@ -45,6 +46,17 @@ export class HomeComponent {
 
     try {
       this.categoryFilterComponent.loadModal();
+    } catch (errMsg) {
+      // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      // this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  openMenuItemDetailModal() {
+    let methodName: string = 'openMenuItemDetailModal';
+
+    try {
+      this.menuItemDetailComponent.loadModal();
     } catch (errMsg) {
       // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       // this.errorMsgComponent.loadModal(errorMsg);

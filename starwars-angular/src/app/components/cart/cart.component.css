@@ -1,11 +1,10 @@
-.cart-modal-anchor {
-    position: absolute;
+.cart-modal-anchor { 
     right: 0px;
 }
 
 .cart-XS-container {
-    width: 150px;
-    height: 300px;
+    width: 200px;
+    height: 400px;
     color: white;
     background-color: black;
 }

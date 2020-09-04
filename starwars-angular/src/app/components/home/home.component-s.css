@@ -1,9 +1,5 @@
 .background-S-container {
-  color: white;
-  background: transparent;
-  width: 100%;
-  margin-right: 0px;
-  margin-left: 0px;
+  display: none;
 }
 
 .media-not-supported-lable {

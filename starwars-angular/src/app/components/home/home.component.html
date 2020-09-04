@@ -39,7 +39,7 @@
               <div *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
                 <div class="row">
                   <div class="col-12">
-                    <div class="menu-XS-card">
+                    <div class="menu-XS-card" role="button" (click)="openMenuItemDetailModal()">
                       <div class="row">
                         <div class="card-XS-title">
                           #{{ item }} Some Very Cool Title
