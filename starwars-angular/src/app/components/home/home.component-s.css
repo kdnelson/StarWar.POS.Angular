@@ -1,9 +1,10 @@
 .background-S-container {
-  display: none;
-}
-
-.media-not-supported-lable {
-  padding-top: 60px;
+  padding-top: 50%;
   font-size: large;
   font-weight: bolder;
+  width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
+  color: rgba(241, 226, 7, 0.87);
+  background: transparent;
 }
