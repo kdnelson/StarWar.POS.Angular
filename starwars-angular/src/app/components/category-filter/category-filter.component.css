@@ -1,33 +1,13 @@
 .categoryFilter-modal-anchor {
+    top: 0px;
     left: 0px;
 }
 
-.categoryFilter-XS-container {
+.categoryFilter-container {
     width: 195px;
     height: 375px;
     background-color: black;
     overflow: hidden;
-}
-
-.categoryFilter-M-container {
-    width: 200px;
-    height: 400px;
-    color: white;
-    background-color: black;
-}
-
-.categoryFilter-L-container {
-    width: 200px;
-    height: 400px;
-    color: white;
-    background-color: black;
-}
-
-.categoryFilter-XL-container {
-    width: 250px;
-    height: 500px;
-    color: white;
-    background-color: black;
 }
 
 .categoryFilter-scrollview {
@@ -88,6 +68,6 @@
     margin-bottom: 7px;
     margin-left: 14px;
     margin-right: 7px;
-    padding-top: 15px;
+    padding-top: 17px;
     background-color:rgba(49, 199, 102, 0.75);
   }

@@ -1,31 +1,22 @@
 <ngx-smart-modal #categoryFilter [identifier]="'categoryFilter'"
     customClass="nsm-centered"
-    [closable]="false" [dismissable]="false"
+    [closable]="false" [dismissable]="true"
     target=".categoryFilter-modal-anchor"
     (onDismiss)="resetForm()"
 >
     <div *ngIf="categoryFilter.hasData()">
-        <div class="categoryFilter-XS-container">
+        <div class="categoryFilter-container">
             <div class="categoryFilter-scrollview">
-                <div *ngFor="let filterTag of categoryFilter.getData().filterTags">
-                    <div *ngIf="filterTag.isSelected" class="categoryFilter-card-selected" role="button" (click)="selectedFilterTag(filterTag, categoryFilter.getData())">
-                        {{ filterTag.name }}
+                <div *ngFor="let filterName of categoryFilter.getData().filterNames">
+                    <div *ngIf="filterName.isSelected" class="categoryFilter-card-selected" role="button" (click)="selectedFilterName(filterName, categoryFilter.getData())">
+                        {{ filterName.name }}
                     </div>
-                    <div *ngIf="!filterTag.isSelected" class="categoryFilter-card-not-selected" role="button" (click)="selectedFilterTag(filterTag, categoryFilter.getData())">
-                        {{ filterTag.name }}
+                    <div *ngIf="!filterName.isSelected" class="categoryFilter-card-not-selected" role="button" (click)="selectedFilterName(filterName, categoryFilter.getData())">
+                        {{ filterName.name }}
                     </div>
                 </div>
             </div>
             <div class="categoryFilter-filter" role="button" (click)="selectedCategoryFilters(categoryFilter.getData())">Filter</div>
         </div>
-        <div class="categoryFilter-M-container">
-            <h1>Category Filter M</h1>
-        </div>
-        <div class="categoryFilter-L-container">
-            <h1>Category Filter L</h1>
-        </div>
-        <div class="categoryFilter-XL-container">
-            <h1>Category Filter XL</h1>
-        </div> 
     </div>
 </ngx-smart-modal>

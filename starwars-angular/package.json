@@ -23,9 +23,10 @@
     "@angular/platform-browser-dynamic": "10.0.8",
     "@angular/router": "10.0.8",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
-    "ngx-smart-modal": "^7.4.1",
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.5",
+    "guid-typescript": "^1.0.9",
+    "ngx-smart-modal": "^7.4.1",
     "rxjs": "6.6.2",
     "tslib": "2.0.0",
     "zone.js": "0.10.3"

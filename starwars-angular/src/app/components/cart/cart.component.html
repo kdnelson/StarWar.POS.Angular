@@ -4,16 +4,15 @@
     target=".cart-modal-anchor"
     (onDismiss)="resetForm()"
 >
-    <div class="cart-XS-container">
-       <h1>Cart XS</h1>
-    </div>
-    <div class="cart-M-container">
-       <h1>Cart M</h1>
-    </div>
-    <div class="cart-L-container">
-       <h1>Cart L</h1>
-    </div>
-    <div class="cart-XL-container">
-       <h1>Cart XL</h1>
-    </div>
+   <div *ngIf="cart.hasData()">
+      <div class="cart-container">
+         <div class="ticket-scrollview">
+            <div *ngFor="let cartItem of cart.getData().cartItems">
+               {{ cartItem.name }}
+               {{ cartItem.quantity }}
+               {{ cartItem.adjustedPrice }}
+            </div>
+         </div>     
+      </div>
+   </div>
 </ngx-smart-modal>

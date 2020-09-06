@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { FilterTag } from 'src/app/models/filterTags';
+import { FilterName } from 'src/app/models/filterName';
 import { CategoryFilter } from 'src/app/models/categoryFilter';
 
 @Component({
@@ -9,8 +9,8 @@ import { CategoryFilter } from 'src/app/models/categoryFilter';
   styleUrls: ['./category-filter.component.css']
 })
 export class CategoryFilterComponent implements OnInit {
-  private filterTagFilter: FilterTag = {};
-  private filterTags: FilterTag[] = [];
+  private filterName: FilterName = {};
+  private filterNames: FilterName[] = [];
 
   constructor(
     public ngxSmartModalService: NgxSmartModalService
@@ -29,7 +29,7 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-  closeAllModals() : void {
+  private closeAllModals() : void {
     let methodName: string = 'closeAllModals';
 
     try {
@@ -43,19 +43,19 @@ export class CategoryFilterComponent implements OnInit {
 
   loadModal() : void {
     let methodName: string = 'loadModal';
+    this.closeAllModals();
 
     try {
-      let categoryFilterTags: FilterTag[] = [
-        new FilterTag('Empire', false),
-        new FilterTag('Rebels', false),
-        new FilterTag('Outer-Rim', false),
-        new FilterTag('Agriculture', false),
-        new FilterTag('Minning', false)];
-      if(categoryFilterTags !== null){
-        if(categoryFilterTags.length > 0)
-        {
-          this.closeAllModals();
-          let categoryFilter: CategoryFilter = this.createCategoryFilter(categoryFilterTags);
+      let categoryFilterNames: FilterName[] = [
+        new FilterName('Empire', false),
+        new FilterName('Rebels', false),
+        new FilterName('Outer-Rim', false),
+        new FilterName('Agriculture', false),
+        new FilterName('Minning', false)];
+      if(categoryFilterNames !== null){
+        if(categoryFilterNames.length > 0)
+        {   
+          let categoryFilter: CategoryFilter = this.createCategoryFilter(categoryFilterNames);
           this.ngxSmartModalService.setModalData(categoryFilter, 'categoryFilter', true);
           this.ngxSmartModalService.getModal('categoryFilter').open();
         }
@@ -69,14 +69,14 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-  private createCategoryFilter(filterTags: FilterTag[]) : CategoryFilter {
+  private createCategoryFilter(filterNames: FilterName[]) : CategoryFilter {
     let methodName: string = 'createCategoryFilter';
 
     let categoryFilter = new CategoryFilter();
     try {
-      if(filterTags !== null){
-        if(categoryFilter.filterTags !== null) {
-          categoryFilter.filterTags = filterTags;
+      if(filterNames !== null){
+        if(categoryFilter.filterNames !== null) {
+          categoryFilter.filterNames = filterNames;
         } else {
           //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'categoryFilter.filterTags');
           //this.errorMsgComponent.loadModal(errorMsg);
@@ -92,23 +92,23 @@ export class CategoryFilterComponent implements OnInit {
     return categoryFilter;
   }
 
-  selectedFilterTag(filterTag: FilterTag, categoryFilter: CategoryFilter) {
-    let methodName: string = 'selectedFilterTag';
+  selectedFilterName(filterName: FilterName, categoryFilter: CategoryFilter) {
+    let methodName: string = 'selectedFilterName';
 
     try {
-      if(filterTag !== null && categoryFilter !== null) {
-        if(categoryFilter.filterTags !== null) {
-          let filterTagIndex: number = this.searchFilterTagIndex(filterTag.name, categoryFilter.filterTags)
-          if(filterTag.isSelected){
-            filterTag.isSelected = false;
-            categoryFilter.filterTags.splice(filterTagIndex, 1, filterTag);
+      if(filterName !== null && categoryFilter !== null) {
+        if(categoryFilter.filterNames !== null) {
+          let filterNameIndex: number = this.searchFilterNameIndex(filterName.name, categoryFilter.filterNames)
+          if(filterName.isSelected){
+            filterName.isSelected = false;
+            categoryFilter.filterNames.splice(filterNameIndex, 1, filterName);
           } else {
-            if(filterTag !== this.filterTagFilter){
-              filterTag.isSelected = true;
-              categoryFilter.filterTags.splice(filterTagIndex, 1, filterTag);
+            if(filterName !== this.filterName){
+              filterName.isSelected = true;
+              categoryFilter.filterNames.splice(filterNameIndex, 1, filterName);
             }
             else {
-              this.setFilterTagToNotSelected(categoryFilter.filterTags);
+              this.setFilterNameToNotSelected(categoryFilter.filterNames);
             }
           }
         } else {
@@ -125,17 +125,17 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-  private searchFilterTagIndex(filterTag: string, filterTags: FilterTag[]) : number {
-    let methodName: string = 'searchFilterTagIndex';
+  private searchFilterNameIndex(filterName: string, filterNames: FilterName[]) : number {
+    let methodName: string = 'searchFilterNameIndex';
 
-    let filterTagAtIndex = -1;
+    let filterNameAtIndex = -1;
 
     try {
-      if(filterTag !== null && filterTags !== null) {
-        filterTags.forEach((item, index) => {
-          if(item.name === filterTag)
+      if(filterName !== null && filterNames !== null) {
+        filterNames.forEach((item, index) => {
+          if(item.name === filterName)
           {
-            filterTagAtIndex = index;
+            filterNameAtIndex = index;
           }
         });  
       } else {
@@ -146,15 +146,15 @@ export class CategoryFilterComponent implements OnInit {
       //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
       //this.errorMsgComponent.loadModal(errorMsg);
     }
-    return filterTagAtIndex;
+    return filterNameAtIndex;
   }
 
-  private setFilterTagToNotSelected(filterTags: FilterTag[]) {
-    let methodName: string = 'setFilterTagToNotSelected';
+  private setFilterNameToNotSelected(filterNames: FilterName[]) {
+    let methodName: string = 'setFilterNameToNotSelected';
 
     try {
-      if(filterTags !== null) {
-        filterTags.forEach((item, index) => {
+      if(filterNames !== null) {
+        filterNames.forEach((item, index) => {
           item.isSelected = false;
         });
       } else {
@@ -171,9 +171,9 @@ export class CategoryFilterComponent implements OnInit {
     let methodName: string = 'selectedCategoryFilters';
 
     try {
-      let filterTags: string[] = this.searchForSelectedFilterTags(categoryFilter);
-      if(filterTags !== null) {
-        if(filterTags.length > 0) {
+      let filterNames: string[] = this.searchForSelectedFilterNames(categoryFilter);
+      if(filterNames !== null) {
+        if(filterNames.length > 0) {
           //this.baseHelper.setCategoryFilter(filterTags);
           this.ngxSmartModalService.getModal('categoryFilter').close();
         }
@@ -187,16 +187,16 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-  private searchForSelectedFilterTags(categoryFilter: CategoryFilter) : string[] {
-    let methodName: string = 'searchForSelectedFilterTags';
-    let filterTags: string[] = [];
+  private searchForSelectedFilterNames(categoryFilter: CategoryFilter) : string[] {
+    let methodName: string = 'searchForSelectedFilterNames';
+    let filterNames: string[] = [];
 
     try {
       if(categoryFilter !== null){
-        if(categoryFilter.filterTags !== null) {
-          categoryFilter.filterTags.forEach((item, index) => {
+        if(categoryFilter.filterNames !== null) {
+          categoryFilter.filterNames.forEach((item, index) => {
             if(item.isSelected){
-              filterTags.push(item.name);
+              filterNames.push(item.name);
             }
           });
         } else {
@@ -212,6 +212,6 @@ export class CategoryFilterComponent implements OnInit {
       //this.errorMsgComponent.loadModal(errorMsg);
     }
 
-    return filterTags;
+    return filterNames;
   }
 }

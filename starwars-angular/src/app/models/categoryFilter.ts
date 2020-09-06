@@ -1,7 +1,8 @@
-import { FilterTag } from "./filterTags";
+import { FilterName } from "./filterName";
+
 
 export class CategoryFilter {
   constructor(
-    public filterTags?: FilterTag[],
+    public filterNames?: FilterName[],
   ) { }
 }
