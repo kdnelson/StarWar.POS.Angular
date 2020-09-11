@@ -10,7 +10,6 @@ rm -r node_modules
 npm i
 ng serve -o
 ng serve --port 0
-ng new sassy-project --style=scss
 ng config schematics.@schematics/angular:component.styleext scss
 ng build //create deployment artifacts to the dist folder
 Create three components:
@@ -24,3 +23,5 @@ change:
 import 'core-js/es7/reflect';
 to:
 import 'core-js/es/reflect';
+Create a project that is SSASS enabled
+ng new sassy-project --style=scss
