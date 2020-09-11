@@ -4,8 +4,109 @@
 }
 
 .cart-container {
-    width: 200px;
-    height: 400px;
-    color: white;
+    width: 250px;
+    height: 460px;
     background-color: black;
+    overflow: hidden;
 }
+
+.cart-scrollview {
+    width: 235px;
+    height: 280px;
+    margin-top: 0px;
+    margin-left: 8px;
+    margin-right: 7px;
+    margin-bottom: 0px;
+    direction: ltr;
+    position: absolute;
+    border-color: transparent;
+    overflow-y: overlay;
+}
+
+.cart-counter {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: medium;
+    color: rgba(0, 0, 0, 0.75);
+    background-color: white;
+    border-radius: 7px;
+    font-weight: bolder;
+    text-align: center;
+  }
+
+  .cart-card-header {
+    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+    background-size: auto 400%;
+    background-position: 100% 100%;
+    transition: background-position 0.2s;
+    height: 36px;
+  }
+
+  .cart-card-totaler {
+    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+    background-size: auto 400%;
+    background-position: 100% 100%;
+    transition: background-position 0.2s;
+    margin-top: 290px;
+    height: 68px;
+  }
+
+  .cart-submit {  
+    height: 67px;
+    width: 250px;
+    font-size: xx-large;
+    font-weight: bold;
+    padding-top: 23px;
+    text-align: center;
+    color: white;
+    background-color: green;
+  }
+
+  .cart-card {
+    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+    background-size: auto 400%;
+    background-position: 100% 100%;
+    transition: background-position 0.2s;
+    height: 70px;
+    width: 224px;
+  }
+
+  .cart-number {
+    color: white;
+    font-size: small;
+    font-weight: bold;
+  }
+
+  .cart-card-topline {
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+  }
+
+  .cart-card-bottomline {
+    color: white;
+    font-size: smaller;
+    font-weight: bold;
+  }
+
+  .cart-sub-total {
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-right: 10px;
+  }
+  
+  .cart-tax {
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    padding-right: 10px;
+  }
+
+  .cart-total {
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    padding-right: 10px;
+  }

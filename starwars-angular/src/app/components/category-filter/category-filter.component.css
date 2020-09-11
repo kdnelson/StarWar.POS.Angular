@@ -25,7 +25,7 @@
 
 .categoryFilter-card-selected {
     position: relative;
-    width: 170px;
+    width: 162px;
     height: 50px;
     padding-top: 15px;
     margin-left: 10px;
@@ -40,7 +40,7 @@
 
 .categoryFilter-card-not-selected {
     position: relative;
-    width: 170px;
+    width: 162px;
     height: 50px;
     padding-top: 15px;
     margin-left: 10px;
@@ -57,7 +57,6 @@
 }
 
 .categoryFilter-filter {
-    margin-top: 420px;
     height: 50px;
     width: 165px;
     color: white;
@@ -65,9 +64,9 @@
     font-weight: bolder;
     text-align: center;
     margin-top: 310px;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
     margin-left: 14px;
     margin-right: 7px;
-    padding-top: 17px;
-    background-color:rgba(49, 199, 102, 0.75);
+    padding-top: 16px;
+    background-color: green;
   }

@@ -6,13 +6,40 @@
 >
    <div *ngIf="cart.hasData()">
       <div class="cart-container">
-         <div class="ticket-scrollview">
-            <div *ngFor="let cartItem of cart.getData().cartItems">
-               {{ cartItem.name }}
-               {{ cartItem.quantity }}
-               {{ cartItem.adjustedPrice }}
+         <div class="row">
+            <div class="col-12">
+               <div class="cart-card-header">
+                  <div class="d-flex">
+                     <div class="p-2 flex-fill"><div class="cart-number">CartNumber</div></div>
+                     <div class="p-2 mr-auto"><div class="cart-counter">1234</div></div>
+                  </div>
+               </div>
             </div>
-         </div>     
+         </div>
+         <div class="cart-scrollview">
+            <div *ngFor="let cartItem of cart.getData().cartItems">
+               <div class="cart-card">
+                  <div class="d-flex">
+                     <div class="p-2 flex-fill"><div class="cart-card-topline">{{ cartItem.name }}</div></div>
+                     <div class="p-2 mr-auto"><div class="cart-card-topline">{{ cartItem.quantity }}</div></div>
+                  </div>
+                  <div class="d-flex">
+                     <div class="p-2 flex-fill"></div>
+                     <div class="p-2 mr-auto"><div class="cart-card-bottomline">{{ cartItem.adjustedPrice }}</div></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="cart-card-totaler">
+            <div class="d-flex justify-content-end"><div class="cart-sub-total">Sub Total: 100.00 cr</div></div>
+            <div class="d-flex justify-content-end"><div class="cart-tax">Tax: 10.00</div></div>
+            <div class="d-flex justify-content-end"><div class="cart-total">Total: 120.00 cr</div></div>
+         </div>
+         <div class="row">
+            <div class="col-12">
+               <div class="cart-submit">Submit</div>
+            </div>
+         </div>
       </div>
    </div>
 </ngx-smart-modal>
