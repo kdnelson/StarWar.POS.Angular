@@ -54,3 +54,7 @@ ng-template
   </button>
   <span>web-doctor</span>
 </mat-toolbar>
+
+***** Issues *****
+
+From XS, M, L to XL the nav bar can be off in showing Home or Manager
