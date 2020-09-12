@@ -27,7 +27,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-    <mat-sidenav #sidenav>
+    <mat-sidenav #sidenav class="sidenav-slideout">
         <mat-nav-list>
             <a mat-list-item [routerLink]="'/home'" (click)="sidenav.toggle()">Home</a>
             <a mat-list-item [routerLink]="'/manager'" (click)="sidenav.toggle()">Manager</a>

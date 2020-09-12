@@ -1,13 +1,11 @@
 @import "./assets/custom-styles/ngx-smart-modal-custom.scss";
 
-$dialog-position-top: 20%;
-
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 
 .background-container {
     min-height: 100%;
-    position: relative;
+    position: absolute;
     width: 100%;
     margin: 0;
     left: 0;

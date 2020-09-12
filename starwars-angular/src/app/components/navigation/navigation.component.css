@@ -1,3 +1,9 @@
 .toggle-btn{
     color: white;
 }
+
+.sidenav-slideout {
+    font-weight: bold;
+    color: white;
+    background-color: #212121;
+}
