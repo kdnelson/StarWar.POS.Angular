@@ -5,8 +5,15 @@
     "module": "es2015",
     "types": []
   },
+  "environmentSource": "environments/environment.ts",
+  "environments": {
+    "dev": "environments/environment.ts",
+    "prod": "environments/environment.prod.ts"
+  },
   "exclude": [
-    "src/test.ts",
+    "test.ts",
+    "environments/environment.ts",
+    "environments/environment.prod.ts",
     "**/components/**/*.spec.ts"
   ]
 }
