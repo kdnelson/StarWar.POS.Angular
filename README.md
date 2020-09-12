@@ -4,7 +4,6 @@ https://www.interviewbit.com/angular-interview-questions/
 
 ***** TODO *****
 
-Align total and pricing text to the left and digits to the right
 start on detail form
 
 ***** Commands *****
