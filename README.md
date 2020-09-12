@@ -4,7 +4,6 @@ https://www.interviewbit.com/angular-interview-questions/
 
 ***** TODO *****
 
-Shut-off modals for div-S
 Naming div classes label, or btn, etc
 Align total and pricing text to the left and digits to the right
 start on detail form
@@ -58,3 +57,5 @@ ng-template
 ***** Issues *****
 
 From XS, M, L to XL the nav bar can be off in showing Home or Manager
+Shut-off modals for div-S
+
