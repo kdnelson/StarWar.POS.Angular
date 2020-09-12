@@ -5,7 +5,7 @@
 
 .cart-container {
     width: 250px;
-    height: 460px;
+    height: 462px;
     background-color: black;
     overflow: hidden;
 }
@@ -48,10 +48,10 @@
     background-position: 100% 100%;
     transition: background-position 0.2s;
     margin-top: 290px;
-    height: 68px;
+    height: 70px;
   }
 
-  .cart-submit {  
+  .cart-submit-btn {  
     height: 67px;
     width: 250px;
     font-size: xx-large;
@@ -79,19 +79,19 @@
 
   .cart-card-topline {
     color: white;
-    font-size: medium;
+    font-size: large;
     font-weight: bold;
   }
 
   .cart-card-bottomline {
     color: white;
-    font-size: smaller;
+    font-size: small;
     font-weight: bold;
   }
 
   .cart-sub-total {
     color: white;
-    font-size: small;
+    font-size: medium;
     font-weight: bold;
     padding-top: 5px;
     padding-right: 10px;
@@ -99,14 +99,14 @@
   
   .cart-tax {
     color: white;
-    font-size: small;
+    font-size: medium;
     font-weight: bold;
     padding-right: 10px;
   }
 
   .cart-total {
     color: white;
-    font-size: small;
+    font-size: medium;
     font-weight: bold;
     padding-right: 10px;
   }

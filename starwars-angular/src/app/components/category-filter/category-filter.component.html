@@ -6,6 +6,15 @@
 >
     <div *ngIf="categoryFilter.hasData()">
         <div class="categoryFilter-container">
+            <div class="row">
+                <div class="col-12">
+                   <div class="categoryFilter-card-header">
+                      <div class="d-flex justify-content-center">
+                        <div class="categoryFilter-modal-label">Menu Filter</div>
+                      </div>
+                   </div>
+                </div>
+             </div>
             <div class="categoryFilter-scrollview">
                 <div *ngFor="let filterName of categoryFilter.getData().filterNames">
                     <div *ngIf="filterName.isSelected" class="categoryFilter-card-selected" role="button" (click)="selectedFilterName(filterName, categoryFilter.getData())">
@@ -16,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <div class="categoryFilter-filter" role="button" (click)="selectedCategoryFilters(categoryFilter.getData())">Filter</div>
+            <div class="categoryFilter-filter-btn" role="button" (click)="selectedCategoryFilters(categoryFilter.getData())">Filter</div>
         </div>
     </div>
 </ngx-smart-modal>

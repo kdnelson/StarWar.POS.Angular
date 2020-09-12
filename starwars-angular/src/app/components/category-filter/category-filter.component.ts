@@ -51,7 +51,10 @@ export class CategoryFilterComponent implements OnInit {
         new FilterName('Rebels', false),
         new FilterName('Outer-Rim', false),
         new FilterName('Agriculture', false),
-        new FilterName('Minning', false)];
+        new FilterName('Minning', false),
+        new FilterName('Manufacturer', false),
+        new FilterName('Supplier', false)
+      ];
       if(categoryFilterNames !== null){
         if(categoryFilterNames.length > 0)
         {   

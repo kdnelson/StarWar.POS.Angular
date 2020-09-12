@@ -4,19 +4,27 @@
 }
 
 .categoryFilter-container {
-    width: 195px;
-    height: 375px;
+    width: 250px;
+    height: 462px;
     background-color: black;
     overflow: hidden;
 }
 
+.categoryFilter-card-header {
+    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+    background-size: auto 400%;
+    background-position: 100% 100%;
+    transition: background-position 0.2s;
+    height: 30px;
+  }
+
 .categoryFilter-scrollview {
-    width: 180px;
-    height: 285px;
-    margin-top: 14px;
-    margin-left: 7px;
+    width: 235px;
+    height: 360px;
+    margin-top: 0px;
+    margin-left: 8px;
     margin-right: 7px;
-    margin-bottom: 14px;
+    margin-bottom: 0px;
     direction: rtl;
     position: absolute;
     border-color: transparent;
@@ -25,11 +33,11 @@
 
 .categoryFilter-card-selected {
     position: relative;
-    width: 162px;
-    height: 50px;
-    padding-top: 15px;
+    height: 51px;
+    width: 224px;
+    padding-top: 17px;
     margin-left: 10px;
-    margin-right: 7px;
+    margin-right: 0px;
     margin-bottom: 10px;
     text-align: center;
     font-weight: bolder;
@@ -40,33 +48,45 @@
 
 .categoryFilter-card-not-selected {
     position: relative;
-    width: 162px;
-    height: 50px;
-    padding-top: 15px;
+    height: 51px;
+    width: 224px;
+    padding-top: 17px;
     margin-left: 10px;
-    margin-right: 7px;
+    margin-right: 0px;
     margin-bottom: 10px;
     text-align: center;
     font-weight: bolder;
     font-size: x-large;
     color: white;
-    background-image: linear-gradient(grey, rgba(153, 153, 153, 0.3));
+    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
     background-size: auto 400%;
     background-position: 100% 100%;
-    transition: background-position 0.1s;
+    transition: background-position 0.2s;
 }
 
-.categoryFilter-filter {
-    height: 50px;
-    width: 165px;
+.categoryFilter-filter-btn {
+    height: 67px;
+    width: 250px;
     color: white;
     font-size: xx-large;
     font-weight: bolder;
     text-align: center;
-    margin-top: 310px;
+    margin-top: 365px;
     margin-bottom: 5px;
-    margin-left: 14px;
-    margin-right: 7px;
-    padding-top: 16px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 24px;
     background-color: green;
+  }
+
+  .categoryFilter-modal-label {
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: medium;
+    color: rgba(0, 0, 0, 0.75);
+    background-color: white;
+    border-radius: 7px;
+    font-weight: bolder;
+    text-align: center;
   }
