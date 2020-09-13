@@ -1,28 +1,7 @@
 
-.menuItemDetail-XS-container {
+.menuItemDetail-container {
     width: 270px;
     height: 400px;
-    color: white;
-    background-color: black;
-}
-
-.menuItemDetail-M-container {
-    width: 600px;
-    height: 500px;
-    color: white;
-    background-color: black;
-}
-
-.menuItemDetail-L-container {
-    width: 650px;
-    height: 550px;
-    color: white;
-    background-color: black;
-}
-
-.menuItemDetail-XL-container {
-    width: 650px;
-    height: 550px;
     color: white;
     background-color: black;
 }

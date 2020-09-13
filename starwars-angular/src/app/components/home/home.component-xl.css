@@ -8,12 +8,22 @@
 
 .categoryFilter-modal-anchor {
   position: absolute;
-  left: 0px;
+  top: 0%;
+  left: 19%;
 }
 
 .cart-modal-anchor {
   position: absolute;
-  right: 0px;
+  top: 0%;
+  right: 22%;
+}
+
+.menuItemDetail-modal-anchor {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  margin: -25px 0 0 -25px; 
+  /* apply negative top and left margins to truly center the element */
 }
 
 .menubar-XL-label {
