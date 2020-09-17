@@ -2,6 +2,10 @@
 
 https://www.interviewbit.com/angular-interview-questions/
 
+Angular component lifecycle
+AOC
+Bootstrap Flex description.  Like what is p-2?
+
 ***** TODO *****
 
 start on detail form
