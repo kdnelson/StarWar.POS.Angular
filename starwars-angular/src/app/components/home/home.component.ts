@@ -24,6 +24,17 @@ export class HomeComponent {
     public cartComponent: CartComponent,
   ) {}
 
+  get getTicketCounter() : number {
+    let methodName: string = 'getTicketCounter';
+
+    try {
+      return 3;
+    } catch (errMsg) {
+      // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      // this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
   get getMenuItemDetailsPerCategory() : any[] {
     let methodName: string = 'getMenuItemDetailsPerCategory';
 

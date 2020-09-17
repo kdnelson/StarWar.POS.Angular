@@ -42,6 +42,26 @@
     font-weight: bolder;
 }
 
+.filter-icon {
+    margin-top: 3px;
+    margin-left: 10px;
+}
+  
+.cart-icon {
+    margin-top: 7px;
+    margin-right: 10px;
+}
+
+.cart-counter {
+    margin-top: 3px;
+    top: -10px;
+    right: 24px;
+    color: rgba(241, 226, 7, 0.87);
+    font-size: medium;
+    font-weight: bold;
+    position: absolute;
+  }
+
 /* Not Supported */
 @media (max-width: 319px) {
     .background-XS-container {
