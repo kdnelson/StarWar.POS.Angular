@@ -8,7 +8,7 @@ Bootstrap Flex description.  Like what is p-2?
 
 ***** TODO *****
 
-Use Bootstrap container/row/column for all modals
+Use Bootstrap container/row/column for all modals and menu cards
 start on detail form
 
 ***** Commands *****
