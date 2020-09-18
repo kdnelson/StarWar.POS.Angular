@@ -3,6 +3,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Cart } from 'src/app/models/cart';
 import { Guid } from 'guid-typescript';
 import { CartItem } from 'src/app/models/cartItem';
+import { MenuItemDetailComponent } from '../menu-item-detail/menu-item-detail.component';
 
 @Component({
   selector: 'cart-modal',
@@ -12,7 +13,8 @@ import { CartItem } from 'src/app/models/cartItem';
 export class CartComponent implements OnInit {
 
   constructor(
-    public ngxSmartModalService: NgxSmartModalService
+    public ngxSmartModalService: NgxSmartModalService,
+    public menuItemDetailComponent: MenuItemDetailComponent,
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,8 @@ export class CartComponent implements OnInit {
 
     try {
       this.ngxSmartModalService.getModal('categoryFilter').close();
-      this.ngxSmartModalService.getModal('menuItemDetail').close();  
+      this.ngxSmartModalService.getModal('menuItemDetail').close();
+      this.ngxSmartModalService.getModal('cart').close(); 
     } catch (errMsg) {
       //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
       //this.errorMsgComponent.loadModal(errorMsg);
@@ -104,5 +107,17 @@ export class CartComponent implements OnInit {
       new CartItem(Guid.create(), "A-Wing", 4, 1234.98, false),
       new CartItem(Guid.create(), "AT-AT", 7, 1234.98, false)
     ];
+  }
+
+  openMenuItemDetailModal() {
+    let methodName: string = 'openMenuItemDetailModal';
+
+    try {
+      this.closeAllModals();
+      this.menuItemDetailComponent.loadModal();
+    } catch (errMsg) {
+      // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      // this.errorMsgComponent.loadModal(errorMsg);
+    }
   }
 }

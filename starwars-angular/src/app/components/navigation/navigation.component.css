@@ -7,3 +7,10 @@
     color: white;
     background-color: #212121;
 }
+
+.menubar-label {
+    padding-top: 3px;
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+}

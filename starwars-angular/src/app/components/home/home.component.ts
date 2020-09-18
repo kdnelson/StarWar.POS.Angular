@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CategoryFilterComponent } from '../category-filter/category-filter.component';
 import { MenuItemDetailComponent } from '../menu-item-detail/menu-item-detail.component';
 import { CartComponent } from '../cart/cart.component';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class HomeComponent {
   title = 'Home';
 
   public constructor(
+    public ngxSmartModalService: NgxSmartModalService,
     public categoryFilterComponent: CategoryFilterComponent,
     public menuItemDetailComponent: MenuItemDetailComponent,
     public cartComponent: CartComponent,
@@ -52,10 +54,24 @@ export class HomeComponent {
       41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
   }
 
+  private closeAllModals() : void {
+    let methodName: string = 'closeAllModals';
+
+    try {
+      this.ngxSmartModalService.getModal('categoryFilter').close();
+      this.ngxSmartModalService.getModal('menuItemDetail').close();
+      this.ngxSmartModalService.getModal('cart').close(); 
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
   openCategoryFilterModal() {
     let methodName: string = 'openCategoryFilterModal';
 
     try {
+      this.closeAllModals();
       this.categoryFilterComponent.loadModal();
     } catch (errMsg) {
       // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -67,6 +83,7 @@ export class HomeComponent {
     let methodName: string = 'openMenuItemDetailModal';
 
     try {
+      this.closeAllModals();
       this.menuItemDetailComponent.loadModal();
     } catch (errMsg) {
       // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -78,6 +95,7 @@ export class HomeComponent {
     let methodName: string = 'openCartModal';
 
     try {
+      this.closeAllModals();
       this.cartComponent.loadModal();
     } catch (errMsg) {
       // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);

@@ -1,8 +1,3 @@
-.cart-modal-anchor { 
-    top: 0px;
-    left: 0px;
-}
-
 .cart-container {
     width: 250px;
     height: 500px;
@@ -43,10 +38,6 @@
   }
 
   .cart-card-totaler-label {
-    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
-    background-size: auto 400%;
-    background-position: 100% 100%;
-    transition: background-position 0.2s;
     margin-top: 290px;
     height: 71px;
   }
@@ -72,6 +63,28 @@
     width: 224px;
   }
 
+  .card-title {
+    font-size: large;
+    font-weight: bolder;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .card-details {
+    font-size: medium;
+    font-weight: bolder;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .card-price {
+    font-size: medium;
+    font-weight: bolder;
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
   .cart-number-label {
     color: white;
     font-size: small;
@@ -85,31 +98,26 @@
   }
 
   .cart-card-bottomline-label {
-    color: white;
     font-size: small;
     font-weight: bold;
   }
 
   .cart-sub-total-label {
-    color: white;
     font-size: medium;
     font-weight: bold;
   }
 
   .cart-sub-total-amount-label {
-    color: white;
     font-size: medium;
     font-weight: bold;
   }
   
   .cart-tax-label {
-    color: white;
     font-size: medium;
     font-weight: bold;
   }
 
   .cart-tax-amount-label {
-    color: white;
     font-size: medium;
     font-weight: bold;
   }
@@ -124,7 +132,7 @@
     font-weight: bolder;
   }
 
-  .cart-total-final-label {
+  .cart-totals-label {
     color: black;
     background-color: white;
   }

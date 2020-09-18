@@ -35,11 +35,24 @@
     background-color: white;
 }
 
-.menubar-label {
-    padding-top: 3px;
-    color: white;
-    font-size: large;
-    font-weight: bolder;
+.categoryFilter-modal-anchor {
+    position: absolute;
+    top: 0%;
+    left: 19%;
+}
+
+.menuItemDetail-modal-anchor {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    margin: -25px 0 0 -25px; 
+    /* apply negative top and left margins to truly center the element */
+}
+
+.cart-modal-anchor {
+    position: absolute;
+    top: 0%;
+    right: 22%;
 }
 
 .filter-icon {
@@ -62,8 +75,33 @@
     position: absolute;
   }
 
+  .menu-card {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 5px;
+    border-style: none;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(grey, rgba(153, 153, 153, 0.3));
+    background-size: auto 400%;
+    background-position: 100% 100%;
+    transition: background-position 0.1s;
+}
+
 /* Not Supported */
 @media (max-width: 319px) {
+    .nsm-content {
+        display: none;
+    }
+
+    .menuItemDetail-XS-container {
+        display: none;
+    }
+    .menuItemDetail-container {
+        display: none;
+    }
+
     .background-XS-container {
         display: none;
     }
@@ -122,6 +160,17 @@
 
 /* XS -Small devices (portrait phones, 320px and up) */
 @media (min-width: 320px) {
+    .nsm-content {
+        display: block;
+    }
+
+    .menuItemDetail-XS-container {
+        display: block;
+    }
+    .menuItemDetail-container {
+        display: none;
+    }
+
     .background-XS-container {
         display: block;
     }
@@ -180,6 +229,17 @@
 
 /* S -Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+    .nsm-content {
+        display: none;
+    }
+
+    .menuItemDetail-XS-container {
+        display: none;
+    }
+    .menuItemDetail-container {
+        display: none;
+    }
+
     .background-XS-container {
         display: none;
     }
@@ -241,6 +301,17 @@
  
 /* M - Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
+    .nsm-content {
+        display: block;
+    }
+
+    .menuItemDetail-XS-container {
+        display: none;
+    }
+    .menuItemDetail-container {
+        display: block;
+    }
+
     .background-XS-container {
         display: none;
     }
@@ -299,6 +370,17 @@
  
 /* L - Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+    .nsm-content {
+        display: block;
+    }
+
+    .menuItemDetail-XS-container {
+        display: none;
+    }
+    .menuItemDetail-container {
+        display: block;
+    }
+
     .background-XS-container {
         display: none;
     }
@@ -357,9 +439,20 @@
  
 /* XL - Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+    .nsm-content {
+        display: block;
+    }
+
+    .menuItemDetail-XS-container {
+        display: none;
+    }
+    .menuItemDetail-container {
+        display: block;
+    }
+
     .background-XS-container {
         display: none;
-    } 
+    }
     .background-S-container {
         display: none;
     }
@@ -412,6 +505,3 @@
         display: block;
     }
 }
-
-// html, body { height: 100%; }
-// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

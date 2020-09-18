@@ -35,35 +35,21 @@
   font-weight: bolder;
 }
 
-.menu-M-card {
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-bottom: 5px;
-  border-style: none;
-  height: 100%;
-  width: 100%;
-  background-image: linear-gradient(grey, rgba(153, 153, 153, 0.3));
-  background-size: auto 400%;
-  background-position: 100% 100%;
-  transition: background-position 0.1s;
-}
-
-.card-M-title {
+.card-title {
   font-size: medium;
   font-weight: bolder;
   margin-left: 15px;
   margin-right: 15px;
 }
 
-.card-M-details {
+.card-details {
   font-size: small;
   font-weight: bolder;
   margin-left: 15px;
   margin-right: 15px;
 }
 
-.card-M-price {
+.card-price {
   font-size: small;
   font-weight: bolder;
   margin-top: 5px;

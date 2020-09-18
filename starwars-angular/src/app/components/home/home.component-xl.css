@@ -6,26 +6,6 @@
   margin-left: 10%;
 }
 
-.categoryFilter-modal-anchor {
-  position: absolute;
-  top: 0%;
-  left: 19%;
-}
-
-.cart-modal-anchor {
-  position: absolute;
-  top: 0%;
-  right: 22%;
-}
-
-.menuItemDetail-modal-anchor {
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  margin: -25px 0 0 -25px; 
-  /* apply negative top and left margins to truly center the element */
-}
-
 .menubar-XL-label {
   color: white;
   font-size: larger;
@@ -61,35 +41,21 @@
   font-weight: bolder;
 }
 
-.menu-XL-card {
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-bottom: 5px;
-  border-style: none;
-  height: 100%;
-  width: 100%;
-  background-image: linear-gradient(grey, rgba(153, 153, 153, 0.3));
-  background-size: auto 400%;
-  background-position: 100% 100%;
-  transition: background-position 0.1s;
-}
-
-.card-XL-title {
+.card-title {
   font-size: medium;
   font-weight: bolder;
   margin-left: 15px;
   margin-right: 15px;
 }
 
-.card-XL-details {
+.card-details {
   font-size: small;
   font-weight: bolder;
   margin-left: 15px;
   margin-right: 15px;
 }
 
-.card-XL-price {
+.card-price {
   font-size: small;
   font-weight: bolder;
   margin-top: 5px;
