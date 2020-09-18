@@ -8,6 +8,10 @@ Bootstrap Flex description.  Like what is p-2?
 
 ***** TODO *****
 
+Get rid of extra bottom white row
+Make M, L, and XL menuItemDetail wider
+How does Tablet P/L look?
+Use Bootstrap container/row/column for all modals and menu cards
 start on detail form
 
 ***** Commands *****
