@@ -8,6 +8,8 @@ Bootstrap Flex description.  Like what is p-2?
 
 ***** TODO *****
 
+Get rid of extra bottom white row
+How does Tablet P/L look?
 Use Bootstrap container/row/column for all modals and menu cards
 start on detail form
 
