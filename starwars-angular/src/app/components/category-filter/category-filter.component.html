@@ -6,26 +6,32 @@
 >
     <div *ngIf="categoryFilter.hasData()">
         <div class="categoryFilter-container">
-            <div class="row">
-                <div class="col-12">
-                   <div class="categoryFilter-card-header-label">
-                      <div class="d-flex justify-content-center">
-                        <div class="categoryFilter-modal-label">Menu Filter</div>
-                      </div>
-                   </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="categoryFilter-card-header-label">
+                           <div class="d-flex justify-content-center">
+                             <div class="categoryFilter-modal-label">Menu Filter</div>
+                           </div>
+                        </div>
+                     </div>
                 </div>
-             </div>
-            <div class="categoryFilter-scrollview">
-                <div *ngFor="let filterName of categoryFilter.getData().filterNames">
-                    <div *ngIf="filterName.isSelected" class="categoryFilter-card-selected" role="button" (click)="selectedFilterName(filterName, categoryFilter.getData())">
-                        {{ filterName.name }}
+                <div class="row">
+                    <div class="categoryFilter-scrollview">
+                        <div *ngFor="let filterName of categoryFilter.getData().filterNames">
+                            <div *ngIf="filterName.isSelected" class="categoryFilter-card-selected" role="button" (click)="selectedFilterName(filterName, categoryFilter.getData())">
+                                {{ filterName.name }}
+                            </div>
+                            <div *ngIf="!filterName.isSelected" class="categoryFilter-card-not-selected" role="button" (click)="selectedFilterName(filterName, categoryFilter.getData())">
+                                {{ filterName.name }}
+                            </div>
+                        </div>
                     </div>
-                    <div *ngIf="!filterName.isSelected" class="categoryFilter-card-not-selected" role="button" (click)="selectedFilterName(filterName, categoryFilter.getData())">
-                        {{ filterName.name }}
-                    </div>
+                </div>
+                <div class="row">
+                    <div class="categoryFilter-filter-btn" role="button" (click)="selectedCategoryFilters(categoryFilter.getData())">Filter</div>
                 </div>
             </div>
-            <div class="categoryFilter-filter-btn" role="button" (click)="selectedCategoryFilters(categoryFilter.getData())">Filter</div>
         </div>
     </div>
 </ngx-smart-modal>

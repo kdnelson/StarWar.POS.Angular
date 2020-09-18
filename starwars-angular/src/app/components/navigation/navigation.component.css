@@ -14,3 +14,8 @@
     font-size: large;
     font-weight: bolder;
 }
+
+.mat-sidenav-content {
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+  }

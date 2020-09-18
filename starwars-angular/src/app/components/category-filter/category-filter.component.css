@@ -1,17 +1,13 @@
 
 .categoryFilter-container {
     width: 250px;
-    height: 462px;
+    height: 464px;
     background-color: black;
     overflow: hidden;
 }
 
 .categoryFilter-card-header-label {
-    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
-    background-size: auto 400%;
-    background-position: 100% 100%;
-    transition: background-position 0.2s;
-    height: 30px;
+    height: 32px;
   }
 
 .categoryFilter-scrollview {

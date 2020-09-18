@@ -13,6 +13,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
     './home.component-m.css',  // Tablet portrait
     './home.component-l.css',  // Tablet landscape
     './home.component-xl.css', // Desktop landscape
+    './home.component-common.css' // common style accross home pages
   ],
   providers: [CategoryFilterComponent, MenuItemDetailComponent, CartComponent],
 })
