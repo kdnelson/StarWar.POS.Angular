@@ -80,10 +80,10 @@ export class CartComponent implements OnInit {
     try {
       if(cartItems !== null) {
         cart = new Cart();
-        cart.cartId = Guid.create();
+        cart.id = Guid.create();
         cart.cartItems = cartItems;
         cart.createdDate = new Date();
-        cart.cartName = 'cart_' + cart.cartId.toString().split('-')[0];
+        cart.name = 'cart_' + cart.id.toString().split('-')[0];
         cart.subTotal = 0;
         cart.tax = 0;
         cart.total = 0;

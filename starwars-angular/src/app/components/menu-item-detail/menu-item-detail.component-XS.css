@@ -1,0 +1,31 @@
+
+.menuItemDetail-XS-container {
+    width: 235px;
+    height: 520px;
+    color: white;
+    background-color: black;
+}
+
+.menuItemDetail-XS-desc {
+    background-color: blueviolet;
+}
+
+.menuItemDetail-XS-options-scrollview {
+    width: 235px;
+    height: 280px;
+    direction: ltr;
+    position: absolute;
+    border-color: transparent;
+    overflow-y: overlay;
+}
+
+.menuItemDetail-XS-adjustedCost {
+    color: black;
+    background-color: white;
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.menuItemDetail-XS-btns {
+    background-color:brown;
+}

@@ -1,0 +1,15 @@
+.menuItemDetail-title {
+    margin-top: 10px;
+    margin-bottom: 7px;
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    min-height: 30;
+}
+
+.menuItemDetail-container {
+    width: 650px;
+    height: 510px;
+    color: white;
+    background-color: black;
+}

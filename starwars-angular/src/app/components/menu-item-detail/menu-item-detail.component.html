@@ -4,49 +4,90 @@
     target=".menuItemDetail-modal-anchor"
     (onDismiss)="resetForm()"
 >
-    <div class="menuItemDetail-XS-container">
-        <div class="container">
-            <div class="row">
-              <div class="col-12">
-                    <h1>Title</h1>
-              </div>
-            </div>
-            <div class="row">
+    <div *ngIf="menuItemDetail.hasData()">
+        <div class="menuItemDetail-XS-container">
+            <div class="container">
+                <div class="row">
                 <div class="col-12">
-                    <h1>Pic</h1>
+                    <div class="menuItemDetail-title">{{ menuItemDetail.getData().name }}</div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <h1>Description</h1>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <h1>Options</h1>
+                <div class="row">
+                    <div class="col-12">
+                        <img src="../../../assets/images/menuItem-001.jpg" style="width:205px;height:205px;">
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="menuItemDetail-XS-desc">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-6">A</div>
+                                    <div class="col-6">B</div>     
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">C</div>
+                                    <div class="col-6">D</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">E</div>
+                                    <div class="col-6">F</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">G</div>
+                                    <div class="col-6">H</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">I</div>
+                                    <div class="col-6">J</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="menuItemDetail-XS-options-scrollview">
+                            <div *ngFor="let menuItemOption of menuItemDetail.getData().menuItemOptions">
+                                <div class="menuItemOption-card">
+                                    {{ menuItemOption.name }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-12">
+                        <div class="menuItemDetail-XS-adjustedCost">Adjusted Cost</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="menuItemDetail-XS-btns">Buttons</div>
+                    </div>
+                </div> -->
             </div>
         </div>
-    </div>
-    <div class="menuItemDetail-container">
-        <div class="container">
-            <div class="row">
-              <div class="col-6">
+        <div class="menuItemDetail-container">
+            <div class="container">
                 <div class="row">
-                    <h1>Pic</h1>
+                <div class="col-6">
+                    <div class="row">
+                        <h1>Pic</h1>
+                    </div>
+                    <div class="row">
+                        <h1>Description</h1>
+                    </div>
                 </div>
-                <div class="row">
-                    <h1>Description</h1>
+                <div class="col-6">
+                    <div class="row">
+                        <h1>Title</h1>
+                    </div>
+                    <div class="row">
+                        <h1>Options</h1>
+                    </div>
                 </div>
-              </div>
-              <div class="col-6">
-                <div class="row">
-                    <h1>Title</h1>
                 </div>
-                <div class="row">
-                    <h1>Options</h1>
-                </div>
-              </div>
             </div>
         </div>
     </div>
