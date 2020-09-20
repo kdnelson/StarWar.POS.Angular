@@ -14,54 +14,52 @@
             <div class="row">
                 <div *ngIf="menuItemDetail.getData().isShowPic == true">
                     <div class="col-12" (click)="toggleShowPic(menuItemDetail.getData())">
-                        <img src="../../../assets/images/menuItem-001.jpg" style="width:200px;height:200px;">
-                        <div class="menuItemDetail-click-for-pic-or-details">Click Image for Details</div>
+                        <img src="../../../assets/images/menuItem-001.jpg" style="padding-left:5px;width:230px;height:180px;">
                     </div>
+                    <div class="menuItemDetail-click-for-pic-or-details">Click Image for Details</div>
                 </div>
                 <div *ngIf="menuItemDetail.getData().isShowPic == false">
-                    <div class="container" (click)="toggleShowPic(menuItemDetail.getData())">
-                        <div class="row">
-                            <div class="col-6">A</div>
-                            <div class="col-6">B</div>     
+                    <div class="menuItemDetail-XS-Details">
+                        <div class="container" (click)="toggleShowPic(menuItemDetail.getData())">
+                            <div class="row">
+                                <div class="col-6">A</div>
+                                <div class="col-6">B</div>     
+                            </div>
+                            <div class="row">
+                                <div class="col-6">C</div>
+                                <div class="col-6">D</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">E</div>
+                                <div class="col-6">F</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">G</div>
+                                <div class="col-6">H</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">I</div>
+                                <div class="col-6">J</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">K</div>
+                                <div class="col-6">L</div>     
+                            </div>
+                            <div class="row">
+                                <div class="col-6">M</div>
+                                <div class="col-6">N</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">O</div>
+                                <div class="col-6">P</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">Q</div>
+                                <div class="col-6">R</div>
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-6">C</div>
-                            <div class="col-6">D</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">E</div>
-                            <div class="col-6">F</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">G</div>
-                            <div class="col-6">H</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">I</div>
-                            <div class="col-6">J</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">K</div>
-                            <div class="col-6">L</div>     
-                        </div>
-                        <div class="row">
-                            <div class="col-6">M</div>
-                            <div class="col-6">N</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">O</div>
-                            <div class="col-6">P</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">Q</div>
-                            <div class="col-6">R</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">S</div>
-                            <div class="col-6">T</div>
-                        </div>
-                        <div class="menuItemDetail-click-for-pic-or-details">Click Details for Image</div>
                     </div>
+                    <div class="menuItemDetail-click-for-pic-or-details">Click Details for Image</div>
                 </div>
             </div>
             <div class="menuItemDetail-XS-options-scrollview">

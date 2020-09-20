@@ -1,13 +1,17 @@
 
 .menuItemDetail-XS-container {
     width: 235px;
-    height: 548px;
+    height: 528px;
     color: white;
     background-color: black;
 }
 
-.menuItemDetail-click-for-pic-or-details {
+.menuItemDetail-XS-Details {
     padding-left: 7px;
+}
+
+.menuItemDetail-click-for-pic-or-details {
+    padding-left: 23px;
     color: rgba(241, 226, 7, 0.87);
     font-size: smaller;
     font-weight: bold;
