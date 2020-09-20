@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { FilterName } from 'src/app/models/filterName';
 import { CategoryFilter } from 'src/app/models/categoryFilter';
+import { Filter } from 'src/app/models/filter';
 
 @Component({
   selector: 'category-filter-modal',
@@ -9,8 +9,8 @@ import { CategoryFilter } from 'src/app/models/categoryFilter';
   styleUrls: ['./category-filter.component.css']
 })
 export class CategoryFilterComponent implements OnInit {
-  private filterName: FilterName = {};
-  private filterNames: FilterName[] = [];
+  private filter: Filter = {};
+  private filterList: Filter[] = [];
 
   constructor(
     public ngxSmartModalService: NgxSmartModalService
@@ -46,19 +46,19 @@ export class CategoryFilterComponent implements OnInit {
     this.closeAllModals();
 
     try {
-      let categoryFilterNames: FilterName[] = [
-        new FilterName('Empire', false),
-        new FilterName('Rebels', false),
-        new FilterName('Outer-Rim', false),
-        new FilterName('Agriculture', false),
-        new FilterName('Minning', false),
-        new FilterName('Manufacturer', false),
-        new FilterName('Supplier', false)
+      let categoryFilters: Filter[] = [
+        new Filter('Empire', false),
+        new Filter('Rebels', false),
+        new Filter('Outer-Rim', false),
+        new Filter('Agriculture', false),
+        new Filter('Minning', false),
+        new Filter('Manufacturer', false),
+        new Filter('Supplier', false)
       ];
-      if(categoryFilterNames !== null){
-        if(categoryFilterNames.length > 0)
+      if(categoryFilters !== null){
+        if(categoryFilters.length > 0)
         {   
-          let categoryFilter: CategoryFilter = this.createCategoryFilter(categoryFilterNames);
+          let categoryFilter: CategoryFilter = this.createCategoryFilter(categoryFilters);
           this.ngxSmartModalService.setModalData(categoryFilter, 'categoryFilter', true);
           this.ngxSmartModalService.getModal('categoryFilter').open();
         }
@@ -72,14 +72,14 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-  private createCategoryFilter(filterNames: FilterName[]) : CategoryFilter {
+  private createCategoryFilter(filters: Filter[]) : CategoryFilter {
     let methodName: string = 'createCategoryFilter';
 
     let categoryFilter = new CategoryFilter();
     try {
-      if(filterNames !== null){
-        if(categoryFilter.filterNames !== null) {
-          categoryFilter.filterNames = filterNames;
+      if(filters !== null){
+        if(categoryFilter.filters !== null) {
+          categoryFilter.filters = filters;
         } else {
           //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'categoryFilter.filterTags');
           //this.errorMsgComponent.loadModal(errorMsg);
@@ -95,23 +95,23 @@ export class CategoryFilterComponent implements OnInit {
     return categoryFilter;
   }
 
-  selectedFilterName(filterName: FilterName, categoryFilter: CategoryFilter) {
-    let methodName: string = 'selectedFilterName';
+  selectedFilter(filter: Filter, categoryFilter: CategoryFilter) {
+    let methodName: string = 'selectedFilter';
 
     try {
-      if(filterName !== null && categoryFilter !== null) {
-        if(categoryFilter.filterNames !== null) {
-          let filterNameIndex: number = this.searchFilterNameIndex(filterName.name, categoryFilter.filterNames)
-          if(filterName.isSelected){
-            filterName.isSelected = false;
-            categoryFilter.filterNames.splice(filterNameIndex, 1, filterName);
+      if(filter !== null && categoryFilter !== null) {
+        if(categoryFilter.filters !== null) {
+          let filterNameIndex: number = this.searchFilterIndex(filter.name, categoryFilter.filters)
+          if(filter.isSelected){
+            filter.isSelected = false;
+            categoryFilter.filters.splice(filterNameIndex, 1, filter);
           } else {
-            if(filterName !== this.filterName){
-              filterName.isSelected = true;
-              categoryFilter.filterNames.splice(filterNameIndex, 1, filterName);
+            if(filter !== this.filter){
+              filter.isSelected = true;
+              categoryFilter.filters.splice(filterNameIndex, 1, filter);
             }
             else {
-              this.setFilterNameToNotSelected(categoryFilter.filterNames);
+              this.setFilterToNotSelected(categoryFilter.filters);
             }
           }
         } else {
@@ -128,17 +128,17 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-  private searchFilterNameIndex(filterName: string, filterNames: FilterName[]) : number {
-    let methodName: string = 'searchFilterNameIndex';
+  private searchFilterIndex(filter: string, filterNames: Filter[]) : number {
+    let methodName: string = 'searchFilterIndex';
 
-    let filterNameAtIndex = -1;
+    let filterAtIndex = -1;
 
     try {
-      if(filterName !== null && filterNames !== null) {
+      if(filter !== null && filterNames !== null) {
         filterNames.forEach((item, index) => {
-          if(item.name === filterName)
+          if(item.name === filter)
           {
-            filterNameAtIndex = index;
+            filterAtIndex = index;
           }
         });  
       } else {
@@ -149,15 +149,15 @@ export class CategoryFilterComponent implements OnInit {
       //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
       //this.errorMsgComponent.loadModal(errorMsg);
     }
-    return filterNameAtIndex;
+    return filterAtIndex;
   }
 
-  private setFilterNameToNotSelected(filterNames: FilterName[]) {
-    let methodName: string = 'setFilterNameToNotSelected';
+  private setFilterToNotSelected(filters: Filter[]) {
+    let methodName: string = 'setFilterToNotSelected';
 
     try {
-      if(filterNames !== null) {
-        filterNames.forEach((item, index) => {
+      if(filters !== null) {
+        filters.forEach((item, index) => {
           item.isSelected = false;
         });
       } else {
@@ -174,7 +174,7 @@ export class CategoryFilterComponent implements OnInit {
     let methodName: string = 'selectedCategoryFilters';
 
     try {
-      let filterNames: string[] = this.searchForSelectedFilterNames(categoryFilter);
+      let filterNames: string[] = this.searchForSelectedFilters(categoryFilter);
       if(filterNames !== null) {
         if(filterNames.length > 0) {
           //this.baseHelper.setCategoryFilter(filterTags);
@@ -190,16 +190,16 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-  private searchForSelectedFilterNames(categoryFilter: CategoryFilter) : string[] {
-    let methodName: string = 'searchForSelectedFilterNames';
-    let filterNames: string[] = [];
+  private searchForSelectedFilters(categoryFilter: CategoryFilter) : string[] {
+    let methodName: string = 'searchForSelectedFilters';
+    let filters: string[] = [];
 
     try {
       if(categoryFilter !== null){
-        if(categoryFilter.filterNames !== null) {
-          categoryFilter.filterNames.forEach((item, index) => {
+        if(categoryFilter.filters !== null) {
+          categoryFilter.filters.forEach((item, index) => {
             if(item.isSelected){
-              filterNames.push(item.name);
+              filters.push(item.name);
             }
           });
         } else {
@@ -215,6 +215,6 @@ export class CategoryFilterComponent implements OnInit {
       //this.errorMsgComponent.loadModal(errorMsg);
     }
 
-    return filterNames;
+    return filters;
   }
 }

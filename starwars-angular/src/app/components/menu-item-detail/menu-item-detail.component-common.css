@@ -1,15 +1,32 @@
 .menuItemDetail-title {
-    margin-top: 10px;
-    margin-bottom: 7px;
+    padding-top: 5px;
+    padding-left: 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     color: white;
-    font-size: large;
+    font-size: medium;
     font-weight: bolder;
     min-height: 30;
 }
 
 .menuItemDetail-container {
-    width: 650px;
+    width: 650px;   
     height: 510px;
     color: white;
     background-color: black;
 }
+
+.menuItemDetail-totals-label {
+    color: black;
+    background-color: white;
+  }
+
+  .menuItemDetail-sub-total-label {
+    font-size: medium;
+    font-weight: bold;
+  }
+
+  .menuItemDetail-sub-total-amount-label {
+    font-size: medium;
+    font-weight: bold;
+  }

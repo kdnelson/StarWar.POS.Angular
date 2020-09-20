@@ -1,25 +1,66 @@
 
 .menuItemDetail-XS-container {
     width: 235px;
-    height: 520px;
+    height: 548px;
     color: white;
     background-color: black;
 }
 
-.menuItemDetail-XS-desc {
-    background-color: blueviolet;
+.menuItemDetail-click-for-pic-or-details {
+    padding-left: 7px;
+    color: rgba(241, 226, 7, 0.87);
+    font-size: smaller;
+    font-weight: bold;
 }
 
 .menuItemDetail-XS-options-scrollview {
-    width: 235px;
-    height: 280px;
-    direction: ltr;
+    width: 220px;
+    height: 172px;
+    margin-top: 7px;
+    margin-left: 8px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    direction: rtl;
     position: absolute;
     border-color: transparent;
     overflow-y: overlay;
 }
 
+.menuItemDetail-XS-card-selected {
+    position: relative;
+    height: 52px;
+    width: 207px;
+    padding-top: 17px;
+    margin-left: 10px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: large;
+    color: white;
+    background: rgba(241, 226, 7, 0.87);
+}
+
+.menuItemDetail-XS-card-not-selected {
+    position: relative;
+    height: 52px;
+    width: 207px;
+    padding-top: 17px;
+    margin-left: 10px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: large;
+    color: white;
+    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+    background-size: auto 400%;
+    background-position: 100% 100%;
+    transition: background-position 0.2s;
+}
+
 .menuItemDetail-XS-adjustedCost {
+    margin-top: 190px;
     color: black;
     background-color: white;
     font-size: medium;
@@ -27,5 +68,12 @@
 }
 
 .menuItemDetail-XS-btns {
-    background-color:brown;
+    height: 67px;
+    width: 235px;
+    font-size: xx-large;
+    font-weight: bold;
+    padding-top: 24px;
+    text-align: center;
+    color: white;
+    background-color: green;
 }

@@ -6,66 +6,86 @@
 >
     <div *ngIf="menuItemDetail.hasData()">
         <div class="menuItemDetail-XS-container">
-            <div class="container">
-                <div class="row">
+            <div class="row">
                 <div class="col-12">
                     <div class="menuItemDetail-title">{{ menuItemDetail.getData().name }}</div>
                 </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <img src="../../../assets/images/menuItem-001.jpg" style="width:205px;height:205px;">
+            </div>
+            <div class="row">
+                <div *ngIf="menuItemDetail.getData().isShowPic == true">
+                    <div class="col-12" (click)="toggleShowPic(menuItemDetail.getData())">
+                        <img src="../../../assets/images/menuItem-001.jpg" style="width:200px;height:200px;">
+                        <div class="menuItemDetail-click-for-pic-or-details">Click Image for Details</div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="menuItemDetail-XS-desc">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-6">A</div>
-                                    <div class="col-6">B</div>     
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">C</div>
-                                    <div class="col-6">D</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">E</div>
-                                    <div class="col-6">F</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">G</div>
-                                    <div class="col-6">H</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">I</div>
-                                    <div class="col-6">J</div>
-                                </div>
-                            </div>
+                <div *ngIf="menuItemDetail.getData().isShowPic == false">
+                    <div class="container" (click)="toggleShowPic(menuItemDetail.getData())">
+                        <div class="row">
+                            <div class="col-6">A</div>
+                            <div class="col-6">B</div>     
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="menuItemDetail-XS-options-scrollview">
-                            <div *ngFor="let menuItemOption of menuItemDetail.getData().menuItemOptions">
-                                <div class="menuItemOption-card">
-                                    {{ menuItemOption.name }}
-                                </div>
-                            </div>
+                        <div class="row">
+                            <div class="col-6">C</div>
+                            <div class="col-6">D</div>
                         </div>
+                        <div class="row">
+                            <div class="col-6">E</div>
+                            <div class="col-6">F</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">G</div>
+                            <div class="col-6">H</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">I</div>
+                            <div class="col-6">J</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">K</div>
+                            <div class="col-6">L</div>     
+                        </div>
+                        <div class="row">
+                            <div class="col-6">M</div>
+                            <div class="col-6">N</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">O</div>
+                            <div class="col-6">P</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Q</div>
+                            <div class="col-6">R</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">S</div>
+                            <div class="col-6">T</div>
+                        </div>
+                        <div class="menuItemDetail-click-for-pic-or-details">Click Details for Image</div>
                     </div>
                 </div>
-                <!-- <div class="row">
-                    <div class="col-12">
-                        <div class="menuItemDetail-XS-adjustedCost">Adjusted Cost</div>
+            </div>
+            <div class="menuItemDetail-XS-options-scrollview">
+                <div *ngFor="let option of menuItemDetail.getData().menuItemOptions">
+                    <div *ngIf="option.isSelected" class="menuItemDetail-XS-card-selected" role="button" (click)="selectedOption(option, menuItemDetail.getData())">
+                        {{ option.name }}
+                    </div>
+                    <div *ngIf="!option.isSelected" class="menuItemDetail-XS-card-not-selected" role="button" (click)="selectedOption(option, menuItemDetail.getData())">
+                        {{ option.name }}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="menuItemDetail-XS-btns">Buttons</div>
+            </div>
+            <div class="menuItemDetail-XS-adjustedCost">
+                <div class="d-flex flex-column">
+                    <div class="menuItemDetail-totals-label d-flex">
+                        <div class="p-2 flex-fill"><div class="menuItemDetail-sub-total-label">Sub Total:</div></div>
+                        <div class="p-2 mr-auto"><div class="menuItemDetail-sub-total-amount-label">100.00 cr</div></div>
                     </div>
-                </div> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="menuItemDetail-XS-btns" role="button" (click)="addMenuItemToCart(menuItemDetail.getData())">Add</div>
+                </div>
             </div>
         </div>
         <div class="menuItemDetail-container">

@@ -5,6 +5,7 @@ export class MenuItemDetail {
   constructor(
     public id?: Guid,
     public name?: String,
-    public menuItemOptions?: MenuItemOption[]
+    public menuItemOptions?: MenuItemOption[],
+    public isShowPic?: boolean,
   ){}
 }

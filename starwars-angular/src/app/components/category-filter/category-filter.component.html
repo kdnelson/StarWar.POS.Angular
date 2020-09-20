@@ -18,12 +18,12 @@
                 </div>
                 <div class="row">
                     <div class="categoryFilter-scrollview">
-                        <div *ngFor="let filterName of categoryFilter.getData().filterNames">
-                            <div *ngIf="filterName.isSelected" class="categoryFilter-card-selected" role="button" (click)="selectedFilterName(filterName, categoryFilter.getData())">
-                                {{ filterName.name }}
+                        <div *ngFor="let filter of categoryFilter.getData().filters">
+                            <div *ngIf="filter.isSelected" class="categoryFilter-card-selected" role="button" (click)="selectedFilter(filter, categoryFilter.getData())">
+                                {{ filter.name }}
                             </div>
-                            <div *ngIf="!filterName.isSelected" class="categoryFilter-card-not-selected" role="button" (click)="selectedFilterName(filterName, categoryFilter.getData())">
-                                {{ filterName.name }}
+                            <div *ngIf="!filter.isSelected" class="categoryFilter-card-not-selected" role="button" (click)="selectedFilter(filter, categoryFilter.getData())">
+                                {{ filter.name }}
                             </div>
                         </div>
                     </div>

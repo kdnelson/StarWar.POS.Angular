@@ -70,6 +70,19 @@ export class MenuItemDetailComponent implements OnInit {
     }
   }
 
+  toggleShowPic(menuItemDetail: MenuItemDetail) {
+    let methodName: string = 'toggleShowPic';
+
+    try {
+      if(menuItemDetail !== null){
+        menuItemDetail.isShowPic = !menuItemDetail.isShowPic;
+      }
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
   private createMenuItemDetail(menuItemOptions: MenuItemOption[]) : MenuItemDetail {
     let methodName: string = 'createMenuItemDetail';
   
@@ -79,7 +92,8 @@ export class MenuItemDetailComponent implements OnInit {
       if(menuItemOptions !== null) {
         menuItemDetail = new MenuItemDetail();
         menuItemDetail.id = Guid.create();
-        menuItemDetail.name = "Firespray-31"
+        menuItemDetail.name = "Firespray-31";
+        menuItemDetail.isShowPic = true;
         menuItemDetail.menuItemOptions = menuItemOptions;
         return menuItemDetail;
       } else {
@@ -93,12 +107,82 @@ export class MenuItemDetailComponent implements OnInit {
   }
 
   private getMenuItemOptions() : MenuItemOption[] {
-    return [
+    return [ 
+      new MenuItemOption(Guid.create(), "Laser Cannon", false),
       new MenuItemOption(Guid.create(), "AM/FM Radio", false),
-      new MenuItemOption(Guid.create(), "STA Missile System", false),
-      new MenuItemOption(Guid.create(), "ATA Missile System", false),
-      new MenuItemOption(Guid.create(), "N3 Guidence System", false),
-      new MenuItemOption(Guid.create(), "Cup holder", false)
+      new MenuItemOption(Guid.create(), "Radar System", false),
+      new MenuItemOption(Guid.create(), "Heated Seats", false),
+      new MenuItemOption(Guid.create(), "Missile System", false),
+      new MenuItemOption(Guid.create(), "Cup holder", false),
+      new MenuItemOption(Guid.create(), "Guidence System", false)  
     ];
+  }
+
+  selectedOption(menuItemOption: MenuItemOption, menuItemDetail: MenuItemDetail) {
+    let methodName: string = 'selectedOption';
+
+    try {
+      if(menuItemOption !== null && menuItemDetail !== null) {
+        if(menuItemDetail.menuItemOptions !== null) {
+          let optionIndex: number = this.searchOptionIndex(menuItemOption.name, menuItemDetail.menuItemOptions)
+          if(menuItemOption.isSelected){
+            menuItemOption.isSelected = false;
+            menuItemDetail.menuItemOptions.splice(optionIndex, 1, menuItemOption);
+          } else {
+            menuItemOption.isSelected = true;
+            menuItemDetail.menuItemOptions.splice(optionIndex, 1, menuItemOption);
+          }
+        } else {
+          //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'categoryFilter.filterTags');
+          //this.errorMsgComponent.loadModal(errorMsg);
+        }
+      } else {
+        // errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
+        //this.errorMsgComponent.loadModal(errorMsg);
+      }
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  private searchOptionIndex(option: string, menuItemOptions: MenuItemOption[]) : number {
+    let methodName: string = 'searchOptionIndex';
+
+    let optionAtIndex = -1;
+
+    try {
+      if(option !== null && menuItemOptions !== null) {
+        menuItemOptions.forEach((item, index) => {
+          if(item.name === option)
+          {
+            optionAtIndex = index;
+          }
+        });  
+      } else {
+        //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
+        //this.errorMsgComponent.loadModal(errorMsg);
+      }
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+    return optionAtIndex;
+  }
+
+  addMenuItemToCart(menuItemDetail: MenuItemDetail) {
+    let methodName: string = 'addMenuItemToCart';
+
+    try {
+      if(menuItemDetail !== null){
+        this.ngxSmartModalService.getModal('menuItemDetail').close();
+      } else {
+        //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
+        //this.errorMsgComponent.loadModal(errorMsg);
+      }
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
   }
 }
