@@ -114,7 +114,7 @@ export class CartComponent implements OnInit {
 
     try {
       this.closeAllModals();
-      this.menuItemDetailComponent.loadModal();
+      this.menuItemDetailComponent.loadModal(true);
     } catch (errMsg) {
       // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       // this.errorMsgComponent.loadModal(errorMsg);

@@ -7,5 +7,6 @@ export class MenuItemDetail {
     public name?: String,
     public menuItemOptions?: MenuItemOption[],
     public isShowPic?: boolean,
+    public isEdit?: boolean,
   ){}
 }

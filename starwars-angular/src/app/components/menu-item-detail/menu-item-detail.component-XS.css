@@ -1,7 +1,7 @@
 
 .menuItemDetail-XS-container {
     width: 235px;
-    height: 528px;
+    height: 548px;
     color: white;
     background-color: black;
 }
@@ -11,8 +11,8 @@
 }
 
 .menuItemDetail-click-for-pic-or-details {
-    padding-left: 23px;
-    color: rgba(241, 226, 7, 0.87);
+    padding-left: 25px;
+    color: blueviolet;
     font-size: smaller;
     font-weight: bold;
 }
@@ -63,6 +63,13 @@
     transition: background-position 0.2s;
 }
 
+.menuItemDetail-options-label {
+    padding-left: 10px;
+    font-weight: bolder;
+    font-size: medium;
+    color: white;
+}
+
 .menuItemDetail-XS-adjustedCost {
     margin-top: 190px;
     color: black;
@@ -71,12 +78,36 @@
     font-weight: bolder;
 }
 
-.menuItemDetail-XS-btns {
-    height: 67px;
+.menuItemDetail-XS-btns-block {
     width: 235px;
-    font-size: xx-large;
+    height: 67px;
+    margin-left: 15px;
+    overflow: hidden;
+}
+
+.menuItemDetail-XS-cancel-btn {
+    width: 50%;
+    float: left;
+    text-align: center;
+    height: 67px;
+    font-size: x-large;
     font-weight: bold;
     padding-top: 24px;
+    text-align: center;
+    color: white;
+    background-color: orangered;
+}
+
+.menuItemDetail-XS-add-edit-btn {
+    width: 50%;
+    float: right;
+    text-align: center;
+    height: 67px;
+    font-size: x-large;
+    font-weight: bold;
+    padding-top: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
     text-align: center;
     color: white;
     background-color: green;

@@ -62,6 +62,7 @@
                     <div class="menuItemDetail-click-for-pic-or-details">Click Details for Image</div>
                 </div>
             </div>
+            <div class="menuItemDetail-options-label">Options</div>
             <div class="menuItemDetail-XS-options-scrollview">
                 <div *ngFor="let option of menuItemDetail.getData().menuItemOptions">
                     <div *ngIf="option.isSelected" class="menuItemDetail-XS-card-selected" role="button" (click)="selectedOption(option, menuItemDetail.getData())">
@@ -81,8 +82,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <div class="menuItemDetail-XS-btns" role="button" (click)="addMenuItemToCart(menuItemDetail.getData())">Add</div>
+                <div class="menuItemDetail-XS-btns-block"> 
+                    <div class="menuItemDetail-XS-cancel-btn" role="button" (click)="cancel()">Cancel</div>
+                    <div *ngIf="menuItemDetail.getData().isEdit == false" class="menuItemDetail-XS-add-edit-btn" role="button" (click)="addMenuItemToCart(menuItemDetail.getData())">Add</div>
+                    <div *ngIf="menuItemDetail.getData().isEdit == true" class="menuItemDetail-XS-add-edit-btn" role="button" (click)="addMenuItemToCart(menuItemDetail.getData())">Edit</div>
                 </div>
             </div>
         </div>

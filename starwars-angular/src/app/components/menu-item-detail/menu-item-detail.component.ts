@@ -41,7 +41,7 @@ export class MenuItemDetailComponent implements OnInit {
     }
   }
 
-  loadModal() {
+  loadModal(isEdit: boolean) {
     let methodName: string = 'loadModal';
     this.closeAllModals();
 
@@ -54,7 +54,7 @@ export class MenuItemDetailComponent implements OnInit {
             item.isSelected = false;
           });
 
-          let menuItemDetail: MenuItemDetail = this.createMenuItemDetail(menuItemOptions);
+          let menuItemDetail: MenuItemDetail = this.createMenuItemDetail(isEdit, menuItemOptions);
           if(menuItemDetail != null){
             this.ngxSmartModalService.setModalData(menuItemDetail, 'menuItemDetail', true);
             this.ngxSmartModalService.getModal('menuItemDetail').open();
@@ -83,7 +83,7 @@ export class MenuItemDetailComponent implements OnInit {
     }
   }
 
-  private createMenuItemDetail(menuItemOptions: MenuItemOption[]) : MenuItemDetail {
+  private createMenuItemDetail(isEdit: boolean, menuItemOptions: MenuItemOption[]) : MenuItemDetail {
     let methodName: string = 'createMenuItemDetail';
   
     let menuItemDetail: MenuItemDetail = null;
@@ -94,6 +94,7 @@ export class MenuItemDetailComponent implements OnInit {
         menuItemDetail.id = Guid.create();
         menuItemDetail.name = "Firespray-31";
         menuItemDetail.isShowPic = true;
+        menuItemDetail.isEdit = isEdit;
         menuItemDetail.menuItemOptions = menuItemOptions;
         return menuItemDetail;
       } else {
@@ -180,6 +181,33 @@ export class MenuItemDetailComponent implements OnInit {
         //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
         //this.errorMsgComponent.loadModal(errorMsg);
       }
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  editMenuItemToCart(menuItemDetail: MenuItemDetail) {
+    let methodName: string = 'editMenuItemToCart';
+
+    try {
+      if(menuItemDetail !== null){
+        this.ngxSmartModalService.getModal('menuItemDetail').close();
+      } else {
+        //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
+        //this.errorMsgComponent.loadModal(errorMsg);
+      }
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  cancel() {
+    let methodName: string = 'cancel';
+
+    try {
+        this.ngxSmartModalService.getModal('menuItemDetail').close();
     } catch (errMsg) {
       //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
       //this.errorMsgComponent.loadModal(errorMsg);
