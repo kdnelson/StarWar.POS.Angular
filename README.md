@@ -10,6 +10,7 @@ Bootstrap Flex description.  Like what is p-2?
 
 Adjust MIDetail XS left margin
 Add MIDetail > XS Adjusted price
+Btn text needs bomping down by 2px or so
 Make the selected/non-selected buttons in MIDetail common
 Add drop-down notify flyer
 
