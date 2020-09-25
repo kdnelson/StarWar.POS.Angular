@@ -23,23 +23,55 @@
   }
 
 .menuItemDetail-options-scrollview {
-  width: 220px;
+  width: 235px;
   height: 300px;
-  margin-top: 7px;
-  margin-left: 15px;
-  margin-right: 0px;
-  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-left: 0px;
   direction: rtl;
   position: absolute;
   border-color: transparent;
   overflow-y: overlay;
 }
 
-.menuItemDetail-options-label {
-  padding-top: 35px;
-  padding-left: 15px;
+.menuItemDetail-card-selected {
+  position: relative;
+  height: 52px;
+  width: 220px;
+  padding-top: 17px;
+  margin-left: 10px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  text-align: center;
   font-weight: bolder;
   font-size: large;
+  color: white;
+  background: rgba(241, 226, 7, 0.87);
+}
+
+.menuItemDetail-card-not-selected {
+  position: relative;
+  height: 52px;
+  width: 220px;
+  padding-top: 17px;
+  margin-left: 10px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bolder;
+  font-size: large;
+  color: white;
+  background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+  background-size: auto 400%;
+  background-position: 100% 100%;
+  transition: background-position 0.2s;
+}
+
+.menuItemDetail-options-label {
+  padding-top: 25px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  font-weight: bolder;
+  font-size: larger;
   color: white;
  }
 
@@ -53,8 +85,18 @@
     font-weight: bold;
   }
 
+  .menuItemDetail-adjustedCost {
+    width: 235px;
+    margin-top: 321px;
+    margin-left: 0px;
+    color: black;
+    background-color: white;
+    font-size: medium;
+    font-weight: bolder;
+}
+
 .menuItemDetail-btns-block {
-  margin-top: 380px;
+  margin-top: 22px;
   width: 235px;
   height: 55px;
   overflow: hidden;
