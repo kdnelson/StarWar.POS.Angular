@@ -1,6 +1,6 @@
 .cart-container {
     width: 250px;
-    height: 500px;
+    height: 489px;
     background-color: black;
     overflow: hidden;
 }
@@ -43,12 +43,12 @@
   }
 
   .cart-submit-btn {  
-    height: 67px;
+    height: 55px;
     width: 250px;
     font-size: xx-large;
     font-weight: bold;
     margin-top: 37px;
-    padding-top: 24px;
+    padding-top: 18px;
     text-align: center;
     color: white;
     background-color: green;
