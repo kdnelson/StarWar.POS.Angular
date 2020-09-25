@@ -8,8 +8,10 @@ Bootstrap Flex description.  Like what is p-2?
 
 ***** TODO *****
 
-How does Tablet P/L look?
-start on detail form
+Adjust MIDetail XS left margin
+Add MIDetail > XS Adjusted price
+Make the selected/non-selected buttons in MIDetail common
+Add drop-down notify flyer
 
 ***** Commands *****
 npm install npm@latest -g
