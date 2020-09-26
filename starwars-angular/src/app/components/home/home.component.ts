@@ -78,6 +78,7 @@ export class HomeComponent {
     let methodName: string = 'closeAllModals';
 
     try {
+      this.closeNotification();
       this.ngxSmartModalService.getModal('categoryFilter').close();
       this.ngxSmartModalService.getModal('menuItemDetail').close();
       this.ngxSmartModalService.getModal('cart').close(); 
@@ -173,7 +174,7 @@ export class HomeComponent {
           this.nextNotification = this.getNextNotification();
           if(this.nextNotification !== null) {
             this.easeDownNotifyBanner();
-            this.pauseNotifyQueue(4000);
+            this.pauseNotifyQueue(6000);
           }
         }, 8000);
     } catch (errMsg) {
@@ -210,7 +211,7 @@ export class HomeComponent {
     try {
       setTimeout(function() {
         $('#flyover-notification').removeClass('ease-up').addClass('ease-down');
-      }, 1000);
+      }, 2000);
     } catch (errMsg) {
       //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       //this.errorMsgComponent.loadModal(errorMsg);
