@@ -8,6 +8,7 @@ Bootstrap Flex description.  Like what is p-2?
 
 ***** TODO *****
 
+Remove flyer close btn, but use if modals are called
 Add drop-down notify flyer for > XS
 Push flyer to notification helper
 Add errorHelper to all try/catch
