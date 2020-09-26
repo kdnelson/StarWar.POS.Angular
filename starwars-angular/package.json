@@ -26,6 +26,7 @@
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.5",
     "guid-typescript": "^1.0.9",
+    "jquery": "^3.5.1",
     "ngx-smart-modal": "^7.4.1",
     "rxjs": "6.6.2",
     "tslib": "2.0.0",

@@ -4,6 +4,8 @@ import { MenuItemDetailComponent } from '../menu-item-detail/menu-item-detail.co
 import { CartComponent } from '../cart/cart.component';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
+declare var $: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,6 +21,9 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 })
 export class HomeComponent {
   title = 'Home';
+  copywriteInfo: string = null;
+  nextNotification: string = null;
+  notifications: string[] = [];
 
   public constructor(
     public ngxSmartModalService: NgxSmartModalService,
@@ -26,6 +31,20 @@ export class HomeComponent {
     public menuItemDetailComponent: MenuItemDetailComponent,
     public cartComponent: CartComponent,
   ) {}
+
+  ngOnInit() {
+    let methodName: string = 'ngOnInit';
+
+    try {
+      //this.readRouteParams();
+      this.prettyPrintCopywriteInfo();
+      this.notificationQueue();
+      this.subscribeToNotifyQueue();
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
 
   get getTicketCounter() : number {
     let methodName: string = 'getTicketCounter';
@@ -101,6 +120,125 @@ export class HomeComponent {
     } catch (errMsg) {
       // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       // this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  private prettyPrintCopywriteInfo() {
+    let methodName: string = 'prettyPrintCopywriteInfo';
+
+    try {
+      var date = new Date().toString().split(' ')[3];
+      this.copywriteInfo = 'Silverskippy (c) ' + date;
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  private notificationQueue() : string[] {
+    let methodName: string = 'notificationQueue';
+
+    try {
+      this.notifications.push('Created by: Kris Nelson.');
+      this.notifications.push('Contact: kris.d.nelson@gmail.com.');
+    } catch (errMsg) {
+      //let kioskError = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.kioskLogHandler(kioskError);
+    }
+    return this.notifications;
+  }
+
+  getNextNotification() : string {
+    let methodName: string = 'getNextNotification';
+    
+    let notification: string = null;
+    
+    try {
+      let notifyQueue = this.notifications;
+      if(notifyQueue.length > 0){
+        notification = this.notifications.shift();
+      }
+    } catch (errMsg) {
+      //let kioskError = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.kioskLogHandler(kioskError);
+    }
+    return notification;
+  }
+
+  private subscribeToNotifyQueue() {
+    let methodName: string = 'subscribeToNotifyQueue';
+
+    try {    
+        setInterval(() => {
+          this.nextNotification = this.getNextNotification();
+          if(this.nextNotification !== null) {
+            this.easeDownNotifyBanner();
+            this.pauseNotifyQueue(4000);
+          }
+        }, 8000);
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  private async pauseNotifyQueue(ms: number) {
+    let methodName: string = 'pauseNotifyQueue';
+
+    try {
+      await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>this.controlNotifyBanner());
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  private controlNotifyBanner() {
+    let methodName: string = 'controlNotifyBanner';
+
+    try {
+      this.easeUpNotifyBanner();
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  private easeDownNotifyBanner() {
+    let methodName: string = 'easeDownNotifyBanner';
+
+    try {
+      setTimeout(function() {
+        $('#flyover-notification').removeClass('ease-up').addClass('ease-down');
+      }, 1000);
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  private easeUpNotifyBanner() {
+    let methodName: string = 'easeUpNotifyBanner';
+
+    try {
+      setTimeout(function() {
+        $('#flyover-notification').removeClass('ease-down').addClass('ease-up');
+        this.nextNotification = null;
+      }, 1000);
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  closeNotification() {
+    let methodName: string = 'closeNotification';
+
+    try {
+      this.nextNotification = null;
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
     }
   }
 }

@@ -6,6 +6,46 @@
     margin-left: 0px;
 }
 
+.flyover {
+    height: 72px;
+    margin-left: 80px;
+    margin-top: -300px;
+    margin-right: -25px;
+    overflow: hidden;
+    position: fixed;
+    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+    background-size: auto 400%;
+    background-position: 100% 100%;
+    transition: background-position 0.2s;
+    width: 257px;
+    transition: all 1s ease;
+  }
+  .flyover.ease-down {
+    margin-top: -80px;  
+  }
+  .flyover.ease-up {
+    margin-top: -300px;
+  }
+  .flyover-info-image {
+    padding-top: 34px;
+    padding-left: 9px;
+  }
+  .flyover-info-text {
+    width: auto;
+    height: 30px;
+    padding-top: 36px;
+    margin-left: -15px;
+    color: rgba(241, 226, 7, 0.87);
+    font-size: x-small;
+    font-weight: bolder;
+  }
+
+  .flyover-cancel-image {
+    text-align: right;
+    padding-top: 18px;
+    padding-right: 50px;
+  }
+
 .menu-XS-scrollview {
     display: grid;
     padding-right: 3px;
