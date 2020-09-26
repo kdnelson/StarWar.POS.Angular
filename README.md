@@ -8,8 +8,9 @@ Bootstrap Flex description.  Like what is p-2?
 
 ***** TODO *****
 
-Add drop-down notify flyer
+Add drop-down notify flyer for > XS
 Push flyer to notification helper
+Add errorHelper to all try/catch
 
 ***** Commands *****
 npm install npm@latest -g
