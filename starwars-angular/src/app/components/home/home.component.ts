@@ -3,6 +3,9 @@ import { CategoryFilterComponent } from '../category-filter/category-filter.comp
 import { MenuItemDetailComponent } from '../menu-item-detail/menu-item-detail.component';
 import { CartComponent } from '../cart/cart.component';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { ErrorMsg } from 'src/app/models/errorMsg';
+import { LogService } from 'src/app/services/logService';
+import { ErrorType } from 'src/app/models/errorType';
 
 declare var $: any;
 
@@ -17,34 +20,23 @@ declare var $: any;
     './home.component-xl.css', // Desktop landscape
     './home.component-common.css' // common style accross home pages
   ],
-  providers: [CategoryFilterComponent, MenuItemDetailComponent, CartComponent],
+  providers: [CategoryFilterComponent, MenuItemDetailComponent, 
+              CartComponent, ErrorType, LogService],
 })
 export class HomeComponent {
-  title = 'Home';
+  private className: "HomeComponent";
   copywriteInfo: string = null;
   nextNotification: string = null;
   notifications: string[] = [];
-
+  
   public constructor(
     public ngxSmartModalService: NgxSmartModalService,
     public categoryFilterComponent: CategoryFilterComponent,
     public menuItemDetailComponent: MenuItemDetailComponent,
     public cartComponent: CartComponent,
+    public errorType: ErrorType,
+    public logService: LogService,
   ) {}
-
-  ngOnInit() {
-    let methodName: string = 'ngOnInit';
-
-    try {
-      //this.readRouteParams();
-      this.prettyPrintCopywriteInfo();
-      this.notificationQueue();
-      this.subscribeToNotifyQueue();
-    } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
-    }
-  }
 
   get getTicketCounter() : number {
     let methodName: string = 'getTicketCounter';
@@ -52,8 +44,8 @@ export class HomeComponent {
     try {
       return 3;
     } catch (errMsg) {
-      // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      // this.errorMsgComponent.loadModal(errorMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
   }
 
@@ -64,8 +56,8 @@ export class HomeComponent {
     //   this.toggleIsFilterSet();
     //   this.searchMenuItemDetailsPerCategory();
     // } catch (errMsg) {
-    //   let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-    //   this.errorMsgComponent.loadModal(errorMsg);
+      // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      // this.logService.logHandler(errorMsg);
     // }
     return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
       11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -74,17 +66,17 @@ export class HomeComponent {
       41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
   }
 
-  private closeAllModals() : void {
-    let methodName: string = 'closeAllModals';
+  ngOnInit() {
+    let methodName: string = 'ngOnInit';
 
     try {
-      this.closeNotification();
-      this.ngxSmartModalService.getModal('categoryFilter').close();
-      this.ngxSmartModalService.getModal('menuItemDetail').close();
-      this.ngxSmartModalService.getModal('cart').close(); 
+      //this.readRouteParams();
+      this.prettyPrintCopywriteInfo();
+      this.notificationQueue();
+      this.subscribeToNotifyQueue();
     } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
   }
 
@@ -95,8 +87,8 @@ export class HomeComponent {
       this.closeAllModals();
       this.categoryFilterComponent.loadModal();
     } catch (errMsg) {
-      // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      // this.errorMsgComponent.loadModal(errorMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
   }
 
@@ -107,8 +99,8 @@ export class HomeComponent {
       this.closeAllModals();
       this.menuItemDetailComponent.loadModal(false);
     } catch (errMsg) {
-      // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      // this.errorMsgComponent.loadModal(errorMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
   }
 
@@ -119,34 +111,20 @@ export class HomeComponent {
       this.closeAllModals();
       this.cartComponent.loadModal();
     } catch (errMsg) {
-      // let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      // this.errorMsgComponent.loadModal(errorMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
   }
 
-  private prettyPrintCopywriteInfo() {
-    let methodName: string = 'prettyPrintCopywriteInfo';
+  closeNotification() {
+    let methodName: string = 'closeNotification';
 
     try {
-      var date = new Date().toString().split(' ')[3];
-      this.copywriteInfo = 'Silverskippy (c) ' + date;
+      this.nextNotification = null;
     } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
-  }
-
-  private notificationQueue() : string[] {
-    let methodName: string = 'notificationQueue';
-
-    try {
-      this.notifications.push('Created by: Kris Nelson.');
-      this.notifications.push('Contact: kris.d.nelson@gmail.com.');
-    } catch (errMsg) {
-      //let kioskError = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      //this.kioskLogHandler(kioskError);
-    }
-    return this.notifications;
   }
 
   getNextNotification() : string {
@@ -160,10 +138,48 @@ export class HomeComponent {
         notification = this.notifications.shift();
       }
     } catch (errMsg) {
-      //let kioskError = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      //this.kioskLogHandler(kioskError);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
     return notification;
+  }
+
+  private closeAllModals() : void {
+    let methodName: string = 'closeAllModals';
+
+    try {
+      this.ngxSmartModalService.getModal('categoryFilter').close();
+      this.ngxSmartModalService.getModal('menuItemDetail').close();
+      this.ngxSmartModalService.getModal('cart').close(); 
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  private prettyPrintCopywriteInfo() {
+    let methodName: string = 'prettyPrintCopywriteInfo';
+
+    try {
+      var date = new Date().toString().split(' ')[3];
+      this.copywriteInfo = 'Silverskippy (c) ' + date;
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  private notificationQueue() : string[] {
+    let methodName: string = 'notificationQueue';
+
+    try {
+      this.notifications.push('Created by: Kris Nelson.');
+      this.notifications.push('Contact: kris.d.nelson@gmail.com.');
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+    return this.notifications;
   }
 
   private subscribeToNotifyQueue() {
@@ -178,8 +194,8 @@ export class HomeComponent {
           }
         }, 8000);
     } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
   }
 
@@ -189,8 +205,8 @@ export class HomeComponent {
     try {
       await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>this.controlNotifyBanner());
     } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
   }
 
@@ -200,8 +216,8 @@ export class HomeComponent {
     try {
       this.easeUpNotifyBanner();
     } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
   }
 
@@ -213,8 +229,8 @@ export class HomeComponent {
         $('#flyover-notification').removeClass('ease-up').addClass('ease-down');
       }, 2000);
     } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
   }
 
@@ -227,19 +243,8 @@ export class HomeComponent {
         this.nextNotification = null;
       }, 1000);
     } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
-    }
-  }
-
-  closeNotification() {
-    let methodName: string = 'closeNotification';
-
-    try {
-      this.nextNotification = null;
-    } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
     }
   }
 }

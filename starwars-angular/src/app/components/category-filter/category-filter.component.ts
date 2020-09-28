@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { CategoryFilter } from 'src/app/models/categoryFilter';
+import { ErrorType } from 'src/app/models/errorType';
 import { Filter } from 'src/app/models/filter';
+import { LogService } from 'src/app/services/logService';
 
 @Component({
   selector: 'category-filter-modal',
   templateUrl: './category-filter.component.html',
-  styleUrls: ['./category-filter.component.css']
+  styleUrls: ['./category-filter.component.css'],
+  providers: [ErrorType, LogService]
 })
 export class CategoryFilterComponent implements OnInit {
   private filter: Filter = {};
   private filterList: Filter[] = [];
 
   constructor(
-    public ngxSmartModalService: NgxSmartModalService
+    public ngxSmartModalService: NgxSmartModalService,
+    public errorType: ErrorType,
+    public logService: LogService
   ) { }
 
   ngOnInit(): void {
@@ -26,18 +31,6 @@ export class CategoryFilterComponent implements OnInit {
     } catch(errMsg){
       //  let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       //  this.errorMsgComponent.loadModal(errorMsg);
-    }
-  }
-
-  private closeAllModals() : void {
-    let methodName: string = 'closeAllModals';
-
-    try {
-      this.ngxSmartModalService.getModal('cart').close();
-      this.ngxSmartModalService.getModal('menuItemDetail').close();  
-    } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
     }
   }
 
@@ -72,29 +65,6 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-  private createCategoryFilter(filters: Filter[]) : CategoryFilter {
-    let methodName: string = 'createCategoryFilter';
-
-    let categoryFilter = new CategoryFilter();
-    try {
-      if(filters !== null){
-        if(categoryFilter.filters !== null) {
-          categoryFilter.filters = filters;
-        } else {
-          //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'categoryFilter.filterTags');
-          //this.errorMsgComponent.loadModal(errorMsg);
-        }
-      } else {
-        //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'filterTags');
-        //this.errorMsgComponent.loadModal(errorMsg);
-      }
-    } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
-    }
-    return categoryFilter;
-  }
-
   selectedFilter(filter: Filter, categoryFilter: CategoryFilter) {
     let methodName: string = 'selectedFilter';
 
@@ -126,6 +96,66 @@ export class CategoryFilterComponent implements OnInit {
       //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       //this.errorMsgComponent.loadModal(errorMsg);
     }
+  }
+
+  selectedCategoryFilters(categoryFilter: CategoryFilter) {
+    let methodName: string = 'selectedCategoryFilters';
+
+    try {
+      let filterNames: string[] = this.searchForSelectedFilters(categoryFilter);
+      if(filterNames !== null) {
+        if(filterNames.length > 0) {
+          //this.baseHelper.setCategoryFilter(filterTags);
+          this.ngxSmartModalService.getModal('categoryFilter').close();
+        }
+      } else {
+        //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'filterTags');
+        //this.errorMsgComponent.loadModal(errorMsg);
+      }
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  private closeAllModals() : void {
+    let methodName: string = 'closeAllModals';
+
+    try {
+      this.ngxSmartModalService.getModal('cart').close();
+      this.ngxSmartModalService.getModal('menuItemDetail').close();  
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+  }
+
+  private searchForSelectedFilters(categoryFilter: CategoryFilter) : string[] {
+    let methodName: string = 'searchForSelectedFilters';
+    let filters: string[] = [];
+
+    try {
+      if(categoryFilter !== null){
+        if(categoryFilter.filters !== null) {
+          categoryFilter.filters.forEach((item, index) => {
+            if(item.isSelected){
+              filters.push(item.name);
+            }
+          });
+        } else {
+          //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'categoryFilter.filterTags');
+          //this.errorMsgComponent.loadModal(errorMsg);
+        }
+      } else {
+        //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
+        //this.errorMsgComponent.loadModal(errorMsg);
+      }
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
+      //this.errorMsgComponent.loadModal(errorMsg);
+    }
+
+    return filters;
   }
 
   private searchFilterIndex(filter: string, filterNames: Filter[]) : number {
@@ -169,16 +199,18 @@ export class CategoryFilterComponent implements OnInit {
       //this.errorMsgComponent.loadModal(errorMsg);
     }
   }
+  
+  private createCategoryFilter(filters: Filter[]) : CategoryFilter {
+    let methodName: string = 'createCategoryFilter';
 
-  selectedCategoryFilters(categoryFilter: CategoryFilter) {
-    let methodName: string = 'selectedCategoryFilters';
-
+    let categoryFilter = new CategoryFilter();
     try {
-      let filterNames: string[] = this.searchForSelectedFilters(categoryFilter);
-      if(filterNames !== null) {
-        if(filterNames.length > 0) {
-          //this.baseHelper.setCategoryFilter(filterTags);
-          this.ngxSmartModalService.getModal('categoryFilter').close();
+      if(filters !== null){
+        if(categoryFilter.filters !== null) {
+          categoryFilter.filters = filters;
+        } else {
+          //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'categoryFilter.filterTags');
+          //this.errorMsgComponent.loadModal(errorMsg);
         }
       } else {
         //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'filterTags');
@@ -188,33 +220,6 @@ export class CategoryFilterComponent implements OnInit {
       //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       //this.errorMsgComponent.loadModal(errorMsg);
     }
-  }
-
-  private searchForSelectedFilters(categoryFilter: CategoryFilter) : string[] {
-    let methodName: string = 'searchForSelectedFilters';
-    let filters: string[] = [];
-
-    try {
-      if(categoryFilter !== null){
-        if(categoryFilter.filters !== null) {
-          categoryFilter.filters.forEach((item, index) => {
-            if(item.isSelected){
-              filters.push(item.name);
-            }
-          });
-        } else {
-          //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'categoryFilter.filterTags');
-          //this.errorMsgComponent.loadModal(errorMsg);
-        }
-      } else {
-        //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
-        //this.errorMsgComponent.loadModal(errorMsg);
-      }
-    } catch (errMsg) {
-      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
-      //this.errorMsgComponent.loadModal(errorMsg);
-    }
-
-    return filters;
+    return categoryFilter;
   }
 }
