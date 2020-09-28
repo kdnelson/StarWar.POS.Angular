@@ -3,6 +3,7 @@
 https://www.interviewbit.com/angular-interview-questions/
 
 Angular component lifecycle
+3 types of directives
 AOC
 Bootstrap Flex description.  Like what is p-2?
 
