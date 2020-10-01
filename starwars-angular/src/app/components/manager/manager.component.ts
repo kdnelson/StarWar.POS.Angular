@@ -26,5 +26,4 @@ export class ManagerComponent implements OnInit {
       this.logService.logHandler(errorMsg);
     }
   }
-
 }

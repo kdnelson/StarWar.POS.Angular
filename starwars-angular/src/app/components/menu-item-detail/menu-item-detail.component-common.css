@@ -1,6 +1,6 @@
 
 .menuItemDetail-container {
-    width: 650px;   
+    width: 645px;   
     height: 510px;
     color: white;
     background-color: black;
@@ -24,7 +24,7 @@
 
 .menuItemDetail-options-scrollview {
   width: 235px;
-  height: 300px;
+  height: 310px;
   margin-top: 0px;
   margin-left: 0px;
   direction: rtl;
@@ -35,7 +35,7 @@
 
 .menuItemDetail-card-selected {
   position: relative;
-  height: 52px;
+  height: 54px;
   width: 220px;
   padding-top: 17px;
   margin-left: 10px;
@@ -50,7 +50,7 @@
 
 .menuItemDetail-card-not-selected {
   position: relative;
-  height: 52px;
+  height: 54px;
   width: 220px;
   padding-top: 17px;
   margin-left: 10px;
@@ -67,7 +67,7 @@
 }
 
 .menuItemDetail-options-label {
-  padding-top: 25px;
+  padding-top: 18px;
   padding-bottom: 10px;
   padding-left: 15px;
   font-weight: bolder;
@@ -87,7 +87,7 @@
 
   .menuItemDetail-adjustedCost {
     width: 235px;
-    margin-top: 321px;
+    margin-top: 330px;
     margin-left: 0px;
     color: black;
     background-color: white;
