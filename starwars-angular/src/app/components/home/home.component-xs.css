@@ -1,75 +1,75 @@
 .background-XS-container {
-    color: white;
-    background: transparent;
-    width: 100%;
-    margin-right: 0px;
-    margin-left: 0px;
+  color: white;
+  background: transparent;
+  width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
-.flyover {
-    height: 72px;
-    margin-left: 78px;
-    margin-top: -300px;
-    margin-right: -25px;
-    overflow: hidden;
-    position: fixed;
-    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
-    background-size: auto 400%;
-    background-position: 100% 100%;
-    transition: background-position 0.2s;
-    width: 262px;
-    transition: all 1s ease;
-  }
-  .flyover.ease-down {
-    margin-top: -80px;  
-  }
-  .flyover.ease-up {
-    margin-top: -300px;
-  }
-  .flyover-info-image {
-    padding-top: 34px;
-    padding-left: 9px;
-  }
-  .flyover-info-text {
-    width: auto;
-    height: 30px;
-    padding-top: 35px;
-    margin-left: -15px;
-    color: rgba(241, 226, 7, 0.87);
-    font-size: small;
-    font-weight: bolder;
+.flyover-XS {
+  height: 72px;
+  margin-left: 78px;
+  margin-top: -300px;
+  margin-right: -25px;
+  overflow: hidden;
+  position: fixed;
+  background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+  background-size: auto 400%;
+  background-position: 100% 100%;
+  transition: background-position 0.2s;
+  width: 262px;
+  transition: all 1s ease;
+}
+.flyover-XS.ease-down {
+  margin-top: -80px;  
+}
+.flyover-XS.ease-up {
+  margin-top: -300px;
+}
+.flyover-XS-info-image {
+  padding-top: 34px;
+  padding-left: 9px;
+}
+.flyover-XS-info-text {
+  width: auto;
+  height: 30px;
+  padding-top: 35px;
+  margin-left: -17px;
+  color: rgba(241, 226, 7, 0.87);
+  font-size: small;
+  font-weight: bolder;
   }
 
 .menu-XS-scrollview {
-    display: grid;
-    padding-right: 3px;
-    direction: ltr;
-    grid-template-rows: auto;
-    overflow-x: hidden;
-    overflow-y: auto;
+  display: grid;
+  padding-right: 3px;
+  direction: ltr;
+  grid-template-rows: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .menu-XS-scrollview .button-XS-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-column-gap: 0.5rem;
-    grid-row-gap: 0.5rem;
-    height: 400px;
-    width: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
+  height: 400px;
+  width: auto;
 }
 
 .category-XS-column {
-    width: 100%;
-    padding-top: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    font-size: large;
-    font-weight: bolder;
+  width: 100%;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  font-size: large;
+  font-weight: bolder;
 }
 
 .copywrite-lable {
-    font-size: small;
-    font-weight: bolder;
-    }
+  font-size: small;
+  font-weight: bolder;
+}

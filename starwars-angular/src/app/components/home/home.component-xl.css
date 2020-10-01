@@ -1,3 +1,38 @@
+.flyover-XL {
+  height: 72px;
+  margin-left: 10px;
+  margin-top: -300px;
+  margin-right: -25px;
+  overflow: hidden;
+  position: fixed;
+  background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+  background-size: auto 400%;
+  background-position: 100% 100%;
+  transition: background-position 0.2s;
+  width: 320px;
+  transition: all 1s ease;
+}
+.flyover-XL.ease-down {
+  margin-top: -80px;  
+}
+.flyover-XL.ease-up {
+  margin-top: -300px;
+}
+.flyover-XL-info-image {
+  padding-top: 30px;
+  padding-left: 15px;
+}
+
+.flyover-XL-info-text {
+  width: auto;
+  height: 32px;
+  padding-top: 32px;
+  margin-left: -12px;
+  color: rgba(241, 226, 7, 0.87);
+  font-size: medium;
+  font-weight: bolder;
+  }
+
 .background-XL-container {
   color: white;
   background: transparent;

@@ -47,7 +47,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     MatButtonModule,
     NgxSmartModalModule.forRoot(),
   ],
-  providers: [ NgxSmartModalService ],
+  providers: [ NgxSmartModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

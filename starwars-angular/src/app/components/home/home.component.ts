@@ -6,6 +6,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 import { LogService } from 'src/app/services/logService';
 import { ErrorType } from 'src/app/models/errorType';
+import { NotificationService } from 'src/app/services/notificationService';
 
 declare var $: any;
 
@@ -21,7 +22,7 @@ declare var $: any;
     './home.component-common.css' // common style accross home pages
   ],
   providers: [CategoryFilterComponent, MenuItemDetailComponent, 
-              CartComponent, ErrorType, LogService],
+              CartComponent, ErrorType, LogService, NotificationService],
 })
 export class HomeComponent {
   private className: "HomeComponent";
@@ -36,6 +37,7 @@ export class HomeComponent {
     public cartComponent: CartComponent,
     public errorType: ErrorType,
     public logService: LogService,
+    public notificationService: NotificationService
   ) {}
 
   get getTicketCounter() : number {
@@ -70,7 +72,7 @@ export class HomeComponent {
     try {
       //this.readRouteParams();
       this.prettyPrintCopywriteInfo();
-      this.notificationQueue();
+      this.notificationService.notificationQueue();
       this.subscribeToNotifyQueue();
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -114,33 +116,6 @@ export class HomeComponent {
     }
   }
 
-  closeNotification() {
-    let methodName: string = 'closeNotification';
-
-    try {
-      this.nextNotification = null;
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  getNextNotification() : string {
-    let methodName: string = 'getNextNotification'; 
-    let notification: string = null;
-    
-    try {
-      let notifyQueue = this.notifications;
-      if(notifyQueue.length > 0){
-        notification = this.notifications.shift();
-      }
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-    return notification;
-  }
-
   private closeAllModals() : void {
     let methodName: string = 'closeAllModals';
 
@@ -166,25 +141,12 @@ export class HomeComponent {
     }
   }
 
-  private notificationQueue() : string[] {
-    let methodName: string = 'notificationQueue';
-
-    try {
-      this.notifications.push('Created by: Kris Nelson.');
-      this.notifications.push('Contact: kris.d.nelson@gmail.com.');
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-    return this.notifications;
-  }
-
   private subscribeToNotifyQueue() {
     let methodName: string = 'subscribeToNotifyQueue';
 
     try {    
         setInterval(() => {
-          this.nextNotification = this.getNextNotification();
+          this.nextNotification = this.notificationService.getNextNotification();
           if(this.nextNotification !== null) {
             this.easeDownNotifyBanner();
             this.pauseNotifyQueue(6000);
@@ -223,7 +185,10 @@ export class HomeComponent {
 
     try {
       setTimeout(function() {
-        $('#flyover-notification').removeClass('ease-up').addClass('ease-down');
+        $('#flyover-notification-XS').removeClass('ease-up').addClass('ease-down');
+        $('#flyover-notification-M').removeClass('ease-up').addClass('ease-down');
+        $('#flyover-notification-L').removeClass('ease-up').addClass('ease-down');
+        $('#flyover-notification-XL').removeClass('ease-up').addClass('ease-down');
       }, 2000);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -236,7 +201,10 @@ export class HomeComponent {
 
     try {
       setTimeout(function() {
-        $('#flyover-notification').removeClass('ease-down').addClass('ease-up');
+        $('#flyover-notification-XS').removeClass('ease-down').addClass('ease-up');
+        $('#flyover-notification-M').removeClass('ease-down').addClass('ease-up');
+        $('#flyover-notification-L').removeClass('ease-down').addClass('ease-up');
+        $('#flyover-notification-XL').removeClass('ease-down').addClass('ease-up');
         this.nextNotification = null;
       }, 1000);
     } catch (errMsg) {

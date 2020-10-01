@@ -10,15 +10,15 @@
       <div class="d-flex justify-content-between">
         <div class="p-2">
           <div class="row">
-            <div id="flyover-notification" [hidden]="nextNotification === null" class="flyover">
+            <div id="flyover-notification-XS" [hidden]="nextNotification === null" class="flyover-XS">
               <div class="row">
                 <div class="col-2">
-                  <div class="flyover-info-image">
+                  <div class="flyover-XS-info-image">
                     <img src="../../assets/images/home-notification-info.png" style="width:15px;height:15px;">
                   </div>
                 </div>
                 <div class="col-10">    
-                  <div class="flyover-info-text">
+                  <div class="flyover-XS-info-text">
                     {{ nextNotification }}
                   </div>
                 </div>
@@ -96,6 +96,22 @@
       <div class="d-flex justify-content-between">
         <div class="p-2">
           <div class="row">
+            <div id="flyover-notification-M" [hidden]="nextNotification === null" class="flyover">
+              <div class="row">
+                <div class="col-2">
+                  <div class="flyover-info-image">
+                    <img src="../../assets/images/home-notification-info.png" style="width:18px;height:18px;">
+                  </div>
+                </div>
+                <div class="col-10">    
+                  <div class="flyover-info-text">
+                    {{ nextNotification }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-12">
               <div class="filter-icon" class="filter-icon" role="button" (click)="openCategoryFilterModal()">
                 <img src="../../../assets/images/home-filter.png" style="margin-top:7px;width:32px;height:37px;">
@@ -160,6 +176,22 @@
       <div class="d-flex justify-content-between">
         <div class="p-2">
           <div class="row">
+            <div id="flyover-notification-L" [hidden]="nextNotification === null" class="flyover">
+              <div class="row">
+                <div class="col-2">
+                  <div class="flyover-info-image">
+                    <img src="../../assets/images/home-notification-info.png" style="width:18px;height:18px;">
+                  </div>
+                </div>
+                <div class="col-10">    
+                  <div class="flyover-info-text">
+                    {{ nextNotification }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-12">
               <div class="filter-icon" role="button" (click)="openCategoryFilterModal()">
                 <img src="../../../assets/images/home-filter.png" style="margin-top:7px;width:32px;height:37px;">
@@ -223,6 +255,22 @@
     <div class="background-XL-container">
       <div class="d-flex justify-content-between">
         <div class="p-2">
+          <div class="row">
+            <div id="flyover-notification-XL" [hidden]="nextNotification === null" class="flyover-XL">
+              <div class="row">
+                <div class="col-2">
+                  <div class="flyover-XL-info-image">
+                    <img src="../../assets/images/home-notification-info.png" style="width:18px;height:18px;">
+                  </div>
+                </div>
+                <div class="col-10">    
+                  <div class="flyover-XL-info-text">
+                    {{ nextNotification }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row">
             <div class="col-12">
               <div class="filter-icon" role="button" (click)="openCategoryFilterModal()">
