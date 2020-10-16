@@ -7,7 +7,14 @@ Angular component lifecycle
 AOC
 Bootstrap Flex description.  Like what is p-2?
 
+***** TIPS *****
+
+Try to keep each feature to a module/component for lazy loading and seperation of concerns
+Does the root module have to have everything?  
+  Can routing, logging, api, etc be added to a few modules A, B, and C which are then called by the root module?
+
 ***** TODO *****
+
 
 
 ***** Commands *****
