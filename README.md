@@ -11,9 +11,9 @@ Bootstrap Flex description.  Like what is p-2?
 
 ***** TIPS *****
 
-Try to keep each feature to a module/component for lazy loading and seperation of concerns
+Try to keep each feature to a module for lazy loading and seperation of concerns
 Does the root module have to have everything?  
-  Can routing, logging, api, etc grouped placed into a custom module and called by all components?
+  Can routing, logging, api, etc also be placed into a module and inported to a feature module?
 
 ***** TODO *****
 
