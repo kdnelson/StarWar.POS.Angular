@@ -1,7 +1,8 @@
 ***** Knowledge *****
 
 https://www.interviewbit.com/angular-interview-questions/
-https://blog.angulartraining.com/tutorial-state-management-with-observable-store-services-5ba53d87ad94
+https://github.com/DanWahlin/angular-architecture
+https://github.com/DanWahlin/Angular-RESTfulService
 
 Angular component lifecycle
 3 types of directives
