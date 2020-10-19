@@ -1,6 +1,7 @@
 ***** Knowledge *****
 
 https://www.interviewbit.com/angular-interview-questions/
+https://github.com/DanWahlin/Angular-JumpStart
 https://github.com/DanWahlin/angular-architecture
 https://github.com/DanWahlin/Angular-RESTfulService
 
