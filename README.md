@@ -10,6 +10,13 @@ Angular component lifecycle
 AOC
 Bootstrap Flex description.  Like what is p-2?
 
+Ng 7+
+Routing on Modules:
+{ path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },
+Ng < 7
+Routing on Modules:
+{ path: 'customers', loadChildren: 'app/customers/customers.module#CustomersModule' },
+
 ***** TIPS *****
 
 Try to keep each feature to a module for lazy loading and seperation of concerns
