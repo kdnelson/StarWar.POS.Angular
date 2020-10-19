@@ -6,4 +6,4 @@ import { ManagerRoutingModule } from './manager-routing.module';
   imports:      [ ManagerRoutingModule ],
   declarations: [ ManagerRoutingModule.components ]
 })
-export class ManagerModule { }
+export class ManagerModule {}

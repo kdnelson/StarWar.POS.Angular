@@ -17,6 +17,8 @@ import { MenuItemDetailComponent } from './components/menu-item-detail/menu-item
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AppRoutingModule } from './components/app/app-routing.module';
 import { HomeComponent } from './components/home/home.component';
+import { CoreModule } from './components/core/core.module';
+import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     AppRoutingModule,
+    CoreModule,
+    SharedModule,
     BrowserModule,
     CommonModule,
     NgbModule,
