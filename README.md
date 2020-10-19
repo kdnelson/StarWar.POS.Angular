@@ -25,7 +25,9 @@ Does the root module have to have everything?
 
 ***** TODO *****
 
-
+Move services and modals into these two modules, Core/Shared.
+Fix filter buttons.  They are shred with MenuItemDetail, so...
+I want the modal added out of home.
 
 ***** Commands *****
 npm install npm@latest -g
