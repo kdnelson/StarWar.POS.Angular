@@ -1,13 +1,30 @@
 ***** Knowledge *****
 
 https://www.interviewbit.com/angular-interview-questions/
+https://github.com/DanWahlin/Angular-JumpStart
+https://github.com/DanWahlin/angular-architecture
+https://github.com/DanWahlin/Angular-RESTfulService
 
 Angular component lifecycle
 3 types of directives
 AOC
 Bootstrap Flex description.  Like what is p-2?
 
+Ng 7+
+Routing on Modules:
+{ path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },
+Ng < 7
+Routing on Modules:
+{ path: 'customers', loadChildren: 'app/customers/customers.module#CustomersModule' },
+
+***** TIPS *****
+
+Try to keep each feature to a module for lazy loading and seperation of concerns
+Does the root module have to have everything?  
+  Can routing, logging, api, etc also be placed into a module and inported to a feature module?
+
 ***** TODO *****
+
 
 
 ***** Commands *****
