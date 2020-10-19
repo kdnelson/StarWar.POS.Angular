@@ -7,35 +7,28 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSmartModalModule, NgxSmartModalService } from 'ngx-smart-modal';
 
 import { AppComponent } from './components/app/app.component';
 import { CategoryFilterComponent } from './components/category-filter/category-filter.component';
 import { CartComponent } from './components/cart/cart.component';
-import { HomeComponent } from './components/home/home.component';
 import { MenuItemDetailComponent } from './components/menu-item-detail/menu-item-detail.component';
-import { ManagerComponent } from './components/manager/manager.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { AppRoutingModule } from './components/app/app-routing.module';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     CategoryFilterComponent,
     CartComponent,
-    HomeComponent,
     MenuItemDetailComponent,
-    ManagerComponent,
     NavigationComponent
   ],
   imports: [
-    RouterModule.forRoot([      
-      { path: 'manager', component: ManagerComponent },  
-      { path: 'home', component: HomeComponent },
-      { path: 'home/:filter', component: HomeComponent },
-      { path: '', redirectTo: 'home', pathMatch: 'full' },   
-    ], { useHash: true, onSameUrlNavigation: 'reload'}),
+    AppRoutingModule,
     BrowserModule,
     CommonModule,
     NgbModule,
@@ -47,7 +40,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     MatButtonModule,
     NgxSmartModalModule.forRoot(),
   ],
-  providers: [ NgxSmartModalService],
+  providers: [NgxSmartModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
