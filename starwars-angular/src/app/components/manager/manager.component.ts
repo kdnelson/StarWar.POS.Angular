@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 import { ErrorType } from 'src/app/models/errorType';
-import { LogService } from 'src/app/services/logService';
+import { LogService } from '../../services/logService';
 
 @Component({
   selector: 'app-manager',

@@ -4,9 +4,9 @@ import { MenuItemDetailComponent } from '../menu-item-detail/menu-item-detail.co
 import { CartComponent } from '../cart/cart.component';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { ErrorMsg } from 'src/app/models/errorMsg';
-import { LogService } from 'src/app/services/logService';
+import { LogService } from '../../services/logService';
 import { ErrorType } from 'src/app/models/errorType';
-import { NotificationService } from 'src/app/services/notificationService';
+import { NotificationService } from '../../services/notificationService';
 
 declare var $: any;
 

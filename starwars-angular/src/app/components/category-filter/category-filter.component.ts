@@ -4,7 +4,7 @@ import { CategoryFilter } from 'src/app/models/categoryFilter';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 import { ErrorType } from 'src/app/models/errorType';
 import { Filter } from 'src/app/models/filter';
-import { LogService } from 'src/app/services/logService';
+import { LogService } from '../../services/logService';
 
 @Component({
   selector: 'category-filter-modal',
