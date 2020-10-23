@@ -17,6 +17,7 @@ import { MenuItemDetailComponent } from '../menu-item-detail/menu-item-detail.co
 import { NavigationComponent } from '../navigation/navigation.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from '../home/home.component';
+import { TrackByService } from 'src/app/services/track-by-service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { HomeComponent } from '../home/home.component';
     BrowserAnimationsModule,
     NgxSmartModalModule.forRoot(),
   ],
-  providers: [NgxSmartModalService],
+  providers: [NgxSmartModalService, TrackByService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

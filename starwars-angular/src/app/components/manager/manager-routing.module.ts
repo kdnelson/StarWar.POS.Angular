@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ManagerDetailsComponent } from './manager-details/manager-details.component';
 
 import { ManagerComponent } from './manager.component';
 
 const routes: Routes = [
-  { path: '', component: ManagerComponent }
+  { path: '', component: ManagerComponent,
+    children: [
+      { path: 'details', component: ManagerDetailsComponent },
+    ]
+  }
 ];
 
 @NgModule({
@@ -12,5 +17,5 @@ const routes: Routes = [
   exports: [ RouterModule ]
 })
 export class ManagerRoutingModule {
-  static components = [ ManagerComponent ];
+  static components = [ ManagerComponent, ManagerDetailsComponent ];
 }

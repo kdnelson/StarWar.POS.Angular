@@ -17,7 +17,7 @@
         </div>
         <div class="background-XL-container">
             <div *ngIf="onHomePage == true">
-                <div class="menubar-XL-label" mat-button [routerLink]="'/manager'" (click)="toggleRouteOption()">Manager</div>
+                <div class="menubar-XL-label" mat-button [routerLink]="'/managers'" (click)="toggleRouteOption()">Managers</div>
             </div>
             <div *ngIf="onHomePage == false">
                 <div class="menubar-XL-label" mat-button [routerLink]="'/home'" (click)="toggleRouteOption()">Home</div>
@@ -30,7 +30,7 @@
     <mat-sidenav #sidenav class="sidenav-slideout">
         <mat-nav-list>
             <a mat-list-item [routerLink]="'/home'" (click)="sidenav.toggle()">Home</a>
-            <a mat-list-item [routerLink]="'/manager'" (click)="sidenav.toggle()">Manager</a>
+            <a mat-list-item [routerLink]="'/managers'" (click)="sidenav.toggle()">Managers</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

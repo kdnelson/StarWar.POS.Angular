@@ -6,7 +6,8 @@ const app_routes: Routes = [
         { path: '', redirectTo: 'home', pathMatch: 'full' },
         { path: 'home', component: HomeComponent },
         { path: 'home/:filter', component: HomeComponent },
-        { path: 'manager', loadChildren: () => import('../manager/manager.module').then(o => o.ManagerModule) },        
+        { path: 'managers', loadChildren: () => import('../managers/managers.module').then(o => o.ManagersModule) },        
+        { path: 'managers/:id', data: { preload: true }, loadChildren: () => import('../manager/manager.module').then(m => m.ManagerModule) },
         { path: '**', redirectTo: 'home', pathMatch: 'full' }
     ];  
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 import { ErrorType } from 'src/app/models/errorType';
 import { LogService } from '../../services/logService';
@@ -13,6 +14,7 @@ export class ManagerComponent implements OnInit {
   private className: "ManagerComponent";
 
   public constructor(
+    private router: Router,
     public errorType: ErrorType,
     public logService: LogService,
   ) {}
