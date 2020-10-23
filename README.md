@@ -26,8 +26,9 @@ Try to keep each menu item to a module for lazy loading and seperation of concer
 Fix filter buttons.  They are shred with MenuItemDetail, so...
 TrackBy?
 Rewrite grid using card view
-Is the grid working?
+Is the manager-grid working?
 Rename manager-card/manager-grid to managers-card/managers-grid, it is in the managers directory
+Clean up and make nice!
 
 ***** Commands *****
 npm install npm@latest -g
