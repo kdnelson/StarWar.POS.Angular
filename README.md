@@ -27,6 +27,7 @@ Fix filter buttons.  They are shred with MenuItemDetail, so...
 TrackBy?
 Rewrite grid using card view
 Is the grid working?
+Rename manager-card/manager-grid to managers-card/managers-grid, it is in the managers directory
 
 ***** Commands *****
 npm install npm@latest -g
