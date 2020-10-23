@@ -1,4 +1,7 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from "@angular/common";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,7 +17,6 @@ import { MenuItemDetailComponent } from '../menu-item-detail/menu-item-detail.co
 import { NavigationComponent } from '../navigation/navigation.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from '../home/home.component';
-import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { SharedModule } from '../../shared/shared.module';
     NavigationComponent
   ],
   imports: [
+    BrowserModule,
+    CommonModule,
+    NgbModule,
     AppRoutingModule,
-    SharedModule,
     MatIconModule,
     MatListModule,
     MatButtonModule,
