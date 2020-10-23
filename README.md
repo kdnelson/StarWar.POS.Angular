@@ -24,6 +24,9 @@ Try to keep each menu item to a module for lazy loading and seperation of concer
 ***** TODO *****
 
 Fix filter buttons.  They are shred with MenuItemDetail, so...
+TrackBy?
+Rewrite grid using card view
+Is the grid working?
 
 ***** Commands *****
 npm install npm@latest -g
