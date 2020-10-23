@@ -19,15 +19,11 @@ Routing on Modules:
 
 ***** TIPS *****
 
-Try to keep each feature to a module for lazy loading and seperation of concerns
-Does the root module have to have everything?  
-  Can routing, logging, api, etc also be placed into a module and inported to a feature module?
+Try to keep each menu item to a module for lazy loading and seperation of concerns
 
 ***** TODO *****
 
-Move services and modals into these two modules, Core/Shared.
 Fix filter buttons.  They are shred with MenuItemDetail, so...
-I want the modal added out of home.
 
 ***** Commands *****
 npm install npm@latest -g
@@ -42,10 +38,8 @@ ng serve -o
 ng serve --port 0
 ng config schematics.@schematics/angular:component.styleext scss
 ng build //create deployment artifacts to the dist folder
-Create three components:
-  ng g c navigation
-  ng g c first
-  ng g c second
+Create component:
+  ng g c manager-details --skip-import
 
 ***** Hints *****
 in PolyFils.ts
