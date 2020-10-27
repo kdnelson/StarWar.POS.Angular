@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManagerGridComponent } from './manager-grid.component';
+import { ManagersCardComponent } from './managers-card.component';
 
-describe('ManagerGridComponent', () => {
-  let component: ManagerGridComponent;
-  let fixture: ComponentFixture<ManagerGridComponent>;
+describe('ManagersCardComponent', () => {
+  let component: ManagersCardComponent;
+  let fixture: ComponentFixture<ManagersCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ManagerGridComponent ]
+      declarations: [ ManagersCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManagerGridComponent);
+    fixture = TestBed.createComponent(ManagersCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

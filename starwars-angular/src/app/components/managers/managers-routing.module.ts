@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ManagerCardComponent } from './manager-card/manager-card.component';
-import { ManagerGridComponent } from './manager-grid/manager-grid.component';
+import { ManagersCardComponent } from './managers-card/managers-card.component';
+import { ManagersGridComponent } from './managers-grid/managers-grid.component';
 import { ManagersComponent } from './managers.component';
 
 const routes: Routes = [
@@ -13,5 +13,5 @@ const routes: Routes = [
   exports: [ RouterModule ]
 })
 export class ManagersRoutingModule {
-  static components = [ ManagersComponent, ManagerCardComponent, ManagerGridComponent ];
+  static components = [ ManagersComponent, ManagersCardComponent, ManagersGridComponent ];
 }

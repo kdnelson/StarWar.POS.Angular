@@ -3,12 +3,12 @@ import { Manager } from 'src/app/models/manager';
 import { TrackByService } from 'src/app/services/track-by-service';
 
 @Component({
-  selector: 'cm-manager-grid',
-  templateUrl: './manager-grid.component.html',
-  styleUrls: ['./manager-grid.component.css'],
+  selector: 'cm-managers-grid',
+  templateUrl: './managers-grid.component.html',
+  styleUrls: ['./managers-grid.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ManagerGridComponent implements OnInit {
+export class ManagersGridComponent implements OnInit {
 
   @Input() managers: Manager[] = [];
 
