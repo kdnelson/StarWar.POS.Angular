@@ -1,19 +1,22 @@
 <div class="container">
-    <div class="row card-container">
+    <div class="row card-container scroll">
         <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let manager of managers;trackBy:trackbyService.manager">
             <div class="card">
                 <div class="card-header">
-                    <a [routerLink]="['/managers',manager.id,'details']" class="white">
+                    <a [routerLink]="['/managers',manager.id,'details']">
                         {{ manager.name }}
                     </a>
                 </div>
                 <div class="card-body">
                     <div class="clearfix">
                         <div class="pull-left card-body-left">
-                            <div class="card-body-content">{{manager.gener }}</div>
+                            <div class="card-body-content">Address</div>
                         </div>
                         <div class="pull-left card-body-right">
-                            <div class="card-body-content">{{manager.age }}</div>
+                            <div class="card-body-content">Phone</div>
+                        </div>
+                        <div class="pull-left card-body-right">
+                            <div class="card-body-content">Age</div>
                         </div>
                     </div>
                 </div>

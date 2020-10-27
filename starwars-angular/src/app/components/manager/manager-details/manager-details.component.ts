@@ -23,7 +23,7 @@ export class ManagerDetailsComponent implements OnInit {
       const id =+ params['id'];
       if (id) {
         // service lookup on id
-        this.manager = new Manager(1, "Darth Vader", true, 34);
+        this.manager = new Manager(1, "Darth Vader");
       }
     });
   }

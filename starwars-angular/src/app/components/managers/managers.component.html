@@ -1,12 +1,38 @@
 <div class="managers view indent">
-    <div class="container">
-        <br/>
-        {{ title }}
-        <br/>
-        <br/>
-        <cm-manager-card 
-          [managers]="filteredManagers"
-          [hidden]=false>
-        </cm-manager-card>
+  <div class="container">
+      <header>
+        <h3>
+            {{ title }}
+        </h3>
+    </header>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="navbar">
+          <ul class="nav navbar-nav">
+            <li class="toolbar-item">
+              <a (click)="changeDisplayMode()" [class.active]="isManagerCard">
+                <span class="glyphicon glyphicon-th-large"></span> Card View
+              </a>
+            </li>
+            <li class="toolbar-item">
+              <a (click)="changeDisplayMode()" [class.active]="isManagerCard">
+                <span class="glyphicon glyphicon-align-justify"></span> List View
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+    <br/>
+
+    <cm-manager-card 
+      [managers]="filteredManagers"
+      [hidden]="isManagerCard === false">
+    </cm-manager-card>
+
+    <cm-manager-grid
+      [managers]="filteredManagers"
+      [hidden]="isManagerCard === true">
+    </cm-manager-grid>
+  </div>
 </div>
