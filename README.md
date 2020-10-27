@@ -17,17 +17,19 @@ Ng < 7
 Routing on Modules:
 { path: 'customers', loadChildren: 'app/customers/customers.module#CustomersModule' },
 
+List more differences between Ng7/8 and Ng10 (Look at Jump-Start)
+
 ***** TIPS *****
 
 Try to keep each menu item to a module for lazy loading and seperation of concerns
 
 ***** TODO *****
 
-Fix filter buttons.  They are shred with MenuItemDetail, so...
+Fix category filter buttons.  They are shared with MenuItemDetail, so...
 TrackBy?
-Rewrite grid using card view
-Is the manager-grid working?
-Rename manager-card/manager-grid to managers-card/managers-grid, it is in the managers directory
+Rewrite modals using better bootstrap card and scroll techniques
+Rewrite home grid using card view and scroll
+Why is Card/Grid links not on one line?
 Clean up and make nice!
 
 ***** Commands *****
