@@ -1,38 +1,36 @@
 ***** Knowledge *****
 
++ links
 https://www.interviewbit.com/angular-interview-questions/
 https://github.com/DanWahlin/Angular-JumpStart
 https://github.com/DanWahlin/angular-architecture
 https://github.com/DanWahlin/Angular-RESTfulService
 
-Angular component lifecycle
-3 types of directives
-AOC
-Bootstrap Flex description.  Like what is p-2?
++ Angular component lifecycle
++ 3 types of directives
++ AOC
++ Bootstrap Flex description.  Like what is p-2?
 
-Ng 7+
-Routing on Modules:
-{ path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },
-Ng < 7
-Routing on Modules:
-{ path: 'customers', loadChildren: 'app/customers/customers.module#CustomersModule' },
-
-List more differences between Ng7/8 and Ng10 (Look at Jump-Start)
-
-***** TIPS *****
-
-Try to keep each menu item to a module for lazy loading and seperation of concerns
++ Versus differences
+  Ng 7+
+  Routing on Modules:
+  { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },
+  Ng < 7
+  Routing on Modules:
+  { path: 'customers', loadChildren: 'app/customers/customers.module#CustomersModule' },
+  List more differences between Ng7/8 and Ng10 (Look at Jump-Start)
 
 ***** TODO *****
 
-Fix category filter buttons.  They are shared with MenuItemDetail, so...
-TrackBy?
-Rewrite modals using better bootstrap card and scroll techniques
-Rewrite home grid using card view and scroll
-Why is Card/Grid links not on one line?
-Clean up and make nice!
++ Fix category filter buttons.  They are shared with MenuItemDetail, so...
++ TrackBy?
++ Rewrite modals using better bootstrap card and scroll techniques
++ Rewrite home grid using card view and scroll
++ Why is Card/Grid links not on one line?
++ Clean up and make nice!
 
 ***** Commands *****
+
 npm install npm@latest -g
 ng add @angular/material
 ng add @ng-bootstrap/ng-bootstrap
@@ -49,6 +47,8 @@ Create component:
   ng g c manager-details --skip-import
 
 ***** Hints *****
+
+Try to keep each menu item to a module for lazy loading and seperation of concerns
 in PolyFils.ts
 change:
 import 'core-js/es7/reflect';
@@ -81,3 +81,4 @@ ng-template
 From XS, M, L to XL the nav bar can be off in showing Home or Manager
 Shut-off modals for div-S
 
+****** Architecture ******
