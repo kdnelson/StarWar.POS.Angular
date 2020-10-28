@@ -19,8 +19,6 @@ Routing on Modules:
 
 List more differences between Ng7/8 and Ng10 (Look at Jump-Start)
 
-***** TIPS *****
-
 Try to keep each menu item to a module for lazy loading and seperation of concerns
 
 ***** TODO *****
@@ -33,6 +31,7 @@ Why is Card/Grid links not on one line?
 Clean up and make nice!
 
 ***** Commands *****
+
 npm install npm@latest -g
 ng add @angular/material
 ng add @ng-bootstrap/ng-bootstrap
@@ -49,6 +48,7 @@ Create component:
   ng g c manager-details --skip-import
 
 ***** Hints *****
+
 in PolyFils.ts
 change:
 import 'core-js/es7/reflect';
