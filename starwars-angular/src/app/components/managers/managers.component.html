@@ -1,29 +1,21 @@
 <div class="managers view indent">
   <div class="container">
-      <header>
-        <h3>
-            {{ title }}
-        </h3>
-    </header>
-    <div class="row">
-      <div class="col-md-10">
-        <div class="navbar">
-          <ul class="nav navbar-nav">
-            <li class="toolbar-item">
-              <a (click)="changeDisplayMode()" [class.active]="isManagerCard">
-                <span class="glyphicon glyphicon-th-large"></span> Card View
-              </a>
-            </li>
-            <li class="toolbar-item">
-              <a (click)="changeDisplayMode()" [class.active]="isManagerCard">
-                <span class="glyphicon glyphicon-align-justify"></span> List View
-              </a>
-            </li>
-          </ul>
+    <div class="d-flex justify-content-between">
+      <div class="p-2">
+        <div class="managers-header">
+          {{ title }}
+        </div>
+      </div>
+      <div class="p-2">
+        <div class="d-flex justify-content-end">
+          <div class="p-2">   
+            <a (click)="changeDisplayMode()" [class.active]="isManagerCard">
+              Change View
+            </a>
+          </div>
         </div>
       </div>
     </div>
-    <br/>
 
     <cm-managers-card 
       [managers]="filteredManagers"
@@ -34,5 +26,6 @@
       [managers]="filteredManagers"
       [hidden]="isManagerCard === true">
     </cm-managers-grid>
+    
   </div>
 </div>

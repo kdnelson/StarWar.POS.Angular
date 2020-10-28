@@ -1,0 +1,21 @@
+.managers-header {
+    font-weight: bold;
+    font-size: medium;
+    margin-top: 7px;
+}
+
+a {
+    color: rgba(241, 226, 7, 0.87);
+    font-weight: bold;
+    font-size: smaller;
+}
+a.hover {
+    color: rgba(241, 226, 7, 0.87);
+    font-weight: bold;
+    font-size: smaller;  
+}
+a.select {
+    color: rgba(241, 226, 7, 0.87);
+    font-weight: bold;
+    font-size: smaller;
+}

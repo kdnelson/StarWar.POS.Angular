@@ -1,5 +1,27 @@
 
 .scroll {
-    max-height: 290px;
+    max-height: 445px;
     overflow-y: auto;
+}
+
+th {
+    color:white;
+    font-weight: bold;
+}
+
+td {
+    color:white;
+}
+
+a {
+    color: rgba(241, 226, 7, 0.87);
+    font-weight: bold;
+}
+a.hover {
+    color: rgba(241, 226, 7, 0.87);
+    font-weight: bold;
+}
+a.select {
+    color: rgba(241, 226, 7, 0.87);
+    font-weight: bold;
 }

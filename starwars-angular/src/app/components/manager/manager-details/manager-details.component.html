@@ -1,12 +1,22 @@
 <div class="container">
     <div class="row" *ngIf="manager">
       <div class="col-md-12">
-        <h4>    
-            {{ manager.name }} <br/>
-            Address <br/>
-            Phone Number <br/>
-            Age
-        </h4>
+        <div class="card">
+          <div class="card-header">
+            {{ manager.name }}
+          </div>
+          <div class="card-body">
+              <div class="pull-left">
+                  <div class="card-body-content">Address</div>
+              </div>
+              <div class="pull-left">
+                  <div class="card-body-content">Phone</div>
+              </div>
+              <div class="pull-left">
+                  <div class="card-body-content">Age</div>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
 </div>

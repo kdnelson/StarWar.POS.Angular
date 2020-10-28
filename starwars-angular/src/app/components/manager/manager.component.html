@@ -1,12 +1,18 @@
 <div class="managers view">
     <div class="container">
-        <header>
-            <br>
-            <h3>Manager Information</h3>
-        </header>
-        <div class="container">
-            <router-outlet></router-outlet>
-            <a routerLink="/managers">View all Managers</a>
+        <div class="d-flex justify-content-start">
+            <div class="p-2">
+                <div class="manager-info-header">
+                    Manager Information
+                </div>
+            </div>
+        </div>
+        <br/>
+        <router-outlet></router-outlet>
+        <div class="d-flex justify-content-end">
+            <div class="p-2">       
+                <a routerLink="/managers">View all Managers</a>
+            </div>
         </div>
     </div>
 </div>

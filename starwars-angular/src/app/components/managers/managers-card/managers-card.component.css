@@ -1,5 +1,23 @@
 
 .scroll {
-    max-height: 290px;
+    max-height: 465px;
     overflow-y: auto;
+}
+
+a {
+    color: rgba(241, 226, 7, 0.87);
+    font-weight: bold;
+}
+a.hover {
+    color: rgba(241, 226, 7, 0.87);
+    font-weight: bold;
+}
+a.select {
+    color: rgba(241, 226, 7, 0.87);
+    font-weight: bold;
+}
+
+.card, .card-body, .card-header, .card-footer  { 
+    background-color: transparent;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
 }
