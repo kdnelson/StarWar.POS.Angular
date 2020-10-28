@@ -26,8 +26,7 @@ https://github.com/DanWahlin/Angular-RESTfulService
 + TrackBy?
 + Rewrite modals using better bootstrap card and scroll techniques
 + Rewrite home grid using card view and scroll
-+ Why is Card/Grid links not on one line?
-+ Clean up and make nice!
++ Add background image and copywrite to manager pages
 
 ***** Commands *****
 
