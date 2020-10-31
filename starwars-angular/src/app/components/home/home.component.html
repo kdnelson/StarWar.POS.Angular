@@ -1,4 +1,78 @@
-<div class="background-container">
+<div class="d-flex justify-content-center background">
+  <div class="p-2">
+    <div class="container">
+      <div class="d-flex justify-content-between">
+        <div class="p-2">
+          <div class="home-header">
+            <div class="filter-icon" role="button" (click)="openCategoryFilterModal()">
+              <img src="../../../assets/images/home-filter.png" style="margin-top:7px;width:32px;height:37px;">
+            </div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="d-flex justify-content-end">
+            <div class="p-2">   
+              <div class="cart-icon" role="button" (click)="openCartModal()">
+                <img src="../../../assets/images/home-cart.png" style="width:35px;height:40px;">
+                <div class="cart-counter" *ngIf="getTicketCounter > 0">{{ getTicketCounter }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row card-container scroll">
+          <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
+              <div class="card mb-2">
+                  <div class="card-header">
+                    Some Very Cool Title
+                  </div>
+                  <div class="card-body">
+                      <div class="pull-left card-body-left">
+                          <div class="card-body-content">Some very cool details to read and admire.  
+                            Hopefully encouraging you to buy our product.</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div *ngIf="!getMenuItemDetailsPerCategory().length">
+              No Records Found
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- <div class="container">
+      <div *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
+        <div class="row">
+          <div class="col-12">
+            <div class="menu-card" role="button" (click)="openMenuItemDetailModal()">
+              <div class="row">
+                <div class="card-title">
+                  #{{ item }} Some Very Cool Title
+                </div>              
+              </div>
+              <div class="row">
+                <div class="card-details">
+                  Some very cool details to read and admire.  
+                  Hopefully encouraging you to buy our product.
+                </div>
+              </div>
+              <div class="row">
+                <div class="card-price">
+                  1,234.90 credits
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+<!-- <div class="background-container">
     <category-filter-modal></category-filter-modal>
     <div class="categoryFilter-modal-anchor"></div>
     <menu-item-detail-modal></menu-item-detail-modal>
@@ -331,4 +405,4 @@
         <div class="p-2"><div class="copywrite-lable">{{copywriteInfo}}</div></div>
       </div>
     </div>
-  </div>
+  </div> -->

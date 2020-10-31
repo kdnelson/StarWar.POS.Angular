@@ -1,4 +1,43 @@
-.flyover {
+.background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  left: 0;
+  z-index: 2;
+  background-size: cover;
+  display: flex;
+  background-image: url("../../../assets/images/starwars-shady-bg.jpg");
+}
+
+.home-header {
+  font-weight: bold;
+  font-size: medium;
+  margin-top: 7px;
+}
+
+.filter-icon {
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+.cart-icon {
+  margin-top: 7px;
+  margin-right: 10px;
+}
+
+.scroll {
+  max-height: 345px;
+  overflow-y: auto;
+}
+
+.card, .card-body, .card-header, .card-footer  { 
+  background-color: transparent;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+}
+
+
+/* .flyover {
     height: 72px;
     margin-left: 78px;
     margin-top: -300px;
@@ -78,11 +117,10 @@
     top: 15%;
     left: 50%;
     margin: -25px 0 0 -25px; 
-    /* apply negative top and left margins to truly center the element */
 }
 
 .cart-modal-anchor {
     position: absolute;
     top: 0%;
     right: 22%;
-}
+} */

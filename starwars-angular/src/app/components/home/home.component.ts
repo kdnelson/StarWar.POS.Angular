@@ -13,14 +13,7 @@ declare var $: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: [  
-    './home.component-xs.css', // Smartphone portrait 
-    './home.component-s.css',  // Smartphone landscape (not supported)
-    './home.component-m.css',  // Tablet portrait
-    './home.component-l.css',  // Tablet landscape
-    './home.component-xl.css', // Desktop landscape
-    './home.component-common.css' // common style accross home pages
-  ],
+  styleUrls: ['./home.component.css'],
   providers: [CategoryFilterComponent, MenuItemDetailComponent, 
               CartComponent, ErrorType, LogService, NotificationService],
 })
