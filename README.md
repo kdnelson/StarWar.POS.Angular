@@ -28,7 +28,7 @@ https://github.com/DanWahlin/Angular-RESTfulService
 + Look how he does image styling... style="margin-top:7px;width:32px;height:37px;"
 + Clean out Home.html and .css
 + Add a home model and bring into form like managers
-+ Get modal to work again as his does.
++ Use flex for the cart counter over the cart image
 + The menu Home/Managers switch is ify
 + Add copywrite to manager pages
 
