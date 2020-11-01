@@ -10,6 +10,7 @@ import { LogService } from 'src/app/services/logService';
   styleUrls: ['./manager-details.component.css']
 })
 export class ManagerDetailsComponent implements OnInit {
+  className: string = "ManagerDetailsComponent";
   manager: Manager;
 
   constructor(

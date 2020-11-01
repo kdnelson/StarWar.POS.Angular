@@ -21,13 +21,23 @@
   margin-left: 10px;
 }
 
+.cart-counter {
+  margin-top: 3px;
+  top: 12px;
+  right: 105px;
+  color: rgba(241, 226, 7, 0.87);
+  font-size: medium;
+  font-weight: bold;
+  position: absolute;
+}
+
 .cart-icon {
   margin-top: 7px;
   margin-right: 10px;
 }
 
 .scroll {
-  max-height: 345px;
+  max-height: 382px;
   overflow-y: auto;
 }
 

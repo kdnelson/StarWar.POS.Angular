@@ -7,7 +7,7 @@ import { Manager } from 'src/app/models/manager';
   styleUrls: ['./managers.component.css']
 })
 export class ManagersComponent implements OnInit {
-  private className: "ManagersComponent";
+  className: string = "ManagersComponent";
   isManagerCard: boolean;
   title: string = "Managers";
   managers: Manager[] = [];

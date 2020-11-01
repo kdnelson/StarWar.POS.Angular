@@ -9,7 +9,7 @@ import { TrackByService } from 'src/app/services/track-by-service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ManagersGridComponent implements OnInit {
-
+  className: string = "ManagersGridComponent";
   @Input() managers: Manager[] = [];
 
   constructor(

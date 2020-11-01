@@ -15,7 +15,7 @@ import { LogService } from '../../services/logService';
   providers: [ErrorType, LogService]
 })
 export class MenuItemDetailComponent implements OnInit {
-  private className: "MenuItemDetailComponent";
+  className: string = "MenuItemDetailComponent";
 
   constructor(
     public ngxSmartModalService: NgxSmartModalService,

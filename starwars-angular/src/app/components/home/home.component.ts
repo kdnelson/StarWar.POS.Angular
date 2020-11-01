@@ -18,7 +18,7 @@ declare var $: any;
               CartComponent, ErrorType, LogService, NotificationService],
 })
 export class HomeComponent {
-  private className: "HomeComponent";
+  className: string = "HomeComponent";
   copywriteInfo: string = null;
   nextNotification: string = null;
   notifications: string[] = [];
@@ -80,7 +80,7 @@ export class HomeComponent {
       this.closeAllModals();
       this.categoryFilterComponent.loadModal();
     } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg); 
       this.logService.logHandler(errorMsg);
     }
   }
@@ -115,7 +115,7 @@ export class HomeComponent {
     try {
       this.ngxSmartModalService.getModal('categoryFilter').close();
       this.ngxSmartModalService.getModal('menuItemDetail').close();
-      this.ngxSmartModalService.getModal('cart').close(); 
+      this.ngxSmartModalService.getModal('cart').close();
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

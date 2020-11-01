@@ -9,7 +9,7 @@ import { TrackByService } from 'src/app/services/track-by-service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ManagersCardComponent implements OnInit {
-
+  className: string = "ManagersCardComponent";
   @Input() managers: Manager[] = [];
 
   constructor(

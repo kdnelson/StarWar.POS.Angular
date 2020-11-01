@@ -15,7 +15,7 @@ import { ErrorMsg } from 'src/app/models/errorMsg';
   providers: [ErrorType, LogService]
 })
 export class CartComponent implements OnInit {
-  private className: "CartComponent";
+  className: string = "CartComponent";
 
   constructor(
     public ngxSmartModalService: NgxSmartModalService,

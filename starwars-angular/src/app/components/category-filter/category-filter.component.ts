@@ -13,7 +13,7 @@ import { LogService } from '../../services/logService';
   providers: [ErrorType, LogService]
 })
 export class CategoryFilterComponent implements OnInit {
-  private className: "CategoryFilterComponent";
+  className: string = "CategoryFilterComponent";
   private filter: Filter = {};
   private filterList: Filter[] = [];
 

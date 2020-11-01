@@ -1,6 +1,14 @@
 <div class="d-flex justify-content-center background">
   <div class="p-2">
     <div class="container">
+
+      <category-filter-modal></category-filter-modal>
+      <div class="categoryFilter-modal-anchor"></div>
+      <menu-item-detail-modal></menu-item-detail-modal>
+      <div class="menuItemDetail-modal-anchor"></div>
+      <cart-modal></cart-modal>
+      <div class="cart-modal-anchor"></div>
+
       <div class="d-flex justify-content-between">
         <div class="p-2">
           <div class="home-header">
@@ -21,23 +29,38 @@
         </div>
       </div>
 
-      <div class="row card-container scroll">
-          <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
-              <div class="card mb-2">
-                  <div class="card-header">
-                    Some Very Cool Title
-                  </div>
-                  <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <div class="p-2">
+          <div class="d-flex justify-content-start">
+            <div class="p-2">
+              <h3>Categories</h3>
+            </div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="d-flex justify-content-end">
+            <div class="p-2">
+              <div class="row card-container scroll">
+                <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
+                  <div class="card mb-2">
+                    <div class="card-header">
+                      Some Very Cool Title
+                    </div>
+                    <div class="card-body">
                       <div class="pull-left card-body-left">
-                          <div class="card-body-content">Some very cool details to read and admire.  
-                            Hopefully encouraging you to buy our product.</div>
+                        <div class="card-body-content">Some very cool details to read and admire.  
+                          Hopefully encouraging you to buy our product.</div>
                       </div>
+                    </div>
                   </div>
+                </div>
+                <div *ngIf="!getMenuItemDetailsPerCategory.length">
+                  No Records Found
+                </div>
               </div>
+            </div>
           </div>
-          <div *ngIf="!getMenuItemDetailsPerCategory().length">
-              No Records Found
-          </div>
+        </div>
       </div>
     </div>
   </div>

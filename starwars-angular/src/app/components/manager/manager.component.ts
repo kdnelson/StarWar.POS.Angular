@@ -11,7 +11,7 @@ import { LogService } from '../../services/logService';
   providers: [ErrorType, LogService],
 })
 export class ManagerComponent implements OnInit {
-  private className: "ManagerComponent";
+  className: string = "ManagerComponent";
 
   public constructor(
     private router: Router,
