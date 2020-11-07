@@ -29,6 +29,7 @@ https://github.com/DanWahlin/Angular-RESTfulService
 + Add a home model and bring into form like managers
 + The menu Home/Managers switch is ify
 + Add error logging to managers component
++ Bring down the filter icon level with cart top, not the counter integers
 
 ***** Commands *****
 
