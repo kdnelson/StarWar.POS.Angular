@@ -8,6 +8,7 @@ import { Manager } from 'src/app/models/manager';
 })
 export class ManagersComponent implements OnInit {
   className: string = "ManagersComponent";
+  copywriteInfo: string = null;
   isManagerCard: boolean;
   title: string = "Managers";
   managers: Manager[] = [];
@@ -21,6 +22,7 @@ export class ManagersComponent implements OnInit {
   ngOnInit(): void {
     this.isManagerCard = true;
     this.getManagers();
+    this.prettyPrintCopywriteInfo();
   }
 
   changeDisplayMode() {
@@ -48,5 +50,17 @@ export class ManagersComponent implements OnInit {
       new Manager(17, "QQQQ"),
       new Manager(18, "RRRR")
     ]
+  }
+
+  private prettyPrintCopywriteInfo() {
+    let methodName: string = 'prettyPrintCopywriteInfo';
+
+    try {
+      var date = new Date().toString().split(' ')[3];
+      this.copywriteInfo = 'Silverskippy (c) ' + date;
+    } catch (errMsg) {
+      //let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      //this.logService.logHandler(errorMsg);
+    }
   }
 }

@@ -1,67 +1,60 @@
 <div class="d-flex justify-content-center background">
-  <div class="p-2">
-    <div class="container">
+  <div class="container">
 
-      <category-filter-modal></category-filter-modal>
-      <div class="categoryFilter-modal-anchor"></div>
-      <menu-item-detail-modal></menu-item-detail-modal>
-      <div class="menuItemDetail-modal-anchor"></div>
-      <cart-modal></cart-modal>
-      <div class="cart-modal-anchor"></div>
+    <category-filter-modal></category-filter-modal>
+    <div class="categoryFilter-modal-anchor"></div>
+    <menu-item-detail-modal></menu-item-detail-modal>
+    <div class="menuItemDetail-modal-anchor"></div>
+    <cart-modal></cart-modal>
+    <div class="cart-modal-anchor"></div>
 
-      <div class="d-flex justify-content-between">
-        <div class="p-2">
-          <div class="home-header">
-            <div class="filter-icon" role="button" (click)="openCategoryFilterModal()">
-              <img src="../../../assets/images/home-filter.png" style="margin-top:7px;width:32px;height:37px;">
-            </div>
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="d-flex justify-content-end">
-            <div class="p-2">   
-              <div class="cart-icon" role="button" (click)="openCartModal()">
-                <img src="../../../assets/images/home-cart.png" style="width:35px;height:40px;">
-                <div class="cart-counter" *ngIf="getTicketCounter > 0">{{ getTicketCounter }}</div>
-              </div>
-            </div>
-          </div>
+    <div class="d-flex justify-content-between">
+      <div class="home-header">
+        <div role="button" (click)="openCategoryFilterModal()">
+          <img class="filter-icon" src="../../../assets/images/home-filter.png">
         </div>
       </div>
-
-      <div class="d-flex justify-content-between">
-        <div class="p-2">
-          <div class="d-flex justify-content-start">
-            <div class="p-2">
-              <h3>Categories</h3>
-            </div>
-          </div>
+      <div class="d-flex justify-content-end"> 
+        <div role="button" (click)="openCartModal()">
+          <span class="badge badge-pill badge-bgcolor">
+            <div class="cart-counter" *ngIf="getTicketCounter > 0">{{ getTicketCounter }}</div>
+            <img class="cart-icon" src="../../../assets/images/home-cart.png">
+          </span>
         </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-start">
         <div class="p-2">
-          <div class="d-flex justify-content-end">
-            <div class="p-2">
-              <div class="row card-container scroll">
-                <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
-                  <div class="card mb-2">
-                    <div class="card-header">
-                      Some Very Cool Title
-                    </div>
-                    <div class="card-body">
-                      <div class="pull-left card-body-left">
-                        <div class="card-body-content">Some very cool details to read and admire.  
-                          Hopefully encouraging you to buy our product.</div>
-                      </div>
-                    </div>
+          <h3>Categories</h3>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <div class="p-2">
+          <div class="row card-container scroll">
+            <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
+              <div class="card mb-2">
+                <div class="card-header">
+                  Some Very Cool Title
+                </div>
+                <div class="card-body">
+                  <div class="pull-left card-body-left">
+                    <div class="card-body-content">Some very cool details to read and admire.  
+                      Hopefully encouraging you to buy our product.</div>
                   </div>
                 </div>
-                <div *ngIf="!getMenuItemDetailsPerCategory.length">
-                  No Records Found
-                </div>
               </div>
+            </div>
+            <div *ngIf="!getMenuItemDetailsPerCategory.length">
+              No Records Found
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <div class="copywrite-label">{{copywriteInfo}}</div>
     </div>
   </div>
 </div>
@@ -92,10 +85,10 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
 
 
-<!-- <div class="background-container">
+  <div class="background-container">
     <category-filter-modal></category-filter-modal>
     <div class="categoryFilter-modal-anchor"></div>
     <menu-item-detail-modal></menu-item-detail-modal>
@@ -150,252 +143,6 @@
         <div class="p-2">
           <div class="menu-XS-scrollview">
             <div class="button-XS-grid">
-              <div *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="menu-card" role="button" (click)="openMenuItemDetailModal()">
-                      <div class="row">
-                        <div class="card-title">
-                          #{{ item }} Some Very Cool Title
-                        </div>              
-                      </div>
-                      <div class="row">
-                        <div class="card-details">
-                          Some very cool details to read and admire.  
-                          Hopefully encouraging you to buy our product.
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="card-price">
-                          1,234.90 credits
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-center">
-        <div class="p-2"><div class="copywrite-lable">{{copywriteInfo}}</div></div>
-      </div>
-    </div>
-  
-    <div class="background-S-container">
-      <div class="d-flex justify-content-center">
-        <div class="p-2">Media size not supported.</div>
-      </div>
-    </div>
-  
-    <div class="background-M-container">
-      <div class="d-flex justify-content-between">
-        <div class="p-2">
-          <div class="row">
-            <div id="flyover-notification-M" [hidden]="nextNotification === null" class="flyover">
-              <div class="row">
-                <div class="col-2">
-                  <div class="flyover-info-image">
-                    <img src="../../assets/images/home-notification-info.png" style="width:18px;height:18px;">
-                  </div>
-                </div>
-                <div class="col-10">    
-                  <div class="flyover-info-text">
-                    {{ nextNotification }}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="filter-icon" class="filter-icon" role="button" (click)="openCategoryFilterModal()">
-                <img src="../../../assets/images/home-filter.png" style="margin-top:7px;width:32px;height:37px;">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="row">
-            <div class="col-12">
-              <div class="cart-icon" role="button" (click)="openCartModal()">
-                <img src="../../../assets/images/home-cart.png" style="width:35px;height:40px;">
-                <div class="cart-counter" *ngIf="getTicketCounter > 0">{{ getTicketCounter }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-inline-flex">
-        <div class="p-2">
-          <div class="category-M-column">
-            Categories
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="menu-M-scrollview">
-            <div class="button-M-grid">
-              <div *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="menu-card" role="button" (click)="openMenuItemDetailModal()">
-                      <div class="row">
-                        <div class="card-title">
-                          #{{ item }} Some Very Cool Title
-                        </div>              
-                      </div>
-                      <div class="row">
-                        <div class="card-details">
-                          Some very cool details to read and admire.  
-                          Hopefully encouraging you to buy our product.
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="card-price">
-                          1,234.90 credits
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-center">
-        <div class="p-2"><div class="copywrite-lable">{{copywriteInfo}}</div></div>
-      </div>
-    </div>
-    
-    <div class="background-L-container">
-      <div class="d-flex justify-content-between">
-        <div class="p-2">
-          <div class="row">
-            <div id="flyover-notification-L" [hidden]="nextNotification === null" class="flyover">
-              <div class="row">
-                <div class="col-2">
-                  <div class="flyover-info-image">
-                    <img src="../../assets/images/home-notification-info.png" style="width:18px;height:18px;">
-                  </div>
-                </div>
-                <div class="col-10">    
-                  <div class="flyover-info-text">
-                    {{ nextNotification }}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="filter-icon" role="button" (click)="openCategoryFilterModal()">
-                <img src="../../../assets/images/home-filter.png" style="margin-top:7px;width:32px;height:37px;">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="row">
-            <div class="col-12">
-              <div class="cart-icon" role="button" (click)="openCartModal()">
-                <img src="../../../assets/images/home-cart.png" style="width:35px;height:40px;">
-                <div class="cart-counter" *ngIf="getTicketCounter > 0">{{ getTicketCounter }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-inline-flex">
-        <div class="p-2">
-          <div class="category-L-column">
-            Categories
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="menu-L-scrollview">
-            <div class="button-L-grid">
-              <div *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="menu-card" role="button" (click)="openMenuItemDetailModal()">
-                      <div class="row">
-                        <div class="card-title">
-                          #{{ item }} Some Very Cool Title
-                        </div>              
-                      </div>
-                      <div class="row">
-                        <div class="card-details">
-                          Some very cool details to read and admire.  
-                          Hopefully encouraging you to buy our product.
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="card-price">
-                          1,234.90 credits
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-center">
-        <div class="p-2"><div class="copywrite-lable">{{copywriteInfo}}</div></div>
-      </div>
-    </div>
-    
-    <div class="background-XL-container">
-      <div class="d-flex justify-content-between">
-        <div class="p-2">
-          <div class="row">
-            <div id="flyover-notification-XL" [hidden]="nextNotification === null" class="flyover-XL">
-              <div class="row">
-                <div class="col-2">
-                  <div class="flyover-XL-info-image">
-                    <img src="../../assets/images/home-notification-info.png" style="width:18px;height:18px;">
-                  </div>
-                </div>
-                <div class="col-10">    
-                  <div class="flyover-XL-info-text">
-                    {{ nextNotification }}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="filter-icon" role="button" (click)="openCategoryFilterModal()">
-                <img src="../../../assets/images/home-filter.png" style="margin-top:7px;width:32px;height:37px;">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="row">
-            <div class="col-12">
-              <div class="cart-icon" role="button" (click)="openCartModal()">
-                <img src="../../../assets/images/home-cart.png" style="width:35px;height:40px;">
-                <div class="cart-counter" *ngIf="getTicketCounter > 0">{{ getTicketCounter }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-inline-flex">
-        <div class="p-2">
-          <div class="category-XL-column">
-            Categories
-          </div>
-        </div>
-        <div class="p-2">
-          <div class="menu-XL-scrollview">
-            <div class="button-XL-grid">
               <div *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
                 <div class="row">
                   <div class="col-12">

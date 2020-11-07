@@ -17,27 +17,33 @@
 }
 
 .filter-icon {
-  margin-top: 3px;
-  margin-left: 10px;
+  margin-left:10px;
+  margin-top:3px;
+  width:32px;
+  height:37px;
 }
 
 .cart-counter {
-  margin-top: 3px;
-  top: 12px;
-  right: 105px;
+  margin-top: 7px;
+  margin-left: -2px;
   color: rgba(241, 226, 7, 0.87);
   font-size: medium;
   font-weight: bold;
-  position: absolute;
 }
 
 .cart-icon {
-  margin-top: 7px;
+  margin-top: -2px;
   margin-right: 10px;
+  width:35px;
+  height:40px;
+}
+
+.badge-bgcolor {
+  background-color: transparent;
 }
 
 .scroll {
-  max-height: 382px;
+  max-height: 343px;
   overflow-y: auto;
 }
 
@@ -46,6 +52,10 @@
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
 }
 
+.copywrite-label {
+  color: white;
+  font-size: x-small;
+}
 
 /* .flyover {
     height: 72px;

@@ -37,7 +37,7 @@ export class HomeComponent {
     let methodName: string = 'getTicketCounter';
 
     try {
-      return 3;
+      return 333;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
