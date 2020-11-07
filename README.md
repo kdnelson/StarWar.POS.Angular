@@ -25,12 +25,10 @@ https://github.com/DanWahlin/Angular-RESTfulService
 + Fix category filter buttons.  They are shared with MenuItemDetail, so...
 + TrackBy?
 + Rewrite modals using better bootstrap card and scroll techniques
-+ Look how he does image styling... style="margin-top:7px;width:32px;height:37px;"
 + Clean out Home.html and .css
 + Add a home model and bring into form like managers
-+ Get modal to work again as his does.
 + The menu Home/Managers switch is ify
-+ Add copywrite to manager pages
++ Add error logging to managers component
 
 ***** Commands *****
 
