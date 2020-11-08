@@ -6,11 +6,52 @@ https://github.com/DanWahlin/Angular-JumpStart
 https://github.com/DanWahlin/angular-architecture
 https://github.com/DanWahlin/Angular-RESTfulService
 
++ Why Angular?  
+  1. JQuery and JavaScript couldn't maintain state across views
+  2. Angular provides routing, state management, rxjs library and http by default.
++ Major Angular blocks
+  1. angular.json     - The CLR builder looks for this config file and endpoints within for the application endpoint
+  2. main.ts          - The angular.json build section points to the main.ts file which creates the browser enviroment.                
+  3. app.module.ts    - The first Angular module is called and bootstrapped - AppModule.  It has declarations to all the components              
+  4. app.component.ts - The AppComponent is bootstrapped by the Angular base module called NgModule.  It interacts with the webpage and serves data to it.
+  5. index.html       - The AppComponent's directive selector is called.
++ Component properties and declaration
+  1. Selector - used for accessing the component as a directive
+  2. Template/TemplateURL - contains HTML of the component
+  3. StylesURL - contains component-specific stylesheets
+  4. Defined by the @Component decorator
++ Angular binding
+  1. Property binding "[...]"
+  2. Event binding "(...)".
++ Angular provides two types of compilation:
+  1. JIT(Just-in-Time) compilation
+     a. Faster deployment
+  2. AOT(Ahead-of-Time) compilation
+     a. More responsive UI since the application is completly compiled before runtime.
+     b. All external HTML/CSS files are sent with the application, allowing for less AJAX requests.
+     c. Errors in building phase can be handled by developers
+     d. All HTML files are pulled into the JS files at compile time, adding security to the application.
 + Angular component lifecycle
-+ 3 types of directives
-+ AOC
-+ Bootstrap Flex description.  Like what is p-2?
-
++ Angular's 3 types of directives
+  1. Components: 
+     By the selector <my-component></my-component>
+  2. Attribute Directives
+     Its a custom way to modify the HTML DOM.  
+     a. Import 'Directive' and 'ElementRef' @angular/core. ie: import { Directive, ElementRef } from '@angular/core';
+     b. Decorate a class with @Directive and create a property bound selector.  ie: @Directive({
+                                                                                      selector: '[appHighlight]'
+                                                                                    })
+     c. Define the exported class and create an elementRef constructor.  ie: export class HighlightDirective {
+                                                                                  constructor(el: ElementRef) {
+                                                                                     el.nativeElement.style.backgroundColor = 'yellow';
+                                                                                  }
+                                                                              }
+     d. Place this custom directive within the HTML like you would a component directove.  ie: <p appHighlight>Highlight me!</p>
+  3. Structural Directives
+     Prebuilt Angular directives such as ngIf, ngFor and ngSwitch that mod the HTML DOM using the component's methods and attributes.
++ Bootstrap Flex description.  
+  1. What is it basically? This... <div class="d-flex justify-content-start/between/center/end" />
+  2. What is p-2? Its vertical padding
 + Versus differences
   Ng 7+
   Routing on Modules:
@@ -43,8 +84,10 @@ rm -r node_modules
 npm i
 ng serve -o
 ng serve --port 0
+ng serve --aot
+ng build        // create deployment artifacts to the dist folder
+ng build --aot  // create deployment artifacts to the dist folder
 ng config schematics.@schematics/angular:component.styleext scss
-ng build //create deployment artifacts to the dist folder
 Create component:
   ng g c manager-details --skip-import
 
