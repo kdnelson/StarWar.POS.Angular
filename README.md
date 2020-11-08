@@ -64,7 +64,7 @@ https://github.com/DanWahlin/Angular-RESTfulService
                                                                                      el.nativeElement.style.backgroundColor = 'yellow';
                                                                                   }
                                                                               }
-     d. Place this custom directive within the HTML like you would a component directove.  ie: "<p appHighlight>Highlight me!</p>"
+     d. Place this custom directive within the HTML like you would a component directove.  ie: "<appHighlight>Highlight me!/>"
   3. Structural Directives
      Prebuilt Angular directives such as *ngIf, *ngFor and *ngSwitch that mod the HTML DOM using the component's methods and attributes.
 + Bootstrap Flex description.  
