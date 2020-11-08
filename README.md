@@ -36,6 +36,13 @@ https://github.com/DanWahlin/Angular-RESTfulService
      c. Errors in building phase can be handled by developers
      d. All HTML files are pulled into the JS files at compile time, adding security to the application.
 + Observables versus Promises
+  Observables emit multiple objects over time
+  Promises emit on object
+  Observables are lazy, only called when subscribed to
+  Promises are not lazy
+  Observables can be cancelled by an unsubscribe call
+  Promises can't be cancelled
+  Observables have operators such as map, forEach, filter, reduce, retry, retryWhen etc.
 + Angular component lifecycle
   1. In short:
      a. constructor -> ngOnchanges -> ngOnInit -> ngDoCheck -> (ngAfterContentInit/ngAfterContentChecked/ngAfterViewInit/ngAfterViewChecked) -> ngOnDestroy
