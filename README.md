@@ -45,10 +45,10 @@ https://github.com/DanWahlin/Angular-RESTfulService
      c. ngOnInit
      d. ngDoCheck
      e. Hook Options
-        1. ngAfterContentInit
-        2. ngAfterContentChecked
-        3. ngAfterViewInit
-        4. ngAfterViewChecked
+        a. ngAfterContentInit
+        b. ngAfterContentChecked
+        c. ngAfterViewInit
+        d. ngAfterViewChecked
      f. ngOnDestroy
 + Angular's 3 types of directives
   1. Components: 
