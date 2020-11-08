@@ -40,16 +40,16 @@ https://github.com/DanWahlin/Angular-RESTfulService
   1. In short:
      a. constructor -> ngOnchanges -> ngOnInit -> ngDoCheck -> (ngAfterContentInit/ngAfterContentChecked/ngAfterViewInit/ngAfterViewChecked) -> ngOnDestroy
   2. In detail:
-     a. constructor
-     b. ngOnchanges
-     c. ngOnInit
-     d. ngDoCheck
+     a. constructor - Called during component instaniation
+     b. ngOnchanges - Called on propertiy changes, holds pre/cur values
+     c. ngOnInit    - Called once for component setup
+     d. ngDoCheck   - Called for non-Angular events
      e. Hook Options
-        a. ngAfterContentInit
-        b. ngAfterContentChecked
-        c. ngAfterViewInit
-        d. ngAfterViewChecked
-     f. ngOnDestroy
+        a. ngAfterContentInit     - Called after the first ngDoCheck is called
+        b. ngAfterContentChecked  - Called after each subsequent ngDoCheck is called
+        c. ngAfterViewInit        - Called after compoent view is initialized
+        d. ngAfterViewChecked     - Called when compoent's view is checked
+     f. ngOnDestroy - Called just before a component is destroyed, used for service clean ups
 + Angular's 3 types of directives
   1. Components: 
      By the selector <my-component></my-component>
