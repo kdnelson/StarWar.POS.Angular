@@ -97,9 +97,8 @@ https://github.com/DanWahlin/Angular-RESTfulService
 
 ***** TODO *****
 
-+ Fix category filter buttons.  They are shared with MenuItemDetail, so...
++ Rename/clean cart modal after bootstrap refactor
 + TrackBy?
-+ Rewrite modals using better bootstrap card and scroll techniques
 + Clean out Home.html and .css
 + Add a home model and bring into form like managers
 + The menu Home/Managers switch is ify
