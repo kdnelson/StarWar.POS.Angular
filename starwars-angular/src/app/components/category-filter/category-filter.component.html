@@ -16,8 +16,8 @@
                         </div>
                      </div>
                 </div>
-                <div class="row">
-                    <div class="categoryFilter-scrollview">
+                <div class="d-flex justify-content-center">
+                    <div class="row card-container scroll">
                         <div *ngFor="let filter of categoryFilter.getData().filters">
                             <div *ngIf="filter.isSelected" class="categoryFilter-card-selected" role="button" (click)="selectedFilter(filter, categoryFilter.getData())">
                                 {{ filter.name }}
@@ -28,8 +28,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="categoryFilter-filter-btn" role="button" (click)="selectedCategoryFilters(categoryFilter.getData())">Filter</div>
+                <div class="d-flex justify-content-center">
+                    <div class="row">
+                        <div class="categoryFilter-filter-btn" role="button" (click)="selectedCategoryFilters(categoryFilter.getData())">Filter</div>
+                    </div> 
                 </div>
             </div>
         </div>

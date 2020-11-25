@@ -1,7 +1,11 @@
+.scroll {
+  max-height: 348px;
+  overflow-y: auto;
+}
 
 .categoryFilter-container {
     width: 250px;
-    height: 464px;
+    height: 447px;
     background-color: black;
     overflow: hidden;
 }
@@ -10,24 +14,10 @@
     height: 32px;
   }
 
-.categoryFilter-scrollview {
-    width: 235px;
-    height: 360px;
-    margin-top: 0px;
-    margin-left: 8px;
-    margin-right: 7px;
-    margin-bottom: 0px;
-    direction: rtl;
-    position: absolute;
-    border-color: transparent;
-    overflow-y: overlay;
-}
-
 .categoryFilter-card-selected {
-    position: relative;
-    height: 52px;
+    height: 48px;
     width: 222px;
-    padding-top: 17px;
+    padding-top: 13px;
     margin-left: 10px;
     margin-right: 0px;
     margin-bottom: 10px;
@@ -39,10 +29,9 @@
 }
 
 .categoryFilter-card-not-selected {
-    position: relative;
-    height: 52px;
+    height: 48px;
     width: 222px;
-    padding-top: 17px;
+    padding-top: 13px;
     margin-left: 10px;
     margin-right: 0px;
     margin-bottom: 10px;
@@ -63,7 +52,6 @@
     font-size: xx-large;
     font-weight: bolder;
     text-align: center;
-    margin-top: 365px;
     margin-bottom: 5px;
     margin-left: 0px;
     margin-right: 0px;
