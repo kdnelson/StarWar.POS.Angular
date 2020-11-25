@@ -7,12 +7,7 @@
     width: 250px;
     height: 447px;
     background-color: black;
-    overflow: hidden;
 }
-
-.categoryFilter-card-header-label {
-    height: 32px;
-  }
 
 .categoryFilter-card-selected {
     height: 48px;
@@ -60,7 +55,6 @@
   }
 
   .categoryFilter-modal-label {
-    margin-top: 6px;
     padding-left: 10px;
     padding-right: 10px;
     font-size: medium;

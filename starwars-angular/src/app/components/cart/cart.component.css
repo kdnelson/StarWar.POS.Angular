@@ -1,21 +1,87 @@
-.cart-container {
+.scroll {
+  max-height: 232px;
+  overflow-y: auto;
+}
+
+.categoryFilter-container {
+    width: 250px;
+    height: 447px;
+    background-color: black;
+}
+
+.cart-counter-label {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: medium;
+  color: rgba(0, 0, 0, 0.75);
+  background-color: white;
+  border-radius: 7px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.cart-number-label {
+  color: white;
+  font-size: small;
+  font-weight: bold;
+}
+
+.categoryFilter-card-not-selected {
+    height: 48px;
+    width: 222px;
+    padding-top: 13px;
+    margin-left: 10px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: large;
+    color: white;
+    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+    background-size: auto 400%;
+    background-position: 100% 100%;
+    transition: background-position 0.2s;
+}
+
+.categoryFilter-filter-btn {
+    height: 67px;
+    width: 250px;
+    color: white;
+    font-size: xx-large;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 24px;
+    background-color: green;
+  }
+
+  .categoryFilter-modal-label {
+    margin-top: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: medium;
+    color: rgba(0, 0, 0, 0.75);
+    background-color: white;
+    border-radius: 7px;
+    font-weight: bolder;
+    text-align: center;
+  }
+
+  .cart-card-totaler-label
+  {
+    height: 116px;
+    width: 250px;
+    color: black;
+    background-color: white;
+  }
+
+/* .cart-container {
     width: 250px;
     height: 489px;
     background-color: black;
     overflow: hidden;
-}
-
-.cart-scrollview {
-    width: 235px;
-    height: 280px;
-    margin-top: 0px;
-    margin-left: 8px;
-    margin-right: 7px;
-    margin-bottom: 0px;
-    direction: ltr;
-    position: absolute;
-    border-color: transparent;
-    overflow-y: overlay;
 }
 
 .cart-counter-label {
@@ -135,4 +201,4 @@
   .cart-totals-label {
     color: black;
     background-color: white;
-  }
+  } */

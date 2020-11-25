@@ -7,15 +7,11 @@
     <div *ngIf="categoryFilter.hasData()">
         <div class="categoryFilter-container">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="categoryFilter-card-header-label">
-                           <div class="d-flex justify-content-center">
-                             <div class="categoryFilter-modal-label">Menu Filter</div>
-                           </div>
-                        </div>
-                     </div>
-                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="p-2">
+                        <div class="categoryFilter-modal-label">Menu Filter</div>
+                    </div>
+                 </div>
                 <div class="d-flex justify-content-center">
                     <div class="row card-container scroll">
                         <div *ngFor="let filter of categoryFilter.getData().filters">
