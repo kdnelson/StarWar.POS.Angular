@@ -97,7 +97,6 @@ https://github.com/DanWahlin/Angular-RESTfulService
 
 ***** TODO *****
 
-+ Rename/clean cart modal after bootstrap refactor
 + Improve bootstrap for MenuItemDetail modal
 + TrackBy?
 + Clean out Home.html and .css
