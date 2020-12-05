@@ -3,10 +3,15 @@
   overflow-y: auto;
 }
 
-.categoryFilter-container {
-    width: 250px;
-    height: 447px;
-    background-color: black;
+.cart-container {
+  width: 275px;
+  height: 447px;
+  background-color: black;
+}
+
+.cart-header {
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .cart-counter-label {
@@ -26,179 +31,65 @@
   font-weight: bold;
 }
 
-.categoryFilter-card-not-selected {
-    height: 48px;
-    width: 222px;
-    padding-top: 13px;
-    margin-left: 10px;
-    margin-right: 0px;
-    margin-bottom: 10px;
-    text-align: center;
-    font-weight: bolder;
-    font-size: large;
-    color: white;
-    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
-    background-size: auto 400%;
-    background-position: 100% 100%;
-    transition: background-position 0.2s;
+.cart-card-not-selected {
+  height: 48px;
+  width: 247px;
+  padding-top: 6px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+  background-size: auto 400%;
+  background-position: 100% 88%;
+  transition: background-position 0.2s;
 }
 
-.categoryFilter-filter-btn {
-    height: 67px;
-    width: 250px;
-    color: white;
-    font-size: xx-large;
-    font-weight: bolder;
-    text-align: center;
-    margin-bottom: 5px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-top: 24px;
-    background-color: green;
-  }
-
-  .categoryFilter-modal-label {
-    margin-top: 6px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: medium;
-    color: rgba(0, 0, 0, 0.75);
-    background-color: white;
-    border-radius: 7px;
-    font-weight: bolder;
-    text-align: center;
-  }
-
-  .cart-card-totaler-label
-  {
-    height: 116px;
-    width: 250px;
-    color: black;
-    background-color: white;
-  }
-
-/* .cart-container {
-    width: 250px;
-    height: 489px;
-    background-color: black;
-    overflow: hidden;
+.cart-card-name-label {
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  margin-left: 7px;
 }
 
-.cart-counter-label {
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: medium;
-    color: rgba(0, 0, 0, 0.75);
-    background-color: white;
-    border-radius: 7px;
-    font-weight: bolder;
-    text-align: center;
-  }
+.cart-card-count-label {
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  margin-right: 7px;
+}
 
-  .cart-card-header-label {
-    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
-    background-size: auto 400%;
-    background-position: 100% 100%;
-    transition: background-position 0.2s;
-    height: 36px;
-  }
+.cart-card-details-label {
+  color: white;
+  font-size: x-small;
+  font-weight: bold;
+  margin-left: 7px;
+}
 
-  .cart-card-totaler-label {
-    margin-top: 290px;
-    height: 71px;
-  }
+.cart-card-item-total-label {
+  color: white;
+  font-size: x-small;
+  font-weight: bold;
+  margin-right: 7px;
+}
 
-  .cart-submit-btn {  
-    height: 55px;
-    width: 250px;
-    font-size: xx-large;
-    font-weight: bold;
-    margin-top: 37px;
-    padding-top: 18px;
-    text-align: center;
-    color: white;
-    background-color: green;
-  }
+.cart-card-totaler-label {
+  height: 110px;
+  width: 275px;
+  color: black;
+  background-color: white;
+  font-size: larger;
+  font-weight: bolder;
+}
 
-  .cart-card {
-    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
-    background-size: auto 400%;
-    background-position: 100% 100%;
-    transition: background-position 0.2s;
-    height: 70px;
-    width: 224px;
-  }
-
-  .card-title {
-    font-size: large;
-    font-weight: bolder;
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-
-  .card-details {
-    font-size: medium;
-    font-weight: bolder;
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-
-  .card-price {
-    font-size: medium;
-    font-weight: bolder;
-    margin-top: 5px;
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-
-  .cart-number-label {
-    color: white;
-    font-size: small;
-    font-weight: bold;
-  }
-
-  .cart-card-topline-label {
-    color: white;
-    font-size: large;
-    font-weight: bold;
-  }
-
-  .cart-card-bottomline-label {
-    font-size: small;
-    font-weight: bold;
-  }
-
-  .cart-sub-total-label {
-    font-size: medium;
-    font-weight: bold;
-  }
-
-  .cart-sub-total-amount-label {
-    font-size: medium;
-    font-weight: bold;
-  }
-  
-  .cart-tax-label {
-    font-size: medium;
-    font-weight: bold;
-  }
-
-  .cart-tax-amount-label {
-    font-size: medium;
-    font-weight: bold;
-  }
-
-  .cart-total-label {
-    font-size: large;
-    font-weight: bolder;
-  }
-
-  .cart-total-amount-label {
-    font-size: large;
-    font-weight: bolder;
-  }
-
-  .cart-totals-label {
-    color: black;
-    background-color: white;
-  } */
+.cart-submit-btn {
+  height: 67px;
+  width: 275px;
+  color: white;
+  font-size: xx-large;
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 24px;
+  background-color: green;
+}

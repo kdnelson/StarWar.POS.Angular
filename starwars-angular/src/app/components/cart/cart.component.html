@@ -5,9 +5,9 @@
     (onDismiss)="resetForm()"
 >
    <div *ngIf="cart.hasData()">
-      <div class="categoryFilter-container">
+      <div class="cart-container">
          <div class="container">
-            <div class="d-flex justify-content-between">
+            <div class="cart-header d-flex justify-content-between">
                <div class="p-2">
                   <div class="cart-number-label">CartNumber</div>
                </div>
@@ -18,68 +18,45 @@
             <div class="d-flex justify-content-center">
                 <div class="row card-container scroll">
                     <div *ngFor="let cartItem of cart.getData().cartItems">
-                        <div class="categoryFilter-card-not-selected" role="button" (click)="selectedFilter(filter, categoryFilter.getData())">
-                           {{ cartItem.name }}
+                        <div class="cart-card-not-selected" role="button" (click)="openMenuItemDetailModal()">
+                           <div class="d-flex justify-content-between">
+                              <div class="cart-card-name-label">{{ cartItem.name }}</div>
+                              <div class="cart-card-count-label">{{ cartItem.quantity }}</div>
+                           </div>
+                           <div class="d-flex justify-content-between">
+                              <div class="cart-card-details-label">Targeting Computer, missiles, ...</div>
+                              <div class="cart-card-item-total-label">{{ cartItem.adjustedPrice }}</div>
+                           </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center">
                <div class="row">
-                   <div class="cart-card-totaler-label"></div>
+                   <div class="cart-card-totaler-label">
+                     <div class="d-flex flex-column">
+                        <div class="d-flex">
+                           <div class="p-2 flex-fill">Sub Total:</div>
+                           <div class="p-2 mr-auto">100.00 cr</div>
+                        </div>
+                        <div class="d-flex">
+                           <div class="p-2 flex-fill">Tax:</div>
+                           <div class="p-2 mr-auto">10.00 %</div>
+                        </div>
+                        <div class="d-flex">
+                           <div class="p-2 flex-fill">Total:</div>
+                           <div class="p-2 mr-auto">15656500.00 cr</div>
+                        </div>
+                     </div>
+                   </div>
                </div> 
            </div>
             <div class="d-flex justify-content-center">
                 <div class="row">
-                    <div class="categoryFilter-filter-btn" role="button" (click)="null">Submit</div>
+                    <div class="cart-submit-btn" role="button" (click)="submitCart(cart.getData())">Submit</div>
                 </div> 
             </div>
         </div>
-
-
-
-
-         <!-- <div class="row">
-            <div class="col-12">
-               <div class="cart-card-header-label">
-                  <div class="d-flex">
-                     <div class="p-2 flex-fill"><div class="cart-number-label">CartNumber</div></div>
-                     <div class="p-2 mr-auto"><div class="cart-counter-label">1234</div></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="cart-scrollview">
-            <div *ngFor="let cartItem of cart.getData().cartItems">
-               <div class="cart-card" role="button" (click)="openMenuItemDetailModal()">
-                  <div class="d-flex">
-                     <div class="p-2 flex-fill"><div class="cart-card-topline-label">{{ cartItem.name }}</div></div>
-                     <div class="p-2 mr-auto"><div class="cart-card-topline-label">{{ cartItem.quantity }}</div></div>
-                  </div>
-                  <div class="d-flex">
-                     <div class="p-2 flex-fill"></div>
-                     <div class="p-2 mr-auto"><div class="cart-card-bottomline-label">{{ cartItem.adjustedPrice }}</div></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="cart-card-totaler-label">
-            <div class="d-flex flex-column">
-               <div class="cart-totals-label d-flex">
-                  <div class="p-2 flex-fill"><div class="cart-sub-total-label">Sub Total:</div></div>
-                  <div class="p-2 mr-auto"><div class="cart-sub-total-amount-label">100.00 cr</div></div>
-               </div>
-               <div class="cart-totals-label d-flex">
-                  <div class="p-2 flex-fill"><div class="cart-tax-label">Tax:</div></div>
-                  <div class="p-2 mr-auto"><div class="cart-tax-amount-label">10.00 %</div></div>
-               </div>
-               <div class="cart-totals-label d-flex">
-                  <div class="p-2 flex-fill"><div class="cart-total-label">Total:</div></div>
-                  <div class="p-2 mr-auto"><div class="cart-total-amount-label">15656500.00 cr</div></div>
-               </div>
-            </div>
-         </div>
-         <div class="cart-submit-btn">Submit</div> -->
       </div>
    </div>
 </ngx-smart-modal>

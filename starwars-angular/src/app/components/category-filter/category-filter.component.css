@@ -4,63 +4,63 @@
 }
 
 .categoryFilter-container {
-    width: 250px;
-    height: 447px;
-    background-color: black;
+  width: 275px;
+  height: 447px;
+  background-color: black;
 }
 
 .categoryFilter-card-selected {
-    height: 48px;
-    width: 222px;
-    padding-top: 13px;
-    margin-left: 10px;
-    margin-right: 0px;
-    margin-bottom: 10px;
-    text-align: center;
-    font-weight: bolder;
-    font-size: large;
-    color: white;
-    background: rgba(241, 226, 7, 0.87);
+  height: 48px;
+  width: 247px;
+  padding-top: 14px;
+  margin-left: 10px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bolder;
+  font-size: large;
+  color: white;
+  background: rgba(241, 226, 7, 0.87);
 }
 
 .categoryFilter-card-not-selected {
-    height: 48px;
-    width: 222px;
-    padding-top: 13px;
-    margin-left: 10px;
-    margin-right: 0px;
-    margin-bottom: 10px;
-    text-align: center;
-    font-weight: bolder;
-    font-size: large;
-    color: white;
-    background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
-    background-size: auto 400%;
-    background-position: 100% 100%;
-    transition: background-position 0.2s;
+  height: 48px;
+  width: 247px;
+  padding-top: 14px;
+  margin-left: 10px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bolder;
+  font-size: large;
+  color: white;
+  background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+  background-size: auto 400%;
+  background-position: 100% 88%;
+  transition: background-position 0.2s;
 }
 
 .categoryFilter-filter-btn {
-    height: 67px;
-    width: 250px;
-    color: white;
-    font-size: xx-large;
-    font-weight: bolder;
-    text-align: center;
-    margin-bottom: 5px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-top: 24px;
-    background-color: green;
-  }
+  height: 67px;
+  width: 275px;
+  color: white;
+  font-size: xx-large;
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 24px;
+  background-color: green;
+}
 
-  .categoryFilter-modal-label {
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: medium;
-    color: rgba(0, 0, 0, 0.75);
-    background-color: white;
-    border-radius: 7px;
-    font-weight: bolder;
-    text-align: center;
-  }
+.categoryFilter-modal-label {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: medium;
+  color: rgba(0, 0, 0, 0.75);
+  background-color: white;
+  border-radius: 7px;
+  font-weight: bolder;
+  text-align: center;
+}

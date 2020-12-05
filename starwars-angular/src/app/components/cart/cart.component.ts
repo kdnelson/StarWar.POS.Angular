@@ -85,6 +85,17 @@ export class CartComponent implements OnInit {
     }
   }
 
+  submitCart(cart: Cart) {
+    let methodName: string = 'submitCart';
+
+    try {
+      this.closeAllModals();
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
   private closeAllModals() : void {
     let methodName: string = 'closeAllModals';
 
