@@ -10,8 +10,7 @@ import { LogService } from '../../services/logService';
 @Component({
   selector: 'menu-item-detail-modal',
   templateUrl: './menu-item-detail.component.html',
-  styleUrls: ['./menu-item-detail.component-XS.css',
-              './menu-item-detail.component-common.css'],
+  styleUrls: ['./menu-item-detail.component.css'],
   providers: [ErrorType, LogService]
 })
 export class MenuItemDetailComponent implements OnInit {
@@ -27,6 +26,17 @@ export class MenuItemDetailComponent implements OnInit {
     let methodName: string = 'ngOnInit';
 
     try {
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  submitMenuItemDetail(menuItemDetail: MenuItemDetail) {
+    let methodName: string = 'submitMenuItemDetail';
+
+    try {
+      this.closeAllModals();
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -168,6 +178,7 @@ export class MenuItemDetailComponent implements OnInit {
 
     try {
       this.ngxSmartModalService.getModal('categoryFilter').close();
+      this.ngxSmartModalService.getModal('menuItemDetail').close();
       this.ngxSmartModalService.getModal('cart').close(); 
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);

@@ -10,25 +10,25 @@
 }
 
 .cart-header {
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-
-.cart-counter-label {
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: medium;
-  color: rgba(0, 0, 0, 0.75);
-  background-color: white;
-  border-radius: 7px;
-  font-weight: bolder;
-  text-align: center;
+  padding-top: 9px;
+  padding-bottom: 9px;
 }
 
 .cart-number-label {
   color: white;
   font-size: small;
   font-weight: bold;
+}
+
+.cart-counter-label {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: medium;
+  border-radius: 7px;
+  font-weight: bolder;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.75);
+  background-color: white;
 }
 
 .cart-card-not-selected {

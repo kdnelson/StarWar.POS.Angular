@@ -73,23 +73,23 @@ export class CartComponent implements OnInit {
     }
   }
 
-  openMenuItemDetailModal() {
-    let methodName: string = 'openMenuItemDetailModal';
+  submitCart(cart: Cart) {
+    let methodName: string = 'submitCart';
 
     try {
       this.closeAllModals();
-      this.menuItemDetailComponent.loadModal(true);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
   }
 
-  submitCart(cart: Cart) {
-    let methodName: string = 'submitCart';
+  openMenuItemDetailModal() {
+    let methodName: string = 'openMenuItemDetailModal';
 
     try {
       this.closeAllModals();
+      this.menuItemDetailComponent.loadModal(true);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
