@@ -97,12 +97,14 @@ https://github.com/DanWahlin/Angular-RESTfulService
 
 ***** TODO *****
 
-+ Improve bootstrap for MenuItemDetail modal
++ Finish pic/details switch MenuItemDetail modal
++ Clean MenuItemDetail modal
 + TrackBy?
-+ Clean out Home.html and .css
-+ Add a home model and bring into form like managers
++ Create home module and bring into form like managers
 + The menu Home/Managers switch is ify
 + Add error logging to managers component
++ Add simple login
++ Add session cache
 
 ***** Commands *****
 
