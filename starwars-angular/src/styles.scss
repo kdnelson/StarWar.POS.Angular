@@ -39,417 +39,132 @@ body {
 
 /* Not Supported */
 @media (max-width: 319px) {
-    .nsm-content {
+    .header-container {
         display: none;
     }
-
-    .menuItemDetail-XS-container {
+    .header-large-container {
+        display: none;
+    }
+    .nsm-content {
         display: none;
     }
     .menuItemDetail-container {
         display: none;
     }
-
-    .background-XS-container {
+    .categoryFilter-container {
         display: none;
     }
-    .background-S-container {
-        display: none;
-    }
-    .background-M-container {
-        display: none;
-    }
-    .background-L-container {
-        display: none;
-    }
-    .background-XL-container {
-        display: none;
-    }
-
-    .categoryFilter-XS-container {
-        display: none;
-    }
-    .categoryFilter-M-container {
-        display: none;
-    }
-    .categoryFilter-L-container {
-        display: none;
-    }
-    .categoryFilter-XL-container {
-        display: none;
-    }
-    
-    .menuItemDetail-XS-container {
-        display: none;
-    }
-    .menuItemDetail-M-container {
-        display: none;
-    }
-    .menuItemDetail-L-container {
-        display: none;
-    }
-    .menuItemDetail-XL-container {
-        display: none;
-    }
-
-    .cart-XS-container {
-        display: none;
-    }
-    .cart-M-container {
-        display: none;
-    }
-    .cart-L-container {
-        display: none;
-    }
-    .cart-XL-container {
+    .cart-container {
         display: none;
     }
 }
 
 /* XS -Small devices (portrait phones, 320px and up) */
 @media (min-width: 320px) {
+    .header-container {
+        display: block;
+    }
+    .header-large-container {
+        display: none;
+    }
     .nsm-content {
         display: block;
     }
-
-    .menuItemDetail-XS-container {
-        display: block;
-    }
     .menuItemDetail-container {
-        display: none;
-    }
-
-    .background-XS-container {
         display: block;
     }
-    .background-S-container {
-        display: none;
-    }
-    .background-M-container {
-        display: none;
-    }
-    .background-L-container {
-        display: none;
-    }
-    .background-XL-container {
-        display: none;
-    }
-
-    .categoryFilter-XS-container {
+    .categoryFilter-container {
         display: block;
     }
-    .categoryFilter-M-container {
-        display: none;
-    }
-    .categoryFilter-L-container {
-        display: none;
-    }
-    .categoryFilter-XL-container {
-        display: none;
-    }
-    
-    .menuItemDetail-XS-container {
+    .cart-container {
         display: block;
-    }
-    .menuItemDetail-M-container {
-        display: none;
-    }
-    .menuItemDetail-L-container {
-        display: none;
-    }
-    .menuItemDetail-XL-container {
-        display: none;
-    }
-
-    .cart-XS-container {
-        display: block;
-    }
-    .cart-M-container {
-        display: none;
-    }
-    .cart-L-container {
-        display: none;
-    }
-    .cart-XL-container {
-        display: none;
     }
 }
 
 /* S -Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-    .nsm-content {
+    .header-container {
+        display: block;
+    }
+    .header-large-container {
         display: none;
     }
-
-    .menuItemDetail-XS-container {
-        display: none;
+    .nsm-content {
+        display: block;
     }
     .menuItemDetail-container {
-        display: none;
-    }
-
-    .background-XS-container {
-        display: none;
-    }
-    .background-S-container {
         display: block;
-        padding-top: 80px;
-        font-size: large;
-        font-weight: bolder;
     }
-    .background-M-container {
-        display: none;
+    .categoryFilter-container {
+        display: block;
     }
-    .background-L-container {
-        display: none;
-    }
-    .background-XL-container {
-        display: none;
-    }
-
-    .categoryFilter-XS-container {
-        display: none;
-    }
-    .categoryFilter-M-container {
-        display: none;
-    }
-    .categoryFilter-L-container {
-        display: none;
-    }
-    .categoryFilter-XL-container {
-        display: none;
-    }
-    
-    .menuItemDetail-XS-container {
-        display: none;
-    }
-    .menuItemDetail-M-container {
-        display: none;
-    }
-    .menuItemDetail-L-container {
-        display: none;
-    }
-    .menuItemDetail-XL-container {
-        display: none;
-    }
-
-    .cart-XS-container {
-        display: none;
-    }
-    .cart-M-container {
-        display: none;
-    }
-    .cart-L-container {
-        display: none;
-    }
-    .cart-XL-container {
-        display: none;
+    .cart-container {
+        display: block;
     }
 }
  
 /* M - Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
-    .nsm-content {
+    .header-container {
         display: block;
     }
-
-    .menuItemDetail-XS-container {
+    .header-large-container {
         display: none;
+    }
+    .nsm-content {
+        display: block;
     }
     .menuItemDetail-container {
         display: block;
     }
-
-    .background-XS-container {
-        display: none;
-    }
-    .background-S-container {
-        display: none;
-    }
-    .background-M-container {
+    .categoryFilter-container {
         display: block;
     }
-    .background-L-container {
-        display: none;
-    }
-    .background-XL-container {
-        display: none;
-    }
-
-    .categoryFilter-XS-container {
-        display: none;
-    }
-    .categoryFilter-M-container {
+    .cart-container {
         display: block;
-    }
-    .categoryFilter-L-container {
-        display: none;
-    }
-    .categoryFilter-XL-container {
-        display: none;
-    }
-    
-    .menuItemDetail-XS-container {
-        display: none;
-    }
-    .menuItemDetail-M-container {
-        display: block;
-    }
-    .menuItemDetail-L-container {
-        display: none;
-    }
-    .menuItemDetail-XL-container {
-        display: none;
-    }
-
-    .cart-XS-container {
-        display: none;
-    }
-    .cart-M-container {
-        display: block;
-    }
-    .cart-L-container {
-        display: none;
-    }
-    .cart-XL-container {
-        display: none;
     }
 }
  
 /* L - Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-    .nsm-content {
+    .header-container {
+        display: none;
+    }
+    .header-large-container {
         display: block;
     }
-
-    .menuItemDetail-XS-container {
-        display: none;
+    .nsm-content {
+        display: block;
     }
     .menuItemDetail-container {
         display: block;
     }
-
-    .background-XS-container {
-        display: none;
-    }
-    .background-S-container {
-        display: none;
-    }
-    .background-M-container {
-        display: none;
-    }
-    .background-L-container {
+    .categoryFilter-container {
         display: block;
     }
-    .background-XL-container {
-        display: none;
-    }
-
-    .categoryFilter-XS-container {
-        display: none;
-    }
-    .categoryFilter-M-container {
-        display: none;
-    }
-    .categoryFilter-L-container {
+    .cart-container {
         display: block;
-    }
-    .categoryFilter-XL-container {
-        display: none;
-    }
-    
-    .menuItemDetail-XS-container {
-        display: none;
-    }
-    .menuItemDetail-M-container {
-        display: none;
-    }
-    .menuItemDetail-L-container {
-        display: block;
-    }
-    .menuItemDetail-XL-container {
-        display: none;
-    }
-
-    .cart-XS-container {
-        display: none;
-    }
-    .cart-M-container {
-        display: none;
-    }
-    .cart-L-container {
-        display: block;
-    }
-    .cart-XL-container {
-        display: none;
     }
 }
  
 /* XL - Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    .nsm-content {
+    .header-container {
+        display: none;
+    }
+    .header-large-container {
         display: block;
     }
-
-    .menuItemDetail-XS-container {
-        display: none;
+    .nsm-content {
+        display: block;
     }
     .menuItemDetail-container {
         display: block;
     }
-
-    .background-XS-container {
-        display: none;
-    }
-    .background-S-container {
-        display: none;
-    }
-    .background-M-container {
-        display: none;
-    }
-    .background-L-container {
-        display: none;
-    }
-    .background-XL-container {
+    .categoryFilter-container {
         display: block;
     }
-
-    .categoryFilter-XS-container {
-        display: none;
-    }
-    .categoryFilter-M-container {
-        display: none;
-    }
-    .categoryFilter-L-container {
-        display: none;
-    }
-    .categoryFilter-XL-container {
-        display: block;
-    }
-    
-    .menuItemDetail-XS-container {
-        display: none;
-    }
-    .menuItemDetail-M-container {
-        display: none;
-    }
-    .menuItemDetail-L-container {
-        display: none;
-    }
-    .menuItemDetail-XL-container {
-        display: block;
-    }
-
-    .cart-XS-container {
-        display: none;
-    }
-    .cart-M-container {
-        display: none;
-    }
-    .cart-L-container {
-        display: none;
-    }
-    .cart-XL-container {
+    .cart-container {
         display: block;
     }
 }

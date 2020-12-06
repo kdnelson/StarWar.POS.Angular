@@ -1,21 +1,11 @@
 <mat-toolbar color="black">
     <mat-toolbar-row>
-        <div class="background-XS-container">
+        <div class="header-container">
             <button mat-icon-button toggle-btn onclick="this.blur()" (click)="sidenav.toggle()">
                 <mat-icon (click)="toggleRouteOption()">menu</mat-icon>
             </button>
         </div>
-        <div class="background-M-container">
-            <button mat-icon-button toggle-btn onclick="this.blur()" (click)="sidenav.toggle()">
-                <mat-icon (click)="toggleRouteOption()">menu</mat-icon>
-            </button>
-        </div>
-        <div class="background-L-container">
-            <button mat-icon-button toggle-btn onclick="this.blur()" (click)="sidenav.toggle()">
-                <mat-icon (click)="toggleRouteOption()">menu</mat-icon>
-            </button>
-        </div>
-        <div class="background-XL-container">
+        <div class="header-large-container">
             <div *ngIf="onHomePage == true">
                 <div class="menubar-XL-label" mat-button [routerLink]="'/managers'" (click)="toggleRouteOption()">Managers</div>
             </div>
