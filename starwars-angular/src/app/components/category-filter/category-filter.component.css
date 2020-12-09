@@ -1,11 +1,11 @@
 .scroll {
-  max-height: 348px;
+  max-height: 232px;
   overflow-y: auto;
 }
 
 .categoryFilter-container {
   width: 275px;
-  height: 447px;
+  height: 335px;
   background-color: black;
 }
 

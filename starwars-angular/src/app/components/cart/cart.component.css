@@ -1,11 +1,11 @@
 .scroll {
-  max-height: 232px;
+  max-height: 253px;
   overflow-y: auto;
 }
 
 .cart-container {
   width: 275px;
-  height: 447px;
+  height: 468px;
   background-color: black;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .cart-card-not-selected {
-  height: 48px;
+  height: 53px;
   width: 247px;
   padding-top: 6px;
   margin-left: 10px;
@@ -47,6 +47,7 @@
   color: white;
   font-size: large;
   font-weight: bold;
+  margin-top: 2px;
   margin-left: 7px;
 }
 
@@ -57,16 +58,9 @@
   margin-right: 7px;
 }
 
-.cart-card-details-label {
-  color: white;
-  font-size: x-small;
-  font-weight: bold;
-  margin-left: 7px;
-}
-
 .cart-card-item-total-label {
   color: white;
-  font-size: x-small;
+  font-size: small;
   font-weight: bold;
   margin-right: 7px;
 }

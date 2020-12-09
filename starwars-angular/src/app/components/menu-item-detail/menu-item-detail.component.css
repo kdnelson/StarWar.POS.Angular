@@ -5,7 +5,7 @@
 
 .menuItemDetail-container {
   width: 275px;
-  height: 447px;
+  height: 468px;
   background-color: black;
 }
 
@@ -19,12 +19,12 @@
 .menuItemDetail-help {
   padding-top: 5px;
   color: rgba(241, 226, 7, 0.87);
-  font-size: x-small;
+  font-size: small;
   font-weight: bold;
 }
 
 .menuItemDetail-card-pic-text {
-  height: 140px;
+  height: 161px;
   width: 275px;
   color: white;
   background-color: black;
@@ -37,7 +37,7 @@
   padding-left: 25px;
   padding-bottom: 10px;
   width: 250px;
-  height: 150px;
+  height: 171px;
 }
 
 .menuItemDetail-options {
