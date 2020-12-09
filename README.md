@@ -99,10 +99,16 @@ https://github.com/DanWahlin/Angular-RESTfulService
 
 + Finish pic/details switch MenuItemDetail modal
 + Clean MenuItemDetail modal
++ Add crud to manager table
++ Add edit/+or- buttons bellow pressed cart item.
++ Add all modals to a module
++ Add all libs to common module
++ Add home to module
++ Have all modules call common module
 + TrackBy?
 + Create home module and bring into form like managers
 + The menu Home/Managers switch is ify
-+ Add error logging to managers component
++ Add error logging to all components
 + Add simple login
 + Add session cache
 
