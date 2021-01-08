@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from '../home/home.component';
-import { HomieComponent } from '../homie/homie.component';
+//import { HomeComponent } from '../home/home.component';
+//import { HomieComponent } from '../homie/homie.component';
 
 const app_routes: Routes = [
-        { path: '', redirectTo: 'home', pathMatch: 'full' },
-        //{ path: '', redirectTo: '/homie', pathMatch: 'full' },
-        //{ path: 'homie', loadChildren: () => import('../homie/homie.module').then(o => o.HomieModule) },
-        { path: 'home', component: HomeComponent },
-        { path: 'home/:filter', component: HomeComponent },
+        //{ path: '', redirectTo: 'home', pathMatch: 'full' },
+        { path: '', redirectTo: '/homie', pathMatch: 'full' },
+        { path: 'homie', loadChildren: () => import('../homie/homie.module').then(o => o.HomieModule) },
+        //{ path: 'home', component: HomeComponent },
+        //{ path: 'home/:filter', component: HomeComponent },
         { path: 'managers', loadChildren: () => import('../managers/managers.module').then(o => o.ManagersModule) },        
         { path: 'managers/:id', data: { preload: true }, loadChildren: () => import('../manager/manager.module').then(m => m.ManagerModule) },
-        { path: '**', redirectTo: '/home', pathMatch: 'full' },
-        //{ path: '**', redirectTo: '/homie', pathMatch: 'full' }
+        //{ path: '**', redirectTo: '/home', pathMatch: 'full' },
+        { path: '**', redirectTo: '/homie', pathMatch: 'full' }
     ];  
 
 //  TODO: Use this...
