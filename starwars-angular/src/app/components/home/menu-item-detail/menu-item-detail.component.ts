@@ -5,7 +5,7 @@ import { ErrorMsg } from 'src/app/models/errorMsg';
 import { ErrorType } from 'src/app/models/errorType';
 import { MenuItemDetail } from 'src/app/models/menuItemDetail';
 import { MenuItemOption } from 'src/app/models/menuItemOption';
-import { LogService } from '../../services/logService';
+import { LogService } from '../../../services/logService';
 
 @Component({
   selector: 'menu-item-detail-modal',

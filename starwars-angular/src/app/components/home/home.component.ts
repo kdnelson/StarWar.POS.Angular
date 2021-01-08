@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { CategoryFilterComponent } from '../category-filter/category-filter.component';
-import { MenuItemDetailComponent } from '../menu-item-detail/menu-item-detail.component';
-import { CartComponent } from '../cart/cart.component';
-import { NgxSmartModalService } from 'ngx-smart-modal';
-import { ErrorMsg } from 'src/app/models/errorMsg';
-import { LogService } from '../../services/logService';
+import { Component, OnInit } from '@angular/core';
 import { ErrorType } from 'src/app/models/errorType';
-import { NotificationService } from '../../services/notificationService';
+import { ErrorMsg } from 'src/app/models/errorMsg';
+import { LogService } from 'src/app/services/logService';
+import { NgxSmartModalService } from 'ngx-smart-modal';
+import { NotificationService } from 'src/app/services/notificationService';
+import { CartComponent } from './cart/cart.component';
+import { CategoryFilterComponent } from './category-filter/category-filter.component';
+import { MenuItemDetailComponent } from './menu-item-detail/menu-item-detail.component';
 
 declare var $: any;
 
@@ -15,14 +15,15 @@ declare var $: any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   providers: [CategoryFilterComponent, MenuItemDetailComponent, 
-              CartComponent, ErrorType, LogService, NotificationService],
+              CartComponent, ErrorType, LogService, NotificationService, 
+              NgxSmartModalService],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   className: string = "HomeComponent";
   copywriteInfo: string = null;
   nextNotification: string = null;
   notifications: string[] = [];
-  
+
   public constructor(
     public ngxSmartModalService: NgxSmartModalService,
     public categoryFilterComponent: CategoryFilterComponent,
@@ -32,6 +33,20 @@ export class HomeComponent {
     public logService: LogService,
     public notificationService: NotificationService
   ) {}
+
+  ngOnInit() {
+    let methodName: string = 'ngOnInit';
+
+    try {
+      //this.readRouteParams();
+      this.prettyPrintCopywriteInfo();
+      this.notificationService.notificationQueue();
+      this.subscribeToNotifyQueue();
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
 
   get getTicketCounter() : number {
     let methodName: string = 'getTicketCounter';
@@ -53,20 +68,6 @@ export class HomeComponent {
         21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
         31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
         41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  ngOnInit() {
-    let methodName: string = 'ngOnInit';
-
-    try {
-      //this.readRouteParams();
-      this.prettyPrintCopywriteInfo();
-      this.notificationService.notificationQueue();
-      this.subscribeToNotifyQueue();
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

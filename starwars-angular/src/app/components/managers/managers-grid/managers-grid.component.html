@@ -13,7 +13,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let manager of managers;trackBy:trackbyService.manager">
-                            <td><a [routerLink]="['/managers',manager.id,'details']">{{ manager.name }}</a></td>
+                            <td><a [routerLink]="['/manager',manager.id,'details']">{{ manager.name }}</a></td>
                             <td>Address</td>
                             <td>Phone</td>
                             <td>Age</td>
