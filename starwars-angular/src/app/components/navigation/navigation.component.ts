@@ -27,15 +27,4 @@ export class NavigationComponent implements OnInit {
       this.logService.logHandler(errorMsg);
     }
   }
-
-  toggleRouteOption() {
-    let methodName: string = 'toggleRouteOption';
-
-    try {
-      this.onHomePage = !this.onHomePage;
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
 }

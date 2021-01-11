@@ -19,3 +19,10 @@
     overflow-y: hidden; /* Hide vertical scrollbar */
     overflow-x: hidden; /* Hide horizontal scrollbar */
   }
+
+.app-title {
+    padding-left: 20px;
+    font-size: medium;
+    font-weight: bold;
+    color: rgba(241, 226, 7, 0.87);
+}

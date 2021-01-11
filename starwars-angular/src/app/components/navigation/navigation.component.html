@@ -2,16 +2,9 @@
     <mat-toolbar-row>
         <div class="header-container">
             <button mat-icon-button toggle-btn onclick="this.blur()" (click)="sidenav.toggle()">
-                <mat-icon (click)="toggleRouteOption()">menu</mat-icon>
+                <mat-icon>menu</mat-icon>
+                <span class="app-title">Star Wars</span>
             </button>
-        </div>
-        <div class="header-large-container">
-            <div *ngIf="onHomePage == true">
-                <div class="menubar-XL-label" mat-button [routerLink]="'/managers'" (click)="toggleRouteOption()">Managers</div>
-            </div>
-            <div *ngIf="onHomePage == false">
-                <div class="menubar-XL-label" mat-button [routerLink]="'/homie'" (click)="toggleRouteOption()">Home</div>
-            </div>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
