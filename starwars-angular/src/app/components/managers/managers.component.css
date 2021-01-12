@@ -33,6 +33,7 @@ a.select {
 }
 
 .copywrite-label {
+    padding-top: 20px;
     color: white;
-    font-size: x-small;
+    font-size: small;
   }

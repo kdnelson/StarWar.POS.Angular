@@ -43,7 +43,7 @@
   }
   
   .scroll {
-    max-height: 72vh;
+    max-height: 65vh;
     overflow-y: auto;
   }
   
@@ -53,8 +53,9 @@
   }
   
   .copywrite-label {
+    padding-top: 20px;
     color: white;
-    font-size: x-small;
+    font-size: small;
   }
   
   

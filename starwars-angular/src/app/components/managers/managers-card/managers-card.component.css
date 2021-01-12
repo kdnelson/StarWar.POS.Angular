@@ -1,6 +1,6 @@
 
 .scroll {
-    max-height: 460px;
+    max-height: 65vh;
     overflow-y: auto;
 }
 
