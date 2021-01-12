@@ -43,7 +43,7 @@
   }
   
   .scroll {
-    max-height: 343px;
+    max-height: 72vh;
     overflow-y: auto;
   }
   
