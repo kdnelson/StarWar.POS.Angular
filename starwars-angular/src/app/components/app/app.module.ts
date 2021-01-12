@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from "@angular/common";
+import { SharedModule } from './../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,7 +21,7 @@ import { TrackByService } from 'src/app/services/track-by-service';
   ],
   imports: [
     BrowserModule,
-    CommonModule,
+    SharedModule,
     NgbModule,
     AppRoutingModule,
     MatIconModule,

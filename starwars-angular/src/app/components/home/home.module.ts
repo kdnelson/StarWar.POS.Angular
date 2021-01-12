@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { HomeRoutingModule } from './home-routing.module';
@@ -7,7 +7,7 @@ import { HomeRoutingModule } from './home-routing.module';
   imports:      
   [ 
     HomeRoutingModule, 
-    CommonModule, 
+    SharedModule, 
     NgxSmartModalModule.forRoot() 
   ],
   declarations: [ HomeRoutingModule.components ]
