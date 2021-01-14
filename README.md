@@ -97,12 +97,10 @@ https://github.com/DanWahlin/Angular-RESTfulService
 
 ***** TODO *****
 
-+ Move most stuff out of App.module into shared
-+ Left padding making modals offset?
++ Move module placement based on media size
 + Add Managers edit/card link switch
 + Add crud to manager table
 + Add edit/+or- buttons bellow pressed cart item.
-+ Add all libs to shared module
 + TrackBy?
 + Add error logging to all components
 + Add simple login
