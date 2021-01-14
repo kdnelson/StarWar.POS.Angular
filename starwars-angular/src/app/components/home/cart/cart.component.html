@@ -1,7 +1,7 @@
 <ngx-smart-modal #cart [identifier]="'cart'"
     customClass="nsm-centered"
     [closable]="false" [dismissable]="true"
-    target=".cart-modal-anchor"
+    target=".modal-anchor"
     (onDismiss)="resetForm()"
 >
    <div *ngIf="cart.hasData()">

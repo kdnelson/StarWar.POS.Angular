@@ -39,6 +39,10 @@ body {
 
 /* Not Supported */
 @media (max-width: 319px) {
+    .modal-anchor {
+        display: none;
+     }
+
     .header-container {
         display: none;
     }
@@ -61,6 +65,12 @@ body {
 
 /* XS -Small devices (portrait phones, 320px and up) */
 @media (min-width: 320px) {
+    .modal-anchor {
+        position: absolute;
+        top: 10%;
+        left: 48%;
+    }
+
     .header-container {
         display: block;
     }
@@ -86,6 +96,12 @@ body {
 
 /* S -Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+    .modal-anchor {
+        position: absolute;
+        top: 10%;
+        left: 48%;
+    }
+
     .header-container {
         display: block;
     }
@@ -111,6 +127,12 @@ body {
  
 /* M - Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
+    .modal-anchor {
+        position: absolute;
+        top: 10%;
+        left: 48%;
+    }
+
     .header-container {
         display: block;
     }
@@ -136,6 +158,12 @@ body {
  
 /* L - Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+    .modal-anchor {
+        position: absolute;
+        top: 10%;
+        left: 48%;
+    }
+
     .header-container {
         display: block;
     }
@@ -161,6 +189,12 @@ body {
  
 /* XL - Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+    .modal-anchor {
+        position: absolute;
+        top: 10%;
+        left: 48%;
+    }
+
     .header-container {
         display: block;
     }
