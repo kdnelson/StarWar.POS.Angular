@@ -97,20 +97,17 @@ https://github.com/DanWahlin/Angular-RESTfulService
 
 ***** TODO *****
 
-+ Finish pic/details switch MenuItemDetail modal
-+ Clean MenuItemDetail modal
++ Move most stuff out of App.module into shared
++ Left padding making modals offset?
++ Add Managers edit/card link switch
 + Add crud to manager table
 + Add edit/+or- buttons bellow pressed cart item.
-+ Add all modals to a module
-+ Add all libs to common module
-+ Add home to module
-+ Have all modules call common module
++ Add all libs to shared module
 + TrackBy?
-+ Create home module and bring into form like managers
-+ The menu Home/Managers switch is ify
 + Add error logging to all components
 + Add simple login
 + Add session cache
++ Finish pic/details switch MenuItemDetail modal
 
 ***** Commands *****
 
