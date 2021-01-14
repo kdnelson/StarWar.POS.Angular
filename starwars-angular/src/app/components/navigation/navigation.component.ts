@@ -11,7 +11,6 @@ import { LogService } from '../../services/logService';
 })
 export class NavigationComponent implements OnInit {
   private className: "NavigationComponent";
-  onHomePage: boolean = true;
 
   constructor(
     public errorType: ErrorType,
