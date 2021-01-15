@@ -1,7 +1,7 @@
 <ngx-smart-modal #categoryFilter [identifier]="'categoryFilter'"
     customClass="nsm-centered"
     [closable]="false" [dismissable]="true"
-    target=".modal-anchor"
+    target=".category-modal-anchor"
     (onDismiss)="resetForm()"
 >
     <div *ngIf="categoryFilter.hasData()">

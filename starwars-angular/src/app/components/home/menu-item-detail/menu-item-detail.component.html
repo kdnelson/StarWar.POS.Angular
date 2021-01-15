@@ -1,7 +1,7 @@
 <ngx-smart-modal #menuItemDetail [identifier]="'menuItemDetail'"
     customClass="nsm-centered"
     [closable]="false" [dismissable]="true"
-    target=".modal-anchor"
+    target=".menuItem-modal-anchor"
     (onDismiss)="resetForm()"
 >
     <div *ngIf="menuItemDetail.hasData()">

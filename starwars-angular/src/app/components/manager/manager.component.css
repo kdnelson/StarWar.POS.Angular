@@ -1,14 +1,3 @@
-.background {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    margin: 0;
-    left: 0;
-    z-index: 2;
-    background-size: cover;
-    display: flex;
-    background-image: url("../../../assets/images/starwars-shady-bg.jpg");
-}
 
 .manager-info-header {
     font-weight: bold;

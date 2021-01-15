@@ -3,18 +3,6 @@
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 
-.background-container {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    margin: 0;
-    left: 0;
-    z-index: 2;
-    background-size: cover;
-    display: flex;
-    background-image: url("./assets/images/starwars-shady-bg.jpg");
-}
-
 /* Common scrolling style here */
 ::-webkit-scrollbar {
     width: 7px;
@@ -39,10 +27,18 @@ body {
 
 /* Not Supported */
 @media (max-width: 319px) {
-    .modal-anchor {
+    .background {
         display: none;
-     }
-
+    }
+    .category-modal-anchor {
+        display: none;
+    }
+    .menuItem-modal-anchor {
+        display: none;
+    }
+    .cart-modal-anchor {
+        display: none;
+    }
     .header-container {
         display: none;
     }
@@ -65,12 +61,29 @@ body {
 
 /* XS -Small devices (portrait phones, 320px and up) */
 @media (min-width: 320px) {
-    .modal-anchor {
+    .background {
+        height: 100%;
+        width: 100%;
         position: absolute;
-        top: 10%;
+        margin: 0;
+        left: 0;
+        z-index: 2;
+        background-size: cover;
+        display: flex;
+        background-image: url("./assets/images/starwars-shady-bg.jpg");
+    }
+    .category-modal-anchor {
+        position: absolute;
+        left: 0px;
+    }
+    .menuItem-modal-anchor {
+        position: absolute;
         left: 48%;
     }
-
+    .cart-modal-anchor {
+        position: absolute;
+        right: 0px;
+    }
     .header-container {
         display: block;
     }
@@ -96,43 +109,66 @@ body {
 
 /* S -Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-    .modal-anchor {
+    .background {
+        display: none;
+    }
+    .category-modal-anchor {
         position: absolute;
-        top: 10%;
+        left: 0px;
+    }
+    .menuItem-modal-anchor {
+        position: absolute;
         left: 48%;
     }
-
+    .cart-modal-anchor {
+        position: absolute;
+        right: 0px;
+    }
     .header-container {
-        display: block;
+        display: none;
     }
     .home-form {
-        display: block;
-    }
-    .header-container {
-        display: block;
+        display: none;
     }
     .nsm-content {
-        display: block;
+        display: none;
     }
     .menuItemDetail-container {
-        display: block;
+        display: none;
     }
     .categoryFilter-container {
-        display: block;
+        display: none;
     }
     .cart-container {
-        display: block;
+        display: none;
     }
 }
  
-/* M - Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+/* M - Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-    .modal-anchor {
+    .background {
+        height: 100%;
+        width: 100%;
         position: absolute;
-        top: 10%;
+        margin: 0;
+        left: 0;
+        z-index: 2;
+        background-size: cover;
+        display: flex;
+        background-image: url("./assets/images/starwars-shady-bg.jpg");
+    }
+    .category-modal-anchor {
+        position: absolute;
+        left: 0px;
+    }
+    .menuItem-modal-anchor {
+        position: absolute;
         left: 48%;
     }
-
+    .cart-modal-anchor {
+        position: absolute;
+        right: 0px;
+    }
     .header-container {
         display: block;
     }
@@ -158,12 +194,29 @@ body {
  
 /* L - Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-    .modal-anchor {
+    .background {
+        height: 100%;
+        width: 100%;
         position: absolute;
-        top: 10%;
+        margin: 0;
+        left: 0;
+        z-index: 2;
+        background-size: cover;
+        display: flex;
+        background-image: url("./assets/images/starwars-shady-bg.jpg");
+    }
+    .category-modal-anchor {
+        position: absolute;
+        left: 0px;
+    }
+    .menuItem-modal-anchor {
+        position: absolute;
         left: 48%;
     }
-
+    .cart-modal-anchor {
+        position: absolute;
+        right: 0px;
+    }
     .header-container {
         display: block;
     }
@@ -189,12 +242,29 @@ body {
  
 /* XL - Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    .modal-anchor {
+    .background {
+        height: 100%;
+        width: 100%;
         position: absolute;
-        top: 10%;
+        margin: 0;
+        left: 0;
+        z-index: 2;
+        background-size: cover;
+        display: flex;
+        background-image: url("./assets/images/starwars-shady-bg.jpg");
+    }
+    .category-modal-anchor {
+        position: absolute;
+        left: 0px;
+    }
+    .menuItem-modal-anchor {
+        position: absolute;
         left: 48%;
     }
-
+    .cart-modal-anchor {
+        position: absolute;
+        right: 0px;
+    }
     .header-container {
         display: block;
     }
