@@ -7,18 +7,18 @@
             </button>
         </mat-toolbar-row>
     </mat-toolbar>
-</div>
 
-<mat-sidenav-container>
-    <mat-sidenav #sidenav class="sidenav-slideout">
-        <mat-nav-list>
-            <a mat-list-item [routerLink]="'/home'" (click)="sidenav.toggle()">Home</a>
-            <a mat-list-item [routerLink]="'/managers'" (click)="sidenav.toggle()">Managers</a>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <div style="height: 91vh;">
-            <router-outlet></router-outlet>
-        </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav class="sidenav-slideout">
+            <mat-nav-list>
+                <a mat-list-item [routerLink]="'/home'" (click)="sidenav.toggle()">Home</a>
+                <a mat-list-item [routerLink]="'/managers'" (click)="sidenav.toggle()">Managers</a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div style="height: 91vh;">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
