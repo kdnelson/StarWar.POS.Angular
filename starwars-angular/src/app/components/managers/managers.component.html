@@ -5,9 +5,14 @@
         {{ title }}
       </div>
       <div class="d-flex justify-content-end">
-        <div class="p-2">   
-          <a (click)="changeDisplayMode()" [class.active]="isManagerCard">
-            Edit Managers
+        <div *ngIf="isManagerCard" class="p-2">   
+          <a (click)="changeDisplayMode()" [class.active]="true">
+            Edit
+          </a>
+        </div>
+        <div *ngIf="!isManagerCard" class="p-2"> 
+          <a (click)="changeDisplayMode()" [class.active]="true">
+            Back
           </a>
         </div>
       </div>
