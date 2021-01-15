@@ -2,7 +2,17 @@
 .managers-header {
     font-weight: bold;
     font-size: medium;
-    margin-top: 7px;
+    margin-left: 15px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}   
+
+.manager-view-toggle {
+    font-weight: bold;
+    font-size: medium;
+    margin-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 a {

@@ -1,35 +1,37 @@
-<div class="d-flex justify-content-center background">
-  <div class="container">
-    <div class="d-flex justify-content-between">
-      <div class="managers-header">
-        {{ title }}
-      </div>
-      <div class="d-flex justify-content-end">
-        <div *ngIf="isManagerCard" class="p-2">   
-          <a (click)="changeDisplayMode()" [class.active]="true">
-            Edit
-          </a>
+<div class="manager-form">
+  <div class="d-flex justify-content-center background">
+    <div class="container">
+      <div class="d-flex justify-content-between">
+        <div class="managers-header">
+          {{ title }}
         </div>
-        <div *ngIf="!isManagerCard" class="p-2"> 
-          <a (click)="changeDisplayMode()" [class.active]="true">
-            Back
-          </a>
+        <div class="d-flex justify-content-end">
+          <div *ngIf="isManagerCard" class="p-2">   
+            <a (click)="changeDisplayMode()" [class.active]="true">
+              <div class="manager-view-toggle">Edit</div>
+            </a>
+          </div>
+          <div *ngIf="!isManagerCard" class="p-2"> 
+            <a (click)="changeDisplayMode()" [class.active]="true">
+              <div class="manager-view-toggle">Back</div>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <cm-managers-card 
-      [managers]="filteredManagers"
-      [hidden]="isManagerCard === false">
-    </cm-managers-card>
+      <cm-managers-card 
+        [managers]="filteredManagers"
+        [hidden]="isManagerCard === false">
+      </cm-managers-card>
 
-    <cm-managers-grid
-      [managers]="filteredManagers"
-      [hidden]="isManagerCard === true">
-    </cm-managers-grid>
+      <cm-managers-grid
+        [managers]="filteredManagers"
+        [hidden]="isManagerCard === true">
+      </cm-managers-grid>
 
-    <div class="d-flex justify-content-center">
-      <div class="copywrite-label">{{copywriteInfo}}</div>
+      <div class="d-flex justify-content-center">
+        <div class="copywrite-label">{{copywriteInfo}}</div>
+      </div>
     </div>
   </div>
 </div>
