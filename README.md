@@ -97,8 +97,7 @@ https://github.com/DanWahlin/Angular-RESTfulService
 
 ***** TODO *****
 
-+ Move module placement based on media size
-+ Add Managers edit/card link switch
++ Continue watch training to add data
 + Add crud to manager table
 + Add edit/+or- buttons bellow pressed cart item.
 + TrackBy?
