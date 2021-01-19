@@ -42,10 +42,10 @@ body {
     .header-container {
         display: none;
     }
-    .home-form {
+    .home-container {
         display: none;
     }
-    .managers-form {
+    .managers-container {
         display: none;
     }
     .nsm-content {
@@ -90,10 +90,10 @@ body {
     .header-container {
         display: block;
     }
-    .home-form  {
+    .home-container  {
         display: block;
     }
-    .managers-form {
+    .managers-container {
         display: block;
     }
     .header-container {
@@ -118,25 +118,25 @@ body {
     .background {
         display: none;
     }
-    .category-modal-anchor {
-        position: absolute;
-        left: 10px;
-    }
-    .menuItem-modal-anchor {
-        position: absolute;
-        left: 48%;
-    }
-    .cart-modal-anchor {
-        position: absolute;
-        right: 10px;
-    }
+    // .category-modal-anchor {
+    //     position: absolute;
+    //     left: 10px;
+    // }
+    // .menuItem-modal-anchor {
+    //     position: absolute;
+    //     left: 48%;
+    // }
+    // .cart-modal-anchor {
+    //     position: absolute;
+    //     right: 10px;
+    // }
     .header-container {
         display: none;
     }
-    .home-form {
+    .home-container {
         display: none;
     }
-    .managers-form {
+    .managers-container {
         display: none;
     }
     .nsm-content {
@@ -168,23 +168,23 @@ body {
     }
     .category-modal-anchor {
         position: absolute;
-        left: 280px;
+        left: 180px;
     }
     .menuItem-modal-anchor {
         position: absolute;
-        left: 48%;
+        left: 46%;
     }
     .cart-modal-anchor {
         position: absolute;
-        right: 350px;
+        right: 240px;
     }
     .header-container {
         display: block;
     }
-    .home-form {
+    .home-container {
         display: block;
     }
-    .managers-form {
+    .managers-container {
         display: block;
     }
     .header-container {
@@ -219,23 +219,23 @@ body {
     }
     .category-modal-anchor {
         position: absolute;
-        left: 280px;
+        left: 180px;
     }
     .menuItem-modal-anchor {
         position: absolute;
-        left: 48%;
+        left: 47%;
     }
     .cart-modal-anchor {
         position: absolute;
-        right: 350px;
+        right: 240px;
     }
     .header-container {
         display: block;
     }
-    .home-form {
+    .home-container {
         display: block;
     }
-    .managers-form {
+    .managers-container {
         display: block;
     }
     .header-container {
@@ -270,7 +270,7 @@ body {
     }
     .category-modal-anchor {
         position: absolute;
-        left: 280px;
+        left: 235px;
     }
     .menuItem-modal-anchor {
         position: absolute;
@@ -278,15 +278,15 @@ body {
     }
     .cart-modal-anchor {
         position: absolute;
-        right: 350px;
+        right: 300px;
     }
     .header-container {
         display: block;
     }
-    .home-form {
+    .home-container {
         display: block;
     }
-    .managers-form {
+    .managers-container {
         display: block;
     }
     .header-container {
