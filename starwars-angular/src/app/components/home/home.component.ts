@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ErrorType } from 'src/app/models/errorType';
 import { ErrorMsg } from 'src/app/models/errorMsg';
-import { LogService } from 'src/app/services/logService';
+import { LogService } from 'src/app/services/log.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { NotificationService } from 'src/app/services/notificationService';
+import { NotificationService } from 'src/app/services/notification.service';
 import { CartComponent } from './cart/cart.component';
 import { CategoryFilterComponent } from './category-filter/category-filter.component';
 import { MenuItemDetailComponent } from './menu-item-detail/menu-item-detail.component';
+import { HttpClientService } from 'src/app/services/httpClient.service';
+import { MenuItem } from 'src/app/models/menuItem';
+import { Guid } from 'guid-typescript';
 
 declare var $: any;
 
@@ -14,7 +17,7 @@ declare var $: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [CategoryFilterComponent, MenuItemDetailComponent, 
+  providers: [HttpClientService, CategoryFilterComponent, MenuItemDetailComponent, 
               CartComponent, ErrorType, LogService, NotificationService, 
               NgxSmartModalService],
 })
@@ -23,8 +26,10 @@ export class HomeComponent implements OnInit {
   copywriteInfo: string = null;
   nextNotification: string = null;
   notifications: string[] = [];
+  menuItemsPerManufacturer: MenuItem[] = [];
 
   public constructor(
+    public httpClientService: HttpClientService,
     public ngxSmartModalService: NgxSmartModalService,
     public categoryFilterComponent: CategoryFilterComponent,
     public menuItemDetailComponent: MenuItemDetailComponent,
@@ -38,10 +43,38 @@ export class HomeComponent implements OnInit {
     let methodName: string = 'ngOnInit';
 
     try {
+      this.getMenuItemPerManufacturer();
       //this.readRouteParams();
       this.prettyPrintCopywriteInfo();
       this.notificationService.notificationQueue();
       this.subscribeToNotifyQueue();
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  getMenuItemPerManufacturer() : any[] {
+    let methodName: string = 'getMenuItemPerManufacturer';
+
+    try {
+
+      // TODO push to another method with manufacturer filter.
+      this.httpClientService.getVehicles()
+        .subscribe(o =>o.forEach(o => {
+          var menuItem = new MenuItem(Guid.create(), o.name, o.manufacturer, 
+            o.cost_in_credits, o.length, o.max_atmosphering_speed, o.crew, o.passengers, o.cargo_capacity, o.consumables);
+          this.menuItemsPerManufacturer.push(menuItem);
+        }));
+
+      this.httpClientService.getStarShips()
+        .subscribe(o =>o.forEach(o => {
+          var menuItem = new MenuItem(Guid.create(), o.name, o.manufacturer, 
+            o.cost_in_credits, o.length, o.max_atmosphering_speed, o.crew, o.passengers, o.cargo_capacity, o.consumables);
+          this.menuItemsPerManufacturer.push(menuItem);
+        }));
+
+      return this.menuItemsPerManufacturer;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -53,21 +86,6 @@ export class HomeComponent implements OnInit {
 
     try {
       return 333;
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  get getMenuItemDetailsPerCategory() : any[] {
-    let methodName: string = 'getMenuItemDetailsPerCategory';
-
-    try {
-      return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
-        11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-        21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-        31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-        41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -156,7 +174,7 @@ export class HomeComponent implements OnInit {
     let methodName: string = 'pauseNotifyQueue';
 
     try {
-      await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>this.controlNotifyBanner());
+      await new Promise<void>(resolve => setTimeout(()=>resolve(), ms)).then(()=>this.controlNotifyBanner());
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ErrorType } from 'src/app/models/errorType';
 import { Manager } from 'src/app/models/manager';
-import { LogService } from 'src/app/services/logService';
+import { LogService } from 'src/app/services/log.service';
 
 @Component({
   selector: 'app-manager-details',

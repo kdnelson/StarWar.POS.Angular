@@ -5,7 +5,7 @@ import { Guid } from 'guid-typescript';
 import { CartItem } from 'src/app/models/cartItem';
 import { MenuItemDetailComponent } from '../menu-item-detail/menu-item-detail.component';
 import { ErrorType } from 'src/app/models/errorType';
-import { LogService } from 'src/app/services/logService';
+import { LogService } from 'src/app/services/log.service';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 
 @Component({

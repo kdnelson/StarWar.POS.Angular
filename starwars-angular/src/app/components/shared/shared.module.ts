@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { LogService } from 'src/app/services/logService';
-import { NotificationService } from 'src/app/services/notificationService';
-import { TrackByService } from 'src/app/services/track-by-service';
+import { LogService } from 'src/app/services/log.service';
+import { NotificationService } from 'src/app/services/notification.service';
+import { TrackByService } from 'src/app/services/trackBy.service';
 
 @NgModule({
   imports: [ CommonModule ],

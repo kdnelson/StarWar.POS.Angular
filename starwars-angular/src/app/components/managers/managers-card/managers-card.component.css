@@ -1,6 +1,6 @@
 
 .scroll {
-    max-height: 65vh;
+    max-height: 64vh;
     overflow-y: auto;
 }
 
@@ -17,7 +17,13 @@ a.select {
     font-weight: bold;
 }
 
-.card, .card-body, .card-header, .card-footer  { 
+.card, .card-body, .card-header, .list-group-item { 
     background-color: transparent;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+}
+  
+.card  {
+    border-top: 1px solid rgba(241, 226, 7, 0.87);
+    border-left: 1px solid rgba(241, 226, 7, 0.87);
+    border-right: 1px solid rgba(241, 226, 7, 0.87);
+    border-bottom: 1px solid rgba(241, 226, 7, 0.87);
 }

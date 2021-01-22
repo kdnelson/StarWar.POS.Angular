@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Manager } from 'src/app/models/manager';
-import { TrackByService } from 'src/app/services/track-by-service';
+import { TrackByService } from 'src/app/services/trackBy.service';
 
 @Component({
   selector: 'cm-managers-card',

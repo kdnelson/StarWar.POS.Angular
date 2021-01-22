@@ -51,20 +51,23 @@
         <div class="d-flex justify-content-end">
           <div class="p-2">
             <div class="row card-container scroll">
-              <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3" *ngFor="let item of getMenuItemDetailsPerCategory" role="button">
+              <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3" *ngFor="let item of menuItemsPerManufacturer" role="button">
                 <div class="card mb-2">
-                  <div class="card-header">
-                    Some Very Cool Title
+                  <div class="card-header bg-transparent">
+                    <div class="home-card-header-text">{{ item.name | slice:0:18 }}</div>
                   </div>
-                  <div class="card-body">
-                    <div class="pull-left card-body-left">
-                      <div class="card-body-content">Some very cool details to read and admire.  
-                        Hopefully encouraging you to buy our product.</div>
-                    </div>
-                  </div>
+                  <ul class="list-group">
+                    <li class="list-group-item"><div class="home-card-body-text">Speed: {{ item.speed }}</div></li>
+                    <li class="list-group-item"><div class="home-card-body-text">Cargo Capacity: {{ item.cargoCapacity }}</div></li>
+                    <li class="list-group-item">
+                      <div class="home-card-body-text">
+                        <div class="text-right">{{ item.cost }} credits</div>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div *ngIf="!getMenuItemDetailsPerCategory.length">
+              <div *ngIf="!menuItemsPerManufacturer.length">
                 No Records Found
               </div>
             </div>

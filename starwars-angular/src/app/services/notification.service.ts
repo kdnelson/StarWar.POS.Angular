@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ErrorMsg } from "../models/errorMsg";
 import { ErrorType } from "../models/errorType";
-import { LogService } from "./logService";
+import { LogService } from "./log.service";
 
 declare var $: any;
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 import { ErrorType } from 'src/app/models/errorType';
-import { LogService } from '../../services/logService';
+import { LogService } from '../../services/log.service';
 
 @Component({
   selector: 'app-nav',
