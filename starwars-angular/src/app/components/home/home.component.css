@@ -38,12 +38,49 @@
 
 .home-card-header-text {
   font-weight: bold;
-  font-size: medium;
+  font-size: small;
 }
 
 .home-card-body-text {
   font-weight: normal;
-  font-size: x-small;
+  font-size: small;
+}
+
+.manufacturer-list {
+  width: 180px;
+  padding-top: 8px;
+  padding-right: 20px;
+}
+
+.manufacturer-card-selected {
+  height: 41px;
+  width: 165px;
+  padding-top: 10px;
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: small;
+  color: black;
+  background: rgba(241, 226, 7, 0.87);
+}
+
+.manufacturer-card-not-selected {
+  height: 41px;
+  width: 165px;
+  padding-top: 10px;
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: small;
+  color: white;
+  background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+  background-size: auto 400%;
+  background-position: 100% 88%;
+  transition: background-position 0.2s;
 }
 
 .card, .card-body, .card-header, .list-group-item { 
@@ -55,6 +92,7 @@
   border-left: 1px solid rgba(241, 226, 7, 0.87);
   border-right: 1px solid rgba(241, 226, 7, 0.87);
   border-bottom: 1px solid rgba(241, 226, 7, 0.87);
+  background: rgba(241, 226, 7, 0.03);
 }
 
 .copywrite-label {

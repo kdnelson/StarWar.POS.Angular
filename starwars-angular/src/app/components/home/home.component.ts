@@ -10,6 +10,7 @@ import { MenuItemDetailComponent } from './menu-item-detail/menu-item-detail.com
 import { HttpClientService } from 'src/app/services/httpClient.service';
 import { MenuItem } from 'src/app/models/menuItem';
 import { Guid } from 'guid-typescript';
+import { Manufacturer } from 'src/app/models/manufacturer';
 
 declare var $: any;
 
@@ -27,6 +28,8 @@ export class HomeComponent implements OnInit {
   nextNotification: string = null;
   notifications: string[] = [];
   menuItemsPerManufacturer: MenuItem[] = [];
+  manufacturers: Manufacturer[] = [];
+  selectedManufacturer: string = "Incom Corporation";
 
   public constructor(
     public httpClientService: HttpClientService,
@@ -44,6 +47,7 @@ export class HomeComponent implements OnInit {
 
     try {
       this.getMenuItemPerManufacturer();
+      this.SetSelectedManufacturer(this.selectedManufacturer);
       //this.readRouteParams();
       this.prettyPrintCopywriteInfo();
       this.notificationService.notificationQueue();
@@ -54,27 +58,180 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getMenuItemPerManufacturer() : any[] {
+  getMenuItemPerManufacturer() {
     let methodName: string = 'getMenuItemPerManufacturer';
 
     try {
 
-      // TODO push to another method with manufacturer filter.
-      this.httpClientService.getVehicles()
-        .subscribe(o =>o.forEach(o => {
-          var menuItem = new MenuItem(Guid.create(), o.name, o.manufacturer, 
-            o.cost_in_credits, o.length, o.max_atmosphering_speed, o.crew, o.passengers, o.cargo_capacity, o.consumables);
-          this.menuItemsPerManufacturer.push(menuItem);
-        }));
+      this.menuItemsPerManufacturer = [];
+      this.getVehicles();
+      this.getStarShips();
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
 
-      this.httpClientService.getStarShips()
-        .subscribe(o =>o.forEach(o => {
-          var menuItem = new MenuItem(Guid.create(), o.name, o.manufacturer, 
-            o.cost_in_credits, o.length, o.max_atmosphering_speed, o.crew, o.passengers, o.cargo_capacity, o.consumables);
-          this.menuItemsPerManufacturer.push(menuItem);
-        }));
+  getVehicles(){
+    let methodName: string = 'getVehicles';
 
-      return this.menuItemsPerManufacturer;
+    try {
+      this.httpClientService?.getVehicles()
+        .subscribe(o =>o.forEach(o => {
+          this.buildManufacturerList(o.manufacturer);
+          this.filterMenuItemsPerManufacturer(this.createMenuItem(o));
+        }));
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  getStarShips(){
+    let methodName: string = 'getStarShips';
+
+    try {
+      this.httpClientService?.getStarShips()
+        .subscribe(o =>o.forEach(o => {
+          this.buildManufacturerList(o.manufacturer);
+          this.filterMenuItemsPerManufacturer(this.createMenuItem(o));
+        }));
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  buildManufacturerList(longManufacturer: string){
+    let methodName: string = 'buildManufacturerList';
+
+    try {
+      var abriviatedName = this.abriviateManufacturerName(longManufacturer);
+      if(this.isManufacturerUnique(abriviatedName)){
+        var manufacturer = new Manufacturer(abriviatedName, false);
+        this.manufacturers.push(manufacturer);
+      }
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  createMenuItem(rawMenuItem: any) : MenuItem {
+    let methodName: string = 'createMenuItem';
+    var result: MenuItem = null;
+
+    try {   
+      result = new MenuItem(
+        Guid.create(),
+        rawMenuItem.name, 
+        rawMenuItem.manufacturer, 
+        rawMenuItem.cost_in_credits, 
+        rawMenuItem.length, 
+        rawMenuItem.max_atmosphering_speed, 
+        rawMenuItem.crew, 
+        rawMenuItem.passengers, 
+        rawMenuItem.cargo_capacity, 
+        rawMenuItem.consumables
+      );
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return result;
+  }
+
+  filterMenuItemsPerManufacturer(menuItem: MenuItem) : MenuItem {
+    let methodName: string = 'filterMenuItemsPerManufacturer';
+    var result: MenuItem;
+
+    try {
+      if(this.selectedManufacturer != ""){
+        if(menuItem.manufacturer == this.selectedManufacturer){
+          this.menuItemsPerManufacturer.push(menuItem);
+        }
+      } else {
+        this.menuItemsPerManufacturer.push(menuItem);
+      }
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return result;
+  }
+
+  isManufacturerUnique(manufacturer: string) : boolean {
+    let methodName: string = 'isManufacturerUnique';
+    let result: boolean = true;
+    
+    try {
+      this.manufacturers?.forEach(m => {
+        if(m.name == manufacturer){
+          result = false;
+        }
+      });
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return result;
+  }
+
+  abriviateManufacturerName(longManufacturerName) : string {
+    let methodName: string = 'abriviateManufacturerName';
+    var result : string = "";
+    
+    try {
+      if(longManufacturerName == "Kuat Drive Yards, Imperial Department of Military Research"){
+        result = "Kuat Drive Yards, IDMR";
+      }
+      else if(longManufacturerName == "Corellian Engineering Corporation"){
+        result = "Corellian Engineering";
+      }   
+      else if(longManufacturerName == "Corellia Mining Corporation"){
+        result = "Corellia Mining Corp.";
+      }  
+      else if(longManufacturerName == "Sienar Fleet Systems, Cyngus Spaceworks"){
+        result = "Sienar Fleet Systems, CS";
+      }
+      else if(longManufacturerName == "Imperial Department of Military Research, Sienar Fleet Systems"){
+        result = "IDM, Research";
+      }
+      else if(longManufacturerName == "Kuat Drive Yards, Fondor Shipyards"){
+        result = "Kuat Drive Yards, FS";
+      }
+      else if(longManufacturerName == "Ubrikkian Industries Custom Vehicle Division"){
+        result = "Ubrikkian Industries, CVD";
+      }
+      else {
+        result = longManufacturerName;
+      }
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return result;
+  }
+
+  SetSelectedManufacturer(manufacturerName: string) {
+    let methodName: string = 'SetSelectedManufacturer';
+
+    try {
+      this.manufacturers?.forEach(m => {
+        m.isSelected = false;
+      });
+
+      this.manufacturers?.forEach(m => {
+        if(m.name == manufacturerName){
+          m.isSelected = true;
+          this.selectedManufacturer = manufacturerName;
+          this.getMenuItemPerManufacturer();
+        }
+      });
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

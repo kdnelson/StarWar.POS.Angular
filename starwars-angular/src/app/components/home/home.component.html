@@ -44,8 +44,17 @@
       </div>
       <div class="d-flex justify-content-between">
         <div class="d-flex justify-content-start">
-          <div class="p-2">
-            <h3>Categories</h3>
+          <div class="manufacturer-list">
+            <div class="row card-container scroll">
+              <div *ngFor="let manufacturer of manufacturers">
+                  <div *ngIf="manufacturer.isSelected" class="manufacturer-card-selected" role="button" (click)="SetSelectedManufacturer(manufacturer.name)">
+                      {{ manufacturer.name }}
+                  </div>
+                  <div *ngIf="!manufacturer.isSelected" class="manufacturer-card-not-selected" role="button" (click)="SetSelectedManufacturer(manufacturer.name)">
+                      {{ manufacturer.name }}
+                  </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="d-flex justify-content-end">
@@ -66,9 +75,6 @@
                     </li>
                   </ul>
                 </div>
-              </div>
-              <div *ngIf="!menuItemsPerManufacturer.length">
-                No Records Found
               </div>
             </div>
           </div>
