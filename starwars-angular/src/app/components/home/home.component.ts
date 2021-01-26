@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   notifications: string[] = [];
   menuItemsPerManufacturer: MenuItem[] = [];
   manufacturers: Manufacturer[] = [];
-  selectedManufacturer: string = "Incom Corporation";
+  selectedManufacturer: string = "Corellia Mining Corporation";
 
   public constructor(
     public httpClientService: HttpClientService,
@@ -106,9 +106,8 @@ export class HomeComponent implements OnInit {
     let methodName: string = 'buildManufacturerList';
 
     try {
-      var abriviatedName = this.abriviateManufacturerName(longManufacturer);
-      if(this.isManufacturerUnique(abriviatedName)){
-        var manufacturer = new Manufacturer(abriviatedName, false);
+      if(this.isManufacturerUnique(longManufacturer)){
+        var manufacturer = new Manufacturer(longManufacturer, false);
         this.manufacturers.push(manufacturer);
       }
     } catch (errMsg) {
@@ -147,13 +146,11 @@ export class HomeComponent implements OnInit {
     var result: MenuItem;
 
     try {
-      if(this.selectedManufacturer != ""){
-        if(menuItem.manufacturer == this.selectedManufacturer){
+      //if(this.selectedManufacturer != ""){
+        //if(menuItem.manufacturer == this.selectedManufacturer){
           this.menuItemsPerManufacturer.push(menuItem);
-        }
-      } else {
-        this.menuItemsPerManufacturer.push(menuItem);
-      }
+        //}
+      //}
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -172,43 +169,6 @@ export class HomeComponent implements OnInit {
           result = false;
         }
       });
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-
-    return result;
-  }
-
-  abriviateManufacturerName(longManufacturerName) : string {
-    let methodName: string = 'abriviateManufacturerName';
-    var result : string = "";
-    
-    try {
-      if(longManufacturerName == "Kuat Drive Yards, Imperial Department of Military Research"){
-        result = "Kuat Drive Yards, IDMR";
-      }
-      else if(longManufacturerName == "Corellian Engineering Corporation"){
-        result = "Corellian Engineering";
-      }   
-      else if(longManufacturerName == "Corellia Mining Corporation"){
-        result = "Corellia Mining Corp.";
-      }  
-      else if(longManufacturerName == "Sienar Fleet Systems, Cyngus Spaceworks"){
-        result = "Sienar Fleet Systems, CS";
-      }
-      else if(longManufacturerName == "Imperial Department of Military Research, Sienar Fleet Systems"){
-        result = "IDM, Research";
-      }
-      else if(longManufacturerName == "Kuat Drive Yards, Fondor Shipyards"){
-        result = "Kuat Drive Yards, FS";
-      }
-      else if(longManufacturerName == "Ubrikkian Industries Custom Vehicle Division"){
-        result = "Ubrikkian Industries, CVD";
-      }
-      else {
-        result = longManufacturerName;
-      }
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
