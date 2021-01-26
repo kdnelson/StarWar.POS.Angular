@@ -45,9 +45,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     let methodName: string = 'ngOnInit';
 
-    try {
-      this.getMenuItemPerManufacturer();
-      this.SetSelectedManufacturer(this.selectedManufacturer);
+    try {     
       //this.readRouteParams();
       this.prettyPrintCopywriteInfo();
       this.notificationService.notificationQueue();
@@ -58,44 +56,80 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getMenuItemPerManufacturer() {
-    let methodName: string = 'getMenuItemPerManufacturer';
+  get getManufacturers(): Manufacturer[] {
+    let methodName: string = 'getManufacturers';
 
     try {
-
-      this.menuItemsPerManufacturer = [];
       this.getVehicles();
       this.getStarShips();
+      this.SetSelectedManufacturer(this.selectedManufacturer);
+      return this.manufacturers;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
   }
 
-  getVehicles(){
+  getVehicles() {
     let methodName: string = 'getVehicles';
 
     try {
-      this.httpClientService?.getVehicles()
-        .subscribe(o =>o.forEach(o => {
+      this.httpClientService?.allRawVehicles?.forEach(element => {
+        element.forEach(o => {
           this.buildManufacturerList(o.manufacturer);
           this.filterMenuItemsPerManufacturer(this.createMenuItem(o));
-        }));
+        });
+      });
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
   }
 
-  getStarShips(){
+  getStarShips() {
     let methodName: string = 'getStarShips';
 
     try {
-      this.httpClientService?.getStarShips()
-        .subscribe(o =>o.forEach(o => {
+      this.httpClientService?.allRawStarShips?.forEach(element => {
+        element.forEach(o => {
           this.buildManufacturerList(o.manufacturer);
           this.filterMenuItemsPerManufacturer(this.createMenuItem(o));
-        }));
+        });
+      });
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  SetSelectedManufacturer(manufacturerName: string) {
+    let methodName: string = 'SetSelectedManufacturer';
+
+    try {
+      this.manufacturers?.forEach(m => {
+        m.isSelected = false;
+      });
+
+      this.manufacturers?.forEach(m => {
+        if(m.name == manufacturerName){
+          m.isSelected = true;
+          this.selectedManufacturer = manufacturerName;
+          this.menuItemsPerManufacturer = [];
+          this.getVehicles();
+          this.getStarShips();
+        }
+      });
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  get getMenuItemsPerManufacturer() : MenuItem[] {
+    let methodName: string = 'getMenuItemPerManufacturer';
+
+    try {
+      return this.menuItemsPerManufacturer;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -146,11 +180,11 @@ export class HomeComponent implements OnInit {
     var result: MenuItem;
 
     try {
-      //if(this.selectedManufacturer != ""){
-        //if(menuItem.manufacturer == this.selectedManufacturer){
+      if(this.selectedManufacturer != ""){   
+        if(menuItem.manufacturer == this.selectedManufacturer){
           this.menuItemsPerManufacturer.push(menuItem);
-        //}
-      //}
+        }
+      }
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -175,27 +209,6 @@ export class HomeComponent implements OnInit {
     }
 
     return result;
-  }
-
-  SetSelectedManufacturer(manufacturerName: string) {
-    let methodName: string = 'SetSelectedManufacturer';
-
-    try {
-      this.manufacturers?.forEach(m => {
-        m.isSelected = false;
-      });
-
-      this.manufacturers?.forEach(m => {
-        if(m.name == manufacturerName){
-          m.isSelected = true;
-          this.selectedManufacturer = manufacturerName;
-          this.getMenuItemPerManufacturer();
-        }
-      });
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
   }
 
   get getTicketCounter() : number {

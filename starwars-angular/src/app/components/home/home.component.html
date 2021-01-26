@@ -46,12 +46,12 @@
         <div class="d-flex justify-content-start">
           <div class="manufacturer-list">
             <div class="row card-container scroll">
-              <div *ngFor="let manufacturer of manufacturers">
+              <div *ngFor="let manufacturer of getManufacturers">
                   <div *ngIf="manufacturer.isSelected" class="manufacturer-card-selected" role="button" (click)="SetSelectedManufacturer(manufacturer.name)">
-                      {{ (manufacturer.name.length>6)? (manufacturer.name | slice:0:20)+'...':(manufacturer.name) }}
+                      {{ (manufacturer.name.length > 6)? (manufacturer.name | slice:0:20) + '...' : (manufacturer.name) }}
                   </div>
                   <div *ngIf="!manufacturer.isSelected" class="manufacturer-card-not-selected" role="button" (click)="SetSelectedManufacturer(manufacturer.name)">
-                    {{ (manufacturer.name.length>6)? (manufacturer.name | slice:0:20)+'...':(manufacturer.name) }}
+                    {{ (manufacturer.name.length > 6)? (manufacturer.name | slice:0:20) + '...' : (manufacturer.name) }}
                   </div>
               </div>
             </div>
@@ -61,7 +61,7 @@
           <div class="menuItem-cards">
             <div class="container scroll">
               <div class="card-columns">
-                <div class="card menuItem-card-bg" *ngFor="let item of menuItemsPerManufacturer" role="button">
+                <div class="card menuItem-card-bg" *ngFor="let item of getMenuItemsPerManufacturer" role="button">
                   <div class="card-header text-center">
                     <p class="card-text">{{ item.name }}</p>
                   </div>
@@ -70,6 +70,11 @@
                   </div>
                 </div>
               </div>
+              <!-- <div *ngIf="3 > getMenuItemsPerManufacturer.length" class="card-columns">
+                <ul class="list-group" *ngFor="let item of getMenuItemsPerManufacturer" role="button">
+                  <li class="list-group-item">{{ item.name }}</li>
+                </ul>
+              </div> -->
             </div>
           </div>
         </div>

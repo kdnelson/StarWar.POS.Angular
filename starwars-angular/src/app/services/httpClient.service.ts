@@ -8,10 +8,19 @@ import { tap, map, switchMap, catchError, mergeMap, concatMap, toArray } from 'r
   })
   export class HttpClientService {
   
+    allRawVehicles: any[] = [];
+    allRawStarShips: any[] = [];
     baseUrl = 'https://swapi.dev/api/';
   
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+      this.loadRawMenuItems();
+    }
   
+    loadRawMenuItems() {
+      this.getPagedVehicles('https://swapi.dev/api/vehicles/');
+      this.getPagedStarShips('https://swapi.dev/api/starships/');
+    }
+
     getVehicle(name: string) {
       if (name) {
         return this.http.get(this.baseUrl + 'vehicles/?search=' + name)
@@ -62,6 +71,24 @@ import { tap, map, switchMap, catchError, mergeMap, concatMap, toArray } from 'r
                   //console.log('After getStarShips map');
                 })
             );
+    }
+
+    async getPagedVehicles(url) {
+      let response = await fetch(url)
+      let data = await response.json()      
+      this.allRawVehicles.push(data.results);
+      if(data.next !== null){
+        this.getPagedVehicles(data.next)
+      }
+    }
+
+    async getPagedStarShips(url) {
+      let response = await fetch(url)
+      let data = await response.json()      
+      this.allRawStarShips.push(data.results);
+      if(data.next !== null){
+        this.getPagedStarShips(data.next)
+      }
     }
 
     getVehiclesAndStarShips() {
