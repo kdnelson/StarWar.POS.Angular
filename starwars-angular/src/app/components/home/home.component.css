@@ -90,8 +90,34 @@
   padding-left: 5px;
 }
 
-.menuItem-card {
-  min-width: 145px;
+.single-XS-menuItem-card {
+  min-width: 100%;
+  min-height: 108px;
+}
+
+.single-M-menuItem-card {
+  min-width: 290px;
+  min-height: 108px;
+}
+
+.single-menuItem-card {
+  min-width: 290px;
+  min-height: 108px;
+}
+
+.double-XS-menuItem-card {
+  min-width: 100%;
+  min-height: 108px;
+}
+
+.double-M-menuItem-card {
+  min-width: 210px;
+  min-height: 108px;
+}
+
+.double-menuItem-card {
+  min-width: 290px;
+  min-height: 108px;
 }
 
 .card, .card-body, .card-hearder, .list-group-item { 

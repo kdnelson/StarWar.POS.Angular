@@ -57,8 +57,76 @@
             </div>
           </div>
         </div>
-        <div class="d-flex justify-content-between">
-          <div *ngIf="getMenuItemsPerManufacturer.length > 1">
+        <div class="d-flex justify-content-between">       
+          <div *ngIf="menuItemsIsOne && !menuItemsIsTwo && !menuItemsIsGreaterThanTwo">
+            <div class="menuItem-cards">
+              <div class="container scroll">
+                <div class="card-columns">
+                  <div class="card" *ngFor="let item of getMenuItemsPerManufacturer" role="button">
+                    <div class="single-XS-menuItem-card">
+                      <div class="card-header text-center">
+                        <p class="card-text">{{ item.name }}</p>
+                      </div>
+                      <div class="card-body text-start">
+                        <p class="card-text">Crew: {{ item.passengers }}</p>
+                      </div>
+                    </div>
+                    <div class="single-M-menuItem-card">
+                      <div class="card-header text-center">
+                        <p class="card-text">{{ item.name }}</p>
+                      </div>
+                      <div class="card-body text-start">
+                        <p class="card-text">Crew: {{ item.passengers }}</p>
+                      </div>
+                    </div>
+                    <div class="single-menuItem-card">
+                      <div class="card-header text-center">
+                        <p class="card-text">{{ item.name }}</p>
+                      </div>
+                      <div class="card-body text-start">
+                        <p class="card-text">Crew: {{ item.passengers }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!menuItemsIsOne && menuItemsIsTwo && !menuItemsIsGreaterThanTwo">
+            <div class="menuItem-cards">
+              <div class="container scroll">
+                <div class="card-columns">
+                    <div class="card" *ngFor="let item of getMenuItemsPerManufacturer" role="button">
+                      <div class="double-XS-menuItem-card"> 
+                        <div class="card-header text-center">
+                          <p class="card-text">{{ item.name }}</p>
+                        </div>
+                        <div class="card-body text-start">
+                          <p class="card-text">Crew: {{ item.passengers }}</p>
+                        </div>
+                      </div>
+                      <div class="double-M-menuItem-card"> 
+                        <div class="card-header text-center">
+                          <p class="card-text">{{ item.name }}</p>
+                        </div>
+                        <div class="card-body text-start">
+                          <p class="card-text">Crew: {{ item.passengers }}</p>
+                        </div>
+                      </div>
+                      <div class="double-menuItem-card"> 
+                        <div class="card-header text-center">
+                          <p class="card-text">{{ item.name }}</p>
+                        </div>
+                        <div class="card-body text-start">
+                          <p class="card-text">Crew: {{ item.passengers }}</p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!menuItemsIsOne && !menuItemsIsTwo && menuItemsIsGreaterThanTwo">
             <div class="menuItem-cards">
               <div class="container scroll">
                 <div class="card-columns">
@@ -69,14 +137,11 @@
                     <div class="card-body text-start">
                       <p class="card-text">Crew: {{ item.passengers }}</p>
                     </div>
-                  </div>
+                  </div>            
                 </div>
               </div>
             </div>
-          </div> 
-          <div *ngIf="getMenuItemsPerManufacturer.length == 1" class="card-columns">
-            HELP ME!
-          </div>
+          </div>        
         </div>
       </div>
       <div class="d-flex justify-content-center">

@@ -27,8 +27,11 @@ export class HomeComponent implements OnInit {
   copywriteInfo: string = null;
   nextNotification: string = null;
   notifications: string[] = [];
-  menuItemsPerManufacturer: MenuItem[] = [];
   manufacturers: Manufacturer[] = [];
+  menuItemsPerManufacturer: MenuItem[] = [];
+  menuItemsIsOne: boolean = false;
+  menuItemsIsTwo: boolean = false;
+  menuItemsIsGreaterThanTwo: boolean = false;
   selectedManufacturer: string = "Corellia Mining Corporation";
 
   public constructor(
@@ -45,7 +48,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     let methodName: string = 'ngOnInit';
 
-    try {     
+    try {   
       //this.readRouteParams();
       this.prettyPrintCopywriteInfo();
       this.notificationService.notificationQueue();
@@ -62,7 +65,7 @@ export class HomeComponent implements OnInit {
     try {
       this.getVehicles();
       this.getStarShips();
-      this.SetSelectedManufacturer(this.selectedManufacturer);
+      this.SetSelectedManufacturer(this.selectedManufacturer); 
       return this.manufacturers;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -115,8 +118,21 @@ export class HomeComponent implements OnInit {
           m.isSelected = true;
           this.selectedManufacturer = manufacturerName;
           this.menuItemsPerManufacturer = [];
+
+          // this.manufacturers?.forEach(o => {
+          //   console.log(o.name);
+          // });
+
+          // console.log(this.menuItemsPerManufacturer.length);
+
           this.getVehicles();
           this.getStarShips();
+
+          console.log('Length: ' + this.menuItemsPerManufacturer.length);
+
+          this.menuItemsIsOne = this.menuItemsPerManufacturer.length == 1;
+          this.menuItemsIsTwo = this.menuItemsPerManufacturer.length == 2;
+          this.menuItemsIsGreaterThanTwo = this.menuItemsPerManufacturer.length > 2;
         }
       });
     } catch (errMsg) {

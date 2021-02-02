@@ -60,6 +60,24 @@ body {
     .cart-container {
         display: none;
     }
+    .single-XS-menuItem-card {
+        display: none;
+    }
+    .single-M-menuItem-card {
+        display: none;
+    }
+    .single-menuItem-card {
+        display: none;
+    } 
+    .double-XS-menuItem-card {
+        display: none;
+    }
+    .double-M-menuItem-card {
+        display: none;
+    }
+    .double-menuItem-card {
+        display: none;
+    }
 }
 
 /* XS -Small devices (portrait phones, 320px and up) */
@@ -111,6 +129,24 @@ body {
     .cart-container {
         display: block;
     }
+    .single-XS-menuItem-card {
+        display: block;
+    }
+    .single-M-menuItem-card {
+        display: none;
+    }
+    .single-menuItem-card {
+        display: none;
+    }  
+    .double-XS-menuItem-card {
+        display: block;
+    }
+    .double-M-menuItem-card {
+        display: none;
+    }
+    .double-menuItem-card {
+        display: none;
+    }
 }
 
 /* S -Small devices (landscape phones, 576px and up) */
@@ -137,6 +173,24 @@ body {
         display: none;
     }
     .cart-container {
+        display: none;
+    }
+    .single-XS-menuItem-card {
+        display: none;
+    }
+    .single-M-menuItem-card {
+        display: none;
+    }
+    .single-menuItem-card {
+        display: none;
+    } 
+    .double-XS-menuItem-card {
+        display: none;
+    }
+    .double-M-menuItem-card {
+        display: none;
+    }
+    .double-menuItem-card {
         display: none;
     }
 }
@@ -190,6 +244,24 @@ body {
     .cart-container {
         display: block;
     }
+    .single-XS-menuItem-card {
+        display: none;
+    }
+    .single-M-menuItem-card {
+        display: block;
+    }
+    .single-menuItem-card {
+        display: none;
+    } 
+    .double-XS-menuItem-card {
+        display: none;
+    }
+    .double-M-menuItem-card {
+        display: block;
+    }
+    .double-menuItem-card {
+        display: none;
+    }
 }
  
 /* L - Large devices (desktops, 992px and up) */
@@ -241,6 +313,24 @@ body {
     .cart-container {
         display: block;
     }
+    .single-XS-menuItem-card {
+        display: none;
+    }
+    .single-M-menuItem-card {
+        display: none;
+    }
+    .single-menuItem-card {
+        display: block;
+    }
+    .double-XS-menuItem-card {
+        display: none;
+    }
+    .double-M-menuItem-card {
+        display: none;
+    }
+    .double-menuItem-card {
+        display: block;
+    } 
 }
  
 /* XL - Extra large devices (large desktops, 1200px and up) */
@@ -292,4 +382,22 @@ body {
     .cart-container {
         display: block;
     }
+    .single-XS-menuItem-card {
+        display: none;
+    }
+    .single-M-menuItem-card {
+        display: none;
+    }
+    .single-menuItem-card {
+        display: block;
+    }
+    .double-XS-menuItem-card {
+        display: none;
+    }
+    .double-M-menuItem-card {
+        display: none;
+    }
+    .double-menuItem-card {
+        display: block;
+    } 
 }

@@ -36,15 +36,15 @@ import { tap, map, switchMap, catchError, mergeMap, concatMap, toArray } from 'r
       return this.http.get(this.baseUrl + 'vehicles/')
         .pipe(
           tap(res => {
-            //console.log('Before getVehicles map');
+            console.log('Before getVehicles map');
           }),
           map(res => {
             return res['results'];
           }),
           tap(res => {
-            //console.log('After getVehicles map');
+            console.log('After getVehicles map');
           })
-        );
+        )
     }
 
     getStarShip(name: string) {
@@ -62,13 +62,13 @@ import { tap, map, switchMap, catchError, mergeMap, concatMap, toArray } from 'r
         return this.http.get(this.baseUrl + 'starships/')
             .pipe(
                 tap(res => {
-                  //console.log('Before getStarShips map');
+                  console.log('Before getStarShips map');
                 }),
                 map(res => {
                     return res['results'];
                 }),
                 tap(res => {
-                  //console.log('After getStarShips map');
+                  console.log('After getStarShips map');
                 })
             );
     }
