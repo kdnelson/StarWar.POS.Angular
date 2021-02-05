@@ -1,22 +1,31 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Guid } from "guid-typescript";
+import { element } from "protractor";
 import { forkJoin, of, from } from 'rxjs';
 import { tap, map, switchMap, catchError, mergeMap, concatMap, toArray } from 'rxjs/operators';
+import { ErrorMsg } from "../models/errorMsg";
+import { ErrorType } from "../models/errorType";
+import { MenuItem } from "../models/menuItem";
+import { LogService } from "./log.service";
 
 @Injectable({
     providedIn: 'root'
   })
   export class HttpClientService {
-  
-    allRawVehicles: any[] = [];
-    allRawStarShips: any[] = [];
+    className: string = "HttpClientService";
+    allMenuItems: MenuItem[] = [];
+
     baseUrl = 'https://swapi.dev/api/';
   
-    constructor(private http: HttpClient) {
-      this.loadRawMenuItems();
-    }
+    constructor(
+      private http: HttpClient,
+      public errorType: ErrorType,
+      public logService: LogService
+      ) {}
   
     loadRawMenuItems() {
+      //this.recursiveCall(0).then(() => console.log('done'));
       this.getPagedVehicles('https://swapi.dev/api/vehicles/');
       this.getPagedStarShips('https://swapi.dev/api/starships/');
     }
@@ -73,23 +82,103 @@ import { tap, map, switchMap, catchError, mergeMap, concatMap, toArray } from 'r
             );
     }
 
-    async getPagedVehicles(url) {
-      let response = await fetch(url)
-      let data = await response.json()      
-      this.allRawVehicles.push(data.results);
-      if(data.next !== null){
-        this.getPagedVehicles(data.next)
-      }
+    // async getPagedVehicles(url) : Promise<MenuItem[]> {
+    //   let menuItems: MenuItem[] = [];
+    //   let response = await fetch(url)
+    //   let data = await response.json()      
+    //   data.results.forEach(element => {
+    //     menuItems.push(this.createMenuItem(element));
+    //   });
+    //   if(data.next !== null){
+    //     this.getPagedVehicles(data.next)
+    //   } else {
+    //     return menuItems; 
+    //   }
+    // }
+
+    recursiveCall = (index) => {
+      return new Promise((resolve) => {
+          console.log(index);
+          if (index < 3) {
+              return setTimeout(() => resolve(this.recursiveCall(++index)), 0);
+          } else {
+              return resolve(0);
+          }
+      })
     }
 
-    async getPagedStarShips(url) {
-      let response = await fetch(url)
-      let data = await response.json()      
-      this.allRawStarShips.push(data.results);
-      if(data.next !== null){
-        this.getPagedStarShips(data.next)
-      }
+    getPagedVehicles = (url) : Promise<MenuItem[]> => {
+      return new Promise(async (resolve) => {   
+        let response = await fetch(url)
+        let data = await response.json();
+        data.results.forEach(element => {
+          let newMenuItem = this.createMenuItem(element);
+          this.allMenuItems.push(newMenuItem);
+        });
+        if (data.next !== null) {
+          return setTimeout(() => resolve(this.getPagedVehicles(data.next)), 0);
+        } else {
+          return resolve(this.allMenuItems);
+        }
+      })
     }
+
+    getPagedStarShips = (url): Promise<MenuItem[]> => {
+      return new Promise(async (resolve) => {     
+        let response = await fetch(url)
+        let data = await response.json();
+        data.results.forEach(element => {
+          let newMenuItem = this.createMenuItem(element);
+          this.allMenuItems.push(newMenuItem);
+        });
+        if (data.next !== null) {
+          return setTimeout(() => resolve(this.getPagedStarShips(data.next)), 0);
+        } else {
+          return resolve(this.allMenuItems);
+        }
+      })
+    }
+
+
+    // async getPagedStarShips(url) : Promise<MenuItem[]> {
+    //   let menuItems: MenuItem[] = [];
+    //   let response = await fetch(url)
+    //   let data = await response.json()      
+    //   data.results.forEach(element => {
+    //     menuItems.push(this.createMenuItem(element));
+    //   });
+    //   if(data.next !== null){
+    //     this.getPagedStarShips(data.next)
+    //   } else { 
+    //     return menuItems; 
+    //   }
+    // }
+
+    createMenuItem(rawMenuItem: any) : MenuItem {
+      let methodName: string = 'createMenuItem';
+      var result: MenuItem = null;
+  
+      try {   
+        result = new MenuItem(
+          Guid.create().toString(),
+          rawMenuItem.name, 
+          rawMenuItem.manufacturer, 
+          rawMenuItem.cost_in_credits, 
+          rawMenuItem.length, 
+          rawMenuItem.max_atmosphering_speed, 
+          rawMenuItem.crew, 
+          rawMenuItem.passengers, 
+          rawMenuItem.cargo_capacity, 
+          rawMenuItem.consumables
+        );
+      } catch (errMsg) {
+        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+        this.logService.logHandler(errorMsg);
+      }
+  
+      return result;
+    }
+
 
     getVehiclesAndStarShips() {
       return forkJoin([

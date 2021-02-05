@@ -2,7 +2,7 @@ import { Guid } from 'guid-typescript';
 
 export class MenuItem {
   constructor(
-    public id?: Guid,
+    public id?: string,
     public name?: String,
     public manufacturer?: String,
     public cost?: String,
