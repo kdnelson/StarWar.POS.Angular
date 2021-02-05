@@ -76,6 +76,10 @@ export class HomeComponent implements OnInit {
       this.subsink.sink = this.subjectService.behaviorSubjectObservable$.subscribe(o => {
         o.forEach((element) => {
           if(!this.isMenuItemAlreadyLoaded(element.name.toString())){
+            if(this.isManufacturerUnique(element.manufacturer.toString())){
+              var manufacturer = new Manufacturer(element.manufacturer.toString(), false);
+              this.manufacturers.push(manufacturer);
+            }
             this.behaviorSubjectObservableMenuItems.push(element)
           }
         });
@@ -95,17 +99,17 @@ export class HomeComponent implements OnInit {
   }
 
 
-  // get getManufacturers(): Manufacturer[] {
-  //   let methodName: string = 'getManufacturers';
+  get getManufacturers(): Manufacturer[] {
+    let methodName: string = 'getManufacturers';
 
-  //   try {
-  //     this.SetSelectedManufacturer(this.selectedManufacturer); 
-  //     return this.manufacturers;
-  //   } catch (errMsg) {
-  //     let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-  //     this.logService.logHandler(errorMsg);
-  //   }
-  // }
+    try {
+      this.SetSelectedManufacturer(this.selectedManufacturer); 
+      return this.manufacturers;
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
 
   // getVehicles() {
   //   let methodName: string = 'getVehicles';
