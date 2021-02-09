@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Guid } from 'guid-typescript';
 
@@ -12,36 +11,64 @@ import { LogService } from './log.service';
   providedIn: 'root'
 })
 export class SubjectService {
-  className: string = "SubjectService";
+  className: string = "BehaviorSubjectService";
   menuItems: MenuItem[] = [];
-  private behaviorSubject$;
-  behaviorSubjectObservable$: Observable<MenuItem[]>;
+  private vehiclesUrl = 'https://swapi.dev/api/vehicles/';
+  private starShipsUrl = 'https://swapi.dev/api/starships/';
+  private behaviorSubjectMenuItems$;
+  behaviorSubjectMenuItemsObservable$: Observable<MenuItem[]>;
 
   constructor(
     public errorType: ErrorType,
-    public logService: LogService) { 
-        this.loadBehaviorSubjects(); 
+    public logService: LogService) {
+      this.recursiveCall(0).then(() => console.log('done')); 
+      this.loadBehaviorSubjects();
     }
 
-    loadBehaviorSubjects() {
-    this.initBehaviorSubjects();
+  recursiveCall = (index) => {
+    return new Promise((resolve) => {
+        console.log(index);
+        if (index < 5) {
+            return setTimeout(() => resolve(this.recursiveCall(++index)), 0);
+        } else {
+            return resolve(0);
+        }
+    })
+  }
 
-    this.getPagedVehicles('https://swapi.dev/api/vehicles/').then((element) => {
-      element => element.forEach(o => this.menuItems.push(o))
-      let clone: MenuItem[] = JSON.parse(JSON.stringify(this.menuItems));
-      this.behaviorSubject$.next(clone);
-    });
+  loadBehaviorSubjects() {
+      let methodName: string = 'loadBehaviorSubjects';
 
-    this.getPagedStarShips('https://swapi.dev/api/starships/').then((element) => {
-      element => element.forEach(o => this.menuItems.push(o))
-      let clone: MenuItem[] = JSON.parse(JSON.stringify(this.menuItems));
-      this.behaviorSubject$.next(clone);
-    });
+      try {     
+        this.initBehaviorSubjects();
+
+        this.getPagedVehicles(this.vehiclesUrl).then((element) => {
+          element => element.forEach(o => this.menuItems.push(o))
+          let clone: MenuItem[] = JSON.parse(JSON.stringify(this.menuItems));
+          this.behaviorSubjectMenuItems$.next(clone);
+        });
+
+        this.getPagedStarShips(this.starShipsUrl).then((element) => {
+          element => element.forEach(o => this.menuItems.push(o))
+          let clone: MenuItem[] = JSON.parse(JSON.stringify(this.menuItems));
+          this.behaviorSubjectMenuItems$.next(clone);
+        });
+      } catch (errMsg) {
+        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+        this.logService.logHandler(errorMsg);
+      }
   }
 
   initBehaviorSubjects() {
-    this.behaviorSubject$ = new BehaviorSubject(this.menuItems);
-    this.behaviorSubjectObservable$ = this.behaviorSubject$.asObservable();
+    let methodName: string = 'initBehaviorSubjects';
+
+    try {
+      this.behaviorSubjectMenuItems$ = new BehaviorSubject(this.menuItems);
+      this.behaviorSubjectMenuItemsObservable$ = this.behaviorSubjectMenuItems$.asObservable();
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
   }
 
   getPagedVehicles = (url) : Promise<MenuItem[]> => {

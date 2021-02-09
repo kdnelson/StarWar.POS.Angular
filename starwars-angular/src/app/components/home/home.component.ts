@@ -8,9 +8,8 @@ import { CartComponent } from './cart/cart.component';
 import { CategoryFilterComponent } from './category-filter/category-filter.component';
 import { MenuItemDetailComponent } from './menu-item-detail/menu-item-detail.component';
 import { MenuItem } from 'src/app/models/menuItem';
-import { Guid } from 'guid-typescript';
 import { Manufacturer } from 'src/app/models/manufacturer';
-import { SubjectService } from 'src/app/services/subjectService';
+import { SubjectService } from 'src/app/services/SubjectService';
 import { SubSink } from 'subsink';
 
 declare var $: any;
@@ -30,7 +29,7 @@ export class HomeComponent implements OnInit {
   notifications: string[] = [];
   manufacturers: Manufacturer[] = [];
   behaviorSubjectObservableMenuItems: MenuItem[] = [];
-  menuItemsPerManufacturer: MenuItem[] = [];
+  menuItemsPerSelectedManufacturer: MenuItem[] = [];
   selectedManufacturer: string = "Corellia Mining Corporation";
   menuItemsIsOne: boolean = false;
   menuItemsIsTwo: boolean = false;
@@ -53,14 +52,8 @@ export class HomeComponent implements OnInit {
 
     try { 
       this.subjectService.loadBehaviorSubjects();
-      this.runAction();
-      
-      //this.getVehicles();
-      //this.getStarShips();
-      //console.log(this.httpClientService.allMenuItems);
-      //this.httpClientService?.allMenuItems?.forEach(o => o.name)
+      this.subscribeToSubjectService();
 
-      //console.log(this.httpClientService.allRawStarShips);
       //this.readRouteParams();
       this.prettyPrintCopywriteInfo();
       this.notificationService.notificationQueue();
@@ -70,34 +63,6 @@ export class HomeComponent implements OnInit {
       this.logService.logHandler(errorMsg);
     }
   }
-
-  runAction() {
-    let action = () => {
-      this.subsink.sink = this.subjectService.behaviorSubjectObservable$.subscribe(o => {
-        o.forEach((element) => {
-          if(!this.isMenuItemAlreadyLoaded(element.name.toString())){
-            if(this.isManufacturerUnique(element.manufacturer.toString())){
-              var manufacturer = new Manufacturer(element.manufacturer.toString(), false);
-              this.manufacturers.push(manufacturer);
-            }
-            this.behaviorSubjectObservableMenuItems.push(element)
-          }
-        });
-      })
-    };
-    action();
-  }
-
-  isMenuItemAlreadyLoaded(menuItemName: string) : Boolean {
-    let isFound = false;
-    this.behaviorSubjectObservableMenuItems.forEach((o) => {
-      if(o.name == menuItemName){
-        isFound = true;
-      }
-    });
-    return isFound;
-  }
-
 
   get getManufacturers(): Manufacturer[] {
     let methodName: string = 'getManufacturers';
@@ -111,43 +76,95 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // getVehicles() {
-  //   let methodName: string = 'getVehicles';
+  get getMenuItemsPerManufacturer() : MenuItem[] {
+    let methodName: string = 'getMenuItemPerManufacturer';
 
-  //   try {
-  //     this.httpClientService?.allRawVehicles?.forEach(element => {
-  //       element.forEach(o => {
-  //         console.log(o);
-  //         //this.buildManufacturerList(o.manufacturer);
-  //         //this.buildMenuItemList(this.createMenuItem(o));
-  //       });
-  //     });
-  //   } catch (errMsg) {
-  //     let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-  //     this.logService.logHandler(errorMsg);
-  //   }
-  // }
+    try {
+      this.behaviorSubjectObservableMenuItems.forEach(o => {
+        if(o.manufacturer == this.selectedManufacturer) {
+          this.menuItemsPerSelectedManufacturer.push(o);
+        }
+      });
+      
+      this.setColumnView();
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+    return this.menuItemsPerSelectedManufacturer;
+  }
 
-  // getStarShips() {
-  //   let methodName: string = 'getStarShips';
+  get getTicketCounter() : number {
+    let methodName: string = 'getTicketCounter';
 
-  //   try {
-  //     this.httpClientService?.allRawStarShips?.forEach(element => {
-  //       element.forEach(o => {
-  //         this.buildManufacturerList(o.manufacturer);
-  //         this.buildMenuItemList(this.createMenuItem(o));
-  //       });
-  //     });
-  //   } catch (errMsg) {
-  //     let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-  //     this.logService.logHandler(errorMsg);
-  //   }
-  // }
+    try {
+      return 333;
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  subscribeToSubjectService() {
+    let methodName: string = 'subscribeToSubjectService';
+
+    try {
+      let subscribe = () => {
+        this.subsink.sink = this.subjectService.behaviorSubjectMenuItemsObservable$.subscribe(o => {
+          o.forEach((element) => {
+            if(!this.isMenuItemAlreadyLoaded(element.name.toString())){
+              if(this.isManufacturerUnique(element.manufacturer.toString())){
+                var manufacturer = new Manufacturer(element.manufacturer.toString(), false);
+                this.manufacturers.push(manufacturer);
+              }
+              this.behaviorSubjectObservableMenuItems.push(element)
+            }
+          });
+        })
+      };
+      subscribe();
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  isMenuItemAlreadyLoaded(menuItemName: string) : Boolean {
+    let methodName: string = 'isMenuItemAlreadyLoaded';
+    let isFound = false;
+
+    try { 
+      this.behaviorSubjectObservableMenuItems.forEach((o) => {
+        if(o.name == menuItemName){
+          isFound = true;
+        }
+      });
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+    return isFound;
+  }
+
+  setColumnView() : void {
+    let methodName: string = 'setColumnView';
+
+    try { 
+      this.menuItemsIsOne = this.menuItemsPerSelectedManufacturer.length == 1;
+      this.menuItemsIsTwo = this.menuItemsPerSelectedManufacturer.length == 2;
+      this.menuItemsIsGreaterThanTwo = this.menuItemsPerSelectedManufacturer.length > 2;
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
 
   SetSelectedManufacturer(manufacturerName: string) {
     let methodName: string = 'SetSelectedManufacturer';
 
     try {
+      this.menuItemsPerSelectedManufacturer = [];
+
       this.manufacturers?.forEach(m => {
         m.isSelected = false;
       });
@@ -156,32 +173,8 @@ export class HomeComponent implements OnInit {
         if(m.name == manufacturerName){
           m.isSelected = true;
           this.selectedManufacturer = manufacturerName;
-          this.menuItemsPerManufacturer = [];
-
-          // this.manufacturers?.forEach(o => {
-          //   console.log(o.name);
-          // });
-
-          console.log(this.selectedManufacturer);
-          console.log(this.manufacturers.length);
-          //console.log(this.menuItems.length);
-
-          this.menuItemsIsOne = this.menuItemsPerManufacturer.length == 1;
-          this.menuItemsIsTwo = this.menuItemsPerManufacturer.length == 2;
-          this.menuItemsIsGreaterThanTwo = this.menuItemsPerManufacturer.length > 2;
         }
       });
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  get getMenuItemsPerManufacturer() : MenuItem[] {
-    let methodName: string = 'getMenuItemPerManufacturer';
-
-    try {
-      return this.menuItemsPerManufacturer;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -202,46 +195,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  createMenuItem(rawMenuItem: any) : MenuItem {
-    let methodName: string = 'createMenuItem';
-    var result: MenuItem = null;
-
-    try {   
-      result = new MenuItem(
-        Guid.create().toString(),
-        rawMenuItem.name, 
-        rawMenuItem.manufacturer, 
-        rawMenuItem.cost_in_credits, 
-        rawMenuItem.length, 
-        rawMenuItem.max_atmosphering_speed, 
-        rawMenuItem.crew, 
-        rawMenuItem.passengers, 
-        rawMenuItem.cargo_capacity, 
-        rawMenuItem.consumables
-      );
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-
-    return result;
-  }
-
-  buildMenuItemList(menuItem: MenuItem) : MenuItem {
-    let methodName: string = 'buildMenuItemList';
-    var result: MenuItem;
-
-    try {
-      //this.menuItems.push(menuItem);
-      return null;
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-
-    return result;
-  }
-
   isManufacturerUnique(manufacturer: string) : boolean {
     let methodName: string = 'isManufacturerUnique';
     let result: boolean = true;
@@ -258,17 +211,6 @@ export class HomeComponent implements OnInit {
     }
 
     return result;
-  }
-
-  get getTicketCounter() : number {
-    let methodName: string = 'getTicketCounter';
-
-    try {
-      return 333;
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
   }
 
   openCategoryFilterModal() {
@@ -405,13 +347,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.subsink.unsubscribe();
-  }
-}
+    let methodName: string = 'ngOnDestroy';
 
-enum ActionType {
-  subject,
-  behaviorSubject,
-  replaySubject,
-  asyncSubject
+    try {
+      this.subsink.unsubscribe();
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
 }
