@@ -99,6 +99,8 @@ https://github.com/DanWahlin/Angular-RESTfulService
 
 + Continue watch training to add data
 + Add crud to manager table
++ Add yellow "Add" buttons to menuItem cards
++ Add wait wheel on loading menuItems
 + Add edit/+or- buttons bellow pressed cart item.
 + TrackBy?
 + Add error logging to all components
@@ -157,7 +159,5 @@ ng-template
 
 ***** Issues *****
 
-From XS, M, L to XL the nav bar can be off in showing Home or Manager
-Shut-off modals for div-S
 
 ****** Architecture ******
