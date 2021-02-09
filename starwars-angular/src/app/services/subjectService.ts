@@ -21,7 +21,7 @@ export class SubjectService {
   constructor(
     public errorType: ErrorType,
     public logService: LogService) {
-      this.recursiveCall(0).then(() => console.log('done')); 
+      //this.recursiveCall(0).then(() => console.log('done')); 
       this.loadBehaviorSubjects();
     }
 
