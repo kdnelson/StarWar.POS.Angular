@@ -1,4 +1,8 @@
 
+.viewport-height {
+  min-height: 65vh;
+}
+
 .home-header {
   font-weight: bold;
   font-size: medium;
@@ -31,8 +35,14 @@
   background-color: transparent;
 }
 
-.scroll {
-  max-height: 62vh;
+.manufacturer-scroll {
+  max-height: 58vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.menuItems-scroll {
+  max-height: 58vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -48,15 +58,16 @@
 }
 
 .manufacturer-list {
-  width: 178px;
+  width: 163px;
+  height: 400px;
   padding-left: 14px;
   padding-top: 8px;
   padding-right: 8px;
 }
 
 .manufacturer-card-selected {
-  height: 41px;
-  width: 165px;
+  height: 39px;
+  width: 150px;
   padding-top: 10px;
   margin-left: 10px;
   margin-right: 5px;
@@ -69,8 +80,8 @@
 }
 
 .manufacturer-card-not-selected {
-  height: 41px;
-  width: 165px;
+  height: 39px;
+  width: 150px;
   padding-top: 10px;
   margin-left: 10px;
   margin-right: 5px;
@@ -85,6 +96,15 @@
   transition: background-position 0.2s;
 }
 
+.menuItem-card-header-text {
+  font-size: small;
+  min-width: 90px;
+}
+
+.menuItem-card-text {
+  font-size: xx-small;
+}
+
 .menuItem-cards {
   padding-top: 8px;
   padding-right: 0px;
@@ -97,7 +117,7 @@
 }
 
 .single-M-menuItem-card {
-  min-width: 290px;
+  min-width: 200px;
   min-height: 108px;
 }
 
@@ -112,13 +132,23 @@
 }
 
 .double-M-menuItem-card {
-  min-width: 210px;
+  min-width: 200px;
   min-height: 108px;
 }
 
 .double-menuItem-card {
   min-width: 290px;
   min-height: 108px;
+}
+
+.btn {
+  background: rgba(241, 226, 7, 0.87);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: small;
+  color: black;
 }
 
 .card, .card-body, .card-hearder, .list-group-item { 
