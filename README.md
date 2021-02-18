@@ -100,6 +100,7 @@ https://github.com/DanWahlin/Angular-RESTfulService
 + Continue watch training to add data
 + Add crud to manager table
 + Add yellow "Add" buttons to menuItem cards
++ Consistant slider padding
 + Add wait wheel on loading menuItems
 + Add edit/+or- buttons bellow pressed cart item.
 + TrackBy?
