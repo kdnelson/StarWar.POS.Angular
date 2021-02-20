@@ -78,6 +78,18 @@ body {
     .double-menuItem-card {
         display: none;
     }
+    .menuItem-XS-card-header-text {
+        display: none;
+    }
+    .menuItem-XS-card-text {
+        display: none;
+    }
+    .menuItem-NotXS-card-header-text {
+        display: none;
+    }
+    .menuItem-NotXS-card-text {
+        display: none;
+    }
 }
 
 /* XS -Small devices (portrait phones, 320px and up) */
@@ -147,6 +159,21 @@ body {
     .double-menuItem-card {
         display: none;
     }
+    .menuItem-XS-card-header-text {
+        display: block;
+        font-size: small;
+    }
+    .menuItem-XS-card-text {
+        display: block;
+        font-size: xx-small;
+        min-width: 90px;
+    }
+    .menuItem-NotXS-card-header-text {
+        display: none;
+    }
+    .menuItem-NotXS-card-text {
+        display: none;
+    }
 }
 
 /* S -Small devices (landscape phones, 576px and up) */
@@ -191,6 +218,18 @@ body {
         display: none;
     }
     .double-menuItem-card {
+        display: none;
+    }
+    .menuItem-XS-card-header-text {
+        display: none;
+    }
+    .menuItem-XS-card-text {
+        display: none;
+    } 
+    .menuItem-NotXS-card-header-text {
+        display: none;
+    }
+    .menuItem-NotXS-card-text {
         display: none;
     }
 }
@@ -262,6 +301,21 @@ body {
     .double-menuItem-card {
         display: none;
     }
+    .menuItem-XS-card-header-text {
+        display: none;
+    }
+    .menuItem-XS-card-text {
+        display: none;
+    }
+    .menuItem-NotXS-card-header-text {
+        display: block;
+        font-size: large;
+    }
+    .menuItem-NotXS-card-text {
+        display: block;
+        font-size: medium;
+        min-width: 90px;
+    }
 }
  
 /* L - Large devices (desktops, 992px and up) */
@@ -330,7 +384,22 @@ body {
     }
     .double-menuItem-card {
         display: block;
-    } 
+    }
+    .menuItem-XS-card-header-text {
+        display: none;
+    }
+    .menuItem-XS-card-text {
+        display: none;
+    }
+    .menuItem-NotXS-card-header-text {
+        display: block;
+        font-size: large;
+    }
+    .menuItem-NotXS-card-text {
+        display: block;
+        font-size: medium;
+        min-width: 90px;
+    }
 }
  
 /* XL - Extra large devices (large desktops, 1200px and up) */
@@ -399,5 +468,20 @@ body {
     }
     .double-menuItem-card {
         display: block;
-    } 
+    }
+    .menuItem-XS-card-header-text {
+        display: none;
+    }
+    .menuItem-XS-card-text {
+        display: none;
+    }
+    .menuItem-NotXS-card-header-text {
+        display: block;
+        font-size: large;
+    }
+    .menuItem-NotXS-card-text {
+        display: block;
+        font-size: medium;
+        min-width: 90px;
+    }
 }

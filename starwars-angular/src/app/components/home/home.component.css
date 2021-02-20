@@ -96,15 +96,6 @@
   transition: background-position 0.2s;
 }
 
-.menuItem-card-header-text {
-  font-size: small;
-  min-width: 90px;
-}
-
-.menuItem-card-text {
-  font-size: xx-small;
-}
-
 .menuItem-cards {
   padding-top: 8px;
   padding-right: 0px;
