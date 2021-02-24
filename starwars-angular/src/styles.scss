@@ -160,13 +160,18 @@ body {
         display: none;
     }
     .menuItem-XS-card-header-text {
+        padding-top: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        min-width: 130px;
         display: block;
         font-size: small;
     }
     .menuItem-XS-card-text {
         display: block;
+        padding-left: 10px;
+        padding-bottom: 5px;
         font-size: xx-small;
-        min-width: 90px;
     }
     .menuItem-NotXS-card-header-text {
         display: none;
@@ -176,7 +181,7 @@ body {
     }
 }
 
-/* S -Small devices (landscape phones, 576px and up) */
+/* S -Small devices (landscape phones, 576px and up)  Not Supported */
 @media (min-width: 576px) {
     .background {
         display: none;
@@ -308,13 +313,17 @@ body {
         display: none;
     }
     .menuItem-NotXS-card-header-text {
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
         display: block;
-        font-size: large;
+        font-size: medium;
     }
     .menuItem-NotXS-card-text {
         display: block;
-        font-size: medium;
-        min-width: 90px;
+        padding-left: 10px;
+        padding-bottom: 10px;
+        font-size: small;
     }
 }
  
@@ -392,13 +401,17 @@ body {
         display: none;
     }
     .menuItem-NotXS-card-header-text {
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
         display: block;
         font-size: large;
     }
     .menuItem-NotXS-card-text {
         display: block;
+        padding-left: 10px;
+        padding-bottom: 10px;
         font-size: medium;
-        min-width: 90px;
     }
 }
  
@@ -476,12 +489,16 @@ body {
         display: none;
     }
     .menuItem-NotXS-card-header-text {
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
         display: block;
         font-size: large;
     }
     .menuItem-NotXS-card-text {
         display: block;
+        padding-left: 10px;
+        padding-bottom: 10px;
         font-size: medium;
-        min-width: 90px;
     }
 }

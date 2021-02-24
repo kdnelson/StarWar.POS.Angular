@@ -1,6 +1,6 @@
 
 .viewport-height {
-  min-height: 62vh;
+  min-height: 63vh;
 }
 
 .home-header {
@@ -36,13 +36,13 @@
 }
 
 .manufacturer-scroll {
-  max-height: 58vh;
+  max-height: 57vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 .menuItems-scroll {
-  max-height: 58vh;
+  max-height: 63vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -67,7 +67,7 @@
 
 .manufacturer-card-selected {
   height: 39px;
-  width: 150px;
+  width: 142px;
   padding-top: 10px;
   margin-left: 10px;
   margin-right: 5px;
@@ -81,7 +81,7 @@
 
 .manufacturer-card-not-selected {
   height: 39px;
-  width: 150px;
+  width: 142px;
   padding-top: 10px;
   margin-left: 10px;
   margin-right: 5px;

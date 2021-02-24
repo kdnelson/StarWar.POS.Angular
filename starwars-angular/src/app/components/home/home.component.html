@@ -61,157 +61,15 @@
           <div class="menuItem-cards">
             <div class="container menuItems-scroll">
               <div class="card-columns">
-                <div class="card menuItem-card" *ngFor="let item of getMenuItemsPerManufacturer" role="button">
+                <div class="card" *ngFor="let item of getMenuItemsPerManufacturer" role="button">
+
+                  <!-- With grid items of two or less, the cards were centered.  I wanted them aligned to the left. 
+                       I adjusted the card width for two or less items and allowed the grid to auto flex three or more. 
+                       I created my own cards for phone portrait because of wasted space in the card for that view. -->
                   <div *ngIf="menuItemsIsOne && !menuItemsIsTwo && !menuItemsIsGreaterThanTwo">
                     <div class="single-XS-menuItem-card">
-                      <div class="card-header text-center">
-                        <p class="menuItem-XS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-header text-center">
-                        <p class="menuItem-NotXS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-body text-start">
-                        <div class="menuItem-XS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                        <div class="menuItem-NotXS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                      </div>
-                      <div class="text-right">
-                        <button type="button" class="btn">Add</button>
-                      </div>
-                    </div>
-                    <div class="single-M-menuItem-card">
-                      <div class="card-header text-center">
-                        <p class="menuItem-XS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-header text-center">
-                        <p class="menuItem-NotXS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-body text-start">
-                        <div class="menuItem-XS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                        <div class="menuItem-NotXS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                      </div>
-                      <div class="text-right">
-                        <button type="button" class="btn">Add</button>
-                      </div>
-                    </div>
-                    <div class="single-menuItem-card">
-                      <div class="card-header text-center">
-                        <p class="menuItem-XS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-header text-center">
-                        <p class="menuItem-NotXS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-body text-start">
-                        <div class="menuItem-XS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                        <div class="menuItem-NotXS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                      </div>
-                      <div class="text-right">
-                        <button type="button" class="btn">Add</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div *ngIf="!menuItemsIsOne && menuItemsIsTwo && !menuItemsIsGreaterThanTwo">
-                    <div class="double-XS-menuItem-card"> 
-                      <div class="card-header text-center">
-                        <p class="menuItem-XS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-header text-center">
-                        <p class="menuItem-NotXS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-body text-start">
-                        <div class="menuItem-XS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                        <div class="menuItem-NotXS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                      </div>
-                      <div class="text-right">
-                        <button type="button" class="btn">Add</button>
-                      </div>
-                    </div>
-                    <div class="double-M-menuItem-card"> 
-                      <div class="card-header text-center">
-                        <p class="menuItem-XS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-header text-center">
-                        <p class="menuItem-NotXS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-body text-start">
-                        <div class="menuItem-XS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                        <div class="menuItem-NotXS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                      </div>
-                      <div class="text-right">
-                        <button type="button" class="btn">Add</button>
-                      </div>
-                    </div>
-                    <div class="double-menuItem-card"> 
-                      <div class="card-header text-center">
-                        <p class="menuItem-XS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-header text-center">
-                        <p class="menuItem-NotXS-card-header-text">{{ item.name }}</p>
-                      </div>
-                      <div class="card-body text-start">
-                        <div class="menuItem-XS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                        <div class="menuItem-NotXS-card-text">
-                          <p>Cost: {{ item.cost }}</p>
-                          <p>Crew: {{ item.crew }}</p>
-                          <p>Passengers: {{ item.passengers }}</p>
-                        </div>
-                      </div>
-                      <div class="text-right">
-                        <button type="button" class="btn">Add</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div *ngIf="!menuItemsIsOne && !menuItemsIsTwo && menuItemsIsGreaterThanTwo">
-                    <div class="card-header text-center">
-                      <p class="menuItem-XS-card-header-text">{{ item.name }}</p>
-                    </div>
-                    <div class="card-header text-center">
-                      <p class="menuItem-NotXS-card-header-text">{{ item.name }}</p>
-                    </div>
-                    <div class="card-body text-start">
+                      <p class="menuItem-XS-card-header-text text-center">{{ item.name }}</p>
+                      <p class="menuItem-NotXS-card-header-text text-center">{{ item.name }}</p>
                       <div class="menuItem-XS-card-text">
                         <p>Cost: {{ item.cost }}</p>
                         <p>Crew: {{ item.crew }}</p>
@@ -222,6 +80,110 @@
                         <p>Crew: {{ item.crew }}</p>
                         <p>Passengers: {{ item.passengers }}</p>
                       </div>
+                      <div class="text-right">
+                        <button type="button" class="btn">Add</button>
+                      </div>
+                    </div>
+                    <div class="single-M-menuItem-card">
+                      <p class="menuItem-XS-card-header-text text-center">{{ item.name }}</p>
+                      <p class="menuItem-NotXS-card-header-text text-center">{{ item.name }}</p>
+                      <div class="menuItem-XS-card-text">
+                        <p>Cost: {{ item.cost }}</p>
+                        <p>Crew: {{ item.crew }}</p>
+                        <p>Passengers: {{ item.passengers }}</p>
+                      </div>
+                      <div class="menuItem-NotXS-card-text">
+                        <p>Cost: {{ item.cost }}</p>
+                        <p>Crew: {{ item.crew }}</p>
+                        <p>Passengers: {{ item.passengers }}</p>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn">Add</button>
+                      </div>
+                    </div>
+                    <div class="single-menuItem-card">
+                      <p class="menuItem-XS-card-header-text text-center">{{ item.name }}</p>
+                      <p class="menuItem-NotXS-card-header-text text-center">{{ item.name }}</p>
+                      <div class="menuItem-XS-card-text">
+                        <p>Cost: {{ item.cost }}</p>
+                        <p>Crew: {{ item.crew }}</p>
+                        <p>Passengers: {{ item.passengers }}</p>
+                      </div>
+                      <div class="menuItem-NotXS-card-text">
+                        <p>Cost: {{ item.cost }}</p>
+                        <p>Crew: {{ item.crew }}</p>
+                        <p>Passengers: {{ item.passengers }}</p>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn">Add</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="!menuItemsIsOne && menuItemsIsTwo && !menuItemsIsGreaterThanTwo">
+                    <div class="double-XS-menuItem-card"> 
+                      <p class="menuItem-XS-card-header-text text-center">{{ item.name }}</p>
+                      <p class="menuItem-NotXS-card-header-text text-center">{{ item.name }}</p>
+                      <div class="menuItem-XS-card-text">
+                        <p>Cost: {{ item.cost }}</p>
+                        <p>Crew: {{ item.crew }}</p>
+                        <p>Passengers: {{ item.passengers }}</p>
+                      </div>
+                      <div class="menuItem-NotXS-card-text">
+                        <p>Cost: {{ item.cost }}</p>
+                        <p>Crew: {{ item.crew }}</p>
+                        <p>Passengers: {{ item.passengers }}</p>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn">Add</button>
+                      </div>
+                    </div>
+                    <div class="double-M-menuItem-card"> 
+                      <p class="menuItem-XS-card-header-text text-center">{{ item.name }}</p>
+                      <p class="menuItem-NotXS-card-header-text text-center">{{ item.name }}</p>
+                      <div class="menuItem-XS-card-text">
+                        <p>Cost: {{ item.cost }}</p>
+                        <p>Crew: {{ item.crew }}</p>
+                        <p>Passengers: {{ item.passengers }}</p>
+                      </div>
+                      <div class="menuItem-NotXS-card-text">
+                        <p>Cost: {{ item.cost }}</p>
+                        <p>Crew: {{ item.crew }}</p>
+                        <p>Passengers: {{ item.passengers }}</p>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn">Add</button>
+                      </div>
+                    </div>
+                    <div class="double-menuItem-card"> 
+                      <p class="menuItem-XS-card-header-text text-center">{{ item.name }}</p>
+                      <p class="menuItem-NotXS-card-header-text text-center">{{ item.name }}</p>
+                      <div class="menuItem-XS-card-text">
+                        <p>Cost: {{ item.cost }}</p>
+                        <p>Crew: {{ item.crew }}</p>
+                        <p>Passengers: {{ item.passengers }}</p>
+                      </div>
+                      <div class="menuItem-NotXS-card-text">
+                        <p>Cost: {{ item.cost }}</p>
+                        <p>Crew: {{ item.crew }}</p>
+                        <p>Passengers: {{ item.passengers }}</p>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn">Add</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="!menuItemsIsOne && !menuItemsIsTwo && menuItemsIsGreaterThanTwo">
+                    <p class="menuItem-XS-card-header-text text-center">{{ item.name }}</p>
+                    <p class="menuItem-NotXS-card-header-text text-center">{{ item.name }}</p>
+                    <div class="menuItem-XS-card-text">
+                      <p>Cost: {{ item.cost }}</p>
+                      <p>Crew: {{ item.crew }}</p>
+                      <p>Passengers: {{ item.passengers }}</p>
+                    </div>
+                    <div class="menuItem-NotXS-card-text">
+                      <p>Cost: {{ item.cost }}</p>
+                      <p>Crew: {{ item.crew }}</p>
+                      <p>Passengers: {{ item.passengers }}</p>
                     </div>
                     <div class="text-right">
                       <button type="button" class="btn">Add</button>
