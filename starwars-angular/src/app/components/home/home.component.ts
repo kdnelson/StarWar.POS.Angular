@@ -9,8 +9,8 @@ import { CategoryFilterComponent } from './category-filter/category-filter.compo
 import { MenuItemDetailComponent } from './menu-item-detail/menu-item-detail.component';
 import { MenuItem } from 'src/app/models/menuItem';
 import { Manufacturer } from 'src/app/models/manufacturer';
-import { SubjectService } from 'src/app/services/SubjectService';
-import { SubSink } from 'subsink';
+import { MenuItemsService } from 'src/app/services/menuItemsService';
+import { Observable, Subscription } from 'rxjs';
 
 declare var $: any;
 
@@ -18,7 +18,7 @@ declare var $: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [SubjectService, CategoryFilterComponent, MenuItemDetailComponent, 
+  providers: [MenuItemsService, CategoryFilterComponent, MenuItemDetailComponent, 
               CartComponent, ErrorType, LogService, NotificationService, 
               NgxSmartModalService],
 })
@@ -28,16 +28,16 @@ export class HomeComponent implements OnInit {
   nextNotification: string = null;
   notifications: string[] = [];
   manufacturers: Manufacturer[] = [];
-  behaviorSubjectObservableMenuItems: MenuItem[] = [];
   menuItemsPerSelectedManufacturer: MenuItem[] = [];
   selectedManufacturer: string = "Corellia Mining Corporation";
   menuItemsIsOne: boolean = false;
   menuItemsIsTwo: boolean = false;
   menuItemsIsGreaterThanTwo: boolean = false;
-  subsink = new SubSink();
+  subs = new Subscription();
+  menuItems$: MenuItem[] | Observable<MenuItem[]>;
 
   public constructor(
-    private subjectService: SubjectService,
+    private menuItemsService: MenuItemsService,
     public ngxSmartModalService: NgxSmartModalService,
     public categoryFilterComponent: CategoryFilterComponent,
     public menuItemDetailComponent: MenuItemDetailComponent,
@@ -50,11 +50,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     let methodName: string = 'ngOnInit';
 
-    try { 
-      this.subjectService.loadBehaviorSubjects();
-      this.subscribeToSubjectService();
-
-      //this.readRouteParams();
+    try {
+      this.loadSubscribers();
       this.prettyPrintCopywriteInfo();
       this.notificationService.notificationQueue();
       this.subscribeToNotifyQueue();
@@ -80,7 +77,7 @@ export class HomeComponent implements OnInit {
     let methodName: string = 'getMenuItemPerManufacturer';
 
     try {
-      this.behaviorSubjectObservableMenuItems.forEach(o => {
+      this.menuItems$.forEach(o => {
         if(o.manufacturer == this.selectedManufacturer) {
           this.menuItemsPerSelectedManufacturer.push(o);
         }
@@ -105,45 +102,38 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  subscribeToSubjectService() {
-    let methodName: string = 'subscribeToSubjectService';
+  loadSubscribers() {
+    let methodName: string = 'loadSubscribers';
 
     try {
-      let subscribe = () => {
-        this.subsink.sink = this.subjectService.behaviorSubjectMenuItemsObservable$.subscribe(o => {
-          o.forEach((element) => {
-            if(!this.isMenuItemAlreadyLoaded(element.name.toString())){
-              if(this.isManufacturerUnique(element.manufacturer.toString())){
-                var manufacturer = new Manufacturer(element.manufacturer.toString(), false);
-                this.manufacturers.push(manufacturer);
-              }
-              this.behaviorSubjectObservableMenuItems.push(element)
-            }
-          });
-        })
-      };
-      subscribe();
+      this.subs.add(this.menuItemsService.stateChanged.subscribe(state => {
+        if (state) {
+          this.menuItems$ = state.menuItems;
+          this.loadManufacturersMenu();
+        }
+      }));
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
   }
 
-  isMenuItemAlreadyLoaded(menuItemName: string) : Boolean {
-    let methodName: string = 'isMenuItemAlreadyLoaded';
-    let isFound = false;
+  loadManufacturersMenu() {
+    let methodName: string = 'loadManufacturersMenu';
 
-    try { 
-      this.behaviorSubjectObservableMenuItems.forEach((o) => {
-        if(o.name == menuItemName){
-          isFound = true;
-        }
+    try {
+      this.subs = this.menuItemsService.get().subscribe(() => {
+        this.menuItems$.forEach((element) => {
+          if(this.isManufacturerUnique(element.manufacturer.toString())){
+            var manufacturer = new Manufacturer(element.manufacturer.toString(), false);
+            this.manufacturers.push(manufacturer);
+          }
+        })
       });
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
-    return isFound;
   }
 
   setColumnView() : void {
@@ -350,7 +340,7 @@ export class HomeComponent implements OnInit {
     let methodName: string = 'ngOnDestroy';
 
     try {
-      this.subsink.unsubscribe();
+      this.subs.unsubscribe();
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

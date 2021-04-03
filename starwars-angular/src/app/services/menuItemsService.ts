@@ -1,0 +1,167 @@
+import { Injectable } from "@angular/core";
+import { ObservableStore } from "@codewithdan/observable-store";
+import { Guid } from "guid-typescript";
+import { of } from "rxjs";
+import { ErrorMsg } from "../models/errorMsg";
+import { ErrorType } from "../models/errorType";
+import { MenuItem } from "../models/menuItem";
+import { MenuItemsStoreActions } from "../models/menuItemStoreActions";
+import { StoreState } from "../models/storeState";
+import { LogService } from "./log.service";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MenuItemsService extends ObservableStore<StoreState> {
+  className: string = "MenuItemsService";
+  private initialState = {
+    menuItems: [],
+    menuItem: null
+  }
+  private vehiclesUrl = 'https://swapi.dev/api/vehicles/';
+  private starShipsUrl = 'https://swapi.dev/api/starships/';
+
+  constructor(
+    public errorType: ErrorType,
+    public logService: LogService
+    ) {
+      super({ 
+          trackStateHistory: true, 
+          logStateChanges: true 
+      });
+      this.init();
+  }
+ 
+  init() {
+    let methodName: string = 'init';
+ 
+    try {    
+      this.setState(this.initialState, MenuItemsStoreActions.InitializeState);
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+ 
+  get() {
+    let methodName: string = 'get';
+ 
+    try {    
+      const menuItems = this.getState().menuItems;
+      if (menuItems.length > 0) {
+        console.log('Returning menuItems from store...');
+        return of(menuItems);
+      }
+      else {
+        console.log('Calling menuItems from SWAPI...');
+        this.fetchMenuItems();
+        const menuItems = this.getState().menuItems;
+        return of(menuItems);
+      }
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+  
+  add(menuItem: MenuItem) {
+    let methodName: string = 'add';
+ 
+    try {              
+      let state = this.getState();
+      state.menuItems.push(menuItem);
+      this.setState({ menuItems: state.menuItems }, MenuItemsStoreActions.AddMenuItem);       
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    } finally {
+      console.log('State History:', this.stateHistory);
+    }
+  }
+ 
+  remove() {
+    let methodName: string = 'remove';
+ 
+    try {    
+      let state = this.getState();
+      state.menuItems.splice(state.menuItems.length - 1, 1);
+      this.setState({ menuItems: state.menuItems }, MenuItemsStoreActions.RemoveMenuItem);
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    } finally {
+      console.log('State History:', this.stateHistory);
+    }
+  }
+ 
+  fetchMenuItems() {
+    let methodName: string = 'fetchMenuItems';
+ 
+    try {    
+      this.getPagedVehicles(this.vehiclesUrl);
+      this.getPagedStarShips(this.starShipsUrl);
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    } finally {
+      console.log('State History:', this.stateHistory);
+    }
+  }
+ 
+  getPagedVehicles = (url) : Promise<MenuItem[]> => {
+    return new Promise(async (resolve) => {   
+      let response = await fetch(url)
+      let data = await response.json();
+        data.results.forEach(element => {
+        let newMenuItem = this.createMenuItem(element);
+        this.add(newMenuItem);
+      });
+      if (data.next !== null) {
+        return setTimeout(() => resolve(this.getPagedVehicles(data.next)), 0);
+      } else {
+        return resolve(this.initialState.menuItems);
+      }
+    })
+  }
+  
+  getPagedStarShips = (url): Promise<MenuItem[]> => {
+    return new Promise(async (resolve) => {     
+      let response = await fetch(url)
+      let data = await response.json();
+      data.results.forEach(element => {
+        let newMenuItem = this.createMenuItem(element);
+        this.add(newMenuItem);
+      });
+      if (data.next !== null) {
+        return setTimeout(() => resolve(this.getPagedStarShips(data.next)), 0);
+      } else {
+        return resolve(this.initialState.menuItems);
+      }
+    })
+  }
+  
+  createMenuItem(rawMenuItem: any) : MenuItem {
+    let methodName: string = 'createMenuItem';
+    var result: MenuItem = null;
+  
+    try {   
+      result = new MenuItem(
+        Guid.create().toString(),
+        rawMenuItem.name, 
+        rawMenuItem.manufacturer, 
+        rawMenuItem.cost_in_credits, 
+        rawMenuItem.length, 
+        rawMenuItem.max_atmosphering_speed, 
+        rawMenuItem.crew, 
+        rawMenuItem.passengers, 
+        rawMenuItem.cargo_capacity, 
+        rawMenuItem.consumables
+      );
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  
+    return result;
+  }
+}
