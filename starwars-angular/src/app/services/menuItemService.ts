@@ -5,15 +5,15 @@ import { of } from "rxjs";
 import { ErrorMsg } from "../models/errorMsg";
 import { ErrorType } from "../models/errorType";
 import { MenuItem } from "../models/menuItem";
-import { MenuItemsStoreActions } from "../models/menuItemStoreActions";
+import { StoreActions } from "../models/storeActions";
 import { StoreState } from "../models/storeState";
 import { LogService } from "./log.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenuItemsService extends ObservableStore<StoreState> {
-  className: string = "MenuItemsService";
+export class MenuItemService extends ObservableStore<StoreState> {
+  className: string = "MenuItemService";
   private initialState = {
     menuItems: [],
     menuItem: null
@@ -36,7 +36,7 @@ export class MenuItemsService extends ObservableStore<StoreState> {
     let methodName: string = 'init';
  
     try {    
-      this.setState(this.initialState, MenuItemsStoreActions.InitializeState);
+      this.setState(this.initialState, StoreActions.InitializeState);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -70,7 +70,7 @@ export class MenuItemsService extends ObservableStore<StoreState> {
     try {              
       let state = this.getState();
       state.menuItems.push(menuItem);
-      this.setState({ menuItems: state.menuItems }, MenuItemsStoreActions.AddMenuItem);       
+      this.setState({ menuItems: state.menuItems }, StoreActions.AddMenuItem);       
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -85,7 +85,7 @@ export class MenuItemsService extends ObservableStore<StoreState> {
     try {    
       let state = this.getState();
       state.menuItems.splice(state.menuItems.length - 1, 1);
-      this.setState({ menuItems: state.menuItems }, MenuItemsStoreActions.RemoveMenuItem);
+      this.setState({ menuItems: state.menuItems }, StoreActions.RemoveMenuItem);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

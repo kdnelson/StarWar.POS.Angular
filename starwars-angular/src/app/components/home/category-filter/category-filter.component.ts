@@ -4,7 +4,9 @@ import { CategoryFilter } from 'src/app/models/categoryFilter';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 import { ErrorType } from 'src/app/models/errorType';
 import { Filter } from 'src/app/models/filter';
+import { CategoryFilterService } from 'src/app/services/categoryFilterService';
 import { LogService } from '../../../services/log.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'category-filter-modal',
@@ -14,8 +16,10 @@ import { LogService } from '../../../services/log.service';
 })
 export class CategoryFilterComponent implements OnInit {
   className: string = "CategoryFilterComponent";
+  private categoryFilterService: CategoryFilterService;
+  subs = new Subscription();
+  filters$: Filter[] | Observable<Filter[]>;
   private filter: Filter = {};
-  private filterList: Filter[] = [];
 
   constructor(
     public ngxSmartModalService: NgxSmartModalService,
@@ -33,6 +37,21 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
+  loadSubscribers() {
+    let methodName: string = 'loadSubscribers';
+
+    try {
+      this.subs.add(this.categoryFilterService.stateChanged.subscribe(state => {
+        if (state) {
+          this.filters$ = state.categoryFilter.filters;
+        }
+      }));
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
   resetForm(): void {
     let methodName: string = 'resetForm';
 
@@ -43,9 +62,11 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-  loadModal() : void {
+  loadModal(categoryFilterService: CategoryFilterService) : void {
     let methodName: string = 'loadModal';
     this.closeAllModals();
+    this.categoryFilterService = categoryFilterService;
+    this.loadSubscribers();
 
     try {
       let categoryFilters: Filter[] = [

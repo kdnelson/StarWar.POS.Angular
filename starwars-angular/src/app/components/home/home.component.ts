@@ -9,7 +9,8 @@ import { CategoryFilterComponent } from './category-filter/category-filter.compo
 import { MenuItemDetailComponent } from './menu-item-detail/menu-item-detail.component';
 import { MenuItem } from 'src/app/models/menuItem';
 import { Manufacturer } from 'src/app/models/manufacturer';
-import { MenuItemsService } from 'src/app/services/menuItemsService';
+import { MenuItemService } from 'src/app/services/menuItemService';
+import { CategoryFilterService } from 'src/app/services/categoryFilterService';
 import { Observable, Subscription } from 'rxjs';
 
 declare var $: any;
@@ -18,7 +19,7 @@ declare var $: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [MenuItemsService, CategoryFilterComponent, MenuItemDetailComponent, 
+  providers: [MenuItemService, CategoryFilterService, CategoryFilterComponent, MenuItemDetailComponent, 
               CartComponent, ErrorType, LogService, NotificationService, 
               NgxSmartModalService],
 })
@@ -37,7 +38,8 @@ export class HomeComponent implements OnInit {
   menuItems$: MenuItem[] | Observable<MenuItem[]>;
 
   public constructor(
-    private menuItemsService: MenuItemsService,
+    private menuItemsService: MenuItemService,
+    private categoryFilterService: CategoryFilterService,
     public ngxSmartModalService: NgxSmartModalService,
     public categoryFilterComponent: CategoryFilterComponent,
     public menuItemDetailComponent: MenuItemDetailComponent,
@@ -55,6 +57,22 @@ export class HomeComponent implements OnInit {
       this.prettyPrintCopywriteInfo();
       this.notificationService.notificationQueue();
       this.subscribeToNotifyQueue();
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  loadSubscribers() {
+    let methodName: string = 'loadSubscribers';
+
+    try {
+      this.subs.add(this.menuItemsService.stateChanged.subscribe(state => {
+        if (state) {
+          this.menuItems$ = state.menuItems;
+          this.loadManufacturersMenu();
+        }
+      }));
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -102,21 +120,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  loadSubscribers() {
-    let methodName: string = 'loadSubscribers';
 
-    try {
-      this.subs.add(this.menuItemsService.stateChanged.subscribe(state => {
-        if (state) {
-          this.menuItems$ = state.menuItems;
-          this.loadManufacturersMenu();
-        }
-      }));
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
 
   loadManufacturersMenu() {
     let methodName: string = 'loadManufacturersMenu';
@@ -208,7 +212,7 @@ export class HomeComponent implements OnInit {
 
     try {
       this.closeAllModals();
-      this.categoryFilterComponent.loadModal();
+      this.categoryFilterComponent.loadModal(this.categoryFilterService);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg); 
       this.logService.logHandler(errorMsg);

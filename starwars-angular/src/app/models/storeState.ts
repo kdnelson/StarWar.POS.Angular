@@ -4,11 +4,8 @@ import { Manufacturer } from "./manufacturer";
 import { MenuItem } from "./menuItem";
 
 export class StoreState {
-  // selectedManufacturer: string = "";
-  // categoryFilter: CategoryFilter = null;
-  // menuItemsPerSelectedManufacturer: Manufacturer[] = [];
-  // menuItems: MenuItem[] = [];
-  // cart: Cart = null;
+  categoryFilter: CategoryFilter = null;
   menuItems: MenuItem[];
   menuItem: MenuItem;
+   // cart: Cart = null;
 }
