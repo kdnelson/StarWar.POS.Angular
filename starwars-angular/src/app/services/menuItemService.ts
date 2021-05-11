@@ -15,8 +15,10 @@ import { LogService } from "./log.service";
 export class MenuItemService extends ObservableStore<StoreState> {
   className: string = "MenuItemService";
   private initialState = {
-    menuItems: [],
-    menuItem: null
+    filter: null,
+    filters: [],
+    menuItem: null,
+    menuItems: []
   }
   private vehiclesUrl = 'https://swapi.dev/api/vehicles/';
   private starShipsUrl = 'https://swapi.dev/api/starships/';

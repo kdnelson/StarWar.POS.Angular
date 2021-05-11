@@ -3,7 +3,7 @@ export enum StoreActions {
     AddMenuItem = 'ADD_MENUITEM',
     RemoveMenuItem = 'REMOVE_MENUITEM',
     GetMenuItems = 'GET_MENUITEMS',
-    AddCategoryFilters = 'ADD_CATEGORYFILTERS',
-    GetCategoryFilters = 'GET_CATEGORYFILTERS',
-    RemoveCategoryFilters = 'REMOVE_CATEGORYFILTERS'
+    AddFilter = 'ADD_FILTER',
+    GetFilters = 'GET_FILTERS',
+    RemoveFilter = 'REMOVE_FILTER'
   }

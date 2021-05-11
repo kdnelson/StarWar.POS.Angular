@@ -1,11 +1,11 @@
 import { Cart } from "./cart";
-import { CategoryFilter } from "./categoryFilter";
-import { Manufacturer } from "./manufacturer";
+import { Filter } from "./filter";
 import { MenuItem } from "./menuItem";
 
 export class StoreState {
-  categoryFilter: CategoryFilter = null;
-  menuItems: MenuItem[];
+  filter: Filter;
+  filters: Filter[];
   menuItem: MenuItem;
+  menuItems: MenuItem[];
    // cart: Cart = null;
 }
