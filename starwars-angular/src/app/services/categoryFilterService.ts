@@ -5,6 +5,7 @@ import { CategoryFilter } from "../models/categoryFilter";
 import { ErrorMsg } from "../models/errorMsg";
 import { ErrorType } from "../models/errorType";
 import { Filter } from "../models/filter";
+import { FilterOption } from "../models/filterOptions";
 import { StoreActions } from "../models/storeActions";
 import { StoreState } from "../models/storeState";
 import { LogService } from "./log.service";
@@ -88,13 +89,12 @@ export class CategoryFilterService extends ObservableStore<StoreState> {
  
     try {  
       let filters: Filter[] = [
-        new Filter('Empire', false),
-        new Filter('Rebels', false),
-        new Filter('Outer-Rim', false),
-        new Filter('Agriculture', false),
-        new Filter('Minning', false),
-        new Filter('Manufacturer', false),
-        new Filter('Supplier', false)
+        new Filter('1 to 9,999 credits', false, FilterOption.MinimumCost),
+        new Filter('10,000 to 999,999 credits', false, FilterOption.AverageCost),
+        new Filter('1 Million+ credits', false, FilterOption.MaximumCost),
+        new Filter('0 to 49 crew', false, FilterOption.MinimumCrew),
+        new Filter('50 to 49,999 crew', false, FilterOption.AverageCrew),
+        new Filter('50 Thousand+ crew', false, FilterOption.MaximumCrew)
       ];
       return filters;
     } catch (errMsg) {
