@@ -84,6 +84,29 @@ export class CategoryFilterService extends ObservableStore<StoreState> {
     }
   }
 
+  toggleSelected(searchFilter: Filter) {
+    let methodName: string = 'toggleSelected';
+ 
+    try {              
+      let state = this.getState();
+      state.filters.forEach((filter) => {
+        if(filter.filterOption === searchFilter.filterOption) {
+          if(filter.isSelected){
+            filter.isSelected = false;
+          }else {
+            filter.isSelected = true;
+          }
+        }
+      });
+      this.setState({ filters: state.filters }, StoreActions.ToggleSelectedFilter);       
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    } finally {
+      console.log('State History:', this.stateHistory);
+    }
+  }
+
   fetchFilters(): Filter[] {
     let methodName: string = 'fetchFilters';
  

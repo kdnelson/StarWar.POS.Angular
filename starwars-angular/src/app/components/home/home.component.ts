@@ -12,6 +12,7 @@ import { Manufacturer } from 'src/app/models/manufacturer';
 import { MenuItemService } from 'src/app/services/menuItemService';
 import { CategoryFilterService } from 'src/app/services/categoryFilterService';
 import { Observable, Subscription } from 'rxjs';
+import { Filter } from 'src/app/models/filter';
 
 declare var $: any;
 
@@ -35,10 +36,11 @@ export class HomeComponent implements OnInit {
   menuItemsIsTwo: boolean = false;
   menuItemsIsGreaterThanTwo: boolean = false;
   subs = new Subscription();
+  filters$: Filter[] | Observable<Filter[]>;
   menuItems$: MenuItem[] | Observable<MenuItem[]>;
 
   public constructor(
-    private menuItemsService: MenuItemService,
+    private menuItemService: MenuItemService,
     private categoryFilterService: CategoryFilterService,
     public ngxSmartModalService: NgxSmartModalService,
     public categoryFilterComponent: CategoryFilterComponent,
@@ -67,10 +69,15 @@ export class HomeComponent implements OnInit {
     let methodName: string = 'loadSubscribers';
 
     try {
-      this.subs.add(this.menuItemsService.stateChanged.subscribe(state => {
+      this.subs.add(this.menuItemService.stateChanged.subscribe(state => {
         if (state) {
           this.menuItems$ = state.menuItems;
           this.loadManufacturersMenu();
+        }
+      }));
+      this.subs.add(this.categoryFilterService.stateChanged.subscribe(state => {
+        if (state) {
+          this.filters$ = state.filters;
         }
       }));
     } catch (errMsg) {
@@ -95,6 +102,11 @@ export class HomeComponent implements OnInit {
     let methodName: string = 'getMenuItemPerManufacturer';
 
     try {
+
+      this.filters$.forEach((f) => {
+        console.log(f.isSelected);
+      });
+
       this.menuItems$.forEach(o => {
         if(o.manufacturer == this.selectedManufacturer) {
           this.menuItemsPerSelectedManufacturer.push(o);
@@ -120,13 +132,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
-
   loadManufacturersMenu() {
     let methodName: string = 'loadManufacturersMenu';
 
     try {
-      this.subs = this.menuItemsService.get().subscribe(() => {
+      this.subs = this.menuItemService.get().subscribe(() => {
         this.menuItems$.forEach((element) => {
           if(this.isManufacturerUnique(element.manufacturer.toString())){
             var manufacturer = new Manufacturer(element.manufacturer.toString(), false);
@@ -212,7 +222,7 @@ export class HomeComponent implements OnInit {
 
     try {
       this.closeAllModals();
-      this.categoryFilterComponent.loadModal(this.categoryFilterService);
+      this.categoryFilterComponent.loadModal();
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg); 
       this.logService.logHandler(errorMsg);
@@ -339,6 +349,63 @@ export class HomeComponent implements OnInit {
       this.logService.logHandler(errorMsg);
     }
   }
+
+  // filterMenuItems() {
+  //   let methodName: string = 'filterMenuItems';
+ 
+  //   try {    
+  //     var filteredMenuItems: MenuItem[] = [];          
+  //     const menuItems = this.getState().menuItems;
+  //     const filters = this.getState().filters;
+  //     menuItems.forEach((menuItem) => {
+  //       if(Number(menuItem.cost) !== NaN){
+  //         filters.forEach((filter) => {
+  //           if(filter.isSelected){
+  //             switch(filter.filterOption){
+  //               case FilterOption.NoFilter: return;
+  //               case FilterOption.MaximumCost: 
+  //                 if(Number(menuItem.cost) > 0 && Number(menuItem.cost) < 10000){
+  //                   filteredMenuItems.push(menuItem);
+  //                 }
+  //                 break;
+  //               case FilterOption.AverageCost: 
+  //                 if(Number(menuItem.cost) > 9999 && Number(menuItem.cost) < 100000){
+  //                   filteredMenuItems.push(menuItem);
+  //                 }
+  //                 break;
+  //               case FilterOption.MaximumCost: 
+  //                 if(Number(menuItem.cost) > 99999){
+  //                   filteredMenuItems.push(menuItem);
+  //                 }
+  //                 break;
+  //               case FilterOption.MinimumCrew: 
+  //                 if(Number(menuItem.crew) > -1 && Number(menuItem.crew) < 50){
+  //                   filteredMenuItems.push(menuItem);
+  //                 }
+  //                 break;
+  //               case FilterOption.AverageCrew: 
+  //                 if(Number(menuItem.crew) > 49 && Number(menuItem.crew) < 50000){
+  //                   filteredMenuItems.push(menuItem);
+  //                 }
+  //                 break;
+  //               case FilterOption.MaximumCrew: 
+  //                 if(Number(menuItem.crew) > 49999){
+  //                   filteredMenuItems.push(menuItem);
+  //                 }
+  //                 break;
+  //             }
+  //           }
+  //         });
+  //       }
+  //     });
+  //     this.setState({ menuItems: filteredMenuItems }, StoreActions.FilterMenuItem); 
+  //   } catch (errMsg) {
+  //     let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+  //     this.logService.logHandler(errorMsg);
+  //   } finally {
+  //     console.log('State History:', this.stateHistory);
+  //   }
+  // }
 
   ngOnDestroy() {
     let methodName: string = 'ngOnDestroy';

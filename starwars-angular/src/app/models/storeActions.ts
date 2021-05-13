@@ -6,5 +6,6 @@ export enum StoreActions {
     GetMenuItems = 'GET_MENUITEMS',
     AddFilter = 'ADD_FILTER',
     GetFilters = 'GET_FILTERS',
-    RemoveFilter = 'REMOVE_FILTER'
+    RemoveFilter = 'REMOVE_FILTER',
+    ToggleSelectedFilter = 'TOGGLESELECTED_FILTER'
   }

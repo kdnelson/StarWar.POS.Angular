@@ -16,12 +16,13 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class CategoryFilterComponent implements OnInit {
   className: string = "CategoryFilterComponent";
-  private categoryFilterService: CategoryFilterService;
   subs = new Subscription();
   filters$: Filter[] | Observable<Filter[]>;
+  filterCollection: Filter[] = [];
   private filter: Filter = {};
 
   constructor(
+    public categoryFilterService: CategoryFilterService,
     public ngxSmartModalService: NgxSmartModalService,
     public errorType: ErrorType,
     public logService: LogService
@@ -62,23 +63,21 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-  loadModal(categoryFilterService: CategoryFilterService) : void {
+  loadModal() : void {
     let methodName: string = 'loadModal';
-    
     this.closeAllModals();
-    this.categoryFilterService = categoryFilterService;
     this.loadSubscribers();
 
     try {
       this.subs = this.categoryFilterService.get().subscribe(() => {
         var categoryFilter = new CategoryFilter();
-        var filterCollection: Filter[] = [];
-
+ 
+        this.filterCollection = [];
         this.filters$.forEach((filter) => {
-          filterCollection.push(filter);
+          this.filterCollection.push(filter);
         });
 
-        categoryFilter.filters = filterCollection;
+        categoryFilter.filters = this.filterCollection;
         this.ngxSmartModalService.setModalData(categoryFilter, 'categoryFilter', true);
         this.ngxSmartModalService.getModal('categoryFilter').open();
       });
@@ -92,6 +91,13 @@ export class CategoryFilterComponent implements OnInit {
     let methodName: string = 'selectedFilter';
 
     try {
+
+      categoryFilter.filters.forEach((f) => {
+        if(f.filterOption === filter.filterOption){
+          this.categoryFilterService.toggleSelected(filter);
+        }
+      });
+
       if(filter !== null && categoryFilter !== null) {
         if(categoryFilter.filters !== null) {
           let filterNameIndex: number = this.searchFilterIndex(filter.name, categoryFilter.filters)
