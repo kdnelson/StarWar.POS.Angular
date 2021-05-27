@@ -4,7 +4,7 @@ import { Guid } from "guid-typescript";
 import { of } from "rxjs";
 import { ErrorMsg } from "../models/errorMsg";
 import { ErrorType } from "../models/errorType";
-import { FilterOption } from "../models/filterOptions";
+import { FilterOption } from "../models/filterOption";
 import { MenuItem } from "../models/menuItem";
 import { StoreActions } from "../models/storeActions";
 import { StoreState } from "../models/storeState";

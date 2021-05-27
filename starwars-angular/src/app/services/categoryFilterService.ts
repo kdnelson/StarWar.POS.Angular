@@ -5,7 +5,7 @@ import { CategoryFilter } from "../models/categoryFilter";
 import { ErrorMsg } from "../models/errorMsg";
 import { ErrorType } from "../models/errorType";
 import { Filter } from "../models/filter";
-import { FilterOption } from "../models/filterOptions";
+import { FilterOption } from "../models/filterOption";
 import { StoreActions } from "../models/storeActions";
 import { StoreState } from "../models/storeState";
 import { LogService } from "./log.service";
@@ -90,7 +90,7 @@ export class CategoryFilterService extends ObservableStore<StoreState> {
     try {              
       let state = this.getState();
       state.filters.forEach((filter) => {
-        if(filter.filterOption === searchFilter.filterOption) {
+        if(filter.id === searchFilter.id) {
           if(filter.isSelected){
             filter.isSelected = false;
           }else {
@@ -112,12 +112,12 @@ export class CategoryFilterService extends ObservableStore<StoreState> {
  
     try {  
       let filters: Filter[] = [
-        new Filter('1 to 9,999 credits', false, FilterOption.MinimumCost),
-        new Filter('10,000 to 999,999 credits', false, FilterOption.AverageCost),
-        new Filter('1 Million+ credits', false, FilterOption.MaximumCost),
-        new Filter('0 to 49 crew', false, FilterOption.MinimumCrew),
-        new Filter('50 to 49,999 crew', false, FilterOption.AverageCrew),
-        new Filter('50 Thousand+ crew', false, FilterOption.MaximumCrew)
+        new Filter('0', '1 to 9,999 credits', false, new FilterOption(1, 9999)),
+        new Filter('1', '10,000 to 999,999 credits', false, new FilterOption(10000, 999999)),
+        new Filter('2', '1 Million+ credits', false, new FilterOption(1000000, 100000000)),
+        new Filter('3', '0 to 49 crew', false, new FilterOption(0, 0)),
+        new Filter('4', '50 to 49,999 crew', false, new FilterOption(0, 0)),
+        new Filter('5', '50 Thousand+ crew', false, new FilterOption(0, 0))
       ];
       return filters;
     } catch (errMsg) {
