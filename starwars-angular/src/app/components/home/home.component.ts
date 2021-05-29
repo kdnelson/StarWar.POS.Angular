@@ -36,12 +36,10 @@ export class HomeComponent implements OnInit {
   menuItemsIsTwo: boolean = false;
   menuItemsIsGreaterThanTwo: boolean = false;
   subs = new Subscription();
-  filters$: Filter[] | Observable<Filter[]>;
   menuItems$: MenuItem[] | Observable<MenuItem[]>;
 
   public constructor(
     private menuItemService: MenuItemService,
-    private categoryFilterService: CategoryFilterService,
     public ngxSmartModalService: NgxSmartModalService,
     public categoryFilterComponent: CategoryFilterComponent,
     public menuItemDetailComponent: MenuItemDetailComponent,
@@ -75,11 +73,6 @@ export class HomeComponent implements OnInit {
           this.loadManufacturersMenu();
         }
       }));
-      this.subs.add(this.categoryFilterService.stateChanged.subscribe(state => {
-        if (state) {
-          this.filters$ = state.filters;
-        }
-      }));
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -102,14 +95,18 @@ export class HomeComponent implements OnInit {
     let methodName: string = 'getMenuItemPerManufacturer';
 
     try {
-
       this.menuItems$.forEach(m => {
         if(m.manufacturer == this.selectedManufacturer) {
-          console.log('--> ' + this.filterSelectedCount().length);
-          if(this.filterSelectedCount().length > 0){
-            this.filters$.forEach((f) => {
-              if(f.isSelected && (m.cost > f.filterOption.costMin && m.cost < f.filterOption.costMax)) {
-                this.menuItemsPerSelectedManufacturer.push(m);
+          if(this.isCategoryFilterSet()){
+            this.categoryFilterComponent.filterCollection.forEach((f) => {
+
+              if(f.isSelected){
+                if(f.filterOption.costRange === m.costRange ||
+                   f.filterOption.crewRange === m.crewRange) {
+                   if(!this.isMenuItemLoaded(m.name)){
+                     this.menuItemsPerSelectedManufacturer.push(m);
+                   }
+                }
               }
             });
           } else {
@@ -137,19 +134,35 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  filterSelectedCount() : number[] {
-    let methodName: string = 'filterSelectedCount';
+  isCategoryFilterSet() : boolean {
+    let methodName: string = 'isCategoryFilterSet';
 
     try {
-      
-      let costArray: number[] = []; 
-      this.filters$.forEach((f) => {
-        if(f.isSelected){
-          costArray.push(Number(f.filterOption.costMin));
+      let isFilterSet = false;
+      this.categoryFilterComponent.filterCollection.forEach((o) => {
+        if(o.isSelected){
+          isFilterSet = true;
+          return;
         }
       });
+      return isFilterSet;
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
 
-      return costArray;
+  isMenuItemLoaded(menuItemName: string) : boolean {
+    let methodName: string = 'isMenuItemLoaded';
+
+    try {
+      let isFount = false;
+      this.menuItemsPerSelectedManufacturer.forEach((m) => {
+        if(m.name == menuItemName){
+          isFount = true;
+        }
+      });
+      return isFount;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

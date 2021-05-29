@@ -12,5 +12,7 @@ export class MenuItem {
     public passengers?: String,
     public cargoCapacity?: String,
     public consumables?: String,
+    public costRange?: String,
+    public crewRange?: String,
   ){}
 }

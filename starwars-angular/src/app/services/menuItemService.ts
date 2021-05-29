@@ -72,6 +72,8 @@ export class MenuItemService extends ObservableStore<StoreState> {
  
     try {              
       let state = this.getState();
+      menuItem = this.setCostFilters(menuItem);
+      menuItem = this.setCrewFilters(menuItem);
       state.menuItems.push(menuItem);
       this.setState({ menuItems: state.menuItems }, StoreActions.AddMenuItem);       
     } catch (errMsg) {
@@ -97,6 +99,48 @@ export class MenuItemService extends ObservableStore<StoreState> {
     }
   }
  
+  setCostFilters(menuItem: MenuItem) : MenuItem {
+    let methodName: string = 'setCostFilters';
+ 
+    try {
+      if(Number(menuItem.cost) > 1 && Number(menuItem.cost) < 999) {
+        menuItem.costRange = 'MINCOST';
+      }
+      else if(Number(menuItem.cost) > 1000 && Number(menuItem.cost) < 9999) {
+        menuItem.costRange = 'AVGCOST';
+      }
+      else if(Number(menuItem.cost) > 10000) {
+        menuItem.costRange = 'MAXCOST';
+      }
+
+      return menuItem;      
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  setCrewFilters(menuItem: MenuItem) : MenuItem {
+    let methodName: string = 'setCrewFilters';
+ 
+    try {
+      if(Number(menuItem.crew) > 1 && Number(menuItem.crew) < 49) {
+        menuItem.crewRange = 'MINCREW';
+      }
+      else if(Number(menuItem.crew) > 50 && Number(menuItem.crew) < 999) {
+        menuItem.crewRange = 'AVGCREW';
+      }
+      else if(Number(menuItem.crew) > 1000) {
+        menuItem.crewRange = 'MAXCREW';
+      }
+
+      return menuItem;      
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
   fetchMenuItems() {
     let methodName: string = 'fetchMenuItems';
  

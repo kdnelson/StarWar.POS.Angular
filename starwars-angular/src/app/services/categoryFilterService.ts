@@ -112,12 +112,12 @@ export class CategoryFilterService extends ObservableStore<StoreState> {
  
     try {  
       let filters: Filter[] = [
-        new Filter('0', '1 to 9,999 credits', false, new FilterOption(1, 9999)),
-        new Filter('1', '10,000 to 999,999 credits', false, new FilterOption(10000, 999999)),
-        new Filter('2', '1 Million+ credits', false, new FilterOption(1000000, 100000000)),
-        new Filter('3', '0 to 49 crew', false, new FilterOption(0, 0)),
-        new Filter('4', '50 to 49,999 crew', false, new FilterOption(0, 0)),
-        new Filter('5', '50 Thousand+ crew', false, new FilterOption(0, 0))
+        new Filter('0', '1 to 999 credits', false, new FilterOption('MINCOST', '')),
+        new Filter('1', '1,000 to 999,999 credits', false, new FilterOption('AVGCOST', '')),
+        new Filter('2', '1,000,000+ credits', false, new FilterOption('MAXCOST', '')),
+        new Filter('3', '1 to 49 crew', false, new FilterOption('', 'MINCREW')),
+        new Filter('4', '50 to 999 crew', false, new FilterOption('', 'AVGCREW')),
+        new Filter('5', '1,000+ crew', false, new FilterOption('', 'MAXCREW'))
       ];
       return filters;
     } catch (errMsg) {

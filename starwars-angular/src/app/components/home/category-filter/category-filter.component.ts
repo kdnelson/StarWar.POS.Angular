@@ -93,7 +93,7 @@ export class CategoryFilterComponent implements OnInit {
     try {
 
       categoryFilter.filters.forEach((f) => {
-        if(f.filterOption === filter.filterOption){
+        if(f.id === filter.id){
           this.categoryFilterService.toggleSelected(filter);
         }
       });
@@ -132,16 +132,9 @@ export class CategoryFilterComponent implements OnInit {
 
     try {
       if(categoryFilter !== null){
-        let filterNames: string[] = this.searchForSelectedFilters(categoryFilter);
-        if(filterNames !== null) {
-          if(filterNames.length > 0) {
-            this.ngxSmartModalService.getModal('categoryFilter').close();
-          }
-        } else {
-          let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, 'filterNames');
-          this.logService.logHandler(errorMsg);
-        }
-      }else{
+        this.searchForSelectedFilters(categoryFilter);
+        this.ngxSmartModalService.getModal('categoryFilter').close();
+      } else{
         let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullMethodParam, 'categoryFilter');
         this.logService.logHandler(errorMsg);
       }
@@ -163,16 +156,15 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-  private searchForSelectedFilters(categoryFilter: CategoryFilter) : string[] {
+  private searchForSelectedFilters(categoryFilter: CategoryFilter) : void {
     let methodName: string = 'searchForSelectedFilters';
-    let filters: string[] = [];
 
     try {
       if(categoryFilter !== null){
         if(categoryFilter.filters !== null) {
           categoryFilter.filters.forEach((item, index) => {
             if(item.isSelected){
-              filters.push(item.name);
+              this.filterCollection.push(item);
             }
           });
         } else {
@@ -187,8 +179,6 @@ export class CategoryFilterComponent implements OnInit {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
-
-    return filters;
   }
 
   private searchFilterIndex(filter: string, filterNames: Filter[]) : number {
