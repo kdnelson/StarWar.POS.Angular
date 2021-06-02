@@ -160,5 +160,8 @@ ng-template
 
 ***** Issues *****
 
+HomeComponent.getMenuItemsPerManufacturer refreshes calling menuItems$ (observable, from menuItemService) and also filters on categoryFilters (observable, from categoryFilterService).
+However, categoryFilters$ never refreshed as menuItems$ does.  So I created a collection within the categoryFilterService containing the said observable - and used this list for filtering.  Why did I have to do this?
+
 
 ****** Architecture ******
