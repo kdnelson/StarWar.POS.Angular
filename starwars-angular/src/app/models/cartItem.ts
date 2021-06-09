@@ -3,10 +3,9 @@ import { Guid } from 'guid-typescript';
 export class CartItem {
   constructor(
     public id?: Guid,
-    public name?: string,
-    //public menuItemDetailDto?: MenuItemDetailDto,
+    public name?: String,
     public quantity?: number,
-    public adjustedPrice?: number,
-    public isSelected?: boolean
+    public adjustedPrice?: Number,
+    public isSelected?: Boolean
   ) { }
 }

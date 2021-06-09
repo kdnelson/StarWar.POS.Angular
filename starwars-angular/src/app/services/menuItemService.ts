@@ -16,6 +16,8 @@ import { LogService } from "./log.service";
 export class MenuItemService extends ObservableStore<StoreState> {
   className: string = "MenuItemService";
   private initialState = {
+    cartItem: null,
+    cartItems: [],
     filter: null,
     filters: [],
     menuItem: null,

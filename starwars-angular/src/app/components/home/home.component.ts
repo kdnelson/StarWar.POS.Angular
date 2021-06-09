@@ -13,6 +13,9 @@ import { MenuItemService } from 'src/app/services/menuItemService';
 import { CategoryFilterService } from 'src/app/services/categoryFilterService';
 import { Observable, Subscription } from 'rxjs';
 import { Filter } from 'src/app/models/filter';
+import { CartItemService } from 'src/app/services/cartItemService';
+import { CartItem } from 'src/app/models/cartItem';
+import { Guid } from 'guid-typescript';
 
 declare var $: any;
 
@@ -20,7 +23,7 @@ declare var $: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [MenuItemService, CategoryFilterService, CategoryFilterComponent, MenuItemDetailComponent, 
+  providers: [CartItemService, MenuItemService, CategoryFilterService, CategoryFilterComponent, MenuItemDetailComponent, 
               CartComponent, ErrorType, LogService, NotificationService, 
               NgxSmartModalService],
 })
@@ -37,9 +40,11 @@ export class HomeComponent implements OnInit {
   menuItemsIsGreaterThanTwo: boolean = false;
   subs = new Subscription();
   menuItems$: MenuItem[] | Observable<MenuItem[]>;
+  cartItems$: CartItem[] | Observable<CartItem[]>;
 
   public constructor(
     private menuItemService: MenuItemService,
+    private cartItemService: CartItemService,
     public ngxSmartModalService: NgxSmartModalService,
     public categoryFilterComponent: CategoryFilterComponent,
     public menuItemDetailComponent: MenuItemDetailComponent,
@@ -123,11 +128,11 @@ export class HomeComponent implements OnInit {
     return this.menuItemsPerSelectedManufacturer;
   }
 
-  get getTicketCounter() : number {
-    let methodName: string = 'getTicketCounter';
+  get getCartCounter() : number {
+    let methodName: string = 'getCartCounter';
 
     try {
-      return 333;
+      return this.cartItemService.getCartCount();
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -288,6 +293,42 @@ export class HomeComponent implements OnInit {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
+  }
+
+  editMenuItemForCart(meniItem: MenuItem) : void {
+    let methodName: string = 'editMenuItemForCart';
+
+    try {
+      let newCartItem = this.createCartItemFromMenuItem(meniItem);
+      if(newCartItem !== null){
+        this.cartItemService.add(newCartItem);
+      } else {
+        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, null);
+        this.logService.logHandler(errorMsg);
+      } 
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  private createCartItemFromMenuItem(menuItem: MenuItem) : CartItem {
+    let methodName: string = 'createCartItemFromMenuItem';
+    let newCartItem = null;
+
+    try {
+      newCartItem = new CartItem();
+      newCartItem.id = menuItem.id;
+      newCartItem.name = menuItem.name;
+      newCartItem.quantity = 1;
+      newCartItem.adjustedPrice = menuItem.cost;
+      newCartItem.isSelected = false;
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return newCartItem;
   }
 
   private closeAllModals() : void {

@@ -16,9 +16,13 @@
   height:37px;
 }
 
+.cart-counter-placeholder {
+  margin-top: 23px;
+}
+
 .cart-counter {
   margin-top: 7px;
-  margin-left: -2px;
+  margin-left: -4px;
   color: rgba(241, 226, 7, 0.87);
   font-size: medium;
   font-weight: bold;
