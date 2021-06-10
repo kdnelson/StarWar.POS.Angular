@@ -12,10 +12,8 @@ import { Manufacturer } from 'src/app/models/manufacturer';
 import { MenuItemService } from 'src/app/services/menuItemService';
 import { CategoryFilterService } from 'src/app/services/categoryFilterService';
 import { Observable, Subscription } from 'rxjs';
-import { Filter } from 'src/app/models/filter';
 import { CartItemService } from 'src/app/services/cartItemService';
 import { CartItem } from 'src/app/models/cartItem';
-import { Guid } from 'guid-typescript';
 
 declare var $: any;
 
@@ -288,7 +286,9 @@ export class HomeComponent implements OnInit {
 
     try {
       this.closeAllModals();
-      this.cartComponent.loadModal();
+      if(this.cartItemService.getCartCount() > 0){
+        this.cartComponent.loadModal();
+      }
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

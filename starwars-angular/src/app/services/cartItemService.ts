@@ -42,7 +42,8 @@ export class CartItemService extends ObservableStore<StoreState> {
     let methodName: string = 'get';
  
     try {    
-
+      const cartItems = this.getState().cartItems;
+      return of(cartItems);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

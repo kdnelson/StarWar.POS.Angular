@@ -7,17 +7,22 @@ import { MenuItemDetailComponent } from '../menu-item-detail/menu-item-detail.co
 import { ErrorType } from 'src/app/models/errorType';
 import { LogService } from 'src/app/services/log.service';
 import { ErrorMsg } from 'src/app/models/errorMsg';
+import { CartItemService } from 'src/app/services/cartItemService';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'cart-modal',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
-  providers: [ErrorType, LogService]
+  providers: [CartItemService, ErrorType, LogService]
 })
 export class CartComponent implements OnInit {
   className: string = "CartComponent";
+  subs = new Subscription();
+  cartItems$: CartItem[] | Observable<CartItem[]>;
 
   constructor(
+    private cartItemService: CartItemService,
     public ngxSmartModalService: NgxSmartModalService,
     public menuItemDetailComponent: MenuItemDetailComponent,
     public errorType: ErrorType,
@@ -49,23 +54,12 @@ export class CartComponent implements OnInit {
     this.closeAllModals();
 
     try {
-      let cartItems: CartItem[] = this.getCartItems();
-      if(cartItems !== null){
-        if(cartItems.length > 0)
-        {
-          cartItems.forEach((item, index) => {
-            item.isSelected = false;
-          });
-
-          let cart: Cart = this.createCart(cartItems);
-          if(cart != null){
-            this.ngxSmartModalService.setModalData(cart, 'cart', true);
-            this.ngxSmartModalService.getModal('cart').open();
-          }
-        }
-      } else {
-        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'cartItems');
-        this.logService.logHandler(errorMsg);
+      let cartItems: CartItem[];
+      this.cartItemService.get().subscribe(ci => cartItems = ci);
+      let cart: Cart = this.createCart(cartItems);
+      if(cart != null){
+        this.ngxSmartModalService.setModalData(cart, 'cart', true);
+        this.ngxSmartModalService.getModal('cart').open();
       }
     } catch(errMsg){
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -113,7 +107,7 @@ export class CartComponent implements OnInit {
     let methodName: string = 'createCart';
   
     let cart: Cart = null;
-
+    
     try {
       if(cartItems !== null) {
         cart = new Cart();
@@ -124,30 +118,12 @@ export class CartComponent implements OnInit {
         cart.subTotal = 0;
         cart.tax = 0;
         cart.total = 0;
-        //cart = this.modifyTicketName(ticket);
         return cart;
       } else {
         let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullMethodParam, 'cartItems');
         this.logService.logHandler(errorMsg);
       }
     } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  private getCartItems() : CartItem[] {
-    let methodName: string = 'getCartItems';
-
-    try {
-      return [
-        new CartItem(Guid.create(), "Sand Crawer", 3, 1234.98, false),
-        new CartItem(Guid.create(), "Tie Fighter", 2, 1234.98, true),
-        new CartItem(Guid.create(), "X-wing", 5, 1234.98, false),
-        new CartItem(Guid.create(), "A-Wing", 4, 1234.98, false),
-        new CartItem(Guid.create(), "AT-AT", 7, 1234.98, false)
-      ];
-    } catch(errMsg){
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
