@@ -1,5 +1,6 @@
 .scroll {
   max-height: 253px;
+  padding-right: 10px;
   overflow-y: auto;
 }
 
@@ -15,7 +16,7 @@
 }
 
 .cart-number-label {
-  color: white;
+  color: rgba(241, 226, 7, 0.87);
   font-size: small;
   font-weight: bold;
 }
@@ -33,7 +34,7 @@
 
 .cart-card-not-selected {
   height: 53px;
-  width: 247px;
+  width: 255px;
   padding-top: 6px;
   margin-left: 10px;
   margin-bottom: 10px;
@@ -45,7 +46,7 @@
 
 .cart-card-name-label {
   color: white;
-  font-size: large;
+  font-size: medium;
   font-weight: bold;
   margin-top: 2px;
   margin-left: 7px;
@@ -53,8 +54,8 @@
 
 .cart-card-count-label {
   color: white;
-  font-size: large;
-  font-weight: bold;
+  font-size: medium;
+  font-weight: normal;
   margin-right: 7px;
 }
 

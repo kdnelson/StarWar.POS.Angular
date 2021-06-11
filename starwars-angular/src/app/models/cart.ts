@@ -4,6 +4,7 @@ import { CartItem } from "./cartItem";
 export class Cart {
   constructor(
     public id?: Guid,
+    public itemsCounter?: number,
     public cartItems?: CartItem[],
     public name?: string,
     public createdDate?: Date,

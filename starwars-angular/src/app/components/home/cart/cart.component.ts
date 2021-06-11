@@ -53,7 +53,7 @@ export class CartComponent implements OnInit {
     let methodName: string = 'loadModal';
     this.closeAllModals();
 
-    try {
+    try {    
       let cartItems: CartItem[];
       this.cartItemService.get().subscribe(ci => cartItems = ci);
       let cart: Cart = this.createCart(cartItems);
@@ -112,9 +112,10 @@ export class CartComponent implements OnInit {
       if(cartItems !== null) {
         cart = new Cart();
         cart.id = Guid.create();
+        cart.itemsCounter = this.cartItemService.getCartCount();
         cart.cartItems = cartItems;
         cart.createdDate = new Date();
-        cart.name = 'cart_' + cart.id.toString().split('-')[0];
+        cart.name = 'Cart_' + cart.id.toString().split('-')[0];
         cart.subTotal = 0;
         cart.tax = 0;
         cart.total = 0;
