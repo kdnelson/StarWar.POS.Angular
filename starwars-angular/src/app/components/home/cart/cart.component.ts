@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Cart } from 'src/app/models/cart';
 import { Guid } from 'guid-typescript';
@@ -16,7 +16,7 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./cart.component.css'],
   providers: [CartItemService, ErrorType, LogService]
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
   className: string = "CartComponent";
   subs = new Subscription();
   cartItems$: CartItem[] | Observable<CartItem[]>;
@@ -28,16 +28,6 @@ export class CartComponent implements OnInit {
     public errorType: ErrorType,
     public logService: LogService
   ) { }
-
-  ngOnInit(): void {
-    let methodName: string = 'ngOnInit';
-
-    try {
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
 
   resetForm(): void {
     let methodName: string = 'resetForm';
@@ -122,6 +112,83 @@ export class CartComponent implements OnInit {
         return cart;
       } else {
         let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullMethodParam, 'cartItems');
+        this.logService.logHandler(errorMsg);
+      }
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  selectedCartItem(cartItem: CartItem, cart: Cart) {
+    let methodName: string = 'selectedCartItem';
+
+    let isSelectedAtIndex: number = -1;
+
+    try {
+      if(CartItem !== null && cart !== null) {
+        if(cart.cartItems !== null) {
+          cart.cartItems.forEach((item, index) => {
+
+            if(item.id === cartItem.id){
+              item.isSelected = true;
+            } else {
+              item.isSelected = false;
+            }
+
+            // if(item.isSelected)
+            // {
+            //   isSelectedAtIndex = index;
+            // }
+          });
+      
+          // if(isSelectedAtIndex == -1)
+          // {
+          //   let updateAtIndex = this.searchCartItemIndex(cartItem, cart.cartItems);
+          //   if(updateAtIndex > -1)
+          //   {
+          //     cartItem.isSelected = true;
+          //     cart.cartItems.splice(updateAtIndex, 1, cartItem);
+          //   }
+          // } else {
+          //   if(cartItem.isSelected == false)
+          //   {
+          //     cart.cartItems.forEach((item) => {
+          //       item.isSelected = false;
+          //     });
+          //   }
+          // }
+        } else {
+          let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
+          this.logService.logHandler(errorMsg);
+        }
+      } else {
+        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
+        this.logService.logHandler(errorMsg);
+      }
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  private searchCartItemIndex(cartItem: CartItem, cartItems: CartItem[]) : number {
+    let methodName: string = 'searchCartItemIndex';
+
+    let cartItemAtIndex: number = -1;
+  
+    try {
+      if(cartItem !== null && cartItems !== null){
+        cartItems.forEach((item, index) => {
+          if(item.id === cartItem.id)
+          {
+            cartItemAtIndex = index;
+          }
+        });
+    
+        return cartItemAtIndex;
+      } else {
+        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
         this.logService.logHandler(errorMsg);
       }
     } catch (errMsg) {

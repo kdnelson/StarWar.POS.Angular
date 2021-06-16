@@ -1,6 +1,5 @@
 .scroll {
-  max-height: 253px;
-  padding-right: 10px;
+  height: 253px;
   overflow-y: auto;
 }
 
@@ -34,6 +33,18 @@
 
 .cart-card-not-selected {
   height: 53px;
+  width: 255px;
+  padding-top: 6px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
+  background-size: auto 400%;
+  background-position: 100% 88%;
+  transition: background-position 0.2s;
+}
+
+.cart-card-selected {
+  height: 117px;
   width: 255px;
   padding-top: 6px;
   margin-left: 10px;

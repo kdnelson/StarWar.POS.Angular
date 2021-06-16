@@ -177,9 +177,9 @@ export class HomeComponent implements OnInit {
 
     try {
       this.subs = this.menuItemService.get().subscribe(() => {
-        this.menuItems$.forEach((element) => {
-          if(this.isManufacturerUnique(element.manufacturer.toString())){
-            var manufacturer = new Manufacturer(element.manufacturer.toString(), false);
+        this.menuItems$.forEach((menuItem) => {
+          if(this.isManufacturerUnique(menuItem.manufacturer.toString())){
+            var manufacturer = new Manufacturer(menuItem.manufacturer.toString(), false);
             this.manufacturers.push(manufacturer);
           }
         })

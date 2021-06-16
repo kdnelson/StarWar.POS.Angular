@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { CategoryFilter } from 'src/app/models/categoryFilter';
 import { ErrorMsg } from 'src/app/models/errorMsg';
@@ -14,7 +14,7 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./category-filter.component.css'],
   providers: [ErrorType, LogService]
 })
-export class CategoryFilterComponent implements OnInit {
+export class CategoryFilterComponent {
   className: string = "CategoryFilterComponent";
   subs = new Subscription();
   filters$: Filter[] | Observable<Filter[]>;
@@ -27,16 +27,6 @@ export class CategoryFilterComponent implements OnInit {
     public errorType: ErrorType,
     public logService: LogService
   ) { }
-
-  ngOnInit(): void {
-    let methodName: string = 'ngOnInit';
-
-    try {
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
 
   loadSubscribers() {
     let methodName: string = 'loadSubscribers';
@@ -91,7 +81,6 @@ export class CategoryFilterComponent implements OnInit {
     let methodName: string = 'selectedFilter';
 
     try {
-
       categoryFilter.filters.forEach((f) => {
         if(f.id === filter.id){
           this.categoryFilterService.toggleSelected(filter);
