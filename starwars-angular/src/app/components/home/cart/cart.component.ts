@@ -196,4 +196,32 @@ export class CartComponent {
       this.logService.logHandler(errorMsg);
     }
   }
+
+  cancelCartItem(cartItem: CartItem, cart: Cart) {
+    let methodName: string = 'cancelCartItem';
+
+    console.log('Hey');
+
+    try {
+      if(cartItem !== null && cart !== null) {
+        if(cart.cartItems !== null) {
+          cart.cartItems.forEach((item, index) => {
+
+            if(item.id === cartItem.id){
+              item.isSelected = false;
+            }
+          });
+        } else {
+          let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
+          this.logService.logHandler(errorMsg);
+        }
+      } else {
+        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
+        this.logService.logHandler(errorMsg);
+      }
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
 }

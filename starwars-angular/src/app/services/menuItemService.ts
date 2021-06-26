@@ -158,33 +158,51 @@ export class MenuItemService extends ObservableStore<StoreState> {
   }
  
   getPagedVehicles = (url) : Promise<MenuItem[]> => {
+    let methodName: string = 'getPagedVehicles';
+    let response = null;
+
     return new Promise(async (resolve) => {   
-      let response = await fetch(url)
-      let data = await response.json();
+      response = await fetch(url);
+      if(response !== null){
+        let data = await response.json();
         data.results.forEach(element => {
-        let newMenuItem = this.createMenuItem(element);
-        this.add(newMenuItem);
-      });
-      if (data.next !== null) {
-        return setTimeout(() => resolve(this.getPagedVehicles(data.next)), 0);
+          let newMenuItem = this.createMenuItem(element);
+          this.add(newMenuItem);
+        });
+
+        if (data.next !== null) {
+          return setTimeout(() => resolve(this.getPagedVehicles(data.next)), 0);
+        } else {
+          return resolve(this.initialState.menuItems);
+        }
       } else {
-        return resolve(this.initialState.menuItems);
+        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullResponse);
+        this.logService.logHandler(errorMsg);
       }
     })
   }
   
   getPagedStarShips = (url): Promise<MenuItem[]> => {
+    let methodName: string = 'getPagedStarShips';
+    let response = null;
+
     return new Promise(async (resolve) => {     
-      let response = await fetch(url)
-      let data = await response.json();
-      data.results.forEach(element => {
-        let newMenuItem = this.createMenuItem(element);
-        this.add(newMenuItem);
-      });
-      if (data.next !== null) {
-        return setTimeout(() => resolve(this.getPagedStarShips(data.next)), 0);
+      response = await fetch(url)
+      if(response !== null){
+        let data = await response.json();
+        data.results.forEach(element => {
+          let newMenuItem = this.createMenuItem(element);
+          this.add(newMenuItem);
+        });
+
+        if (data.next !== null) {
+          return setTimeout(() => resolve(this.getPagedStarShips(data.next)), 0);
+        } else {
+          return resolve(this.initialState.menuItems);
+        }
       } else {
-        return resolve(this.initialState.menuItems);
+        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullResponse);
+        this.logService.logHandler(errorMsg);
       }
     })
   }

@@ -1,6 +1,7 @@
 .scroll {
   height: 253px;
   overflow-y: auto;
+  padding-right: 10px;
 }
 
 .cart-container {
@@ -35,6 +36,7 @@
   height: 53px;
   width: 255px;
   padding-top: 6px;
+  padding-right: 5px;
   margin-left: 10px;
   margin-bottom: 10px;
   background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
@@ -44,15 +46,61 @@
 }
 
 .cart-card-selected {
-  height: 117px;
+  height: 105px;
   width: 255px;
   padding-top: 6px;
+  padding-right: 5px;
   margin-left: 10px;
   margin-bottom: 10px;
   background-image: linear-gradient(grey, rgba(12, 12, 12, 0.6));
   background-size: auto 400%;
   background-position: 100% 88%;
   transition: background-position 0.2s;
+}
+
+.cart-card-remove {
+  height: 45px;
+  width: 78px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding-top: 12px;
+  text-align: center;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.cart-card-cancel {
+  height: 45px;
+  width: 82px;
+  margin-top: 5px;
+  margin-left: 6px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding-top: 12px;
+  text-align: center;
+  background-color: orangered;
+  color: white;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.cart-card-edit {
+  height: 45px;
+  width: 78px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding-top: 12px;
+  text-align: center;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  font-size: medium;
 }
 
 .cart-card-name-label {
@@ -67,14 +115,12 @@
   color: white;
   font-size: medium;
   font-weight: normal;
-  margin-right: 7px;
 }
 
 .cart-card-item-total-label {
   color: white;
   font-size: small;
   font-weight: bold;
-  margin-right: 7px;
 }
 
 .cart-card-totaler-label {
