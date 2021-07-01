@@ -34,8 +34,8 @@
 
 .cart-card-not-selected {
   height: 53px;
-  width: 255px;
-  padding-top: 6px;
+  width: 248px;
+  padding-top: 3px;
   padding-right: 5px;
   margin-left: 10px;
   margin-bottom: 10px;
@@ -47,8 +47,8 @@
 
 .cart-card-selected {
   height: 105px;
-  width: 255px;
-  padding-top: 6px;
+  width: 248px;
+  padding-top: 3px;
   padding-right: 5px;
   margin-left: 10px;
   margin-bottom: 10px;
