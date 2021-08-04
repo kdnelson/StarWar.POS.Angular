@@ -4,12 +4,12 @@ import { CartItem } from "./cartItem";
 export class Cart {
   constructor(
     public id?: Guid,
-    public itemsCounter?: number,
-    public cartItems?: CartItem[],
-    public name?: string,
+    public name?: String,
+    public itemsCounter?: Number,
     public createdDate?: Date,
-    public subTotal?: number,
-    public tax?: number,
-    public total?: number,
+    public subTotal?: Number,
+    public tax?: Number,
+    public total?: Number,
+    public cartItems?: CartItem[]
   ){}
 }

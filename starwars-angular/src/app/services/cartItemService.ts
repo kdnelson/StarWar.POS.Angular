@@ -2,10 +2,8 @@ import { Injectable } from "@angular/core";
 import { ObservableStore } from "@codewithdan/observable-store";
 import { of } from "rxjs";
 import { CartItem } from "../models/cartItem";
-import { CategoryFilter } from "../models/categoryFilter";
 import { ErrorMsg } from "../models/errorMsg";
 import { ErrorType } from "../models/errorType";
-import { Filter } from "../models/filter";
 import { StoreActions } from "../models/storeActions";
 import { StoreState } from "../models/storeState";
 import { LogService } from "./log.service";
@@ -53,13 +51,29 @@ export class CartItemService extends ObservableStore<StoreState> {
   add(cartItem: CartItem) {
     let methodName: string = 'add';
  
+    try {          
+      let state = this.getState();
+      if(!this.isCartItemInCart(cartItem, state)){
+        cartItem = this.modCartItemName(cartItem);
+        state.cartItems.push(cartItem);
+        this.setState({ cartItems: state.cartItems }, StoreActions.AddCartItem);
+      }    
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    } finally {
+      console.log('State History:', this.stateHistory);
+    }
+  }
+
+  remove(cartItem: CartItem, cartItemIndex: number) {
+    let methodName: string = 'remove';
+    console.log(cartItem.name + " " + cartItemIndex)
+
     try {              
         let state = this.getState();
-        if(!this.isCartItemInCart(cartItem, state)){
-          cartItem = this.modCartItem(cartItem);
-          state.cartItems.push(cartItem);
-          this.setState({ cartItems: state.cartItems }, StoreActions.AddCartItem); 
-        }    
+        state.cartItems.splice(cartItemIndex);
+        this.setState({ cartItems: state.cartItems }, StoreActions.RemoveCartItem);  
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -68,11 +82,23 @@ export class CartItemService extends ObservableStore<StoreState> {
     }
   }
  
-  remove() {
-    let methodName: string = 'remove';
+  decrementCartItemCount(cartItem: CartItem) {
+    let methodName: string = 'decrementCartItemCount';
+    let cartItemIndex = 0;
  
-    try {    
-
+    try {
+      let state = this.getState();
+      state.cartItems.forEach((cartItem) => {
+        if(cartItem.id === cartItem.id){
+          if(cartItem.quantity == 1){
+            this.remove(cartItem, cartItemIndex);
+          } else {
+            cartItem.quantity = cartItem.quantity - 1;
+            this.setState({ cartItems: state.cartItems }, StoreActions.UpdateCartItem); 
+          }
+        }
+        cartItemIndex++;
+      })
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -98,17 +124,17 @@ export class CartItemService extends ObservableStore<StoreState> {
     return cartCounter;
   }
 
-  private isCartItemInCart(item: CartItem, state: StoreState) : boolean {
+  private isCartItemInCart(cartItem: CartItem, state: StoreState) : boolean {
     let methodName: string = 'isCartItemInCart';
     let isFound = false;
 
     try {    
-        state.cartItems.forEach((cartItem) => {
-            if(cartItem.id === item.id){
-                cartItem.quantity = cartItem.quantity + 1;
-                isFound = true;
-                this.setState({ cartItems: state.cartItems }, StoreActions.UpdateCartItem); 
-            }
+        state.cartItems.forEach((cItem) => {
+          if(cartItem.id === cItem.id){
+            cItem.quantity = cItem.quantity + 1;
+            isFound = true;
+            this.setState({ cartItems: state.cartItems }, StoreActions.UpdateCartItem); 
+          }
         })
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -117,8 +143,8 @@ export class CartItemService extends ObservableStore<StoreState> {
     return isFound;
   }
 
-  private modCartItem(cartItem: CartItem) : CartItem {
-    let methodName: string = 'modCartItem';
+  private modCartItemName(cartItem: CartItem) : CartItem {
+    let methodName: string = 'modCartItemName';
 
     try {    
       if (cartItem.name.length > 23) {

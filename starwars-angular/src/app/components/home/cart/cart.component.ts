@@ -56,6 +56,31 @@ export class CartComponent {
       this.logService.logHandler(errorMsg);
     }
   }
+  
+  refreshModal(selectedCartId: Guid, cart: Cart) {
+    let methodName: string = 'refreshModal';
+
+    try {    
+      let cartItems: CartItem[];
+      this.cartItemService.get().subscribe(ci => cartItems = ci);
+
+      cartItems.forEach(cartItem => {
+        if(cartItem.id == selectedCartId){
+          cartItem.isSelected = true;
+        }
+      });
+
+      let updateCart: Cart = this.updateCart(cartItems, cart);
+      if(updateCart != null && updateCart.cartItems.length > 0){
+        this.ngxSmartModalService.setModalData(updateCart, 'cart', true);
+      } else {
+        this.closeAllModals();
+      }
+    } catch(errMsg){
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
 
   submitCart(cart: Cart) {
     let methodName: string = 'submitCart';
@@ -120,44 +145,42 @@ export class CartComponent {
     }
   }
 
+  private updateCart(cartItems: CartItem[], cart: Cart) : Cart {
+    let methodName: string = 'updateCart';
+    
+    try {
+      if(cart !== null) {
+        cart.itemsCounter = this.cartItemService.getCartCount();
+        cart.cartItems = cartItems;
+        cart.createdDate = cart.createdDate;
+        cart.name = cart.name;
+        cart.subTotal = 0;
+        cart.tax = 0;
+        cart.total = 0;
+        return cart;
+      } else {
+        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullMethodParam, 'cartItems');
+        this.logService.logHandler(errorMsg);
+      }
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
   selectedCartItem(cartItem: CartItem, cart: Cart) {
     let methodName: string = 'selectedCartItem';
-
-    let isSelectedAtIndex: number = -1;
 
     try {
       if(CartItem !== null && cart !== null) {
         if(cart.cartItems !== null) {
           cart.cartItems.forEach((item, index) => {
-
             if(item.id === cartItem.id){
               item.isSelected = true;
             } else {
               item.isSelected = false;
             }
-
-            // if(item.isSelected)
-            // {
-            //   isSelectedAtIndex = index;
-            // }
           });
-      
-          // if(isSelectedAtIndex == -1)
-          // {
-          //   let updateAtIndex = this.searchCartItemIndex(cartItem, cart.cartItems);
-          //   if(updateAtIndex > -1)
-          //   {
-          //     cartItem.isSelected = true;
-          //     cart.cartItems.splice(updateAtIndex, 1, cartItem);
-          //   }
-          // } else {
-          //   if(cartItem.isSelected == false)
-          //   {
-          //     cart.cartItems.forEach((item) => {
-          //       item.isSelected = false;
-          //     });
-          //   }
-          // }
         } else {
           let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
           this.logService.logHandler(errorMsg);
@@ -172,21 +195,22 @@ export class CartComponent {
     }
   }
 
-  private searchCartItemIndex(cartItem: CartItem, cartItems: CartItem[]) : number {
-    let methodName: string = 'searchCartItemIndex';
-
-    let cartItemAtIndex: number = -1;
-  
-    try {
-      if(cartItem !== null && cartItems !== null){
-        cartItems.forEach((item, index) => {
-          if(item.id === cartItem.id)
-          {
-            cartItemAtIndex = index;
-          }
-        });
+  cancelCartItem(cartItem: CartItem, cart: Cart) {
+    let methodName: string = 'cancelCartItem';
     
-        return cartItemAtIndex;
+    try {
+      if(cartItem !== null && cart !== null) {
+        if(cart.cartItems !== null) {
+          cart.cartItems.forEach((item, index) => {
+
+            if(item.id === cartItem.id){
+              item.isSelected = false;
+            }
+          });
+        } else {
+          let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
+          this.logService.logHandler(errorMsg);
+        }
       } else {
         let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
         this.logService.logHandler(errorMsg);
@@ -197,18 +221,16 @@ export class CartComponent {
     }
   }
 
-  cancelCartItem(cartItem: CartItem, cart: Cart) {
+  removeCartItem(cartItem: CartItem, cart: Cart) {
     let methodName: string = 'cancelCartItem';
-
-    console.log('Hey');
-
+    
     try {
       if(cartItem !== null && cart !== null) {
         if(cart.cartItems !== null) {
-          cart.cartItems.forEach((item, index) => {
-
-            if(item.id === cartItem.id){
-              item.isSelected = false;
+          cart.cartItems.forEach((cartItem, index) => {
+            if(cartItem.id === cartItem.id){
+              this.cartItemService.decrementCartItemCount(cartItem);
+              this.refreshModal(cartItem.id, cart);
             }
           });
         } else {
