@@ -222,15 +222,15 @@ export class CartComponent {
   }
 
   removeCartItem(cartItem: CartItem, cart: Cart) {
-    let methodName: string = 'cancelCartItem';
+    let methodName: string = 'removeCartItem';
     
     try {
       if(cartItem !== null && cart !== null) {
         if(cart.cartItems !== null) {
-          cart.cartItems.forEach((cartItem, index) => {
-            if(cartItem.id === cartItem.id){
-              this.cartItemService.decrementCartItemCount(cartItem);
-              this.refreshModal(cartItem.id, cart);
+          cart.cartItems.forEach((cItem) => {
+            if(cartItem.id === cItem.id){
+              this.cartItemService.decrementCartItemCount(cItem);
+              this.refreshModal(cItem.id, cart);
             }
           });
         } else {

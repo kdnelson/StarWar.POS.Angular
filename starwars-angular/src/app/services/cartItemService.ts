@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ObservableStore } from "@codewithdan/observable-store";
+import { exit } from "process";
 import { of } from "rxjs";
 import { CartItem } from "../models/cartItem";
 import { ErrorMsg } from "../models/errorMsg";
@@ -66,14 +67,13 @@ export class CartItemService extends ObservableStore<StoreState> {
     }
   }
 
-  remove(cartItem: CartItem, cartItemIndex: number) {
+  remove(cartItemIndex: number) {
     let methodName: string = 'remove';
-    console.log(cartItem.name + " " + cartItemIndex)
 
     try {              
-        let state = this.getState();
-        state.cartItems.splice(cartItemIndex);
-        this.setState({ cartItems: state.cartItems }, StoreActions.RemoveCartItem);  
+      let state = this.getState();
+      state.cartItems.splice(cartItemIndex, 1);
+      this.setState({ cartItems: state.cartItems }, StoreActions.RemoveCartItem);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -88,12 +88,12 @@ export class CartItemService extends ObservableStore<StoreState> {
  
     try {
       let state = this.getState();
-      state.cartItems.forEach((cartItem) => {
-        if(cartItem.id === cartItem.id){
-          if(cartItem.quantity == 1){
-            this.remove(cartItem, cartItemIndex);
+      state.cartItems.forEach((cItem) => {
+        if(cartItem.id === cItem.id){
+          if(cItem.quantity == 1){
+            this.remove(cartItemIndex);
           } else {
-            cartItem.quantity = cartItem.quantity - 1;
+            cItem.quantity = cItem.quantity - 1;
             this.setState({ cartItems: state.cartItems }, StoreActions.UpdateCartItem); 
           }
         }
