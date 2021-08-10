@@ -124,6 +124,41 @@ export class CartItemService extends ObservableStore<StoreState> {
     return cartCounter;
   }
 
+  getCartSubtotal() : number {
+    let methodName: string = 'getCartSubtotal';
+    let cartSubtotal: number = 0;
+
+    try {    
+        let state = this.getState();
+        state.cartItems.forEach((cartItem) => {
+          cartSubtotal = parseInt(cartSubtotal.toString()) + parseInt(cartItem.price.toString());
+        })
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return cartSubtotal;
+  }
+
+
+  getCartTax(cartSubTotal: number) : number {
+    let methodName: string = 'getCartTax';
+    let cartTax: number = 0;
+
+    try {
+      if(cartSubTotal > 0){
+        let cartTaxPercent = cartSubTotal / 10;
+        cartTax = cartTaxPercent
+      }    
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return cartTax;
+  }
+
   private isCartItemInCart(cartItem: CartItem, state: StoreState) : boolean {
     let methodName: string = 'isCartItemInCart';
     let isFound = false;

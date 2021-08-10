@@ -98,22 +98,23 @@ export class HomeComponent implements OnInit {
     let methodName: string = 'getMenuItemPerManufacturer';
 
     try {
-      this.menuItems$.forEach(m => {
-        if(m.manufacturer == this.selectedManufacturer) {
+      this.menuItems$.forEach(menuItem => {
+        let formattedMenuItem = this.getFormattedMenuItem(menuItem);
+        if(menuItem.manufacturer == this.selectedManufacturer) {
           if(this.isCategoryFilterSet()){
             this.categoryFilterComponent.filterCollection.forEach((f) => {
 
               if(f.isSelected){
-                if(f.filterOption.costRange === m.costRange ||
-                   f.filterOption.crewRange === m.crewRange) {
-                   if(!this.isMenuItemLoaded(m.name)){
-                     this.menuItemsPerSelectedManufacturer.push(m);
+                if(f.filterOption.costRange === formattedMenuItem.costRange ||
+                   f.filterOption.crewRange === formattedMenuItem.crewRange) {
+                   if(!this.isMenuItemLoaded(menuItem.name)){
+                     this.menuItemsPerSelectedManufacturer.push(formattedMenuItem);
                    }
                 }
               }
             });
           } else {
-            this.menuItemsPerSelectedManufacturer.push(m);
+            this.menuItemsPerSelectedManufacturer.push(formattedMenuItem);
           }
         }
       });
@@ -124,6 +125,20 @@ export class HomeComponent implements OnInit {
       this.logService.logHandler(errorMsg);
     }
     return this.menuItemsPerSelectedManufacturer;
+  }
+
+  getFormattedMenuItem(menuItem: MenuItem) : MenuItem {
+    let methodName: string = 'getFormattedMenuItem';
+
+    try {
+      if(menuItem.cost == "unknown"){
+        menuItem.cost = "0";
+      }
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+    return menuItem;
   }
 
   get getCartCounter() : number {
@@ -321,7 +336,7 @@ export class HomeComponent implements OnInit {
       newCartItem.id = menuItem.id;
       newCartItem.name = menuItem.name;
       newCartItem.quantity = 1;
-      newCartItem.adjustedPrice = menuItem.cost;
+      newCartItem.price = menuItem.cost;
       newCartItem.isSelected = false;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);

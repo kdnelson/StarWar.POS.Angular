@@ -128,12 +128,13 @@ export class CartComponent {
         cart = new Cart();
         cart.id = Guid.create();
         cart.itemsCounter = this.cartItemService.getCartCount();
-        cart.cartItems = cartItems;
-        cart.createdDate = new Date();
         cart.name = 'Cart_' + cart.id.toString().split('-')[0];
-        cart.subTotal = 0;
-        cart.tax = 0;
-        cart.total = 0;
+        cart.createdDate = new Date();
+        cart.cartItems = cartItems;
+        cart.subTotal = this.cartItemService.getCartSubtotal();
+        cart.tax = this.cartItemService.getCartTax(cart.subTotal);
+        cart.total = cart.subTotal + cart.tax;
+        console.log(cart)
         return cart;
       } else {
         let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullMethodParam, 'cartItems');
@@ -151,12 +152,12 @@ export class CartComponent {
     try {
       if(cart !== null) {
         cart.itemsCounter = this.cartItemService.getCartCount();
-        cart.cartItems = cartItems;
-        cart.createdDate = cart.createdDate;
         cart.name = cart.name;
-        cart.subTotal = 0;
-        cart.tax = 0;
-        cart.total = 0;
+        cart.createdDate = cart.createdDate;
+        cart.cartItems = cartItems;
+        cart.subTotal = this.cartItemService.getCartSubtotal();
+        cart.tax = this.cartItemService.getCartTax(cart.subTotal);
+        cart.total = cart.subTotal + cart.tax;
         return cart;
       } else {
         let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullMethodParam, 'cartItems');

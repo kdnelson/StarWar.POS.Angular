@@ -5,7 +5,7 @@ export class CartItem {
     public id?: Guid,
     public name?: String,
     public quantity?: number,
-    public adjustedPrice?: Number,
+    public price?: number,
     public isSelected?: Boolean
   ) { }
 }

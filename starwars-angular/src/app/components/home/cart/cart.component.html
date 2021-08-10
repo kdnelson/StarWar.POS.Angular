@@ -20,7 +20,7 @@
                               <div class="cart-card-count-label">{{ cartItem.quantity }}</div>
                            </div>
                            <div class="d-flex justify-content-end">
-                              <div class="cart-card-item-total-label">{{ cartItem.adjustedPrice }}</div>
+                              <div class="cart-card-item-total-label">{{ cartItem.price }}</div>
                            </div>
                         </div>
                         <div *ngIf="cartItem.isSelected" class="cart-card-selected" role="button" (click)="selectedCartItem(cartItem, cart.getData())">
@@ -29,7 +29,7 @@
                               <div class="cart-card-count-label">{{ cartItem.quantity }}</div>
                            </div>
                            <div class="d-flex justify-content-end">
-                              <div class="cart-card-item-total-label">{{ cartItem.adjustedPrice }}</div>
+                              <div class="cart-card-item-total-label">{{ cartItem.price }}</div>
                            </div>
                            <div class="d-flex justify-content-between">
                               <div class="cart-card-remove" role="button" (click)="removeCartItem(cartItem, cart.getData())">Remove</div>
@@ -46,15 +46,15 @@
                         <div class="d-flex flex-column">
                            <div class="d-flex">
                               <div class="p-2 flex-fill">Sub Total:</div>
-                              <div class="p-2 mr-auto">100.00 cr</div>
+                              <div class="p-2 mr-auto">{{ cart.getData().subTotal }} cr</div>
                            </div>
                            <div class="d-flex">
                               <div class="p-2 flex-fill">Tax:</div>
-                              <div class="p-2 mr-auto">10.00 %</div>
+                              <div class="p-2 mr-auto">{{ cart.getData().tax }} cr</div>
                            </div>
                            <div class="d-flex">
                               <div class="p-2 flex-fill">Total:</div>
-                              <div class="p-2 mr-auto">15656500.00 cr</div>
+                              <div class="p-2 mr-auto">{{ cart.getData().total }} cr</div>
                            </div>
                         </div>
                    </div>
