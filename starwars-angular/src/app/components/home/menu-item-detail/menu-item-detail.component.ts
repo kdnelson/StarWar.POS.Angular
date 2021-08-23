@@ -1,23 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { CartItem } from 'src/app/models/cartItem';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 import { ErrorType } from 'src/app/models/errorType';
+import { MenuItem } from 'src/app/models/menuItem';
 import { MenuItemDetail } from 'src/app/models/menuItemDetail';
 import { MenuItemOption } from 'src/app/models/menuItemOption';
+import { CartItemService } from 'src/app/services/cartItemService';
 import { LogService } from '../../../services/log.service';
 
 @Component({
   selector: 'menu-item-detail-modal',
   templateUrl: './menu-item-detail.component.html',
   styleUrls: ['./menu-item-detail.component.css'],
-  providers: [ErrorType, LogService]
+  providers: [CartItemService, ErrorType, LogService]
 })
 export class MenuItemDetailComponent implements OnInit {
   className: string = "MenuItemDetailComponent";
 
   constructor(
     public ngxSmartModalService: NgxSmartModalService,
+    public cartItemService: CartItemService,
     public errorType: ErrorType,
     public logService: LogService
   ) { }
@@ -53,20 +57,20 @@ export class MenuItemDetailComponent implements OnInit {
     }
   }
 
-  loadModal(isEdit: boolean) {
+  loadModal(menuItem: MenuItem, isEdit: boolean) {
     let methodName: string = 'loadModal';
-    this.closeAllModals();
 
     try {
+      this.closeAllModals();
       let menuItemOptions: MenuItemOption[] = this.getMenuItemOptions();
       if(menuItemOptions !== null){
         if(menuItemOptions.length > 0)
         {
-          menuItemOptions.forEach((item, index) => {
+          menuItemOptions.forEach((item) => {
             item.isSelected = false;
           });
 
-          let menuItemDetail: MenuItemDetail = this.createMenuItemDetail(isEdit, menuItemOptions);
+          let menuItemDetail: MenuItemDetail = this.createMenuItemDetail(menuItem, isEdit, menuItemOptions);
           if(menuItemDetail != null){
             this.ngxSmartModalService.setModalData(menuItemDetail, 'menuItemDetail', true);
             this.ngxSmartModalService.getModal('menuItemDetail').open();
@@ -86,20 +90,41 @@ export class MenuItemDetailComponent implements OnInit {
     }
   }
 
-  toggleShowPic(menuItemDetail: MenuItemDetail) {
-    let methodName: string = 'toggleShowPic';
+  addMenuItemForCart(meniItemDetail: MenuItemDetail) : void {
+    let methodName: string = 'addMenuItemForCart';
 
     try {
-      if(menuItemDetail !== null){
-        menuItemDetail.isShowPic = !menuItemDetail.isShowPic;
-      }else{
-        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
+      let newCartItem = this.createCartItemFromMenuItem(meniItemDetail);
+      if(newCartItem !== null){
+        this.cartItemService.add(newCartItem);
+        this.closeAllModals();
+      } else {
+        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, null);
         this.logService.logHandler(errorMsg);
-      }
+      } 
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
+  }
+
+  private createCartItemFromMenuItem(menuItemDetail: MenuItemDetail) : CartItem {
+    let methodName: string = 'createCartItemFromMenuItem';
+    let newCartItem = null;
+
+    try {
+      newCartItem = new CartItem();
+      newCartItem.id = menuItemDetail.id;
+      newCartItem.name = menuItemDetail.name;
+      newCartItem.quantity = 1;
+      newCartItem.price = menuItemDetail.cost;
+      newCartItem.isSelected = false;
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return newCartItem;
   }
 
   selectedOption(menuItemOption: MenuItemOption, menuItemDetail: MenuItemDetail) {
@@ -126,38 +151,6 @@ export class MenuItemDetailComponent implements OnInit {
       }
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  addMenuItemToCart(menuItemDetail: MenuItemDetail) {
-    let methodName: string = 'addMenuItemToCart';
-
-    try {
-      if(menuItemDetail !== null){
-        this.ngxSmartModalService.getModal('menuItemDetail').close();
-      } else {
-        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
-        this.logService.logHandler(errorMsg);
-      }
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  editMenuItemToCart(menuItemDetail: MenuItemDetail) {
-    let methodName: string = 'editMenuItemToCart';
-
-    try {
-      if(menuItemDetail !== null){
-        this.ngxSmartModalService.getModal('menuItemDetail').close();
-      } else {
-        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
-        this.logService.logHandler(errorMsg);
-      }
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
       this.logService.logHandler(errorMsg);
     }
   }
@@ -210,7 +203,7 @@ export class MenuItemDetailComponent implements OnInit {
     return optionAtIndex;
   }
 
-  private createMenuItemDetail(isEdit: boolean, menuItemOptions: MenuItemOption[]) : MenuItemDetail {
+  private createMenuItemDetail(menuItem: MenuItem, isEdit: boolean, menuItemOptions: MenuItemOption[]) : MenuItemDetail {
     let methodName: string = 'createMenuItemDetail';
   
     let menuItemDetail: MenuItemDetail = null;
@@ -219,8 +212,8 @@ export class MenuItemDetailComponent implements OnInit {
       if(menuItemOptions !== null) {
         menuItemDetail = new MenuItemDetail();
         menuItemDetail.id = Guid.create();
-        menuItemDetail.name = "Firespray-31";
-        menuItemDetail.isShowPic = true;
+        menuItemDetail.name = menuItem.name;
+        menuItemDetail.cost = menuItem.cost;
         menuItemDetail.isEdit = isEdit;
         menuItemDetail.menuItemOptions = menuItemOptions;
         return menuItemDetail;

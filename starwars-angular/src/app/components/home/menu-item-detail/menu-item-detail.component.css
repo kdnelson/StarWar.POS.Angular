@@ -5,7 +5,7 @@
 
 .menuItemDetail-container {
   width: 275px;
-  height: 468px;
+  height: 306px;
   background-color: black;
 }
 
@@ -14,30 +14,6 @@
   color: white;
   font-size: small;
   font-weight: bold;
-}
-
-.menuItemDetail-help {
-  padding-top: 5px;
-  color: rgba(241, 226, 7, 0.87);
-  font-size: small;
-  font-weight: bold;
-}
-
-.menuItemDetail-card-pic-text {
-  height: 162px;
-  width: 275px;
-  color: white;
-  background-color: black;
-  font-size: larger;
-  font-weight: bolder;
-}
-
-.menuItemDetail-pic {
-  padding-top: 5px;
-  padding-left: 25px;
-  padding-bottom: 10px;
-  width: 250px;
-  height: 171px;
 }
 
 .menuItemDetail-options {

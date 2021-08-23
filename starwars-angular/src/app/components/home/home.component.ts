@@ -132,7 +132,7 @@ export class HomeComponent implements OnInit {
 
     try {
       if(menuItem.cost == "unknown"){
-        menuItem.cost = "0";
+        menuItem.cost = "3000";
       }
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -284,18 +284,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  openMenuItemDetailModal() {
-    let methodName: string = 'openMenuItemDetailModal';
-
-    try {
-      this.closeAllModals();
-      this.menuItemDetailComponent.loadModal(false);
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
   openCartModal() {
     let methodName: string = 'openCartModal';
 
@@ -310,13 +298,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  editMenuItemForCart(meniItem: MenuItem) : void {
-    let methodName: string = 'editMenuItemForCart';
+  openMenuItemDetailModal(menuItem: MenuItem) : void {
+    let methodName: string = 'openMenuItemDetailModal';
 
     try {
-      let newCartItem = this.createCartItemFromMenuItem(meniItem);
-      if(newCartItem !== null){
-        this.cartItemService.add(newCartItem);
+      if(menuItem !== null){
+        this.closeAllModals();
+        this.menuItemDetailComponent.loadModal(menuItem, false);
       } else {
         let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, null);
         this.logService.logHandler(errorMsg);
@@ -325,25 +313,6 @@ export class HomeComponent implements OnInit {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
-  }
-
-  private createCartItemFromMenuItem(menuItem: MenuItem) : CartItem {
-    let methodName: string = 'createCartItemFromMenuItem';
-    let newCartItem = null;
-
-    try {
-      newCartItem = new CartItem();
-      newCartItem.id = menuItem.id;
-      newCartItem.name = menuItem.name;
-      newCartItem.quantity = 1;
-      newCartItem.price = menuItem.cost;
-      newCartItem.isSelected = false;
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-
-    return newCartItem;
   }
 
   private closeAllModals() : void {

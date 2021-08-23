@@ -93,18 +93,6 @@ export class CartComponent {
     }
   }
 
-  openMenuItemDetailModal() {
-    let methodName: string = 'openMenuItemDetailModal';
-
-    try {
-      this.closeAllModals();
-      this.menuItemDetailComponent.loadModal(true);
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
   private closeAllModals() : void {
     let methodName: string = 'closeAllModals';
 
@@ -134,7 +122,6 @@ export class CartComponent {
         cart.subTotal = this.cartItemService.getCartSubtotal();
         cart.tax = this.cartItemService.getCartTax(cart.subTotal);
         cart.total = cart.subTotal + cart.tax;
-        console.log(cart)
         return cart;
       } else {
         let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullMethodParam, 'cartItems');
@@ -230,6 +217,7 @@ export class CartComponent {
         if(cart.cartItems !== null) {
           cart.cartItems.forEach((cItem) => {
             if(cartItem.id === cItem.id){
+              cItem.isSelected = false;
               this.cartItemService.decrementCartItemCount(cItem);
               this.refreshModal(cItem.id, cart);
             }
@@ -242,6 +230,20 @@ export class CartComponent {
         let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
         this.logService.logHandler(errorMsg);
       }
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  editCartItem(cartItem: CartItem, cart: Cart) {
+    let methodName: string = 'editCartItem';
+
+    try {
+      this.closeAllModals();
+      console.log('CartComponent.EditCartItem')
+      // TODO convert cartItem to menuItemDetail
+      //this.menuItemDetailComponent.loadModal(menuItemDetail, true);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

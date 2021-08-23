@@ -89,7 +89,7 @@ export class CartItemService extends ObservableStore<StoreState> {
     try {
       let state = this.getState();
       state.cartItems.forEach((cItem) => {
-        if(cartItem.id === cItem.id){
+        if(cartItem.name === cItem.name){
           if(cItem.quantity == 1){
             this.remove(cartItemIndex);
           } else {
@@ -131,7 +131,8 @@ export class CartItemService extends ObservableStore<StoreState> {
     try {    
         let state = this.getState();
         state.cartItems.forEach((cartItem) => {
-          cartSubtotal = parseInt(cartSubtotal.toString()) + parseInt(cartItem.price.toString());
+          cartSubtotal = parseInt(cartSubtotal.toString()) + 
+            (parseInt(cartItem.price.toString()) * parseInt(cartItem.quantity.toString()));
         })
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -165,7 +166,7 @@ export class CartItemService extends ObservableStore<StoreState> {
 
     try {    
         state.cartItems.forEach((cItem) => {
-          if(cartItem.id === cItem.id){
+          if(cartItem.name === cItem.name){
             cItem.quantity = cItem.quantity + 1;
             isFound = true;
             this.setState({ cartItems: state.cartItems }, StoreActions.UpdateCartItem); 

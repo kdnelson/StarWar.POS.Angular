@@ -32,6 +32,16 @@
   background-color: white;
 }
 
+.cartItem-card-placeholder {
+  height: 53px;
+  width: 248px;
+  padding-top: 3px;
+  padding-right: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  background-color: transparent;
+}
+
 .cart-card-not-selected {
   height: 53px;
   width: 248px;
