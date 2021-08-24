@@ -3,7 +3,7 @@ import { CartItem } from "./cartItem";
 
 export class Cart {
   constructor(
-    public id?: Guid,
+    public id?: String,
     public name?: String,
     public itemsCounter?: number,
     public createdDate?: Date,

@@ -57,7 +57,7 @@ export class CartComponent {
     }
   }
   
-  refreshModal(selectedCartId: Guid, cart: Cart) {
+  refreshModal(selectedCartId: String, cart: Cart) {
     let methodName: string = 'refreshModal';
 
     try {    
@@ -114,7 +114,7 @@ export class CartComponent {
     try {
       if(cartItems !== null) {
         cart = new Cart();
-        cart.id = Guid.create();
+        cart.id = Guid.create().toString();
         cart.itemsCounter = this.cartItemService.getCartCount();
         cart.name = 'Cart_' + cart.id.toString().split('-')[0];
         cart.createdDate = new Date();
@@ -189,8 +189,7 @@ export class CartComponent {
     try {
       if(cartItem !== null && cart !== null) {
         if(cart.cartItems !== null) {
-          cart.cartItems.forEach((item, index) => {
-
+          cart.cartItems.forEach((item) => {
             if(item.id === cartItem.id){
               item.isSelected = false;
             }

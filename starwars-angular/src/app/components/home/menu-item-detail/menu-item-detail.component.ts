@@ -211,7 +211,7 @@ export class MenuItemDetailComponent implements OnInit {
     try {
       if(menuItemOptions !== null) {
         menuItemDetail = new MenuItemDetail();
-        menuItemDetail.id = Guid.create();
+        menuItemDetail.id = menuItem.id;
         menuItemDetail.name = menuItem.name;
         menuItemDetail.cost = menuItem.cost;
         menuItemDetail.isEdit = isEdit;
@@ -237,13 +237,13 @@ export class MenuItemDetailComponent implements OnInit {
     }
 
     return [ 
-      new MenuItemOption(Guid.create(), "Laser Cannon", false),
-      new MenuItemOption(Guid.create(), "AM/FM Radio", false),
-      new MenuItemOption(Guid.create(), "Radar System", false),
-      new MenuItemOption(Guid.create(), "Heated Seats", false),
-      new MenuItemOption(Guid.create(), "Missile System", false),
-      new MenuItemOption(Guid.create(), "Cup holder", false),
-      new MenuItemOption(Guid.create(), "Guidence System", false)  
+      new MenuItemOption(Guid.create().toString(), "Laser Cannon", false),
+      new MenuItemOption(Guid.create().toString(), "AM/FM Radio", false),
+      new MenuItemOption(Guid.create().toString(), "Radar System", false),
+      new MenuItemOption(Guid.create().toString(), "Heated Seats", false),
+      new MenuItemOption(Guid.create().toString(), "Missile System", false),
+      new MenuItemOption(Guid.create().toString(), "Cup holder", false),
+      new MenuItemOption(Guid.create().toString(), "Guidence System", false)  
     ];
   }
 }

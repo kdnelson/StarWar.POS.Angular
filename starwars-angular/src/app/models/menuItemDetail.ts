@@ -3,7 +3,7 @@ import { MenuItemOption } from './menuItemOption';
 
 export class MenuItemDetail {
   constructor(
-    public id?: Guid,
+    public id?: String,
     public name?: String,
     public menuItemOptions?: MenuItemOption[],
     public cost?: String,
