@@ -85,7 +85,7 @@ export class MenuItemService extends ObservableStore<StoreState> {
       console.log('State History:', this.stateHistory);
     }
   }
- 
+
   remove() {
     let methodName: string = 'remove';
  

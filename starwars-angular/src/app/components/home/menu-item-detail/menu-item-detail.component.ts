@@ -8,6 +8,7 @@ import { MenuItem } from 'src/app/models/menuItem';
 import { MenuItemDetail } from 'src/app/models/menuItemDetail';
 import { MenuItemOption } from 'src/app/models/menuItemOption';
 import { CartItemService } from 'src/app/services/cartItemService';
+import { MenuItemService } from 'src/app/services/menuItemService';
 import { LogService } from '../../../services/log.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class MenuItemDetailComponent implements OnInit {
 
   constructor(
     public ngxSmartModalService: NgxSmartModalService,
+    public menuItemService: MenuItemService,
     public cartItemService: CartItemService,
     public errorType: ErrorType,
     public logService: LogService
@@ -30,17 +32,6 @@ export class MenuItemDetailComponent implements OnInit {
     let methodName: string = 'ngOnInit';
 
     try {
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  submitMenuItemDetail(menuItemDetail: MenuItemDetail) {
-    let methodName: string = 'submitMenuItemDetail';
-
-    try {
-      this.closeAllModals();
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -118,6 +109,7 @@ export class MenuItemDetailComponent implements OnInit {
       newCartItem.name = menuItemDetail.name;
       newCartItem.quantity = 1;
       newCartItem.price = menuItemDetail.cost;
+      newCartItem.menuItemOptions = this.addMenuItemOptionsToCartItem();
       newCartItem.isSelected = false;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -125,6 +117,24 @@ export class MenuItemDetailComponent implements OnInit {
     }
 
     return newCartItem;
+  }
+
+  addMenuItemOptionsToCartItem() {
+    let methodName: string = 'addMenuItemOptionsToCartItem';
+    let menuItemOptions: MenuItemOption[] = [];
+
+    try {
+      this.getMenuItemOptions().forEach(miOption => {
+        if(miOption.isSelected){
+          menuItemOptions.push(miOption)
+        }
+      });
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return menuItemOptions;
   }
 
   selectedOption(menuItemOption: MenuItemOption, menuItemDetail: MenuItemDetail) {
@@ -136,11 +146,13 @@ export class MenuItemDetailComponent implements OnInit {
           let optionIndex: number = this.searchOptionIndex(menuItemOption.name, menuItemDetail.menuItemOptions)
           if(menuItemOption.isSelected){
             menuItemOption.isSelected = false;
-            menuItemDetail.menuItemOptions.splice(optionIndex, 1, menuItemOption);
           } else {
             menuItemOption.isSelected = true;
-            menuItemDetail.menuItemOptions.splice(optionIndex, 1, menuItemOption);
           }
+
+
+
+          menuItemDetail.menuItemOptions.splice(optionIndex, 1, menuItemOption);
         } else {
           let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'menuItemOptions');
           this.logService.logHandler(errorMsg);
@@ -229,21 +241,21 @@ export class MenuItemDetailComponent implements OnInit {
 
   private getMenuItemOptions() : MenuItemOption[] {
     let methodName: string = 'getMenuItemOptions';
+    let menuItemOptions : MenuItemOption[] = []
 
-    try {
+    try {   
+      menuItemOptions.push(new MenuItemOption(Guid.create().toString(), "Laser Cannon", "4590", false));
+      menuItemOptions.push(new MenuItemOption(Guid.create().toString(), "AM/FM Radio", "650", false));
+      menuItemOptions.push(new MenuItemOption(Guid.create().toString(), "Radar System", "3600", false));
+      menuItemOptions.push(new MenuItemOption(Guid.create().toString(), "Heated Seats", "325", false));
+      menuItemOptions.push(new MenuItemOption(Guid.create().toString(), "Missile System", "4530", false));
+      menuItemOptions.push(new MenuItemOption(Guid.create().toString(), "Cup holder", "35", false));
+      menuItemOptions.push(new MenuItemOption(Guid.create().toString(), "Guidence System", "6700", false));
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
 
-    return [ 
-      new MenuItemOption(Guid.create().toString(), "Laser Cannon", false),
-      new MenuItemOption(Guid.create().toString(), "AM/FM Radio", false),
-      new MenuItemOption(Guid.create().toString(), "Radar System", false),
-      new MenuItemOption(Guid.create().toString(), "Heated Seats", false),
-      new MenuItemOption(Guid.create().toString(), "Missile System", false),
-      new MenuItemOption(Guid.create().toString(), "Cup holder", false),
-      new MenuItemOption(Guid.create().toString(), "Guidence System", false)  
-    ];
+    return menuItemOptions;
   }
 }

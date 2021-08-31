@@ -133,6 +133,8 @@ export class CartItemService extends ObservableStore<StoreState> {
         state.cartItems.forEach((cartItem) => {
           cartSubtotal = parseInt(cartSubtotal.toString()) + 
             (parseInt(cartItem.price.toString()) * parseInt(cartItem.quantity.toString()));
+            cartItem.menuItemOptionsCost = this.getCartItemOptionsCostTotal(cartItem)
+            cartSubtotal =+ cartItem.menuItemOptionsCost;
         })
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -142,6 +144,21 @@ export class CartItemService extends ObservableStore<StoreState> {
     return cartSubtotal;
   }
 
+  getCartItemOptionsCostTotal(cartItem: CartItem) : number {
+    let methodName: string = 'getCartItemOptionsCostTotal';
+    let menuItemCostTotal: number = 0;
+
+    try {    
+      cartItem.menuItemOptions.forEach((miOption) => {
+        menuItemCostTotal =+ parseInt(miOption.cost.toString());
+      })
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return menuItemCostTotal;
+  }
 
   getCartTax(cartSubTotal: number) : number {
     let methodName: string = 'getCartTax';

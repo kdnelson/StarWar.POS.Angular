@@ -3,7 +3,6 @@ import { ErrorType } from 'src/app/models/errorType';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 import { LogService } from 'src/app/services/log.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { NotificationService } from 'src/app/services/notification.service';
 import { CartComponent } from './cart/cart.component';
 import { CategoryFilterComponent } from './category-filter/category-filter.component';
 import { MenuItemDetailComponent } from './menu-item-detail/menu-item-detail.component';
@@ -22,8 +21,7 @@ declare var $: any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   providers: [CartItemService, MenuItemService, CategoryFilterService, CategoryFilterComponent, MenuItemDetailComponent, 
-              CartComponent, ErrorType, LogService, NotificationService, 
-              NgxSmartModalService],
+              CartComponent, ErrorType, LogService, NgxSmartModalService],
 })
 export class HomeComponent implements OnInit {
   className: string = "HomeComponent";
@@ -48,8 +46,7 @@ export class HomeComponent implements OnInit {
     public menuItemDetailComponent: MenuItemDetailComponent,
     public cartComponent: CartComponent,
     public errorType: ErrorType,
-    public logService: LogService,
-    public notificationService: NotificationService
+    public logService: LogService
   ) {}
 
   ngOnInit() {
@@ -58,8 +55,6 @@ export class HomeComponent implements OnInit {
     try {
       this.loadSubscribers();
       this.prettyPrintCopywriteInfo();
-      this.notificationService.notificationQueue();
-      this.subscribeToNotifyQueue();
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -334,78 +329,6 @@ export class HomeComponent implements OnInit {
     try {
       var date = new Date().toString().split(' ')[3];
       this.copywriteInfo = 'Silverskippy (c) ' + date;
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  private subscribeToNotifyQueue() {
-    let methodName: string = 'subscribeToNotifyQueue';
-
-    try {    
-        setInterval(() => {
-          this.nextNotification = this.notificationService.getNextNotification();
-          if(this.nextNotification !== null) {
-            this.easeDownNotifyBanner();
-            this.pauseNotifyQueue(6000);
-          }
-        }, 8000);
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  private async pauseNotifyQueue(ms: number) {
-    let methodName: string = 'pauseNotifyQueue';
-
-    try {
-      await new Promise<void>(resolve => setTimeout(()=>resolve(), ms)).then(()=>this.controlNotifyBanner());
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  private controlNotifyBanner() {
-    let methodName: string = 'controlNotifyBanner';
-
-    try {
-      this.easeUpNotifyBanner();
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  private easeDownNotifyBanner() {
-    let methodName: string = 'easeDownNotifyBanner';
-
-    try {
-      setTimeout(function() {
-        $('#flyover-notification-XS').removeClass('ease-up').addClass('ease-down');
-        $('#flyover-notification-M').removeClass('ease-up').addClass('ease-down');
-        $('#flyover-notification-L').removeClass('ease-up').addClass('ease-down');
-        $('#flyover-notification-XL').removeClass('ease-up').addClass('ease-down');
-      }, 2000);
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  private easeUpNotifyBanner() {
-    let methodName: string = 'easeUpNotifyBanner';
-
-    try {
-      setTimeout(function() {
-        $('#flyover-notification-XS').removeClass('ease-down').addClass('ease-up');
-        $('#flyover-notification-M').removeClass('ease-down').addClass('ease-up');
-        $('#flyover-notification-L').removeClass('ease-down').addClass('ease-up');
-        $('#flyover-notification-XL').removeClass('ease-down').addClass('ease-up');
-        this.nextNotification = null;
-      }, 1000);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
