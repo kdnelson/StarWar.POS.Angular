@@ -141,22 +141,6 @@ export class CartItemService extends ObservableStore<StoreState> {
     return cartSubtotal;
   }
 
-  getCartItemOptionsCostTotal(cartItem: CartItem) : number {
-    let methodName: string = 'getCartItemOptionsCostTotal';
-    let menuItemCostTotal: number = 0;
-
-    try {    
-      cartItem.menuItemOptions.forEach((miOption) => {
-        menuItemCostTotal += parseInt(miOption.cost.toString());
-      })
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-
-    return menuItemCostTotal;
-  }
-
   getCartTax(cartSubTotal: number) : number {
     let methodName: string = 'getCartTax';
     let cartTax: number = 0;
