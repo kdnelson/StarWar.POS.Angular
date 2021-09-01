@@ -1,6 +1,3 @@
-import { Guid } from 'guid-typescript';
-import { MenuItemDetail } from './menuItemDetail';
-
 export class CartItem {
   constructor(
     public id?: String,
@@ -8,7 +5,7 @@ export class CartItem {
     public quantity?: number,
     public price?: number,
     public menuItemOptionsCost?: number,
-    public menuItemOptions?: MenuItemDetail[],
+    public menuItemOptionsCount?: String,
     public isSelected?: Boolean
   ) { }
 }

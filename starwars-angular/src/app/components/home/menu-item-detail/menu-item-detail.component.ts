@@ -99,44 +99,6 @@ export class MenuItemDetailComponent implements OnInit {
     }
   }
 
-  private createCartItemFromMenuItem(menuItemDetail: MenuItemDetail) : CartItem {
-    let methodName: string = 'createCartItemFromMenuItem';
-    let newCartItem = null;
-
-    try {
-      newCartItem = new CartItem();
-      newCartItem.id = menuItemDetail.id;
-      newCartItem.name = menuItemDetail.name;
-      newCartItem.quantity = 1;
-      newCartItem.price = menuItemDetail.cost;
-      newCartItem.menuItemOptions = this.addMenuItemOptionsToCartItem();
-      newCartItem.isSelected = false;
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-
-    return newCartItem;
-  }
-
-  addMenuItemOptionsToCartItem() {
-    let methodName: string = 'addMenuItemOptionsToCartItem';
-    let menuItemOptions: MenuItemOption[] = [];
-
-    try {
-      this.getMenuItemOptions().forEach(miOption => {
-        if(miOption.isSelected){
-          menuItemOptions.push(miOption)
-        }
-      });
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-
-    return menuItemOptions;
-  }
-
   selectedOption(menuItemOption: MenuItemOption, menuItemDetail: MenuItemDetail) {
     let methodName: string = 'selectedOption';
 
@@ -149,10 +111,8 @@ export class MenuItemDetailComponent implements OnInit {
           } else {
             menuItemOption.isSelected = true;
           }
-
-
-
           menuItemDetail.menuItemOptions.splice(optionIndex, 1, menuItemOption);
+          menuItemDetail.cost = this.updateMenuItemOptionsCost(menuItemDetail).toString()
         } else {
           let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'menuItemOptions');
           this.logService.logHandler(errorMsg);
@@ -176,6 +136,62 @@ export class MenuItemDetailComponent implements OnInit {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, errMsg);
       this.logService.logHandler(errorMsg);
     }
+  }
+
+  private createCartItemFromMenuItem(menuItemDetail: MenuItemDetail) : CartItem {
+    let methodName: string = 'createCartItemFromMenuItem';
+    let newCartItem = null;
+
+    try {
+      newCartItem = new CartItem();
+      newCartItem.id = menuItemDetail.id;
+      newCartItem.name = menuItemDetail.name;
+      newCartItem.quantity = 1;
+      newCartItem.menuItemOptionsCount = this.getMenuItemOptionsCount(menuItemDetail).toString();
+      newCartItem.price = menuItemDetail.cost;
+      newCartItem.isSelected = false;
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return newCartItem;
+  }
+
+  private getMenuItemOptionsCount(menuItemDetail: MenuItemDetail) : number {
+    let methodName: string = 'getMenuItemOptionsCount';
+    let menuItemDetailOptionsCount: number = 0;
+
+    try {
+      menuItemDetail.menuItemOptions.forEach(miOption => {
+        if(miOption.isSelected){
+          menuItemDetailOptionsCount++;
+        }
+      });
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return menuItemDetailOptionsCount;
+  }
+
+  private updateMenuItemOptionsCost(menuItemDetail: MenuItemDetail) : number {
+    let methodName: string = 'updateMenuItemOptionsCost';
+    let menuItemDetailOptionsCost: number = 0;
+
+    try {
+      menuItemDetail.menuItemOptions.forEach(miOption => {
+        if(miOption.isSelected){
+          menuItemDetailOptionsCost += parseInt(miOption.cost.toString())
+        }
+      });
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+
+    return parseInt(menuItemDetail.cost.toString()) + menuItemDetailOptionsCost;
   }
 
   private closeAllModals() : void {
