@@ -19,8 +19,9 @@
                            <div class="cart-card-name-label">{{ cartItem.name }}</div>
                         </div>
                         <div class="d-flex justify-content-between">
-                           <div class="cart-card-item-option-total-label">{{ cartItem.menuItemOptionsCount }}</div>
-                           <div class="cart-card-item-total-label">{{ cartItem.price }}</div>
+                           <div *ngIf="cartItem.cartItemOptionsCount > 0" class="cart-card-item-option-total-label">{{ cartItem.cartItemOptionsCount }}</div>
+                           <div *ngIf="cartItem.cartItemOptionsCount == 0" class="cart-card-item-option-total-empty-label"></div>
+                           <div class="cart-card-item-total-label">{{ cartItem.totalPrice }}</div>
                         </div>
                      </div>
                      <div *ngIf="cartItem.isSelected" class="cart-card-selected" role="button" (click)="selectedCartItem(cartItem, cart.getData())">
@@ -28,8 +29,9 @@
                            <div class="cart-card-name-label">{{ cartItem.name }}</div>
                         </div>
                         <div class="d-flex justify-content-between">
-                           <div class="cart-card-item-option-total-label">{{ cartItem.menuItemOptionsCount }}</div>
-                           <div class="cart-card-item-total-label">{{ cartItem.price }}</div>
+                           <div *ngIf="cartItem.cartItemOptionsCount > 0" class="cart-card-item-option-total-label">{{ cartItem.menuItemOptionsCount }}</div>
+                           <div *ngIf="cartItem.cartItemOptionsCount == 0" class="cart-card-item-option-total-empty-label"></div>
+                           <div class="cart-card-item-total-label">{{ cartItem.totalPrice }}</div>
                         </div>
                         <div class="d-flex justify-content-between">
                            <div class="cart-card-remove" role="button" (click)="removeCartItem(cartItem, cart.getData())">Remove</div>

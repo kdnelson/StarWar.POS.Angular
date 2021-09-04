@@ -148,8 +148,9 @@ export class MenuItemDetailComponent implements OnInit {
       newCartItem.id = menuItemDetail.id;
       newCartItem.name = menuItemDetail.name;
       newCartItem.quantity = 1;
-      newCartItem.menuItemOptionsCount = this.getMenuItemOptionsCount(menuItemDetail).toString();
-      newCartItem.price = menuItemDetail.totalCost;
+      newCartItem.cartItemOptions = menuItemDetail.menuItemOptions;
+      newCartItem.price = menuItemDetail.cost;
+      newCartItem.totalPrice = menuItemDetail.totalCost;
       newCartItem.isSelected = false;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -157,24 +158,6 @@ export class MenuItemDetailComponent implements OnInit {
     }
 
     return newCartItem;
-  }
-
-  private getMenuItemOptionsCount(menuItemDetail: MenuItemDetail) : number {
-    let methodName: string = 'getMenuItemOptionsCount';
-    let menuItemDetailOptionsCount: number = 0;
-
-    try {
-      menuItemDetail.menuItemOptions.forEach(miOption => {
-        if(miOption.isSelected){
-          menuItemDetailOptionsCount++;
-        }
-      });
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-
-    return menuItemDetailOptionsCount;
   }
 
   private updateMenuItemOptionsCost(menuItemDetail: MenuItemDetail) : number {

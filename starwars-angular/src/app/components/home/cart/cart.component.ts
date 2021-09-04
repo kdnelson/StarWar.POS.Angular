@@ -9,6 +9,7 @@ import { LogService } from 'src/app/services/log.service';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 import { CartItemService } from 'src/app/services/cartItemService';
 import { Observable, Subscription } from 'rxjs';
+import { MenuItemDetail } from 'src/app/models/menuItemDetail';
 
 @Component({
   selector: 'cart-modal',
@@ -235,17 +236,34 @@ export class CartComponent {
     }
   }
 
-  editCartItem(cartItem: CartItem, cart: Cart) {
+  editCartItem(cartItem: CartItem) {
     let methodName: string = 'editCartItem';
 
     try {
       this.closeAllModals();
-      console.log('CartComponent.EditCartItem')
-      // TODO convert cartItem to menuItemDetail
-      //this.menuItemDetailComponent.loadModal(menuItemDetail, true);
+      let editMenuItemDetail = this.createMenuItemDetailfromCartItem(cartItem);
+      this.menuItemDetailComponent.loadModal(editMenuItemDetail, true);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
     }
+  }
+
+  private createMenuItemDetailfromCartItem(cartItem: CartItem) {
+    let methodName: string = 'editCartItem';
+    let editMenuItemDetail = null;
+
+    try {
+      editMenuItemDetail = new MenuItemDetail();
+      editMenuItemDetail.id = cartItem.id;
+      editMenuItemDetail.name = cartItem.name;
+      editMenuItemDetail.menuItemOptions = cartItem.cartItemOptions;
+      editMenuItemDetail.cost = cartItem.price;
+      editMenuItemDetail.totalCost = cartItem.totalPrice;
+    } catch (errMsg) {
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+    return editMenuItemDetail;
   }
 }
