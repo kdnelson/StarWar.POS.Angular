@@ -17,7 +17,6 @@
                      <div *ngIf="!cartItem.isSelected" class="cart-card-not-selected" role="button" (click)="selectedCartItem(cartItem, cart.getData())">
                         <div class="d-flex justify-content-between">
                            <div class="cart-card-name-label">{{ cartItem.name }}</div>
-                           <div class="cart-card-count-label">{{ cartItem.quantity }}</div>
                         </div>
                         <div class="d-flex justify-content-between">
                            <div class="cart-card-item-option-total-label">{{ cartItem.menuItemOptionsCount }}</div>
@@ -27,7 +26,6 @@
                      <div *ngIf="cartItem.isSelected" class="cart-card-selected" role="button" (click)="selectedCartItem(cartItem, cart.getData())">
                         <div class="d-flex justify-content-between">
                            <div class="cart-card-name-label">{{ cartItem.name }}</div>
-                           <div class="cart-card-count-label">{{ cartItem.quantity }}</div>
                         </div>
                         <div class="d-flex justify-content-between">
                            <div class="cart-card-item-option-total-label">{{ cartItem.menuItemOptionsCount }}</div>

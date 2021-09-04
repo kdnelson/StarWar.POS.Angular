@@ -112,7 +112,8 @@ export class MenuItemDetailComponent implements OnInit {
             menuItemOption.isSelected = true;
           }
           menuItemDetail.menuItemOptions.splice(optionIndex, 1, menuItemOption);
-          menuItemDetail.cost = this.updateMenuItemOptionsCost(menuItemDetail).toString()
+          menuItemDetail.totalCost = menuItemDetail.cost;
+          menuItemDetail.totalCost = this.updateMenuItemOptionsCost(menuItemDetail).toString()
         } else {
           let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'menuItemOptions');
           this.logService.logHandler(errorMsg);
@@ -148,7 +149,7 @@ export class MenuItemDetailComponent implements OnInit {
       newCartItem.name = menuItemDetail.name;
       newCartItem.quantity = 1;
       newCartItem.menuItemOptionsCount = this.getMenuItemOptionsCount(menuItemDetail).toString();
-      newCartItem.price = menuItemDetail.cost;
+      newCartItem.price = menuItemDetail.totalCost;
       newCartItem.isSelected = false;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
@@ -242,6 +243,7 @@ export class MenuItemDetailComponent implements OnInit {
         menuItemDetail.id = menuItem.id;
         menuItemDetail.name = menuItem.name;
         menuItemDetail.cost = menuItem.cost;
+        menuItemDetail.totalCost = menuItem.cost;
         menuItemDetail.isEdit = isEdit;
         menuItemDetail.menuItemOptions = menuItemOptions;
         return menuItemDetail;

@@ -54,11 +54,9 @@ export class CartItemService extends ObservableStore<StoreState> {
  
     try {          
       let state = this.getState();
-      if(!this.isCartItemInCart(cartItem, state)){
         cartItem = this.modCartItemName(cartItem);
         state.cartItems.push(cartItem);
         this.setState({ cartItems: state.cartItems }, StoreActions.AddCartItem);
-      }    
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -156,25 +154,6 @@ export class CartItemService extends ObservableStore<StoreState> {
     }
 
     return cartTax;
-  }
-
-  private isCartItemInCart(cartItem: CartItem, state: StoreState) : boolean {
-    let methodName: string = 'isCartItemInCart';
-    let isFound = false;
-
-    try {
-      state.cartItems.forEach((cItem) => {
-        if(cartItem.id === cItem.id){
-          cItem.quantity = cItem.quantity + 1;
-          isFound = true;
-          this.setState({ cartItems: state.cartItems }, StoreActions.UpdateCartItem); 
-        }
-      })
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-    return isFound;
   }
 
   private modCartItemName(cartItem: CartItem) : CartItem {
