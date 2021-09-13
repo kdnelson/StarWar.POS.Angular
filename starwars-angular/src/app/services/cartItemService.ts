@@ -51,13 +51,20 @@ export class CartItemService extends ObservableStore<StoreState> {
   
   add(cartItem: CartItem) {
     let methodName: string = 'add';
+    let itemIndex = -1;
  
-    try {          
+    try {
       let state = this.getState();
+      itemIndex = state.cartItems.findIndex(cItem => cItem.id == cartItem.id);
+      cartItem.cartItemOptionsCount = this.getCartItemOptionsCount(cartItem);
+      if(itemIndex == -1){  //  Add new cartItem
         cartItem = this.modCartItemName(cartItem);
-        cartItem.cartItemOptionsCount = this.getCartItemOptionsCount(cartItem);
         state.cartItems.push(cartItem);
         this.setState({ cartItems: state.cartItems }, StoreActions.AddCartItem);
+      } else {  //  Update cartItem
+        state.cartItems[itemIndex] = cartItem;
+        this.setState({ cartItems: state.cartItems }, StoreActions.UpdateCartItem);
+      }
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

@@ -106,11 +106,11 @@ export class MenuItemDetailComponent implements OnInit {
     }
   }
 
-  addMenuItemForCart(meniItemDetail: MenuItemDetail) : void {
+  addMenuItemForCart(menuItemDetail: MenuItemDetail) : void {
     let methodName: string = 'addMenuItemForCart';
 
     try {
-      let newCartItem = this.createCartItemFromMenuItem(meniItemDetail);
+      let newCartItem = this.createCartItemFromMenuItem(menuItemDetail);
       if(newCartItem !== null){
         this.cartItemService.add(newCartItem);
         this.closeAllModals();
