@@ -56,7 +56,7 @@ export class CartItemService extends ObservableStore<StoreState> {
     try {
       let state = this.getState();
       itemIndex = state.cartItems.findIndex(cItem => cItem.id == cartItem.id);
-      cartItem.cartItemOptionsCount = this.getCartItemOptionsCount(cartItem);
+      cartItem.menuItemOptionsCount = this.getMenuItemOptionsCount(cartItem);
       if(itemIndex == -1){  //  Add new cartItem
         cartItem = this.modCartItemName(cartItem);
         state.cartItems.push(cartItem);
@@ -179,14 +179,14 @@ export class CartItemService extends ObservableStore<StoreState> {
     return cartItem;
   }
 
-  private getCartItemOptionsCount(cartItem: CartItem) : number {
-    let methodName: string = 'getCartItemOptionsCount';
-    let cartItemOptionsCount: number = 0;
+  private getMenuItemOptionsCount(cartItem: CartItem) : number {
+    let methodName: string = 'getMenuItemOptionsCount';
+    let menuItemOptionsCount: number = 0;
 
     try {
-      cartItem.cartItemOptions.forEach(miOption => {
+      cartItem.menuItemOptions.forEach(miOption => {
         if(miOption.isSelected){
-          cartItemOptionsCount++;
+          menuItemOptionsCount++;
         }
       });
     } catch (errMsg) {
@@ -194,6 +194,6 @@ export class CartItemService extends ObservableStore<StoreState> {
       this.logService.logHandler(errorMsg);
     }
 
-    return cartItemOptionsCount;
+    return menuItemOptionsCount;
   }
 }

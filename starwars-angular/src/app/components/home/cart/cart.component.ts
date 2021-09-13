@@ -257,7 +257,7 @@ export class CartComponent {
       editMenuItemDetail = new MenuItemDetail();
       editMenuItemDetail.id = cartItem.id;
       editMenuItemDetail.name = cartItem.name;
-      editMenuItemDetail.menuItemOptions = cartItem.cartItemOptions;
+      editMenuItemDetail.menuItemOptions = cartItem.menuItemOptions;
       editMenuItemDetail.cost = cartItem.price;
       editMenuItemDetail.totalCost = cartItem.totalPrice;
     } catch (errMsg) {

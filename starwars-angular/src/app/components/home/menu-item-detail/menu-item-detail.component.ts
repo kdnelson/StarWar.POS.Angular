@@ -173,7 +173,7 @@ export class MenuItemDetailComponent implements OnInit {
       newCartItem.id = menuItemDetail.id;
       newCartItem.name = menuItemDetail.name;
       newCartItem.quantity = 1;
-      newCartItem.cartItemOptions = menuItemDetail.menuItemOptions;
+      newCartItem.menuItemOptions = menuItemDetail.menuItemOptions;
       newCartItem.price = menuItemDetail.cost;
       newCartItem.totalPrice = menuItemDetail.totalCost;
       newCartItem.isSelected = false;

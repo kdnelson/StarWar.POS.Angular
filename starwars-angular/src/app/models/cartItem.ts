@@ -7,8 +7,8 @@ export class CartItem {
     public quantity?: number,
     public price?: number,
     public totalPrice?: number,
-    public cartItemOptions?: MenuItemOption[],
-    public cartItemOptionsCount?: number,
+    public menuItemOptions?: MenuItemOption[],
+    public menuItemOptionsCount?: number,
     public isSelected?: Boolean
   ) { }
 }
