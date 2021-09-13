@@ -299,7 +299,7 @@ export class HomeComponent implements OnInit {
     try {
       if(menuItem !== null){
         this.closeAllModals();
-        this.menuItemDetailComponent.loadModal(menuItem, false);
+        this.menuItemDetailComponent.loadModal(menuItem);
       } else {
         let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, null);
         this.logService.logHandler(errorMsg);

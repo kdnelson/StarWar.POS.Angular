@@ -242,7 +242,7 @@ export class CartComponent {
     try {
       this.closeAllModals();
       let editMenuItemDetail = this.createMenuItemDetailfromCartItem(cartItem);
-      this.menuItemDetailComponent.loadModal(editMenuItemDetail, true);
+      this.menuItemDetailComponent.editMenuItemDetail(editMenuItemDetail);
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

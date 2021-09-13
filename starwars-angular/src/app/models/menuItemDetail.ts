@@ -6,7 +6,6 @@ export class MenuItemDetail {
     public name?: String,
     public menuItemOptions?: MenuItemOption[],
     public cost?: String,
-    public totalCost?: String,
-    public isEdit?: boolean,
+    public totalCost?: String
   ){}
 }

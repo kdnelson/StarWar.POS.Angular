@@ -48,7 +48,7 @@ export class MenuItemDetailComponent implements OnInit {
     }
   }
 
-  loadModal(menuItem: MenuItem, isEdit: boolean) {
+  loadModal(menuItem: MenuItem) {
     let methodName: string = 'loadModal';
 
     try {
@@ -61,7 +61,7 @@ export class MenuItemDetailComponent implements OnInit {
             item.isSelected = false;
           });
 
-          let menuItemDetail: MenuItemDetail = this.createMenuItemDetail(menuItem, isEdit, menuItemOptions);
+          let menuItemDetail: MenuItemDetail = this.createMenuItemDetail(menuItem, menuItemOptions);
           if(menuItemDetail != null){
             this.ngxSmartModalService.setModalData(menuItemDetail, 'menuItemDetail', true);
             this.ngxSmartModalService.getModal('menuItemDetail').open();
@@ -70,6 +70,31 @@ export class MenuItemDetailComponent implements OnInit {
             let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, 'menuItemDetail');
             this.logService.logHandler(errorMsg);
           }
+        }
+      } else {
+        let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
+        this.logService.logHandler(errorMsg);
+      }
+    } catch(errMsg){
+      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
+      this.logService.logHandler(errorMsg);
+    }
+  }
+
+  editMenuItemDetail(menuItemDetail: MenuItemDetail) {
+    let methodName: string = 'editMenuItemDetail';
+
+    try {
+      this.closeAllModals();
+      
+      if(menuItemDetail !== null){
+        if(menuItemDetail.menuItemOptions.length > 0)
+        {
+          this.ngxSmartModalService.setModalData(menuItemDetail, 'menuItemDetail', true);
+          this.ngxSmartModalService.getModal('menuItemDetail').open();
+        } else {
+          let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullException);
+          this.logService.logHandler(errorMsg);
         }
       } else {
         let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.nullException, this.errorType.nullMethodParam);
@@ -215,7 +240,7 @@ export class MenuItemDetailComponent implements OnInit {
     return optionAtIndex;
   }
 
-  private createMenuItemDetail(menuItem: MenuItem, isEdit: boolean, menuItemOptions: MenuItemOption[]) : MenuItemDetail {
+  private createMenuItemDetail(menuItem: MenuItem, menuItemOptions: MenuItemOption[]) : MenuItemDetail {
     let methodName: string = 'createMenuItemDetail';
   
     let menuItemDetail: MenuItemDetail = null;
@@ -227,7 +252,6 @@ export class MenuItemDetailComponent implements OnInit {
         menuItemDetail.name = menuItem.name;
         menuItemDetail.cost = menuItem.cost;
         menuItemDetail.totalCost = menuItem.cost;
-        menuItemDetail.isEdit = isEdit;
         menuItemDetail.menuItemOptions = menuItemOptions;
         return menuItemDetail;
       } else {
