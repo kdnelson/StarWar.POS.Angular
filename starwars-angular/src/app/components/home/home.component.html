@@ -8,25 +8,6 @@
 <div class="home-container">
   <div class="d-flex justify-content-center background">
     <div class="container">
-
-  <!-- 
-      <div class="row">
-        <div id="flyover-notification-XS" [hidden]="nextNotification === null" class="flyover-XS">
-          <div class="row">
-            <div class="col-2">
-              <div class="flyover-XS-info-image">
-                <img src="../../assets/images/home-notification-info.png" style="width:15px;height:15px;">
-              </div>
-            </div>
-            <div class="col-10">    
-              <div class="flyover-XS-info-text">
-                {{ nextNotification }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
       <div class="d-flex justify-content-between">
         <div class="home-header">
           <div role="button" (click)="openCategoryFilterModal()">
@@ -43,7 +24,7 @@
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-between">
+      <div class="home-viewport-height d-flex justify-content-between">
         <div class="d-flex justify-content-start">
           <div class="manufacturer-list">
             <div class="row card-container manufacturer-scroll">
@@ -58,7 +39,7 @@
             </div>
           </div>
         </div>
-        <div class="viewport-height d-flex justify-content-between"> 
+        <div class="d-flex justify-content-between"> 
           <div class="menuItem-cards">
             <div class="container menuItems-scroll">
               <div class="card-columns">

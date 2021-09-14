@@ -27,6 +27,15 @@ body {
 
 /* Not Supported */
 @media (max-width: 319px) {
+    .viewport-height {
+        display: none;
+    }
+    .manufacturer-scroll {
+        display: none;
+    }
+    .menuItems-scroll {
+        display: none;
+    }
     .background {
         display: none;
     }
@@ -94,6 +103,27 @@ body {
 
 /* XS -Small devices (portrait phones, 320px and up) */
 @media (min-width: 320px) {
+    .home-viewport-height {
+        min-height: 65vh;
+    }
+    .managers-viewport-height {
+        min-height: 68vh;
+    }
+    .manufacturer-scroll {
+        max-height: 52vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .menuItems-scroll {
+        max-height: 57vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .managers-scroll {
+        max-height: 67vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
     .background {
         height: 100%;
         width: 100%;
@@ -183,6 +213,15 @@ body {
 
 /* S -Small devices (landscape phones, 576px and up)  Not Supported */
 @media (min-width: 576px) {
+    .viewport-height {
+        display: none;
+    }
+    .manufacturer-scroll {
+        display: none;
+    }
+    .menuItems-scroll {
+        display: none;
+    }
     .background {
         display: none;
     }
@@ -241,6 +280,27 @@ body {
  
 /* M - Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+    .home-viewport-height {
+        min-height: 75vh;
+    }
+    .managers-viewport-height {
+        min-height: 75vh;
+    }
+    .manufacturer-scroll {
+        max-height: 55vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .menuItems-scroll {
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .managers-scroll {
+        max-height: 63vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
     .background {
         height: 100%;
         width: 100%;
@@ -329,6 +389,27 @@ body {
  
 /* L - Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+    .home-viewport-height {
+        min-height: 65vh;
+    }
+    .managers-viewport-height {
+        min-height: 65vh;
+    }
+    .manufacturer-scroll {
+        max-height: 55vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .menuItems-scroll {
+        max-height: 60vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .managers-scroll {
+        max-height: 60vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
     .background {
         height: 100%;
         width: 100%;
@@ -417,6 +498,27 @@ body {
  
 /* XL - Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+    .home-viewport-height {
+        min-height: 75vh;
+    }
+    .managers-viewport-height {
+        min-height: 65vh;
+    }
+    .manufacturer-scroll {
+        max-height: 55vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .menuItems-scroll {
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .managers-scroll {
+        max-height: 60vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
     .background {
         height: 100%;
         width: 100%;

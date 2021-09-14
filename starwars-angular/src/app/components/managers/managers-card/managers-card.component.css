@@ -1,9 +1,3 @@
-
-.scroll {
-    max-height: 66vh;
-    overflow-y: auto;
-}
-
 a {
     color: rgba(241, 226, 7, 0.87);
     font-weight: bold;
