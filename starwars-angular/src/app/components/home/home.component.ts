@@ -31,9 +31,6 @@ export class HomeComponent implements OnInit {
   manufacturers: Manufacturer[] = [];
   menuItemsPerSelectedManufacturer: MenuItem[] = [];
   selectedManufacturer: string = "Corellia Mining Corporation";
-  menuItemsIsOne: boolean = false;
-  menuItemsIsTwo: boolean = false;
-  menuItemsIsGreaterThanTwo: boolean = false;
   subs = new Subscription();
   menuItems$: MenuItem[] | Observable<MenuItem[]>;
   cartItems$: CartItem[] | Observable<CartItem[]>;
@@ -113,8 +110,6 @@ export class HomeComponent implements OnInit {
           }
         }
       });
-      
-      this.setColumnView();
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);
@@ -194,19 +189,6 @@ export class HomeComponent implements OnInit {
           }
         })
       });
-    } catch (errMsg) {
-      let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
-      this.logService.logHandler(errorMsg);
-    }
-  }
-
-  setColumnView() : void {
-    let methodName: string = 'setColumnView';
-
-    try { 
-      this.menuItemsIsOne = this.menuItemsPerSelectedManufacturer.length == 1;
-      this.menuItemsIsTwo = this.menuItemsPerSelectedManufacturer.length == 2;
-      this.menuItemsIsGreaterThanTwo = this.menuItemsPerSelectedManufacturer.length > 2;
     } catch (errMsg) {
       let errorMsg = new ErrorMsg(this.className, methodName, this.errorType.parseException, errMsg);
       this.logService.logHandler(errorMsg);

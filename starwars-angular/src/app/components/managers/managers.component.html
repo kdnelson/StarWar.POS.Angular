@@ -1,5 +1,5 @@
 <div class="managers-container">
-  <div class="managers-viewport-height d-flex justify-content-center background">
+  <div class="d-flex justify-content-center background">
     <div class="container">
       <div class="d-flex justify-content-between">
         <div class="managers-header">
@@ -13,7 +13,7 @@
           </div>
           <div *ngIf="!isManagerCard" class="p-2"> 
             <a (click)="changeDisplayMode()" [class.active]="true">
-              <div class="manager-view-toggle">Back</div>
+              <div class="manager-view-toggle">Grid</div>
             </a>
           </div>
         </div>
@@ -29,9 +29,6 @@
         [hidden]="isManagerCard === true">
       </cm-managers-grid>
 
-      <div class="d-flex justify-content-center">
-        <div class="copywrite-label">{{copywriteInfo}}</div>
-      </div>
     </div>
   </div>
 </div>
